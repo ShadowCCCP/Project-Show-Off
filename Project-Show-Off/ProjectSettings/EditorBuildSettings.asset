@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/OutdoorsScene.unity
+    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 088cf922af04be14dbe4751c6aa12e9e,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2093cd6a8778fe94f95872d268808ce3,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ef29be374de782840bac0123fd6ae73d,
+      type: 2}
