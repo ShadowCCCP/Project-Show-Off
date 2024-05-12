@@ -1,0 +1,9 @@
+Regarding the Drawing Scene:
+____________________________________________________
+Keep in mind that when you scale the drawing canvas unevenly, to also make sure to adjust the DrawCanvasRT size to match that ratio.
+The projection size of the camera attached to the drawing canvas must also match the size of the canvas, as it's the sensor area of the pen.
+
+Example:
+In case of a scale of [0.2, 0.2, 0.4], you would have to adjust the size of DrawCanvasRT, so that the Y axis is twice as big as the X
+-> Meaning that [2048, 2048] should be changed into [2048, 4096], so twice the amount of value X, as 0.4 is twice as big as 0.2
+____________________________________________________
