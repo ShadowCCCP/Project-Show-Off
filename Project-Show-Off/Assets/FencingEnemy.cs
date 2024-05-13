@@ -1,21 +1,28 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class FencingEnemy : MonoBehaviour
 {
+    // This event is triggered when the player gets on the plank...
+    public event Action onTriggerFight;
+    // This event is triggered as soon as a certain animation is finished...
+    public event Action onNextSequence;
+
     [SerializeField] int attackCount;
     private int _currentStage;
 
     private List<GameObject> _hitPoints = new List<GameObject>();
 
-    private event Action _onStartSequence;
-    private bool _isFighting;
-
     private void Start()
     {
+        onTriggerFight += NextStage;
+        
+
         List<GameObject> gameObjects = new List<GameObject>();
         gameObject.GetChildGameObjects(gameObjects);
 
@@ -29,15 +36,22 @@ public class FencingEnemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        
+        onTriggerFight -= Attack;
     }
 
-    private IEnumerator NextStage(float pWaitTime)
-    {
-        yield return new WaitForSeconds(5);
 
+
+    private IEnumerator PlanAttack(float pWaitTime)
+    {
+        yield return new WaitForSeconds(pWaitTime);
+
+
+    }
+
+    private void Attack()
+    {
 
     }
 }
