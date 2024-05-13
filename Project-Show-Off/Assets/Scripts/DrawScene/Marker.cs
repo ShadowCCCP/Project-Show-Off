@@ -48,7 +48,7 @@ public class Marker : MonoBehaviour
 
                 _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
 
-                // Calculate the actual touch position, based on the whiteboard's resolution...
+                // Calculate the touch position, based on the whiteboard's resolution...
                 int x = (int)(_touchPos.x * _whiteboard.textureSize.x - (_penSize / 2));
                 int y = (int)(_touchPos.y * _whiteboard.textureSize.y - (_penSize / 2));
 
@@ -89,5 +89,16 @@ public class Marker : MonoBehaviour
         // If no board was hit, reset the whiteboard reference...
         _whiteboard = null;
         _touchedLastFrame = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("ColorPad"))
+        {
+            Material m = collision.transform.GetComponent<Renderer>().material;
+            if (m.name == "ColorPalette") { return; }
+
+            _renderer.material = m;
+        }
     }
 }
