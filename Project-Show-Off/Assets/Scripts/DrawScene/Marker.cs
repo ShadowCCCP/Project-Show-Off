@@ -95,10 +95,7 @@ public class Marker : MonoBehaviour
     {
         if (collision.transform.CompareTag("ColorPad"))
         {
-            Material m = collision.transform.GetComponent<Renderer>().material;
-            if (m.name == "ColorPalette") { return; }
-
-            _renderer.material = m;
+            _renderer.material = collision.transform.GetComponent<Renderer>().material;
         }
     }
 }
