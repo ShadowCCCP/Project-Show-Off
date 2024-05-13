@@ -8,7 +8,7 @@ public class FencingHitPoint : MonoBehaviour
     {
         if (other.CompareTag("Sword"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
