@@ -20,7 +20,7 @@ public class FencingEnemy : MonoBehaviour
 
     private void Start()
     {
-        onTriggerFight += NextStage;
+        onTriggerFight += TriggerAttack;
         
 
         List<GameObject> gameObjects = new List<GameObject>();
@@ -38,20 +38,18 @@ public class FencingEnemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        onTriggerFight -= Attack;
+        onTriggerFight -= TriggerAttack;
     }
 
+    private void TriggerAttack()
+    {
+        Attack(2);
+    }
 
-
-    private IEnumerator PlanAttack(float pWaitTime)
+    private IEnumerator Attack(float pWaitTime)
     {
         yield return new WaitForSeconds(pWaitTime);
 
-
-    }
-
-    private void Attack()
-    {
-
+        
     }
 }
