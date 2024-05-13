@@ -39,6 +39,5 @@ public class LobbyButton : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         canPressButton = true;
-        Debug.Log(canPressButton);
     }    
 }
