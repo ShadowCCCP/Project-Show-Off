@@ -485,7 +485,7 @@ Transform:
   m_GameObject: {fileID: 637874896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0746, y: 0.558, z: 1.574}
+  m_LocalPosition: {x: 0.0746, y: 0.558, z: 0.6}
   m_LocalScale: {x: 2.1456652, y: 1.72, z: 0.23}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -505,6 +505,8 @@ GameObject:
   - component: {fileID: 686283256}
   - component: {fileID: 686283255}
   - component: {fileID: 686283258}
+  - component: {fileID: 686283259}
+  - component: {fileID: 686283260}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -619,6 +621,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &686283259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686283253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2491bf2d987ce4fb2700248ef5fa2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: -1
+--- !u!54 &686283260
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686283253}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &816284842
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,10 +769,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1153223499}
-  - component: {fileID: 1153223500}
   m_Layer: 0
   m_Name: Right Controller
-  m_TagString: Controller
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -752,28 +793,6 @@ Transform:
   - {fileID: 4223774912506695578}
   m_Father: {fileID: 2129718427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1153223500
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153223498}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &1185513408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,10 +1127,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1541681047}
-  - component: {fileID: 1541681048}
   m_Layer: 0
   m_Name: Left Controller
-  m_TagString: Controller
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1133,28 +1151,6 @@ Transform:
   - {fileID: 7892180329854992442}
   m_Father: {fileID: 1225068791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1541681048
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541681046}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &1817750364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,9 +2147,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4223774912506695578}
   - component: {fileID: 8387291118725017498}
+  - component: {fileID: 8387291118725017499}
   m_Layer: 0
   m_Name: right_quest2_mesh
-  m_TagString: Untagged
+  m_TagString: Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2354,9 +2351,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7892180329854992442}
   - component: {fileID: 3099939644829161544}
+  - component: {fileID: 7892180329854992443}
   m_Layer: 0
   m_Name: left_quest2_mesh
-  m_TagString: Untagged
+  m_TagString: Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2376,6 +2374,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1541681047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7892180329854992443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7265243043957861881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8092569951681170893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2472,29 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.008341372, y: -0.005337568, z: -0.020316854}
     m_Extent: {x: 0.046281323, y: 0.06728348, z: 0.055724896}
   m_DirtyAABB: 0
+--- !u!136 &8387291118725017499
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723017791850781088}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.055724896
+  m_Height: 0.13456696
+  m_Direction: 1
+  m_Center: {x: -0.008341372, y: -0.005337568, z: -0.020316854}
 --- !u!1 &8584678725623194494
 GameObject:
   m_ObjectHideFlags: 0
