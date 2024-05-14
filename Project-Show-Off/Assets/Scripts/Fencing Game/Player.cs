@@ -14,8 +14,14 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
+        rb.velocity += new Vector3(0, -1, 0);
+    }
+
+    private void Update()
+    { 
         transform.position = new Vector3( cameraTranform.position.x, transform.position.y , cameraTranform.position.z);
         //cameraTranform.position = new Vector3(cameraTranform.position.x, transform.position.y, cameraTranform.position.z);
 
