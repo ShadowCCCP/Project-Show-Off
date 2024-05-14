@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
@@ -10,7 +9,10 @@ public class FencingEnemy : MonoBehaviour
     // This event is triggered as soon as a certain animation is finished
     // or the player enters the plank for the first time ...
     public event Action onTriggerSequence;
-    public event Action onStartStagger;
+    public event Action onEvaluateAttack;
+
+    // This is triggered if the sword hit the player...
+    public event Action onSwordHit;
 
     [SerializeField] int attackCount;
     private int _currentAttackCount;
@@ -20,10 +22,18 @@ public class FencingEnemy : MonoBehaviour
 
     private bool _initialized;
 
+    private Animator _anim;
+
+    private bool _gotHit;
+
     private void Start()
     {
         onTriggerSequence += ManageState;
-        onStartStagger += TriggerStagger;
+        onEvaluateAttack += CheckAttackOutcome;
+
+        onSwordHit += () => _gotHit = true;
+
+        _anim = GetComponent<Animator>();
 
         List<GameObject> gameObjects = new List<GameObject>();
         gameObject.GetChildGameObjects(gameObjects);
@@ -42,15 +52,12 @@ public class FencingEnemy : MonoBehaviour
     private void OnDestroy()
     {
         onTriggerSequence -= TriggerAttack;
-        onStartStagger -= TriggerStagger;
+        onEvaluateAttack -= CheckAttackOutcome;
     }
 
-    private void Update()
+    private void CheckAttackOutcome()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TriggerStagger();
-        }
+        if (_gotHit) { TriggerStagger(); }
     }
 
     private void ManageState()
@@ -58,6 +65,7 @@ public class FencingEnemy : MonoBehaviour
         if (!_initialized)
         {
             // Do the intro animation...
+            _anim.SetTrigger("Intro");
             
             _initialized = true;
             return;
@@ -84,13 +92,14 @@ public class FencingEnemy : MonoBehaviour
     {
         ShowHitPoint();
         // Do the stagger animation...
-        
+        _anim.SetBool("Staggering", true);
 
         // Loop the animation for this duration...
         yield return new WaitForSeconds(pWaitTime);
 
         HideHitPoint();
-        // Transition to next attack...
+        // Stop Staggering and transition to next attack...
+        _anim.SetTrigger("StopStagger");
         ManageState();
     }
 
@@ -122,6 +131,6 @@ public class FencingEnemy : MonoBehaviour
         yield return new WaitForSeconds(pWaitTime);
 
         // Do the attack animation...
-
+        _anim.SetTrigger("Attack");
     }
 }
