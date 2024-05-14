@@ -8,11 +8,18 @@ public class Player : MonoBehaviour
     int life = 100;
     [SerializeField]
     Transform cameraTranform;
+    Rigidbody rb;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void Update()
     {
         transform.position = new Vector3( cameraTranform.position.x, transform.position.y , cameraTranform.position.z);
         //cameraTranform.position = new Vector3(cameraTranform.position.x, transform.position.y, cameraTranform.position.z);
+
+        Debug.Log(rb.velocity.y);
     }
 
     public void TakeDamage(int dmg)
