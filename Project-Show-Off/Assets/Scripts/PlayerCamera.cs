@@ -12,16 +12,18 @@ public class PlayerCamera : MonoBehaviour
 
     [SerializeField]
     bool falling;
+
+    float startY;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startY = player.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player.transform.position.y < 0.5)
+        if(player.transform.position.y < startY)
         {
             falling = true;
         }
@@ -32,7 +34,6 @@ public class PlayerCamera : MonoBehaviour
         }
         else
         {
-            //transform.position = new Vector3(VRCamera.transform.position.x, transform.position.y - 1, VRCamera.transform.position.z);
             transform.position = player.transform.position;
             
         }

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3( cameraTranform.position.x, transform.position.y , cameraTranform.position.z);
-        cameraTranform.position = new Vector3(cameraTranform.position.x, transform.position.y, cameraTranform.position.z);
+        //cameraTranform.position = new Vector3(cameraTranform.position.x, transform.position.y, cameraTranform.position.z);
     }
 
     public void TakeDamage(int dmg)
