@@ -1,32 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class FencingEnemy : MonoBehaviour
 {
-    // This event is triggered as soon as a certain animation is finished
-    // or the player enters the plank for the first time ...
-    public event Action onTriggerSequence;
-    public event Action onStartStagger;
-
-    [SerializeField] int attackCount;
-    private int _currentAttackCount;
+    [SerializeField] int health;
+    [SerializeField] GameObject hitPointsHolder;
 
     private List<GameObject> _hitPoints = new List<GameObject>();
+    private List<GameObject> _finishedHitPoints = new List<GameObject>();
     private int _currentHitPoint;
 
     private bool _initialized;
 
+    private Animator _anim;
+
+    private bool _gotHit;
+
     private void Start()
     {
-        onTriggerSequence += ManageState;
-        onStartStagger += TriggerStagger;
+        _anim = GetComponent<Animator>();
 
         List<GameObject> gameObjects = new List<GameObject>();
-        gameObject.GetChildGameObjects(gameObjects);
+        hitPointsHolder.GetChildGameObjects(gameObjects);
 
         // Get all hitpoints that are children of this object and hide them...
         foreach (GameObject gameObject in gameObjects)
@@ -37,40 +35,36 @@ public class FencingEnemy : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+
+        ManageState();
     }
 
-    private void OnDestroy()
+    private void CheckAttackOutcome()
     {
-        onTriggerSequence -= TriggerAttack;
-        onStartStagger -= TriggerStagger;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TriggerStagger();
-        }
+        if (!_gotHit) { TriggerStagger(); }
+        _gotHit = false;
     }
 
     private void ManageState()
     {
-        if (!_initialized)
+        // If health is still above 0, proceed to attack...
+        if (health > 0)
         {
-            // Do the intro animation...
-            
-            _initialized = true;
-            return;
+            if (!_initialized)
+            {
+                // Do the intro animation...
+                _anim.SetTrigger("Intro");
+
+                _initialized = true;
+                return;
+            }
+
+            TriggerAttack();
         }
-
-        TriggerAttack();
-
-        // Increment attackCount and check if game is finished...
-        _currentAttackCount++;
-        if (_currentAttackCount >= attackCount)
+        else
         {
             // Minigame finished...
-            // !! DO SOMETHING !!
+            // ! DO SOMETHING !
         }
     }
 
@@ -84,30 +78,42 @@ public class FencingEnemy : MonoBehaviour
     {
         ShowHitPoint();
         // Do the stagger animation...
-        
+        _anim.SetBool("Staggering", true);
 
         // Loop the animation for this duration...
         yield return new WaitForSeconds(pWaitTime);
 
         HideHitPoint();
-        // Transition to next attack...
-        ManageState();
+        // Stop Staggering and transition to next attack...
+        _anim.SetTrigger("StopStagger");
     }
 
     private void ShowHitPoint()
     {
-        // Pick random hitpoint to be visible...
-        _currentHitPoint = UnityEngine.Random.Range(0, _hitPoints.Count);
+        bool validHitPoint = false;
+
+        // Pick random, but valid hitpoint to be visible...
+        while(!validHitPoint)
+        {
+            // If all hitPoints were hit but enemy is still alive, just reuse finished hitPoints again...
+            if (_finishedHitPoints.Count == _hitPoints.Count) { validHitPoint = true; }
+
+            _currentHitPoint = UnityEngine.Random.Range(0, _hitPoints.Count);
+
+            if (!validHitPoint && !_finishedHitPoints.Contains(_hitPoints[_currentHitPoint]))
+            {
+                validHitPoint = true;
+            }
+        }
+
         _hitPoints[_currentHitPoint].SetActive(true);
     }
 
     private void HideHitPoint()
     {
-        // Disable currently active hitpoint, if it still exists...
         if (_hitPoints[_currentHitPoint] != null)
         {
             _hitPoints[_currentHitPoint].SetActive(false);
-            _hitPoints.Remove(_hitPoints[_currentHitPoint]);
         }
     }
 
@@ -122,6 +128,19 @@ public class FencingEnemy : MonoBehaviour
         yield return new WaitForSeconds(pWaitTime);
 
         // Do the attack animation...
+        _anim.SetTrigger("Attack");
+    }
 
+    // Methods triggered outside this class...
+    public void HitPointHit(GameObject pGameObject)
+    {
+        health--;
+        _finishedHitPoints.Add(pGameObject);
+        HideHitPoint();
+    }
+
+    public void SwordHit()
+    {
+        _gotHit = true;
     }
 }

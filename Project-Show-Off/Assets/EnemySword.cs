@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class FencingHitPoint : MonoBehaviour
+public class EnemySword : MonoBehaviour
 {
     [SerializeField] FencingEnemy enemyScript;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Sword")
+        if (other.CompareTag("Player"))
         {
-            enemyScript.HitPointHit(transform.gameObject);
+            enemyScript.SwordHit();
         }
     }
 }
