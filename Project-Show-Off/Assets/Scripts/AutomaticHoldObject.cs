@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSword : MonoBehaviour
+public class AutomaticHoldObject : MonoBehaviour
 {
     [SerializeField] Transform handPosition;
 

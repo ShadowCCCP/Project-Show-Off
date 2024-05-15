@@ -65,6 +65,7 @@ public class FencingEnemy : MonoBehaviour
         {
             // Minigame finished...
             // ! DO SOMETHING !
+            Destroy(gameObject);
         }
     }
 
@@ -119,7 +120,7 @@ public class FencingEnemy : MonoBehaviour
 
     private void TriggerAttack()
     {
-        int timeBeforeAttack = 2;
+        int timeBeforeAttack = 3;
         StartCoroutine(Attack(timeBeforeAttack));
     }
 
@@ -142,5 +143,11 @@ public class FencingEnemy : MonoBehaviour
     public void SwordHit()
     {
         _gotHit = true;
+        _anim.SetBool("Staggering", false);
+    }
+
+    public void SwordBlocked()
+    {
+        _anim.SetTrigger("SetBackAttack");
     }
 }
