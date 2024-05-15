@@ -42,6 +42,7 @@ public class FencingEnemy : MonoBehaviour
     private void CheckAttackOutcome()
     {
         if (!_gotHit) { TriggerStagger(); }
+        else { _anim.SetBool("ResetToIdle", true); }
         _gotHit = false;
     }
 
@@ -120,6 +121,10 @@ public class FencingEnemy : MonoBehaviour
 
     private void TriggerAttack()
     {
+        // Reset animator values...
+        _anim.SetBool("Staggering", false);
+        _anim.SetBool("ResetToIdle", false);
+
         int timeBeforeAttack = 3;
         StartCoroutine(Attack(timeBeforeAttack));
     }
@@ -143,7 +148,6 @@ public class FencingEnemy : MonoBehaviour
     public void SwordHit()
     {
         _gotHit = true;
-        _anim.SetBool("Staggering", false);
     }
 
     public void SwordBlocked()
