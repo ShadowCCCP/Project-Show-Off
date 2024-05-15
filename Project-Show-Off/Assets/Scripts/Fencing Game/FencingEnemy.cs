@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
+// TODO:
+// Make wobbling not coroutine based, but cooldown + deltatime instead...
+// Make three hitPoints appear one by one...
+// Add animation trigger for the wobbling animation, to stop it immediatelly after hitting all points...
+// Add code to only begin the intro animation as soon as the player enters an area for 1.5 seconds...
+// Remove sword collision logic and replace it with shield spots to hold sword onto for blocking...
+
 public class FencingEnemy : MonoBehaviour
 {
     [SerializeField] int health;
@@ -72,6 +79,7 @@ public class FencingEnemy : MonoBehaviour
 
     private void TriggerStagger()
     {
+        _finishedHitPoints.Clear();
         int staggerDuration = 5;
         StartCoroutine(Stagger(staggerDuration));
     }
