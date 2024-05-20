@@ -8,6 +8,7 @@ TagManager:
   - Controller
   - Sword
   - ColorPad
+  - EnterArea
   layers:
   - Default
   - TransparentFX

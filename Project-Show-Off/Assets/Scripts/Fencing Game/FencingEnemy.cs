@@ -1,40 +1,61 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
 // TODO:
-// Make wobbling not coroutine based, but cooldown + deltatime instead...
-// Make three hitPoints appear one by one...
-// Add animation trigger for the wobbling animation, to stop it immediatelly after hitting all points...
-// Add code to only begin the intro animation as soon as the player enters an area for 1.5 seconds...
 // Remove sword collision logic and replace it with shield spots to hold sword onto for blocking...
 
 public class FencingEnemy : MonoBehaviour
 {
     [SerializeField] int health;
     [SerializeField] GameObject hitPointsHolder;
+    [SerializeField] GameObject defensePointsHolder;
+
+    [SerializeField] float timeToBlock = 8.0f;
+    [SerializeField] float staggerDuration = 6.0f;
+
+    [SerializeField] int showHitPointAmount = 3;
+    private int _hitPointsDone = 0;
+
+    private float _staggerCooldown = 0.0f;
+    private bool _isStaggering;
+    private bool _triggeredStagger;
 
     private List<GameObject> _hitPoints = new List<GameObject>();
     private List<GameObject> _finishedHitPoints = new List<GameObject>();
     private int _currentHitPoint;
 
+    private List<GameObject> _defensePoints = new List<GameObject>();
+    private List<GameObject> _finishedDefensePoints = new List<GameObject>();
+    private int _currentDefensePoint;
+
     private bool _initialized;
 
     private Animator _anim;
 
-    private bool _gotHit;
+    private bool _gotBlocked;
 
     private void Start()
     {
+        if (hitPointsHolder == null)
+        {
+            Debug.LogError("FencingEnemy: HitPointHolder reference missing...");
+        }
+
+        if (defensePointsHolder == null)
+        {
+            Debug.LogError("FencingEnemy: DefensePointHolder reference missing...");
+        }
+
         _anim = GetComponent<Animator>();
 
-        List<GameObject> gameObjects = new List<GameObject>();
-        hitPointsHolder.GetChildGameObjects(gameObjects);
+        // Get all hitpoint objects...
+        List<GameObject> hitPointHolderObjects = new List<GameObject>();
+        hitPointsHolder.GetChildGameObjects(hitPointHolderObjects);
 
         // Get all hitpoints that are children of this object and hide them...
-        foreach (GameObject gameObject in gameObjects)
+        foreach (GameObject gameObject in hitPointHolderObjects)
         {
             if (gameObject.GetComponent<FencingHitPoint>() != null)
             {
@@ -43,26 +64,76 @@ public class FencingEnemy : MonoBehaviour
             }
         }
 
-        ManageState();
+        // Get all defensepoint objects...
+        List<GameObject> defensePointHolderObjects = new List<GameObject>();
+        defensePointsHolder.GetChildGameObjects(defensePointHolderObjects);
+
+        // Get all hitpoints that are children of this object and hide them...
+        foreach (GameObject gameObject in defensePointHolderObjects)
+        {
+            if (gameObject.GetComponent<FencingDefensePoint>() != null)
+            {
+                _defensePoints.Add(gameObject);
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        UpdateStagger();
+    }
+
+    private void UpdateStagger()
+    {
+        if (_isStaggering)
+        {
+            // Do this only once...
+            if (!_triggeredStagger)
+            {
+                // Trigger stagger animation and clear finishedHitPoints list...
+                _finishedHitPoints.Clear();
+                _anim.SetBool("Staggering", true);
+                _triggeredStagger = true;
+            }
+
+            if (_hitPointsDone < showHitPointAmount && _staggerCooldown < staggerDuration)
+            {
+                // Increase timer...
+                _staggerCooldown += Time.deltaTime;
+                ShowHitPoint();
+            }
+            else
+            {
+                if (_hitPointsDone >= showHitPointAmount) { health--; }
+
+                // Hide hitpoint and stop stagger animation...
+                HideHitPoint();
+                _anim.SetTrigger("StopStagger");
+
+                // Reset stagger values...
+                _staggerCooldown = 0;
+                _isStaggering = false;
+            }
+        }
     }
 
     private void CheckAttackOutcome()
     {
-        if (!_gotHit) { TriggerStagger(); }
-        else { _anim.SetBool("ResetToIdle", true); }
-        _gotHit = false;
+        if (_gotBlocked) { TriggerStagger(); }
+        _gotBlocked = false;
     }
 
     private void ManageState()
     {
-        // If health is still above 0, proceed to attack...
+        // If health is still above 0, proceed to attack... 
         if (health > 0)
         {
             if (!_initialized)
             {
                 // Do the intro animation...
+                hitPointsHolder.SetActive(true);
                 _anim.SetTrigger("Intro");
-
                 _initialized = true;
                 return;
             }
@@ -76,47 +147,39 @@ public class FencingEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void TriggerStagger()
     {
         _finishedHitPoints.Clear();
-        int staggerDuration = 5;
-        StartCoroutine(Stagger(staggerDuration));
-    }
+        _hitPointsDone = 0;
 
-    private IEnumerator Stagger(float pWaitTime)
-    {
-        ShowHitPoint();
-        // Do the stagger animation...
+        // Start stagger animation...
         _anim.SetBool("Staggering", true);
-
-        // Loop the animation for this duration...
-        yield return new WaitForSeconds(pWaitTime);
-
-        HideHitPoint();
-        // Stop Staggering and transition to next attack...
-        _anim.SetTrigger("StopStagger");
+        _isStaggering = true;
     }
 
     private void ShowHitPoint()
     {
-        bool validHitPoint = false;
-
         // Pick random, but valid hitpoint to be visible...
-        while(!validHitPoint)
+        if (!_hitPoints[_currentHitPoint].activeSelf)
         {
-            // If all hitPoints were hit but enemy is still alive, just reuse finished hitPoints again...
-            if (_finishedHitPoints.Count == _hitPoints.Count) { validHitPoint = true; }
+            bool validHitPoint = false;
 
-            _currentHitPoint = UnityEngine.Random.Range(0, _hitPoints.Count);
-
-            if (!validHitPoint && !_finishedHitPoints.Contains(_hitPoints[_currentHitPoint]))
+            while (!validHitPoint)
             {
-                validHitPoint = true;
-            }
-        }
+                // If all hitpoints were hit but enemy is still alive, just reuse finished hitpoints again...
+                if (_finishedHitPoints.Count == _hitPoints.Count) { validHitPoint = true; }
 
-        _hitPoints[_currentHitPoint].SetActive(true);
+                _currentHitPoint = UnityEngine.Random.Range(0, _hitPoints.Count);
+
+                if (!validHitPoint && !_finishedHitPoints.Contains(_hitPoints[_currentHitPoint]))
+                {
+                    validHitPoint = true;
+                }
+            }
+
+            // Make selected hitpoint visible
+            _hitPoints[_currentHitPoint].SetActive(true);
+        }
     }
 
     private void HideHitPoint()
@@ -127,19 +190,59 @@ public class FencingEnemy : MonoBehaviour
         }
     }
 
+    private void ShowDefensePoint()
+    {
+        // Pick random, but valid hitpoint to be visible...
+        if (!_defensePoints[_currentDefensePoint].activeSelf)
+        {
+            bool validHitPoint = false;
+
+            while (!validHitPoint)
+            {
+                // If all hitpoints were hit but enemy is still alive, just reuse finished hitpoints again...
+                if (_finishedDefensePoints.Count == _defensePoints.Count) { validHitPoint = true; }
+
+                _currentDefensePoint = UnityEngine.Random.Range(0, _defensePoints.Count);
+
+                if (!validHitPoint && !_finishedDefensePoints.Contains(_defensePoints[_currentDefensePoint]))
+                {
+                    validHitPoint = true;
+                }
+            }
+
+            // Make selected hitpoint visible
+            _defensePoints[_currentDefensePoint].SetActive(true);
+        }
+    }
+
+    private void HideDefensePoint()
+    {
+        if (_defensePoints[_currentDefensePoint] != null)
+        {
+            _defensePoints[_currentDefensePoint].SetActive(false);
+            _defensePoints[_currentDefensePoint].GetComponent<FencingDefensePoint>().ResetState();
+        }
+    }
+
     private void TriggerAttack()
     {
         // Reset animator values...
         _anim.SetBool("Staggering", false);
-        _anim.SetBool("ResetToIdle", false);
 
-        int timeBeforeAttack = 3;
-        StartCoroutine(Attack(timeBeforeAttack));
+        StartCoroutine(Attack(timeToBlock));
+        ShowDefensePoint();
     }
 
     private IEnumerator Attack(float pWaitTime)
     {
         yield return new WaitForSeconds(pWaitTime);
+
+        // Check if sword is inside area...
+        if (_defensePoints[_currentDefensePoint].GetComponent<FencingDefensePoint>().GetState()) 
+        { 
+            _gotBlocked = true; 
+        }
+        HideDefensePoint();
 
         // Do the attack animation...
         _anim.SetTrigger("Attack");
@@ -148,18 +251,15 @@ public class FencingEnemy : MonoBehaviour
     // Methods triggered outside this class...
     public void HitPointHit(GameObject pGameObject)
     {
-        health--;
+        _hitPointsDone++;
         _finishedHitPoints.Add(pGameObject);
         HideHitPoint();
     }
 
-    public void SwordHit()
+    public void StartIntro()
     {
-        _gotHit = true;
-    }
-
-    public void SwordBlocked()
-    {
-        _anim.SetTrigger("SetBackAttack");
+        // This should be false anyways, but just in case...
+        _initialized = false;
+        ManageState();
     }
 }

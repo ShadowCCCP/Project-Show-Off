@@ -96,6 +96,7 @@ public class Marker : MonoBehaviour
         if (collision.transform.CompareTag("ColorPad"))
         {
             _renderer.material = collision.transform.GetComponent<Renderer>().material;
+            _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
         }
     }
 }
