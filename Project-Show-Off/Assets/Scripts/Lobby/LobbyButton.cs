@@ -37,7 +37,7 @@ public class LobbyButton : MonoBehaviour
 
     IEnumerator buttonCooldown()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         canPressButton = true;
     }    
 }
