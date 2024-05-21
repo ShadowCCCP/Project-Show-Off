@@ -40,4 +40,9 @@ public class LobbyButton : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         canPressButton = true;
     }    
+
+    public void SetToGoScene(int i)
+    {
+        scene = i;
+    }
 }
