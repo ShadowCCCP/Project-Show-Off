@@ -34,7 +34,7 @@ public class TimeMachineManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (levels.Count < currentLevelIndex + 2)
+            if (levels.Count > currentLevelIndex +1)
             {
                 currentLevelIndex++;
             }
@@ -52,4 +52,6 @@ public class TimeMachineManager : MonoBehaviour
         gameIcon.material.mainTexture = levels[i].Icon.texture;
         button.SetToGoScene(levels[i].LevelIndex);
     }
+
+    
 }
