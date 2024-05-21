@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 2056253983569544754}
   - component: {fileID: 8107927208318545183}
   - component: {fileID: 5373479406506108154}
+  - component: {fileID: 1689962911367892349}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -461,7 +462,7 @@ HingeJoint:
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -81.5688
+    min: -81.46935
     max: 81.4507
     bounciness: 0
     bounceMinVelocity: 0.2
@@ -472,3 +473,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1689962911367892349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023013766401602028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc679839a9585ca419df8511d46cfcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leverActvated: 0
+  maxActiveLever: 90
+  minActiveLever: 60
