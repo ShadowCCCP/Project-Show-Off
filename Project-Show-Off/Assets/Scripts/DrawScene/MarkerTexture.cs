@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Marker : MonoBehaviour
+public class MarkerTexture : MonoBehaviour
 {
-    [SerializeField] private Transform _tip;
+    [SerializeField] private Transform tip;
     [SerializeField] private int _penSize = 5;
 
     private Renderer _renderer;
@@ -22,12 +20,12 @@ public class Marker : MonoBehaviour
 
     void Start()
     {
-        _renderer = _tip.GetComponent<Renderer>();
+        _renderer = tip.GetComponent<Renderer>();
 
         // Create an array of pixels with the same color the pen uses...
         _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
 
-        _tipHeight = _tip.localScale.y;
+        _tipHeight = tip.localScale.y;
     }
 
     void Update()
@@ -37,7 +35,7 @@ public class Marker : MonoBehaviour
 
     private void Draw()
     {
-        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(tip.position, transform.up, out _touch, _tipHeight))
         {
             if (_touch.transform.CompareTag("Whiteboard"))
             {
