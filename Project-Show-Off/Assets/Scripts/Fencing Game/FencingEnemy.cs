@@ -100,6 +100,13 @@ public class FencingEnemy : MonoBehaviour
         if (_attackQueued)
         {
             _attackCooldown += Time.deltaTime;
+
+            if (_attackCooldown >= timeBeforeAttack)
+            {
+                _attackQueued = false;
+                _needToBlock = true;
+                _attackCooldown = 0.0f;
+            }
         }
     }
 
@@ -120,7 +127,13 @@ public class FencingEnemy : MonoBehaviour
             }
             else
             {
+                if (_defensePoint.GetState())
+                {
+                    _gotBlocked = true;
+                }
+
                 HideDefensePoint();
+                _blockTimer = 0.0f;
 
                 // Do the attack animation...
                 _anim.SetTrigger("Attack");
@@ -183,7 +196,8 @@ public class FencingEnemy : MonoBehaviour
                 return;
             }
 
-            TriggerAttack();
+            _anim.SetBool("Staggering", false);
+            _needToBlock = true;
         }
         else
         {
@@ -270,49 +284,12 @@ public class FencingEnemy : MonoBehaviour
         }
     }
 
-    private void TriggerAttack()
-    {
-        /*
-        // Reset animator values...
-        _anim.SetBool("Staggering", false);
-
-        StartCoroutine(Attack(timeToBlock));
-        ShowDefensePoint();
-        */
-        if (!_needToBlock && !_isStaggering)
-        {
-            _needToBlock = true;
-        }
-    }
-
-    private IEnumerator Attack(float pWaitTime)
-    {
-        yield return new WaitForSeconds(pWaitTime);
-
-        // Check if sword is inside area...
-        if (_defensePoint.GetState()) 
-        { 
-            _gotBlocked = true; 
-        }
-        HideDefensePoint();
-
-        // Do the attack animation...
-        _anim.SetTrigger("Attack");
-    }
-
-
-
     // Methods triggered outside this class...
     public void HitPointHit(GameObject pGameObject)
     {
         _hitPointsDone++;
         _finishedHitPoints.Add(pGameObject);
         HideHitPoint();
-    }
-
-    public void DefensePointHit()
-    {
-        _gotBlocked = true;
     }
 
     public void StartIntro()
