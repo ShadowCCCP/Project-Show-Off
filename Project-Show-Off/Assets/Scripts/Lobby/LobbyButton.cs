@@ -26,7 +26,7 @@ public class LobbyButton : MonoBehaviour
         if(collision.transform.tag == "Controller" && canPressButton)
         {
             anim.SetTrigger("Press");
-            if (scene > -1)
+            if (scene > -1 && SceneManager.sceneCount> scene)
             {
                 SceneManager.LoadScene(scene);
             }

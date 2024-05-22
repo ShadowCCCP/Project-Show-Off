@@ -46,7 +46,7 @@ public class TimeMachineManager : MonoBehaviour
         }
     }
 
-    void LoadLevelOnTimeMachine(int i)
+    public void LoadLevelOnTimeMachine(int i)
     {
         yearText.text = levels[i].Year;
         gameIcon.material.mainTexture = levels[i].Icon.texture;
