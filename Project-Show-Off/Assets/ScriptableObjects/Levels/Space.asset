@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c117b99ed2b8f8a4fb870b1ebc28881c, type: 3}
-  m_Name: Blank
+  m_Name: Space
   m_EditorClassIdentifier: 
-  LevelName: 
+  LevelName: Space
   LevelIndex: 0
-  Icon: {fileID: 21300000, guid: 17689808316e14280ad508a625c4c88f, type: 3}
-  Year: 0
+  Icon: {fileID: 21300000, guid: 7e0f37ac34c1c2f45a8005879cff4288, type: 3}
+  Year: 2456
