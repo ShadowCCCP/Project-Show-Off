@@ -1534,10 +1534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yearText: {fileID: 1404523619}
-  gameIcon: {fileID: 0}
+  gameIcon: {fileID: 560872990}
   button: {fileID: 1120315888}
   levels:
   - {fileID: 11400000, guid: 138881fb0d61ddb41a23d75feef823db, type: 2}
+  - {fileID: 11400000, guid: f79bd4f835f283e4ea567c4225facf18, type: 2}
 --- !u!1 &852125037
 GameObject:
   m_ObjectHideFlags: 0
