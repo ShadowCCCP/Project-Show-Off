@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2258.0247, g: 2397.932, b: 3492.3396, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2948,6 +2948,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37201c0d5f52e3049974288a1903a857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorMatcher:
+    colors: 
+    materials: []
   tip: {fileID: 1951726138}
   _penSize: 8
 --- !u!4 &1475175078
@@ -5020,7 +5023,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37201c0d5f52e3049974288a1903a857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tip: {fileID: 0}
+  colorMatcher:
+    colors: 0000000001000000020000000300000004000000
+    materials:
+    - {fileID: 2100000, guid: 73cf3eb9ce3759a4eabd5e8f8eddfb1c, type: 2}
+    - {fileID: 2100000, guid: 585533da24e68f94fabf2e9f7d2f6d3b, type: 2}
+    - {fileID: 2100000, guid: aa55e1db76e215a4ca7421f79eafc052, type: 2}
+    - {fileID: 2100000, guid: 9f61c5fa184742d4f8f18e754bc5c038, type: 2}
+    - {fileID: 2100000, guid: 1314805a6aa050b42aa68a408de4356b, type: 2}
+  tip: {fileID: 8439465272813563079}
   _penSize: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

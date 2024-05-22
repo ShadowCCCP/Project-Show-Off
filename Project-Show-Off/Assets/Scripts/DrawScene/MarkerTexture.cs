@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MarkerTexture : MonoBehaviour
 {
+    [SerializeField] ColorMatcher colorMatcher;
+
     [SerializeField] Transform tip;
     [SerializeField] int _penSize = 5;
 
