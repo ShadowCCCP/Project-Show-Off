@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class MarkerTexture : MonoBehaviour
 {
-    [SerializeField] private Transform tip;
-    [SerializeField] private int _penSize = 5;
+    [SerializeField] ColorMatcher colorMatcher;
+
+    [SerializeField] Transform tip;
+    [SerializeField] int _penSize = 5;
 
     private Renderer _renderer;
     private Color[] _colors;

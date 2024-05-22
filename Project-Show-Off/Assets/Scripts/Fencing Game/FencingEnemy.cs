@@ -4,7 +4,8 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 
 // TODO:
-// Remove sword collision logic and replace it with shield spots to hold sword onto for blocking...
+// Make the enemy attack immediately as soon as the shield is hit...
+// Have a pause time before attacks (will be bugged as soon as above is implemented)...
 
 public class FencingEnemy : MonoBehaviour
 {
@@ -12,15 +13,22 @@ public class FencingEnemy : MonoBehaviour
     [SerializeField] GameObject hitPointsHolder;
     [SerializeField] GameObject defensePointsHolder;
 
+    [SerializeField] float timeBeforeAttack = 2.0f;
+    private float _attackCooldown = 0.0f;
+    private bool _attackQueued;
+
     [SerializeField] float timeToBlock = 8.0f;
+    private float _blockTimer = 0.0f;
+    private bool _needToBlock;
+    private bool _triggeredBlock;
+
     [SerializeField] float staggerDuration = 6.0f;
-
-    [SerializeField] int showHitPointAmount = 3;
-    private int _hitPointsDone = 0;
-
     private float _staggerCooldown = 0.0f;
     private bool _isStaggering;
     private bool _triggeredStagger;
+
+    [SerializeField] int showHitPointAmount = 3;
+    private int _hitPointsDone = 0;
 
     private List<GameObject> _hitPoints = new List<GameObject>();
     private List<GameObject> _finishedHitPoints = new List<GameObject>();
@@ -29,6 +37,7 @@ public class FencingEnemy : MonoBehaviour
     private List<GameObject> _defensePoints = new List<GameObject>();
     private List<GameObject> _finishedDefensePoints = new List<GameObject>();
     private int _currentDefensePoint;
+    private FencingDefensePoint _defensePoint;
 
     private bool _initialized;
 
@@ -81,7 +90,43 @@ public class FencingEnemy : MonoBehaviour
 
     private void Update()
     {
+        UpdateBlocking();
         UpdateStagger();
+        UpdateAttackQueue();
+    }
+
+    private void UpdateAttackQueue()
+    {
+        if (_attackQueued)
+        {
+            _attackCooldown += Time.deltaTime;
+        }
+    }
+
+    private void UpdateBlocking()
+    {
+        if (_needToBlock)
+        {
+            // Do this only once...
+            if (!_triggeredBlock)
+            {
+                ShowDefensePoint();
+            }
+
+            if (!_defensePoint.GetState() && _blockTimer < timeToBlock)
+            {
+                // Increase timer...
+                _blockTimer += Time.deltaTime;
+            }
+            else
+            {
+                HideDefensePoint();
+
+                // Do the attack animation...
+                _anim.SetTrigger("Attack");
+                _needToBlock = false;
+            }
+        }
     }
 
     private void UpdateStagger()
@@ -211,6 +256,7 @@ public class FencingEnemy : MonoBehaviour
             }
 
             // Make selected hitpoint visible
+            _defensePoint = _defensePoints[_currentDefensePoint].GetComponent<FencingDefensePoint>();
             _defensePoints[_currentDefensePoint].SetActive(true);
         }
     }
@@ -220,17 +266,23 @@ public class FencingEnemy : MonoBehaviour
         if (_defensePoints[_currentDefensePoint] != null)
         {
             _defensePoints[_currentDefensePoint].SetActive(false);
-            _defensePoints[_currentDefensePoint].GetComponent<FencingDefensePoint>().ResetState();
+            _defensePoint.ResetState();
         }
     }
 
     private void TriggerAttack()
     {
+        /*
         // Reset animator values...
         _anim.SetBool("Staggering", false);
 
         StartCoroutine(Attack(timeToBlock));
         ShowDefensePoint();
+        */
+        if (!_needToBlock && !_isStaggering)
+        {
+            _needToBlock = true;
+        }
     }
 
     private IEnumerator Attack(float pWaitTime)
@@ -238,7 +290,7 @@ public class FencingEnemy : MonoBehaviour
         yield return new WaitForSeconds(pWaitTime);
 
         // Check if sword is inside area...
-        if (_defensePoints[_currentDefensePoint].GetComponent<FencingDefensePoint>().GetState()) 
+        if (_defensePoint.GetState()) 
         { 
             _gotBlocked = true; 
         }
@@ -248,12 +300,19 @@ public class FencingEnemy : MonoBehaviour
         _anim.SetTrigger("Attack");
     }
 
+
+
     // Methods triggered outside this class...
     public void HitPointHit(GameObject pGameObject)
     {
         _hitPointsDone++;
         _finishedHitPoints.Add(pGameObject);
         HideHitPoint();
+    }
+
+    public void DefensePointHit()
+    {
+        _gotBlocked = true;
     }
 
     public void StartIntro()

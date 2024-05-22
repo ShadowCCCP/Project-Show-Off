@@ -36,12 +36,7 @@ public class SoundPlayer : MonoBehaviour
     public void Play()
     {
         GetRandomClip();
-
-        if (_audioSource.clip != null) _audioSource.PlayDelayed(0);
-        else
-        {
-            Debug.LogError("AudioPlayer: No audioClip attached to either script or existing audioSource.");
-        }
+        PlaySound();
     }
 
     public void PlaySpecific(int pSoundIndex)
@@ -51,6 +46,11 @@ public class SoundPlayer : MonoBehaviour
             _audioSource.clip = _audioClip[pSoundIndex];
         }
 
+        PlaySound();
+    }
+
+    private void PlaySound()
+    {
         if (_audioSource.clip != null) _audioSource.PlayDelayed(0);
         else
         {
