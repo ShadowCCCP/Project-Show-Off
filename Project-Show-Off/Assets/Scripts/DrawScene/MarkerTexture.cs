@@ -28,8 +28,6 @@ public class MarkerTexture : MonoBehaviour
 
         // Create an array of pixels with the same color the pen uses...
         _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
-
-        _tipHeight = tip.localScale.y;
     }
 
     void Update()
