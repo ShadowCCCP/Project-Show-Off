@@ -8,8 +8,11 @@ public class ColorPad : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Detected");
         if (collision.transform.CompareTag("BrushTip"))
         {
+            Debug.Log("Brush!!!");
+
             if (_markerScript == null || _lastBrushTouched != collision.transform)
             {
                 _lastBrushTouched = collision.transform;

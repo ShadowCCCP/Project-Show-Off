@@ -998,6 +998,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1531286996}
+  - {fileID: 841682710}
   m_Father: {fileID: 436588011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &470453812
@@ -2323,7 +2324,7 @@ Transform:
   m_GameObject: {fileID: 841682707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.181, z: 0}
+  m_LocalPosition: {x: 0, y: 0.06340003, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2332,7 +2333,7 @@ Transform:
   - {fileID: 509449878}
   - {fileID: 1845591441}
   - {fileID: 453197745}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 470453811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051097109
 GameObject:
@@ -4828,21 +4829,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1681990759328596258
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025618192389708696}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: 0.4646665, y: 1.1113, z: 0.027026057}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1813765834826068866
 Transform:
   m_ObjectHideFlags: 0
@@ -4858,22 +4844,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8891067970366037607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2025618192389708696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1681990759328596258}
-  m_Layer: 0
-  m_Name: Brush 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!23 &3599969532751206393
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4936,6 +4906,7 @@ GameObject:
   - component: {fileID: 7398838373764808036}
   - component: {fileID: 6845327335790320657}
   - component: {fileID: 7398838373764808037}
+  - component: {fileID: 7398838373764808039}
   m_Layer: 0
   m_Name: Brush_Tip
   m_TagString: BrushTip
@@ -5015,6 +4986,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6516225107668533762, guid: c8fbe3bb888bdd04885c1ba575cb3402, type: 3}
+--- !u!54 &7398838373764808039
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834500725182135041}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &7919968791638648650
 Transform:
   m_ObjectHideFlags: 0
@@ -5040,8 +5038,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8891067970366037607}
   - component: {fileID: 8891067970366037610}
-  - component: {fileID: 8891067970366037609}
-  - component: {fileID: 8891067970366037608}
+  - component: {fileID: 8891067970366037613}
+  - component: {fileID: 8891067970366037612}
+  - component: {fileID: 8891067970366037611}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -5058,7 +5057,7 @@ Transform:
   m_GameObject: {fileID: 8081915804992734429}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.4646665, y: 1.1113, z: 0.027026057}
+  m_LocalPosition: {x: 0.0323, y: 1.2828, z: 0.0623}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5067,7 +5066,35 @@ Transform:
   - {fileID: 2000570155}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &8891067970366037608
+--- !u!114 &8891067970366037610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081915804992734429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37201c0d5f52e3049974288a1903a857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMatcher:
+    colors: 0000000001000000020000000300000004000000
+    brushTipMaterials:
+    - {fileID: 2100000, guid: 73cf3eb9ce3759a4eabd5e8f8eddfb1c, type: 2}
+    - {fileID: 2100000, guid: 585533da24e68f94fabf2e9f7d2f6d3b, type: 2}
+    - {fileID: 2100000, guid: aa55e1db76e215a4ca7421f79eafc052, type: 2}
+    - {fileID: 2100000, guid: 9f61c5fa184742d4f8f18e754bc5c038, type: 2}
+    - {fileID: 2100000, guid: 1314805a6aa050b42aa68a408de4356b, type: 2}
+    drawTextures:
+    - {fileID: 2800000, guid: a1e28e9c70a624e4f86d95edf6dcd983, type: 3}
+    - {fileID: 2800000, guid: 0037ea6ddb4e54043a15ebffb9f4e373, type: 3}
+    - {fileID: 2800000, guid: b0fcbe9c2c19abf449193e312a46c074, type: 3}
+    - {fileID: 2800000, guid: f07f615f1a3090449a3dd96fd3386325, type: 3}
+    - {fileID: 2800000, guid: f49b188431af4a548b51a8113d519cc4, type: 3}
+  tip: {fileID: 1813765834826068866}
+  _penSize: 5
+--- !u!114 &8891067970366037611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5177,7 +5204,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -5219,7 +5246,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!54 &8891067970366037609
+--- !u!54 &8891067970366037612
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5241,39 +5268,32 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8891067970366037610
-MonoBehaviour:
+--- !u!65 &8891067970366037613
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081915804992734429}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37201c0d5f52e3049974288a1903a857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorMatcher:
-    colors: 0000000001000000020000000300000004000000
-    brushTipMaterials:
-    - {fileID: 2100000, guid: 73cf3eb9ce3759a4eabd5e8f8eddfb1c, type: 2}
-    - {fileID: 2100000, guid: 585533da24e68f94fabf2e9f7d2f6d3b, type: 2}
-    - {fileID: 2100000, guid: aa55e1db76e215a4ca7421f79eafc052, type: 2}
-    - {fileID: 2100000, guid: 9f61c5fa184742d4f8f18e754bc5c038, type: 2}
-    - {fileID: 2100000, guid: 1314805a6aa050b42aa68a408de4356b, type: 2}
-    drawTextures:
-    - {fileID: 2800000, guid: a1e28e9c70a624e4f86d95edf6dcd983, type: 3}
-    - {fileID: 2800000, guid: 0037ea6ddb4e54043a15ebffb9f4e373, type: 3}
-    - {fileID: 2800000, guid: b0fcbe9c2c19abf449193e312a46c074, type: 3}
-    - {fileID: 2800000, guid: f07f615f1a3090449a3dd96fd3386325, type: 3}
-    - {fileID: 2800000, guid: f49b188431af4a548b51a8113d519cc4, type: 3}
-  tip: {fileID: 1813765834826068866}
-  _penSize: 5
+  serializedVersion: 3
+  m_Size: {x: 2.825117, y: 20.772673, z: 2.7553806}
+  m_Center: {x: 0.0000005364418, y: -13.042003, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5286,6 +5306,4 @@ SceneRoots:
   - {fileID: 624899936}
   - {fileID: 1844499109}
   - {fileID: 1475175078}
-  - {fileID: 841682710}
   - {fileID: 8891067970366037607}
-  - {fileID: 1681990759328596258}
