@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class MarkerTexture : MonoBehaviour
 
     private Renderer _renderer;
     private Color[] _colors;
-    private float _tipHeight;
 
     private RaycastHit _touch;
     private Whiteboard _whiteboard;
@@ -23,6 +23,7 @@ public class MarkerTexture : MonoBehaviour
 
     void Start()
     {
+        colorMatcher.Initialize();
         _renderer = tip.GetComponent<Renderer>();
 
         // Create an array of pixels with the same color the pen uses...
@@ -38,7 +39,7 @@ public class MarkerTexture : MonoBehaviour
 
     private void Draw()
     {
-        if (Physics.Raycast(tip.position, transform.up, out _touch, _tipHeight))
+        if (Physics.Raycast(tip.position, transform.up, out _touch, 0.04f))
         {
             if (_touch.transform.CompareTag("Whiteboard"))
             {
@@ -92,12 +93,15 @@ public class MarkerTexture : MonoBehaviour
         _touchedLastFrame = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ChangeColor(ColorMatcher.Colors pColor)
     {
-        if (collision.transform.CompareTag("ColorPad"))
+        _renderer.material = colorMatcher.GetBrushMaterial(pColor);
+        Texture2D drawTexture = colorMatcher.GetDrawMaterial(pColor);
+
+        if (drawTexture != null)
         {
-            _renderer.material = collision.transform.GetComponent<Renderer>().material;
-            _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
+            Color color = drawTexture.GetPixel(drawTexture.width / 2, drawTexture.height / 2);
+            _colors = Enumerable.Repeat(color, _penSize * _penSize).ToArray();
         }
     }
 }

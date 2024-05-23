@@ -20,15 +20,22 @@ public class LobbyButton : MonoBehaviour
     {
         
     }
- 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.transform.tag == "Controller" && canPressButton)
+        
+
+        if(other.tag == "Controller" && canPressButton)
         {
             anim.SetTrigger("Press");
-            if (scene > -1 && SceneManager.sceneCount> scene)
+            Debug.Log(SceneManager.sceneCount);
+            if (scene > -1 && SceneManager.sceneCount >= scene)
             {
                 SceneManager.LoadScene(scene);
+            }
+            else
+            {
+                Debug.Log("no scene");
             }
             canPressButton = false;
             StartCoroutine(buttonCooldown());
