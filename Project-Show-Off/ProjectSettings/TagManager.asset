@@ -7,8 +7,8 @@ TagManager:
   - Whiteboard
   - Controller
   - Sword
-  - ColorPad
   - EnterArea
+  - BrushTip
   layers:
   - Default
   - TransparentFX

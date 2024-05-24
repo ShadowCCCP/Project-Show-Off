@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class ColorPad : MonoBehaviour
 {
-    private Renderer _renderer;
-
-    private void Start()
-    {
-        _renderer = GetComponent<Renderer>();
-    }
-
+    [SerializeField] ColorMatcher.Colors color;
+    private Transform _lastBrushTouched;
+    private MarkerTexture _markerScript;
+ 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.tag);
-
-        if (collision.transform.CompareTag("MarkerTip"))
+        Debug.Log("Detected");
+        if (collision.transform.CompareTag("BrushTip"))
         {
-            collision.transform.GetComponent<Renderer>().material = _renderer.material;
+            Debug.Log("Brush!!!");
+
+            if (_markerScript == null || _lastBrushTouched != collision.transform)
+            {
+                _lastBrushTouched = collision.transform;
+                _markerScript = _lastBrushTouched.parent.GetComponent<MarkerTexture>();
+            }
+
+            _markerScript.ChangeColor(color);
         }
     }
 }
