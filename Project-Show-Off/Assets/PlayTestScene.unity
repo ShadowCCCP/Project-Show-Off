@@ -879,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 417825359680764330, guid: d0e1dec271115134d812b9f680b75f90,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6193868760388934181, guid: d0e1dec271115134d812b9f680b75f90,
         type: 3}
@@ -930,6 +930,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249428569876786168, guid: d0e1dec271115134d812b9f680b75f90,
+        type: 3}
+      propertyPath: scatteringColor.b
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249428569876786168, guid: d0e1dec271115134d812b9f680b75f90,
+        type: 3}
+      propertyPath: scatteringColor.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249428569876786168, guid: d0e1dec271115134d812b9f680b75f90,
+        type: 3}
+      propertyPath: scatteringColor.r
+      value: 0.15686275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1192,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &763415166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,7 +1895,7 @@ PrefabInstance:
     - target: {fileID: 1425690235592127595, guid: f3b74df1e6558504f96aa7d7d260a9d4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.142
+      value: 3.909
       objectReference: {fileID: 0}
     - target: {fileID: 1425690235592127595, guid: f3b74df1e6558504f96aa7d7d260a9d4,
         type: 3}
@@ -1931,21 +1946,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198817634890705932, guid: f3b74df1e6558504f96aa7d7d260a9d4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.023
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198817634890705932, guid: f3b74df1e6558504f96aa7d7d260a9d4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.109
-      objectReference: {fileID: 0}
-    - target: {fileID: 7386563834458648129, guid: f3b74df1e6558504f96aa7d7d260a9d4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9170076710957519906, guid: f3b74df1e6558504f96aa7d7d260a9d4,
         type: 3}
@@ -4101,7 +4101,7 @@ MonoBehaviour:
   cpuSimulation: 1
   cpuFullResolution: 0
   cpuEvaluateRipples: 0
-  timeMultiplier: 1.45
+  timeMultiplier: 0
   repetitionSize: 500
   largeWindSpeed: 89
   largeWindOrientationValue: 0
@@ -4135,7 +4135,7 @@ MonoBehaviour:
   refractionColor: {r: 0.6115984, g: 0.78867924, b: 0.78867924, a: 1}
   maxRefractionDistance: 2.05
   absorptionDistance: 2
-  scatteringColor: {r: 0, g: 0.4641509, b: 0.4641509, a: 1}
+  scatteringColor: {r: 0.1578996, g: 0.2528302, b: 0.2528302, a: 1}
   ambientScattering: 0.6
   heightScattering: 0.03
   displacementScattering: 0.36
