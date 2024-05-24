@@ -15,4 +15,5 @@ MonoBehaviour:
   LevelName: no level
   LevelIndex: 0
   Icon: {fileID: 21300000, guid: 17689808316e14280ad508a625c4c88f, type: 3}
-  Year: 0
+  Year: error
+  Danger: error

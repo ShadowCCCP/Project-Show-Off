@@ -16,3 +16,4 @@ MonoBehaviour:
   LevelIndex: 1
   Icon: {fileID: 21300000, guid: 1ccf4d42e8684f047bdb430815224b74, type: 3}
   Year: 1782
+  Danger: High

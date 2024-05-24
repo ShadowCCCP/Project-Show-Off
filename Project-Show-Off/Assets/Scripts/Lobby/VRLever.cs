@@ -5,8 +5,6 @@ using UnityEngine;
 public class VRLever : MonoBehaviour
 {
     [SerializeField]
-    bool leverActvated = false;
-    [SerializeField]
     int maxActiveLever = 90;
     [SerializeField]
     int minActiveLever = 60;
@@ -22,12 +20,8 @@ public class VRLever : MonoBehaviour
        
         if((transform.rotation.eulerAngles.x > minActiveLever && transform.rotation.eulerAngles.x < maxActiveLever) || (transform.rotation.eulerAngles.x < 360-minActiveLever && transform.rotation.eulerAngles.x > 360-maxActiveLever) )
         {
-            Debug.Log(transform.rotation.eulerAngles.x);
-            leverActvated=true;
-        }
-        else
-        {
-            leverActvated=false;
+            Debug.Log("dp left hand or right hand");
+            EventBus<LeverActivatedEvent>.Publish(new LeverActivatedEvent());
         }
     }
 }

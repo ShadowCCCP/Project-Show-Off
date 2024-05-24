@@ -14,28 +14,23 @@ public class EventBus<T> where T : Event
         OnEvent?.Invoke(pEvent);
     }
 }
-/*
-    void Awake()
-    {
-    EventBus<EnemyDeathEvent>.OnEvent += EnemyDeath;
-    EventBus<AddEnemyToEnemyListEvent>.OnEvent += addEnemy;
-}
 
-void OnDestroy()
+public class LeverActivatedEvent : Event  
 {
-    EventBus<EnemyDeathEvent>.OnEvent -= EnemyDeath;
-    EventBus<AddEnemyToEnemyListEvent>.OnEvent -= addEnemy;
-}
-*/
-
-//EventBus<StartNextWaveEvent>.Publish(new StartNextWaveEvent());
-public class StartNextWaveEvent : Event //next wave event 
-{
-    public StartNextWaveEvent()
+    public LeverActivatedEvent()
     {
 
     }
 }
+
+public class GlassBrokenEvent : Event
+{
+    public GlassBrokenEvent()
+    {
+
+    }
+}
+
 
 public class EnemyDeathEvent : Event //enemy died event 
 {
