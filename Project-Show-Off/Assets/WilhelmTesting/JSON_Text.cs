@@ -14,9 +14,28 @@ public class JSON_Text : MonoBehaviour
         public string[] LandLubber, Left, Right, Attack;
     }
 
+    string CMGato = @"
+    {
+        'Intro' : [
+            'Mmmh? If you need any help, pet me',
+            'Put the lever in one of the timeslots ..>',
+            'and  press the button on the bottom to start',
+            'Pull the lever on the top right to your preffered hand'
+        ],
+        'Terms' : [
+            'I assume you read the term of conditions? ..>',
+            'tldr: Saxion is not responsible'
+        ],
+        'Painting' : [
+            'If you want your painting there ..>',
+            'Go to the year 1300!'
+        ]
+        
+    }";
+
     string CMPapagayo = @"{
         'LandLubber' : [
-            'Kraaa, watch out landlubber!',
+            'Kraaa, watch out landlubber!'
         ],
         'Left' : [
             'Watch your left!'
