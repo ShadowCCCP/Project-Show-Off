@@ -13,6 +13,24 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     bool locked;
 
+    public float zPos;
+
+
+    private void Start()
+    {
+        zPos = transform.position.z;
+        anim = GetComponent<Animator>();
+
+        if (glassAnim != null)
+        {
+            locked = true;
+        }
+    }
+    private void Update()
+    {
+        transform.position = new Vector3(0,0,zPos);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 

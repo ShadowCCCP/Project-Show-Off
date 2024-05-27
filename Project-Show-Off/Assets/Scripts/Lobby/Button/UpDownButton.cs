@@ -10,11 +10,11 @@ public class UpDownButton : VRAbstractButton
     {
         if (upButton)
         {
-
+            EventBus<MoveCrankEvent>.Publish(new MoveCrankEvent(true));
         }
         else
         {
-
+            EventBus<MoveCrankEvent>.Publish(new MoveCrankEvent(false));
         }
     }
 }
