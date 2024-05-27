@@ -7,7 +7,7 @@ public class DrawTimer : MonoBehaviour
     [SerializeField] int timerInSeconds = 120;
     private float _timePassed = 0;
 
-    [SerializeField] float sceneSwitchTransitionTime = 4;
+    [SerializeField] float sceneSwitchTransitionTime = 4.0f;
 
     [SerializeField] TextMeshPro timerText;
 
