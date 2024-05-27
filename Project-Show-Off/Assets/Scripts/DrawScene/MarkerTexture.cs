@@ -1,7 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+// TODO
+// Only try to implement this if much time is left:
+// Change the script so that it gets the collision points and paints at those points of the texture instead...
+// (This has the advantage of me not manually having to straighten the rotation and fix the position)
 
 public class MarkerTexture : MonoBehaviour
 {
@@ -22,6 +25,7 @@ public class MarkerTexture : MonoBehaviour
     private Vector2 _lastTouchPos;
     private Quaternion _lastTouchRot;
     private bool _touchedLastFrame;
+    private float _touchAxisZ;
 
 
     void Start()
@@ -41,7 +45,8 @@ public class MarkerTexture : MonoBehaviour
 
     private void Draw()
     {
-        if (Physics.Raycast(tip.position,  penOrientation.forward, out _touch, 0.04f))
+        Debug.DrawRay(tip.position, -penOrientation.up, Color.red);
+        if (Physics.Raycast(tip.position, -penOrientation.up, out _touch, 0.04f))
         {
             if (_touch.transform.CompareTag("Whiteboard"))
             {
@@ -53,10 +58,22 @@ public class MarkerTexture : MonoBehaviour
 
                 if (_rb.constraints != RigidbodyConstraints.FreezeRotation)
                 {
+                    // Set the position to the collision point...
+                    transform.position = new Vector3(_touch.point.x, _touch.point.y ,transform.position.z);
+                    _touchAxisZ = transform.position.z;
+
+                    // Stop any angular movement happening and straighten the pen...
+                    // This makes the pen feel more precise and be less stuttery...
                     _rb.angularVelocity = Vector3.zero;
                     _rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    transform.localRotation = Quaternion.Euler(90, 0, 0);
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
                     return;
+                }
+
+                // Reset x axis to not let the pen go inside the whiteboard...
+                if (transform.position.z > _touchAxisZ)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, _touchAxisZ);
                 }
 
                 _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
@@ -108,32 +125,7 @@ public class MarkerTexture : MonoBehaviour
         _touchedLastFrame = false;
     }
 
-    void Paint(int x, int y)
-    {
-        if (_whiteboard == null ) { return; }
 
-        // Ensure the coordinates are within the bounds of the texture...
-        Texture2D whiteboardTexture = _whiteboard.texture;
-
-        if (IsWithinBounds(x, y, penSize, whiteboardTexture.width, whiteboardTexture.height))
-        {
-            whiteboardTexture.SetPixels(x, y, penSize, penSize, _colors);
-            whiteboardTexture.Apply();
-        }
-    }
-
-    bool IsWithinBounds(int x, int y, int penSize, int textureWidth, int textureHeight)
-    {
-        // Check if the starting point is within bounds...
-        if (x < 0 || y < 0)
-            return false;
-
-        // Check if the rectangle exceeds the texture dimensions...
-        if (x + penSize > textureWidth || y + penSize > textureHeight)
-            return false;
-
-        return true;
-    }
 
     public void ChangeColor(ColorMatcher.Colors pColor)
     {
