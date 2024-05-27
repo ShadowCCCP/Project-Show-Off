@@ -17,7 +17,7 @@ public abstract class VRAbstractButton : MonoBehaviour
     {
 
 
-        if (other.tag == "Controller" && canPressButton)
+        if ((other.tag == "RightController" || other.tag == "LeftController") && canPressButton)
         {
             if (!locked)
             {

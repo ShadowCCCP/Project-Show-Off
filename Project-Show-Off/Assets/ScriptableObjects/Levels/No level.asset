@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: No level
   m_EditorClassIdentifier: 
   LevelName: no level
-  LevelIndex: 0
+  LevelIndex: -1
   Icon: {fileID: 21300000, guid: 17689808316e14280ad508a625c4c88f, type: 3}
-  Year: error
+  Year: Select a level
   Danger: error

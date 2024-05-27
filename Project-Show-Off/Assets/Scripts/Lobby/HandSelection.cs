@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class HandSelection : MonoBehaviour
 {
-    //gamemanager singleton 
+
     [SerializeField]
-    bool rightHandHole = false;
+    Renderer leftLightRend;
+    [SerializeField]
+    Renderer rightLightRend;
+
+    [SerializeField]
+    Material materialOn;
+    [SerializeField]
+    Material materialOff;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Controller"))
+        if ((other.tag == "RightController"))
         {
-            if (rightHandHole)
-            {
-                Debug.Log("Change to right hand");
-            }
-            else
-            {
-                Debug.Log("Change to left hand");
-            }
+            GameManager.Instance.SetDominantHand(1);
+            updateLight(1);
+        }
+        if (other.tag == "LeftController")
+        {
+            GameManager.Instance.SetDominantHand(0);
+            updateLight(0);
+        }
+    }
+
+    void updateLight(int hand)
+    {
+        if(hand == 0)
+        {
+            leftLightRend.material = materialOn;
+            rightLightRend.material = materialOff;
+        }
+        else 
+        {
+            leftLightRend.material = materialOff;
+            rightLightRend.material = materialOn;
         }
     }
 }
