@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd7dde35bc511f2449b1da676f03fe74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftLightRend: {fileID: 0}
-  rightLightRend: {fileID: 0}
+  leftLightRend: {fileID: 359781769}
+  rightLightRend: {fileID: 1594035610}
   materialOn: {fileID: 2100000, guid: 389aff39ca1a7204bbed7b98156b8b7e, type: 2}
   materialOff: {fileID: 2100000, guid: 0170cc4d302228741a551159cafba78d, type: 2}
 --- !u!1 &1004494273
@@ -1787,6 +1787,8 @@ GameObject:
   - component: {fileID: 1132110105}
   - component: {fileID: 1132110104}
   - component: {fileID: 1132110108}
+  - component: {fileID: 1132110109}
+  - component: {fileID: 1132110110}
   m_Layer: 0
   m_Name: 'Down Button '
   m_TagString: Untagged
@@ -1803,7 +1805,7 @@ Transform:
   m_GameObject: {fileID: 1132110102}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.109, y: 0.035, z: -0.508}
+  m_LocalPosition: {x: 0.109, y: 0.035, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1890,7 +1892,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1907,6 +1909,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1132110109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132110102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1db1843dfd37b044a7ba4578e8378a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassAnim: {fileID: 0}
+  zPos: 0
+  upButton: 0
+--- !u!95 &1132110110
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132110102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 003dd9d871851fc40b98c09b1910e423, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1247304537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2129,8 @@ GameObject:
   - component: {fileID: 1279518778}
   - component: {fileID: 1279518777}
   - component: {fileID: 1279518781}
+  - component: {fileID: 1279518782}
+  - component: {fileID: 1279518783}
   m_Layer: 0
   m_Name: Up Button
   m_TagString: Untagged
@@ -2107,7 +2147,7 @@ Transform:
   m_GameObject: {fileID: 1279518775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.109, y: 0.248, z: -0.508}
+  m_LocalPosition: {x: 0.109, y: 0.248, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2211,6 +2251,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1279518782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279518775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1db1843dfd37b044a7ba4578e8378a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassAnim: {fileID: 0}
+  zPos: 0
+  upButton: 1
+--- !u!95 &1279518783
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279518775}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 803983121d3e55d47a1cf4d08356dd30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1480242398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,7 +4861,7 @@ Transform:
   m_GameObject: {fileID: 6273415072125629675}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.336, y: 0.385, z: -0.581}
+  m_LocalPosition: {x: 0.3191, y: 0.385, z: -0.581}
   m_LocalScale: {x: 0.1, y: 0.15966874, z: 0.10000002}
   m_ConstrainProportionsScale: 0
   m_Children:
