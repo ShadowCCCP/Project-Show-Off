@@ -1,9 +1,20 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class DrawTimer : MonoBehaviour
 {
-    [SerializeField] float totalTimeInSeconds = 120;
+    [SerializeField] int timerInSeconds = 120;
     private float _timePassed = 0;
+
+    [SerializeField] float sceneSwitchTransitionTime = 4;
+
+    [SerializeField] TextMeshPro timerText;
+
+    private void Start()
+    {
+        timerText.text = timerInSeconds.ToString();
+    }
 
     private void Update()
     {
@@ -12,16 +23,27 @@ public class DrawTimer : MonoBehaviour
 
     private void UpdateTimer()
     {
-        _timePassed += Time.deltaTime;
-
-        if (_timePassed >= totalTimeInSeconds)
+        // Increase timer...
+        if (_timePassed < timerInSeconds)
         {
-            FinishDrawing();
+            _timePassed += Time.deltaTime;
+
+            // Update timer text...
+            int timeLeft = timerInSeconds - (int)_timePassed;
+            timerText.text = $"{timeLeft:D3}";
+
+            // If time is up, start transition to next scene...
+            if (_timePassed >= timerInSeconds)
+            {
+                StartCoroutine(FinishDrawing());
+            }
         }
     }
 
-    private void FinishDrawing()
+    private IEnumerator FinishDrawing()
     {
+        yield return new WaitForSeconds(sceneSwitchTransitionTime);
 
+        GameManager.Instance.LoadSceneNext();
     }
 }
