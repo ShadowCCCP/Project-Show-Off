@@ -43,15 +43,10 @@ public class LobbyButton : MonoBehaviour
 
 
                 anim.SetTrigger("Press");
-                Debug.Log(SceneManager.sceneCount);
-                if (scene > -1 && SceneManager.sceneCount >= scene)
-                {
-                    SceneManager.LoadScene(scene);
-                }
-                else
-                {
-                    Debug.Log("no scene");
-                }
+
+                // Load scene through GameManager...
+                GameManager.Instance.LoadSceneSpecific(scene);
+
                 canPressButton = false;
                 StartCoroutine(buttonCooldown(0.5f));
             }
