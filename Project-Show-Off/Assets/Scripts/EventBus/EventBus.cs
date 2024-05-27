@@ -31,6 +31,15 @@ public class GlassBrokenEvent : Event
     }
 }
 
+public class MoveCrankEvent : Event
+{
+    public MoveCrankEvent(bool pUp)
+    {
+        up = pUp;
+    }
+    public bool up;
+}
+
 
 public class EnemyDeathEvent : Event //enemy died event 
 {

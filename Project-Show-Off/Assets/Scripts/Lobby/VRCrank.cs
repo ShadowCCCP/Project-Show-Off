@@ -18,6 +18,8 @@ public class VRCrank : MonoBehaviour
     Renderer knobRend;
 
     Vector3 stratPos;
+
+    bool levelSelected;
     void Start()
     {
         stratPos = transform.position;
@@ -45,12 +47,11 @@ public class VRCrank : MonoBehaviour
             if (other == collidersLevels[i])
             {
                 Debug.Log(i + "selected");
+                levelSelected = true;
                 timeMachineManager.LoadLevelOnTimeMachine(i + 1);
                 knobRend.material.color = Color.green;
             }
         }
-
-
 
 
     }
@@ -59,6 +60,7 @@ public class VRCrank : MonoBehaviour
     {
         if (collidersLevels.Contains(other))
         {
+            levelSelected = false;
             timeMachineManager.LoadLevelOnTimeMachine(0); 
             knobRend.material.color = Color.red;
         }
