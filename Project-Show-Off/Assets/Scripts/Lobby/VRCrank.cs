@@ -20,6 +20,8 @@ public class VRCrank : MonoBehaviour
     Vector3 stratPos;
 
     bool levelSelected;
+    bool moveUp;
+    bool moveDown;
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;
@@ -46,6 +48,9 @@ public class VRCrank : MonoBehaviour
         {
             transform.position = new Vector3(0, minPos.position.y,0);
         }
+
+        updateMovementUp();
+        updateMovementDown();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +64,9 @@ public class VRCrank : MonoBehaviour
                 levelSelected = true;
                 timeMachineManager.LoadLevelOnTimeMachine(i + 1);
                 knobRend.material.color = Color.green;
+
+                moveUp = false;
+                moveDown = false;
             }
         }
 
@@ -79,17 +87,26 @@ public class VRCrank : MonoBehaviour
     {
         if (moveCrankEvent.up )
         {
-            while (!levelSelected || transform.position.y <= stratPos.y)
-            {
-                transform.Translate(0, 1, 0);
-            }
+            moveUp = true;
         }
         else
         {
-            while (!levelSelected || transform.position.y >= minPos.position.y)
-            {
-                transform.Translate(0, -1, 0);
-            }
+            moveDown = true;
+        }
+    }
+
+    void updateMovementDown()
+    {
+        if((!levelSelected || transform.position.y >= minPos.position.y) && moveUp)
+        {
+             transform.Translate(0, 0, 0.1f * Time.deltaTime);
+        }
+    }
+    void updateMovementUp()
+    {
+        if ((!levelSelected || transform.position.y <= stratPos.y )&& moveDown)
+        {
+            transform.Translate(0, 0, -0.1f * Time.deltaTime);
         }
     }
 }
