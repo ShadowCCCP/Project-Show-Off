@@ -1,77 +1,62 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+// TODO
+// Use leanTween to animate the button tap, as well as the glass opening...
 
 public class LobbyButton : MonoBehaviour
 {
-    Animator anim;
-    [SerializeField]
-    int scene = -1;
-    bool canPressButton = true;
-    [SerializeField]
-    Animator glassAnim;
+    [SerializeField] int loadScene = 0;
+    [SerializeField] float sceneTransitionTime = 3.0f;
 
-    bool locked;
+    [SerializeField] float buttonPressDepth = 1.0f;
+    [SerializeField] float buttonPressDuration = 0.5f;
+    [SerializeField] float buttonResetDuration = 0.3f;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Transform glass;
+    
+    private Vector3 _buttonStartPos;
+
+    private bool _glassOpen;
+
+    private void Start()
     {
-        anim = GetComponent<Animator>();
-
-        if(glassAnim != null)
-        {
-            locked = true;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Set the buttonStartPos to transform.position, as it's attached to the button...
+        _buttonStartPos = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
-
-        if(other.tag == "Controller" && canPressButton )
+        if(other.tag == "Controller" && _glassOpen)
         {
-            if (!locked)
-            {
-
-
-                anim.SetTrigger("Press");
-
-                // Load scene through GameManager...
-                GameManager.Instance.LoadSceneSpecific(scene);
-
-                canPressButton = false;
-                StartCoroutine(buttonCooldown(0.5f));
-            }
-            else
-            {
-                glassAnim.SetTrigger("Break");
-                StartCoroutine(buttonCooldown(1f));
-            }
+            // Move the button back...
+            TweenButton();
         }
     }
 
-    IEnumerator buttonCooldown(float time)
+    private void TweenButton()
     {
-        yield return new WaitForSeconds(time);
-        canPressButton = true;
-        if (locked)
+        LeanTween.move(gameObject, _buttonStartPos - new Vector3(0, 0, buttonPressDepth), buttonPressDuration).setOnComplete(() =>
         {
-            locked = false;
-            glassAnim.gameObject.SetActive(false);
-        }
+            // Move back to the original position
+            LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration);
+        });
+    }
 
+    private void TweenGlass()
+    {
+
+    }
+
+    private IEnumerator TransitionToScene()
+    {
+        // Load scene after a short pause for transitions to happen...
+        yield return new WaitForSeconds(sceneTransitionTime);
+        GameManager.Instance.LoadSceneSpecific(loadScene);
     }    
 
-    public void SetToGoScene(int i)
+    public void SetToGoScene(int pIndex)
     {
-        scene = i;
+        loadScene = pIndex;
     }
 }
