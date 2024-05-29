@@ -9,4 +9,5 @@ public class Level : ScriptableObject
     public int LevelIndex;
     public Sprite Icon;
     public string Year;
+    public string Danger;
 }

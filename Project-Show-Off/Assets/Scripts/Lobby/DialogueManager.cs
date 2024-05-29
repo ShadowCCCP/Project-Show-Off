@@ -8,8 +8,6 @@ using static JSON_Text;
 
 public class DialogueManager : MonoBehaviour
 {
-
-
     //text dsspapera
     [SerializeField]
     TextMeshPro textBubble;
@@ -24,18 +22,30 @@ public class DialogueManager : MonoBehaviour
 
     string CMPapagayo = @"{
         'MainDialogue' : [
-            'Kraaa, watch out landlubber!', 'jouw moeder', 'wee woo wwee woo'
+            'hello!', 'i m saying this', 'wee woo wwee woo'
         ],
         'BrokenGlass' : [
             'Watch your left!'
         ],
         'Lever' : [
-            'To your right!'
+            'Right handed jonguh', 'Left handed jonguh'
         ],
         'Attack' : [
             'His guard is down. Attack!'
         ]
     }";
+
+    void Awake()
+    {   
+        EventBus<LeverActivatedEvent>.OnEvent += triggerLeverDialogue;
+        EventBus<GlassBrokenEvent>.OnEvent += triggerBrokenGlassDialogue;
+    }
+
+    void OnDestroy()
+    {
+        EventBus<LeverActivatedEvent>.OnEvent -= triggerLeverDialogue;
+        EventBus<GlassBrokenEvent>.OnEvent -= triggerBrokenGlassDialogue;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -71,11 +81,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void triggerBrokenGlassDialogue()
+    public void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
     {
         textBubble.text = dialogue.BrokenGlass[0];
     }
-    public void triggerLeverDialogue()
+    public void triggerLeverDialogue(LeverActivatedEvent leverActivatedEvent)
     {
         textBubble.text = dialogue.Lever[0];
     }
