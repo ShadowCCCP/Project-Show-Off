@@ -1,71 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public abstract class VRAbstractButton : MonoBehaviour
 {
-    Animator anim;
-    bool canPressButton = true;
-    [SerializeField]
-    Animator glassAnim;
+    [SerializeField] float buttonPressDepth = 1.0f;
+    [SerializeField] float buttonPressDuration = 0.5f;
+    [SerializeField] float buttonResetDuration = 0.3f;
 
-    bool locked;
+    [SerializeField] GameObject glass;
 
-    public float zPos;
+    private int _currentTweenId = -1;
+    private Vector3 _buttonStartPos;
+    private Vector3 _buttonEndPos;
+    private float _tweenMaxDistance;
 
+    private bool _glassOpen;
 
     private void Start()
     {
-        zPos = transform.position.z;
-        anim = GetComponent<Animator>();
+        // Set the buttonStartPos to transform.position, as it's attached to the button...
+        _buttonStartPos = transform.position;
+        _buttonEndPos = _buttonStartPos - (-transform.forward * buttonPressDepth);
 
-        if (glassAnim != null)
-        {
-            locked = true;
-        }
+        // Get the distance in order to lerp the tween duration properly...
+        _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
     }
+
     private void Update()
     {
-        transform.position = new Vector3(0,0,zPos);
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            AnimateButton();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
-
-        if ((other.tag == "RightController" || other.tag == "LeftController") && canPressButton)
+        if ((other.tag == "RightController" || other.tag == "LeftController") && _glassOpen)
         {
-            if (!locked)
-            {
-
-
-                anim.SetTrigger("Press");
-
-                //action
-                OnButtonPress();
-
-                canPressButton = false;
-                StartCoroutine(buttonCooldown(0.5f));
-            }
-            else
-            {
-                glassAnim.SetTrigger("Break");
-                StartCoroutine(buttonCooldown(1f));
-            }
+            // Move the button back...
+            AnimateButton();
         }
     }
-    IEnumerator buttonCooldown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        canPressButton = true;
-        if (locked)
-        {
-            locked = false;
-            glassAnim.gameObject.SetActive(false);
-        }
 
+    private void AnimateButton()
+    {
+        // Open glass...
+        if (!_glassOpen)
+        {
+            TweenGlass();
+            _glassOpen = true;
+        }
+        // Press button default..
+        else { TweenButton(); }
+    }
+
+    private void TweenButton()
+    {
+        if (_currentTweenId == -1)
+        {
+            // Move the button back according to buttonPressDepth...
+            _currentTweenId = LeanTween.move(gameObject, _buttonStartPos - (-transform.forward * buttonPressDepth), buttonPressDuration).setOnComplete(() =>
+            {
+                OnButtonPress();
+                // Move back to the original position
+                _currentTweenId = LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration).setOnComplete(() =>
+                {
+                    _currentTweenId = -1;
+                }).id;
+            }).id;
+        }
+        // Press button if in the middle of tween...
+        else
+        {
+            LeanTween.cancel(_currentTweenId);
+            float adjustedTime = GetTweenTimeFactor((_buttonEndPos - transform.position).magnitude);
+
+            _currentTweenId = LeanTween.move(gameObject, _buttonStartPos - (-transform.forward * buttonPressDepth), buttonPressDuration * adjustedTime).setOnComplete(() =>
+            {
+                OnButtonPress();
+                _currentTweenId = LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration).setOnComplete(() =>
+                {
+                    _currentTweenId = -1;
+                }).id;
+            }).id;
+        }
+    }
+
+    private float GetTweenTimeFactor(float pCurrentDistance)
+    {
+        // Get a factor depending on how close the currentDistance is to the max...
+        // This is used to change the time needed to finish the tween according to the distance...
+        pCurrentDistance = Mathf.Clamp(pCurrentDistance, 0f, _tweenMaxDistance);
+        float normalizedValue = pCurrentDistance / _tweenMaxDistance;
+        return 1.0f - normalizedValue;
+    }
+
+    private void TweenGlass()
+    {
+        LeanTween.rotateX(glass, 90.0f, buttonPressDuration);
     }
 
     public abstract void OnButtonPress();
