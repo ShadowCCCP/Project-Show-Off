@@ -27,7 +27,7 @@ public class LobbyButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Controller" && _glassOpen)
+        if((other.tag == "RightController" || other.tag == "LeftController") && _glassOpen)
         {
             // Move the button back...
             TweenButton();
