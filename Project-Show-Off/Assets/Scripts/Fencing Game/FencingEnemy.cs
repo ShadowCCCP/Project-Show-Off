@@ -1,11 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-
-// TODO:
-// Make the enemy attack immediately as soon as the shield is hit...
-// Have a pause time before attacks (will be bugged as soon as above is implemented)...
 
 public class FencingEnemy : MonoBehaviour
 {
