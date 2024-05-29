@@ -19,7 +19,7 @@ public abstract class VRAbstractButton : MonoBehaviour
     {
         // Set the buttonStartPos to transform.position, as it's attached to the button...
         _buttonStartPos = transform.position;
-        _buttonEndPos = _buttonStartPos - (-transform.forward * buttonPressDepth);
+        _buttonEndPos = _buttonStartPos - (transform.forward * buttonPressDepth);
 
         // Get the distance in order to lerp the tween duration properly...
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
@@ -59,7 +59,7 @@ public abstract class VRAbstractButton : MonoBehaviour
         if (_currentTweenId == -1)
         {
             // Move the button back according to buttonPressDepth...
-            _currentTweenId = LeanTween.move(gameObject, _buttonStartPos - (-transform.forward * buttonPressDepth), buttonPressDuration).setOnComplete(() =>
+            _currentTweenId = LeanTween.move(gameObject, _buttonEndPos, buttonPressDuration).setOnComplete(() =>
             {
                 OnButtonPress();
                 // Move back to the original position
@@ -75,7 +75,7 @@ public abstract class VRAbstractButton : MonoBehaviour
             LeanTween.cancel(_currentTweenId);
             float adjustedTime = GetTweenTimeFactor((_buttonEndPos - transform.position).magnitude);
 
-            _currentTweenId = LeanTween.move(gameObject, _buttonStartPos - (-transform.forward * buttonPressDepth), buttonPressDuration * adjustedTime).setOnComplete(() =>
+            _currentTweenId = LeanTween.move(gameObject, _buttonEndPos, buttonPressDuration * adjustedTime).setOnComplete(() =>
             {
                 OnButtonPress();
                 _currentTweenId = LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration).setOnComplete(() =>
@@ -97,7 +97,7 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void TweenGlass()
     {
-        LeanTween.rotateX(glass, 90.0f, buttonPressDuration);
+        LeanTween.rotateX(glass, -90.0f, buttonPressDuration);
     }
 
     public abstract void OnButtonPress();
