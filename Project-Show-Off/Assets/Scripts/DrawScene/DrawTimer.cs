@@ -7,6 +7,7 @@ public class DrawTimer : MonoBehaviour
     [SerializeField] int timerInSeconds = 120;
     private float _timePassed = 0;
 
+    [SerializeField] bool deactivateSceneSwtich;
     [SerializeField] float sceneSwitchTransitionTime = 4.0f;
 
     [SerializeField] TextMeshPro timerText;
@@ -44,6 +45,6 @@ public class DrawTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(sceneSwitchTransitionTime);
 
-        GameManager.Instance.LoadSceneNext();
+        if (!deactivateSceneSwtich) { GameManager.Instance.LoadSceneNext(); }
     }
 }
