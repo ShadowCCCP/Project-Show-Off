@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6193868760388934181
 Transform:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   refractionColor: {r: 0.6115984, g: 0.78867924, b: 0.78867924, a: 1}
   maxRefractionDistance: 2.05
   absorptionDistance: 2
-  scatteringColor: {r: 0, g: 0.4641509, b: 0.4641509, a: 1}
+  scatteringColor: {r: 0.15686275, g: 0.2509804, b: 0.2509804, a: 1}
   ambientScattering: 0.6
   heightScattering: 0.03
   displacementScattering: 0.36
