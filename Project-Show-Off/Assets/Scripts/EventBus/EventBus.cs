@@ -40,12 +40,21 @@ public class MoveCrankEvent : Event
     public bool up;
 }
 
-
-public class EnemyDeathEvent : Event //enemy died event 
+public class SetUpWeldableSettingsEvent : Event
 {
-    public EnemyDeathEvent(int pEnemy)
+    public SetUpWeldableSettingsEvent(float pWeldTime)
     {
-        enemy = pEnemy;
+        weldTime = pWeldTime;
     }
-    public int enemy;
+    public float weldTime;
 }
+
+public class WeldCubeEvent : Event
+{
+    public WeldCubeEvent(WeldableCube pCube)
+    {
+        cube = pCube;
+    }
+    public WeldableCube cube;
+}
+
