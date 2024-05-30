@@ -3,12 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //transitions here
     public static GameManager Instance { get; private set; }
 
     [SerializeField]
     [Tooltip("0 s left, 1 is right")]
     int dominantHand = 0;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         if (Instance == null)
