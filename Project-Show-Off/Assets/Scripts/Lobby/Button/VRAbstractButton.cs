@@ -27,10 +27,8 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered");
         if (other.tag == "RightController" || other.tag == "LeftController")
         {
-            Debug.Log("Detected");
             // Move the button back...
             AnimateButton();
         }
