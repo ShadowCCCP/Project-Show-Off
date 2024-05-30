@@ -18,7 +18,14 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
+
             blackImg.SetTrigger("DarkenScreen");
         }
+    }
+
+
+    void SetScreenDark()
+    {
+        blackImg.SetTrigger("DarkenScreen");
     }
 }
