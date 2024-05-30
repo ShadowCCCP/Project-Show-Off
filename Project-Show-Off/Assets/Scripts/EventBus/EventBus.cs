@@ -58,4 +58,12 @@ public class WeldCubeEvent : Event
     public WeldableCube cube;
 }
 
+public class DarkenScreenEvent : Event
+{
+    public DarkenScreenEvent()
+    {
+
+    }
+}
+
 

@@ -104,6 +104,7 @@ public class WeldingManager : MonoBehaviour
         {
             Debug.Log("go bac to lobby");
             GameManager.Instance.LoadSceneSpecific(0);
+
         }
     }
 }

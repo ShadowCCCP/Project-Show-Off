@@ -7,13 +7,16 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     Animator blackImg;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        EventBus<WeldCubeEvent>.OnEvent += SetScreenDark;
     }
 
-    // Update is called once per frame
+    void OnDestroy()
+    {
+        EventBus<WeldCubeEvent>.OnEvent -= SetScreenDark;
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.E))
@@ -24,7 +27,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    void SetScreenDark()
+    void SetScreenDark(WeldCubeEvent weldCubeEvent)
     {
         blackImg.SetTrigger("DarkenScreen");
     }

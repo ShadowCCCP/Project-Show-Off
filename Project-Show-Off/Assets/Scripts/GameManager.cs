@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,6 +40,20 @@ public class GameManager : MonoBehaviour
     // Changing scenes method...
     public void LoadSceneSpecific(int pSceneIndex)
     {
+        StartCoroutine(LoadSceneSpecificRoutine(pSceneIndex));
+    }
+
+    public void LoadSceneNext()
+    {
+        StartCoroutine(LoadSceneNextRoutine() );
+    }
+
+    IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
+    {
+        
+        EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        yield return new WaitForSeconds(0.5f);
+
         // Check if scene to load is in bounds and then load it...
         if (pSceneIndex <= SceneManager.sceneCount && pSceneIndex >= 0)
         {
@@ -47,12 +62,17 @@ public class GameManager : MonoBehaviour
         else { Debug.LogError("GameManager: Scene index " + pSceneIndex + " is invalid"); }
     }
 
-    public void LoadSceneNext()
+    IEnumerator LoadSceneNextRoutine()
     {
+        EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        yield return new WaitForSeconds(0.5f);
+
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
         // Check if next index is valid to load, else reset it to zero...
         if (nextSceneIndex >= SceneManager.sceneCount) { nextSceneIndex = 0; }
         SceneManager.LoadScene(nextSceneIndex);
+
     }
+
 }
