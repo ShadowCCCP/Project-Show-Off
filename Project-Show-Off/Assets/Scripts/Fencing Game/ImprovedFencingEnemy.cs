@@ -39,6 +39,11 @@ public class ImprovedFencingEnemy : MonoBehaviour
         _anim = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        Debug.Log(_currentState);
+    }
+
     public void Move(bool pForward = true)
     {
         _currentState = FencingState.Walk;
