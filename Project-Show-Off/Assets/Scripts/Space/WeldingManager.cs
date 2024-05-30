@@ -36,7 +36,7 @@ public class WeldingManager : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
 
     void spawnWeldables()
@@ -103,6 +103,7 @@ public class WeldingManager : MonoBehaviour
         if (doneCubes.Count >= amountOfCubes)
         {
             Debug.Log("go bac to lobby");
+            GameManager.Instance.LoadSceneSpecific(0);
         }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - BrushTip
   - RightController
   - LeftController
+  - Controller
   layers:
   - Default
   - TransparentFX
