@@ -6,7 +6,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 {
     public enum SideHit { Left, Right, Forward }
 
-    private enum FencingState { Intro, Idle, Walk, Attack, Stunned }
+    private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned }
     private FencingState _currentState = FencingState.Intro;
 
     [Tooltip("The walking distance. Counts for both for- and backwards.")]
@@ -16,7 +16,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
     [Tooltip("Decided how many times the player/pirate needs to move in order to win.")]
     [SerializeField] int stageMaxCount = 2;
 
-    [SerializeField] float idleWaitTime = 3.0f;
+    [SerializeField] float idleTime = 3.0f;
+    [SerializeField] float stunTime = 5.0f;
 
     private const int _maxAttackQueueCount = 3;
     private int _currentAttackCount;
@@ -50,6 +51,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
             {
                 if (_currentState != FencingState.Intro) { _currentFightStage++; }
                 _anim.SetTrigger("StopWalk");
+                TransitionState();
             });
         }
         else
@@ -60,10 +62,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
             {
                 _currentFightStage--;
                 _anim.SetTrigger("StopWalk");
+                TransitionState();
             });
         }
-
-        TransitionState();
     }
 
     public void Attack()
@@ -104,7 +105,14 @@ public class ImprovedFencingEnemy : MonoBehaviour
         if (_blockCount >= _currentAttackCount)
         {
             _anim.SetBool("GotBlocked", true);
+
+            StartCoroutine(EvaluateStagger());
+
+            // TODO:
+            // Activate side hit colliders...
+            
         }
+        else { _currentState = FencingState.Taunt; }
     }
 
     private void ProcessCurrentStage()
@@ -128,8 +136,33 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator InitiateAttack()
     {
-        yield return new WaitForSeconds(idleWaitTime);
+        // Idle before attack...
+        ResetValues();
+        _currentState = FencingState.Idle;
+        yield return new WaitForSeconds(idleTime);
+
+        // Attack afterwards...
+        _currentState = FencingState.Attack;
         Attack();
+    }
+
+    private IEnumerator EvaluateStagger()
+    {
+        _currentState = FencingState.Stunned;
+
+        yield return new WaitForSeconds(stunTime);
+
+        if (_gotHit)
+        {
+            ProcessCurrentStage();
+
+            // Move backwards if game not finished...
+            if (!_gameCompleted) { Move(false); }
+        }
+        else
+        {
+            _anim.SetTrigger("StunNotDamaged");
+        }
     }
 
 
@@ -144,7 +177,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     // Methods to be triggered by animator events...
     public void TransitionState()
     {
-        if (_currentState == FencingState.Intro)
+        if (_currentState == FencingState.Intro || _currentState == FencingState.Taunt)
         {
             _anim.SetTrigger("WalkForward");
             _currentState = FencingState.Walk;
@@ -179,6 +212,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
                 break;
         }
 
-        _gotHit = true;
+        if (!_gotHit) _gotHit = true;
     }
 }
