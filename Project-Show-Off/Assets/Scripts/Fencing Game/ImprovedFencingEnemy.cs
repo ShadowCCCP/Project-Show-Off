@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ImprovedFencingEnemy : MonoBehaviour
 {
+    // TODO:
+    // Add trigger collider detection to interact with the player's sword
+    // Third attack stage has four attacks?
+    // Fix stagger phase
+
     public enum SideHit { Left, Right, Forward }
 
     private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned }
@@ -14,13 +19,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
     [Tooltip("Decides how long it takes for the pirate to cover the walking distance.")]
     [SerializeField] float walkTime = 2.0f;
     [Tooltip("Decided how many times the player/pirate needs to move in order to win.")]
-    [SerializeField] int stageMaxCount = 2;
+    [SerializeField] int stageMaxCount = 3;
 
     [SerializeField] float idleTime = 3.0f;
     [SerializeField] float stunTime = 5.0f;
 
     private const int _maxAttackQueueCount = 3;
-    private int _currentAttackCount;
+    private int _currentAttackCount = 1;
 
     private Animator _anim;
 
@@ -42,6 +47,16 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private void Update()
     {
         Debug.Log(_currentState);
+        Debug.Log(_gameCompleted);
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            _blockCount = _currentAttackCount;
+        }
+        else if (Input.GetKeyDown(KeyCode.H))
+        {
+            SideGotHit(SideHit.Left);
+        }
     }
 
     public void Move(bool pForward = true)
@@ -50,17 +65,20 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
         if (pForward)
         {
+            Debug.Log("Walk Forward animation!");
             _anim.SetTrigger("WalkForward");
             // Move pirate forward...
             LeanTween.move(gameObject, transform.position + (transform.forward * walkDistance), walkTime).setOnComplete(() =>
             {
                 if (_currentState != FencingState.Intro) { _currentFightStage++; }
                 _anim.SetTrigger("StopWalk");
+                ProcessCurrentStage();
                 TransitionState();
             });
         }
         else
         {
+            Debug.Log("Walk Backward animation!");
             _anim.SetTrigger("WalkBackward");
             // Move pirate backward...
             LeanTween.move(gameObject, transform.position - (transform.forward * walkDistance), walkTime).setOnComplete(() =>
@@ -77,7 +95,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // TODO:
         // Activate sword trigger collider...
 
-        int randomAttack = Random.Range(0, 2);
+        int randomAttack = Random.Range(0, _maxAttackQueueCount);
 
         // If max amount of attacks isn't reached...
         if (_attacksDone.Count < _currentAttackCount)
@@ -85,8 +103,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Get a random, but valid number and trigger animation...
             while (_attacksDone.Contains(randomAttack))
             {
-                randomAttack = Random.Range(0, 2);
+                randomAttack = Random.Range(0, _maxAttackQueueCount);
             }
+            _attacksDone.Add(randomAttack);
+            Debug.Log("Play random attack: " + randomAttack);
             _anim.SetInteger("Attack", randomAttack);
         }
         else
@@ -100,6 +120,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
             }
 
             // Finish attack animation and clear the attackDone list...
+            Debug.Log("Finish attack anim");
             _anim.SetTrigger("FinishedAttack");
             _attacksDone.Clear();
         }
@@ -124,6 +145,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         if (_currentFightStage >= stageMaxCount || _currentFightStage <= -stageMaxCount)
         {
+            Debug.Log("Game completed");
+
             // Kick the player off the plank...
             if (_currentFightStage >= stageMaxCount)
             {
@@ -144,17 +167,19 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // Idle before attack...
         ResetValues();
         _currentState = FencingState.Idle;
+        Debug.Log("2: Idle");
         yield return new WaitForSeconds(idleTime);
 
         // Attack afterwards...
         _currentState = FencingState.Attack;
+        Debug.Log("3: Attack");
         Attack();
     }
 
     private IEnumerator EvaluateStagger()
     {
         _currentState = FencingState.Stunned;
-
+        Debug.Log("4: Stunned");
         yield return new WaitForSeconds(stunTime);
 
         if (_gotHit)
@@ -166,6 +191,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
+            Debug.Log("5: Not damaged stun");
             _anim.SetTrigger("StunNotDamaged");
         }
     }
@@ -177,19 +203,26 @@ public class ImprovedFencingEnemy : MonoBehaviour
         _anim.SetBool("GotBlocked", false);
         _anim.SetBool("WaterFall", false);
         _anim.SetBool("StunNotDamaged", false);
+        _blockCount = 0;
+        _gotHit = false;
     }
 
     // Methods to be triggered by animator events...
     public void TransitionState()
     {
+        // Don't transition to anything if game is complete...
+        if (_gameCompleted) { return; }
+
         if (_currentState == FencingState.Intro || _currentState == FencingState.Taunt)
         {
+            Debug.Log("0: Reset to idle");
             _anim.SetTrigger("WalkForward");
             _currentState = FencingState.Walk;
             Move();
         }
         else if (_currentState == FencingState.Walk)
         {
+            Debug.Log("1: Initiate attack");
             StartCoroutine(InitiateAttack());
         }
     }

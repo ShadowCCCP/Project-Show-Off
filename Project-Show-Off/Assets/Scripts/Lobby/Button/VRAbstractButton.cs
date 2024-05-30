@@ -25,18 +25,12 @@ public abstract class VRAbstractButton : MonoBehaviour
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            AnimateButton();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "RightController" || other.tag == "LeftController") && _glassOpen)
+        Debug.Log("Triggered");
+        if (other.tag == "RightController" || other.tag == "LeftController")
         {
+            Debug.Log("Detected");
             // Move the button back...
             AnimateButton();
         }
