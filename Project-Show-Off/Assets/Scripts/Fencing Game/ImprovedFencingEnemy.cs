@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class ImprovedFencingEnemy : MonoBehaviour
 {
     // TODO:
-    // Add trigger collider detection to interact with the player's sword
+    // Add trigger collider detection to interact with the player's sword (events or object references?)
     // Third attack stage has four attacks?
     // Fix stagger phase
 
@@ -13,6 +14,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned }
     private FencingState _currentState = FencingState.Intro;
+
+    public event Action onPlayerDefeated;
 
     [Tooltip("The walking distance. Counts for both for- and backwards.")]
     [SerializeField] float walkDistance = 2.0f;
@@ -47,7 +50,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private void Update()
     {
         Debug.Log(_currentState);
-        Debug.Log(_gameCompleted);
 
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -95,7 +97,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // TODO:
         // Activate sword trigger collider...
 
-        int randomAttack = Random.Range(0, _maxAttackQueueCount);
+        int randomAttack = UnityEngine.Random.Range(0, _maxAttackQueueCount);
 
         // If max amount of attacks isn't reached...
         if (_attacksDone.Count < _currentAttackCount)
@@ -103,10 +105,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Get a random, but valid number and trigger animation...
             while (_attacksDone.Contains(randomAttack))
             {
-                randomAttack = Random.Range(0, _maxAttackQueueCount);
+                randomAttack = UnityEngine.Random.Range(0, _maxAttackQueueCount);
             }
             _attacksDone.Add(randomAttack);
-            Debug.Log("Play random attack: " + randomAttack);
             _anim.SetInteger("Attack", randomAttack);
         }
         else
@@ -120,7 +121,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
             }
 
             // Finish attack animation and clear the attackDone list...
-            Debug.Log("Finish attack anim");
             _anim.SetTrigger("FinishedAttack");
             _attacksDone.Clear();
         }
@@ -150,12 +150,15 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Kick the player off the plank...
             if (_currentFightStage >= stageMaxCount)
             {
-
+                // Invoke defeat player event...
+                if (onPlayerDefeated != null) { onPlayerDefeated(); }
             }
             // Pirate falls into water...
             else if (_currentFightStage <= -stageMaxCount)
             {
+                // Make pirate fall off the plank and destroy gameObject after some time...
                 _anim.SetBool("WaterFall", true);
+                StartCoroutine(DestroyAfterDelay());
             }
 
             _gameCompleted = true;
@@ -167,19 +170,16 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // Idle before attack...
         ResetValues();
         _currentState = FencingState.Idle;
-        Debug.Log("2: Idle");
         yield return new WaitForSeconds(idleTime);
 
         // Attack afterwards...
         _currentState = FencingState.Attack;
-        Debug.Log("3: Attack");
         Attack();
     }
 
     private IEnumerator EvaluateStagger()
     {
         _currentState = FencingState.Stunned;
-        Debug.Log("4: Stunned");
         yield return new WaitForSeconds(stunTime);
 
         if (_gotHit)
@@ -191,7 +191,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("5: Not damaged stun");
             _anim.SetTrigger("StunNotDamaged");
         }
     }
@@ -207,6 +206,12 @@ public class ImprovedFencingEnemy : MonoBehaviour
         _gotHit = false;
     }
 
+    private IEnumerator DestroyAfterDelay()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+    }
+
     // Methods to be triggered by animator events...
     public void TransitionState()
     {
@@ -215,14 +220,12 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
         if (_currentState == FencingState.Intro || _currentState == FencingState.Taunt)
         {
-            Debug.Log("0: Reset to idle");
             _anim.SetTrigger("WalkForward");
             _currentState = FencingState.Walk;
             Move();
         }
         else if (_currentState == FencingState.Walk)
         {
-            Debug.Log("1: Initiate attack");
             StartCoroutine(InitiateAttack());
         }
     }
