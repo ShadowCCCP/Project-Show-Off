@@ -46,7 +46,7 @@ public class VRCrank : MonoBehaviour
         }
         else if (transform.position.y <  minPos.position.y)
         {
-            transform.position = new Vector3(0, minPos.position.y,0);
+            transform.position = new Vector3(stratPos.x, minPos.position.y, stratPos.z);
         }
 
         updateMovementUp();
