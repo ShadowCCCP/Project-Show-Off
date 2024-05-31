@@ -106,7 +106,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
                 randomAttack = Random.Range(0, _maxAttackQueueCount);
             }
             _attacksDone.Add(randomAttack);
-            Debug.Log("Play random attack: " + randomAttack);
+            randomAttack = 2;
             _anim.SetInteger("Attack", randomAttack);
         }
         else
@@ -120,7 +120,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
             }
 
             // Finish attack animation and clear the attackDone list...
-            Debug.Log("Finish attack anim");
             _anim.SetTrigger("FinishedAttack");
             _attacksDone.Clear();
         }
@@ -167,19 +166,16 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // Idle before attack...
         ResetValues();
         _currentState = FencingState.Idle;
-        Debug.Log("2: Idle");
         yield return new WaitForSeconds(idleTime);
 
         // Attack afterwards...
         _currentState = FencingState.Attack;
-        Debug.Log("3: Attack");
         Attack();
     }
 
     private IEnumerator EvaluateStagger()
     {
         _currentState = FencingState.Stunned;
-        Debug.Log("4: Stunned");
         yield return new WaitForSeconds(stunTime);
 
         if (_gotHit)
@@ -191,7 +187,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("5: Not damaged stun");
             _anim.SetTrigger("StunNotDamaged");
         }
     }
@@ -215,14 +210,12 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
         if (_currentState == FencingState.Intro || _currentState == FencingState.Taunt)
         {
-            Debug.Log("0: Reset to idle");
             _anim.SetTrigger("WalkForward");
             _currentState = FencingState.Walk;
             Move();
         }
         else if (_currentState == FencingState.Walk)
         {
-            Debug.Log("1: Initiate attack");
             StartCoroutine(InitiateAttack());
         }
     }
