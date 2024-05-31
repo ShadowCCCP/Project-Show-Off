@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRCrank : MonoBehaviour
 {
@@ -40,13 +41,31 @@ public class VRCrank : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y > stratPos.y)
+
+        if (Input.GetKey(KeyCode.J))
         {
-            transform.position = stratPos;
+            moveUp = true;
         }
-        else if (transform.position.y <  minPos.position.y)
+        if (Input.GetKey(KeyCode.N))
         {
-            transform.position = new Vector3(stratPos.x, minPos.position.y, stratPos.z);
+            moveDown = true;
+        }
+
+        
+        if (transform.position.z > stratPos.z)
+        {
+            Debug.Log(transform.position.z + " " + stratPos.z   );
+            Debug.Log("start pos over");
+            transform.position = stratPos;
+            moveUp = false;
+            moveDown = false;
+        } 
+        else if (transform.position.z <  minPos.position.z)
+        {
+            Debug.Log("min pos over");
+            transform.position = new Vector3(stratPos.z, stratPos.y, minPos.position.z);
+            moveUp = false;
+            moveDown = false;
         }
 
         updateMovementUp();
@@ -88,25 +107,27 @@ public class VRCrank : MonoBehaviour
         if (moveCrankEvent.up )
         {
             moveUp = true;
+            moveDown = false;
         }
         else
         {
             moveDown = true;
+            moveUp = false;
         }
     }
 
     void updateMovementDown()
     {
-        if((!levelSelected || transform.position.y >= minPos.position.y) && moveUp)
+        if((!levelSelected || transform.position.z >= minPos.position.z) && moveUp)
         {
-             transform.Translate(0, 0, 0.1f * Time.deltaTime);
+            transform.Translate(0.01f, 0, 0 * Time.deltaTime);
         }
     }
     void updateMovementUp()
     {
-        if ((!levelSelected || transform.position.y <= stratPos.y )&& moveDown)
+        if ((!levelSelected || transform.position.z <= stratPos.z )&& moveDown)
         {
-            transform.Translate(0, 0, -0.1f * Time.deltaTime);
+            transform.Translate(-0.01f, 0,0  * Time.deltaTime);
         }
     }
 }
