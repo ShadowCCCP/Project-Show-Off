@@ -12,6 +12,7 @@ TagManager:
   - RightController
   - LeftController
   - Controller
+  - Pirate
   layers:
   - Default
   - TransparentFX
