@@ -10,7 +10,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     // Third attack stage has four attacks?
     // Fix stagger phase
 
-    public enum SideHit { Left, Right, Forward }
+    public enum SideHit { Left, Right, Front }
 
     private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned }
     private FencingState _currentState = FencingState.Intro;
@@ -45,6 +45,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private void Start()
     {
         _anim = GetComponent<Animator>();
+
+        PlayerSword.onSwordHit += GotBlocked;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerSword.onSwordHit -= GotBlocked;
     }
 
     private void Update()
@@ -233,7 +240,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     // Methods triggered outside this class...
     public void GotBlocked()
     {
-        _blockCount++;
+        if (_currentState == FencingState.Attack) { _blockCount++; }
     }
 
     public void SideGotHit(SideHit pSide)
@@ -248,8 +255,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
                 _anim.SetTrigger("HitRight");
                 break;
 
-            case SideHit.Forward:
-                _anim.SetTrigger("HitForward");
+            case SideHit.Front:
+                _anim.SetTrigger("HitFront");
                 break;
         }
 
