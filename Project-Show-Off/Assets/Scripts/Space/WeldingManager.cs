@@ -13,7 +13,13 @@ public class WeldingManager : MonoBehaviour
     List<Transform> points = new List<Transform>();
 
     [SerializeField]
-    float weldTime; 
+    List<int> weldableBreak = new List<int>();
+
+    [SerializeField]
+    float weldTime;
+
+    [SerializeField]
+    int dividerDistance = 10;
 
     int amountOfCubes = 0;
 
@@ -45,19 +51,22 @@ public class WeldingManager : MonoBehaviour
         {
             for (int i = 0; i < points.Count - 1; i++)
             {
-                Vector3 currentPos = points[i].position;
-                Vector3 direction = points[i + 1].position - points[i].position;
-                direction = direction.normalized;
-
-                currentPos += direction / 10;
-
-                for (int j = 0; j < 50; j++) //max length to prevent a crash
+                if (!weldableBreak.Contains(i))
                 {
-                    if (checkMaxWeldables(direction, currentPos, points[i + 1].position))
+                    Vector3 currentPos = points[i].position;
+                    Vector3 direction = points[i + 1].position - points[i].position;
+                    direction = direction.normalized;
+
+                    currentPos += direction / dividerDistance;
+
+                    for (int j = 0; j < 50; j++) //max length to prevent a crash
                     {
-                        Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
-                        amountOfCubes++;
-                        currentPos += direction / 10;
+                        if (checkMaxWeldables(direction, currentPos, points[i + 1].position))
+                        {
+                            Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
+                            amountOfCubes++;
+                            currentPos += direction / dividerDistance;
+                        }
                     }
                 }
             }

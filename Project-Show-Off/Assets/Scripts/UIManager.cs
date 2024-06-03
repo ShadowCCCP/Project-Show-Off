@@ -9,25 +9,26 @@ public class UIManager : MonoBehaviour
     Animator blackImg;
     void Awake()
     {
-        EventBus<WeldCubeEvent>.OnEvent += SetScreenDark;
+        EventBus<DarkenScreenEvent>.OnEvent += SetScreenDark;
     }
 
     void OnDestroy()
     {
-        EventBus<WeldCubeEvent>.OnEvent -= SetScreenDark;
+        EventBus<DarkenScreenEvent>.OnEvent -= SetScreenDark;
     }
 
     void Update()
     {
+        /*
         if (Input.GetKey(KeyCode.E))
         {
 
             blackImg.SetTrigger("DarkenScreen");
-        }
+        }*/
     }
 
 
-    void SetScreenDark(WeldCubeEvent weldCubeEvent)
+    void SetScreenDark(DarkenScreenEvent weldCubeEvent)
     {
         blackImg.SetTrigger("DarkenScreen");
     }

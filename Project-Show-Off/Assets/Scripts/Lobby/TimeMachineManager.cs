@@ -50,7 +50,7 @@ public class TimeMachineManager : MonoBehaviour
 
     public void LoadLevelOnTimeMachine(int i)
     {
-        yearText.text = levels[i].Year;
+        yearText.text = "Year: " + levels[i].Year;
         dangerText.text = "Danger: "  +levels[i].Danger; 
         gameIcon.material.mainTexture = levels[i].Icon.texture;
         button.SetToGoScene(levels[i].LevelIndex);
