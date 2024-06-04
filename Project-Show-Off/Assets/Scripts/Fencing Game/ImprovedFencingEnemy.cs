@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class ImprovedFencingEnemy : MonoBehaviour
 {
-    // TODO:
-    // Fix stagger phase
+    private bool _debugMode = false;
 
     public enum SideHit { Left, Right, Front }
 
@@ -27,6 +26,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
     }
 
     public event Action onPlayerDefeated;
+    public event Action onToggleBodyCols;
+    public event Action onToggleSwordCol;
 
     [Tooltip("The walking distance. Counts for both for- and backwards.")]
     [SerializeField] float walkDistance = 2.0f;
@@ -74,8 +75,11 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(CurrentState);
+        if (_debugMode) { EasierTesting(); }
+    }
 
+    private void EasierTesting()
+    {
         if (Input.GetKeyDown(KeyCode.B))
         {
             GotBlocked();
@@ -83,10 +87,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.H))
         {
             SideGotHit(SideHit.Left);
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            
         }
     }
 
@@ -121,8 +121,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public void Attack()
     {
-        // TODO:
-        // Activate sword trigger collider...
+        // Activate sword collider...
+        TriggerColEvent(false);
 
         // Reset the animation speed for the attack...
         _anim.SetFloat("AttackSpeed", 1);
@@ -158,6 +158,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void CheckAttackOutcome()
     {
+        // Deactivate sword collider...
+        TriggerColEvent(false);
+
         if (_blockCount >= _currentAttackCount)
         {
             CurrentState = FencingState.Stunned;
@@ -165,9 +168,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
             StartCoroutine(EvaluateStagger());
 
-            // TODO:
-            // Activate side hit colliders...
-            
+            // Activate body trigger colliders...
+            TriggerColEvent();
         }
         else { CurrentState = FencingState.Taunt; }
     }
@@ -199,13 +201,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator InitiateAttack()
     {
-        Debug.Log("Reset");
         // Idle before attack...
         ResetValues();
         CurrentState = FencingState.Idle;
         yield return new WaitForSeconds(idleTime);
 
         // Attack afterwards...
+        ResetValues();
         CurrentState = FencingState.Attack;
         Attack();
     }
@@ -213,6 +215,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private IEnumerator EvaluateStagger()
     {
         yield return new WaitForSeconds(stunTime);
+
+        // Deactivate body trigger colliders...
+        TriggerColEvent();
 
         if (_gotHit)
         {
@@ -223,8 +228,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
-            StartCoroutine(InitiateAttack());
             _anim.SetTrigger("StunNotDamaged");
+            StartCoroutine(InitiateAttack());
         }
     }
 
@@ -234,9 +239,21 @@ public class ImprovedFencingEnemy : MonoBehaviour
         _anim.SetFloat("Attacks", -1);
         _anim.SetFloat("Hits", -1);
         _anim.SetBool("GotBlocked", false);
-        _anim.SetBool("StunNotDamaged", false);
         _blockCount = 0;
         _gotHit = false;
+    }
+
+    private void TriggerColEvent(bool pBody = true)
+    {
+        // Trigger one of the toggle events for the pirate colliders...
+        if (pBody)
+        {
+            if (onToggleBodyCols != null) { onToggleBodyCols(); }
+        }
+        else
+        {
+            if (onToggleSwordCol != null) { onToggleSwordCol(); }
+        }
     }
 
     private IEnumerator DestroyAfterDelay()
