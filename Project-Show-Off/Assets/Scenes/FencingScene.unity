@@ -2460,10 +2460,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkDistance: 1
-  walkTime: 2
+  walkTime: 1.5
   stageMaxCount: 3
   idleTime: 3
   stunTime: 5
+  counteredSpeedMultiplier: 1.2
 --- !u!1 &1666683248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3760,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3d322b5f6c634f74d825f0677f29c328,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.457
+      value: 4.554
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d322b5f6c634f74d825f0677f29c328,
         type: 3}
