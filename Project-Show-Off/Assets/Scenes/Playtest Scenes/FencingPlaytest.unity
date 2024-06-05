@@ -167,10 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: 41a2cc56992c8a14e9507ece1fb4f7e3, type: 3}
-  - {fileID: 8300000, guid: 77cb65727bddf014f947102344cb2b57, type: 3}
-  - {fileID: 8300000, guid: dfd9ee51907078647b441e965c3c53d6, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -219,12 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: 3bc62196c4b883b43b8f22b01c15135c, type: 3}
-  - {fileID: 8300000, guid: d328b32d0c96bcb48a0364a489107ff2, type: 3}
-  - {fileID: 8300000, guid: b64d6fb284984bd4585e52d747f5186e, type: 3}
-  - {fileID: 8300000, guid: a8025a88a50939d49a1159c7c802c2c4, type: 3}
-  - {fileID: 8300000, guid: 3c5946ee0dfd15f4a8984f4bcafe226e, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 0
@@ -815,10 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: 41a2cc56992c8a14e9507ece1fb4f7e3, type: 3}
-  - {fileID: 8300000, guid: 77cb65727bddf014f947102344cb2b57, type: 3}
-  - {fileID: 8300000, guid: dfd9ee51907078647b441e965c3c53d6, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -1064,8 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: d24eebae9c79300419c3099a1201b392, type: 3}
+  _audioClips: []
   playOnAwake: 1
   loop: 1
   spatialBlend: 0
@@ -1147,14 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: 0f8453b471995fb4088a844afe81f3fe, type: 3}
-  - {fileID: 8300000, guid: af0e75e104b8fb74f989f201f100ec10, type: 3}
-  - {fileID: 8300000, guid: 6c99ab17e4768b647b7e1c01681a6751, type: 3}
-  - {fileID: 8300000, guid: 981a005e9bed8c64f8d524397b39c413, type: 3}
-  - {fileID: 8300000, guid: 3f9093b832130f140b8856cb1fd95146, type: 3}
-  - {fileID: 8300000, guid: 6f31408bb69f1884bba0bbf47f5a3506, type: 3}
-  - {fileID: 8300000, guid: c4321f97f6291a74ca82e5e79762ecbd, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -1203,9 +1184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: 79a0a61f87c1cd841bc025b84312202d, type: 3}
-  - {fileID: 8300000, guid: 7e1a1502dfd86294985b4a2b07149aee, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 0
@@ -1244,6 +1223,74 @@ Transform:
   - {fileID: 940310636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1488203901
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0249367
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 555337663057609331, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838526925376120721, guid: 0c21b1d67c96cb843a7270a5bf8bad36,
+        type: 3}
+      propertyPath: m_Name
+      value: Pirate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c21b1d67c96cb843a7270a5bf8bad36, type: 3}
 --- !u!1001 &1566226976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,13 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 8300000, guid: c54e01f3f8c911a4c9e1d14308768929, type: 3}
-  - {fileID: 8300000, guid: 7cc6910d1c7c0f041850124c34f5804a, type: 3}
-  - {fileID: 8300000, guid: 8d0f3339fac56b64f9f27a2e5f47d8d0, type: 3}
-  - {fileID: 8300000, guid: 130f0660768b9004f86cde9d262572c4, type: 3}
-  - {fileID: 8300000, guid: 47161e07a83f9814d844f1766e0c5f28, type: 3}
-  - {fileID: 8300000, guid: 280bfd95a7b8cff449f0cadd0b33d3a8, type: 3}
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -1495,3 +1536,4 @@ SceneRoots:
   - {fileID: 763415167}
   - {fileID: 1272013720}
   - {fileID: 1566226976}
+  - {fileID: 1488203901}
