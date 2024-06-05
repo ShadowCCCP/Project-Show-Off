@@ -4103,7 +4103,8 @@ PrefabInstance:
       value: Time machine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4190918840938718562, guid: 7625570f22e79504e8e4488df641f2d4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8990204948473459713, guid: 7625570f22e79504e8e4488df641f2d4,

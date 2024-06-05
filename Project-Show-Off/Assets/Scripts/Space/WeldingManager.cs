@@ -55,6 +55,8 @@ public class WeldingManager : MonoBehaviour
                 {
                     Vector3 currentPos = points[i].position;
                     Vector3 direction = points[i + 1].position - points[i].position;
+                    Debug.DrawLine(currentPos, direction);
+                    Debug.Log(direction);
                     direction = direction.normalized;
 
                     currentPos += direction / dividerDistance;
@@ -63,7 +65,9 @@ public class WeldingManager : MonoBehaviour
                     {
                         if (checkMaxWeldables(direction, currentPos, points[i + 1].position))
                         {
-                            Instantiate(weldableCubePrefab, currentPos, Quaternion.Euler(direction), this.transform).GetComponent<WeldableCube>();
+                            WeldableCube a =  Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
+                            
+                            a.transform.LookAt(points[i + 1].position);
                             amountOfCubes++;
                             currentPos += direction / dividerDistance;
                         }
@@ -80,26 +84,35 @@ public class WeldingManager : MonoBehaviour
 
     bool checkMaxWeldables(Vector3 dir, Vector3 pointA, Vector3 pointB)
     {
-        if (dir.y > 0 && pointA.y > pointB.y)
+        if (dir.y > 0 && pointA.y >= pointB.y)
         {
            
             return false; 
         }
-        else if (dir.y < 0&& pointA.y < pointB.y) 
+        else if (dir.y < 0&& pointA.y <= pointB.y) 
         {
             return false;
         }
         
-        if(dir.z >0 && pointA.z > pointB.z)
+        if(dir.z >0 && pointA.z >= pointB.z)
         {
             return false;
         }
-        else if (dir.z < 0 && pointA.z < pointB.z) 
+        else if (dir.z < 0 && pointA.z <= pointB.z) 
         {
             return false ;
         }
-        
-        
+
+        if (dir.x > 0 && pointA.x >= pointB.x)
+        {
+            return false;
+        }
+        else if (dir.x < 0 && pointA.x <= pointB.x)
+        {
+            return false;
+        }
+
+
         return true;
     }
 
