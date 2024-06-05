@@ -851,8 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 0}
+  _audioClips: []
   playOnAwake: 1
   loop: 1
   spatialBlend: 0
@@ -1218,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -1228,7 +1227,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -1243,7 +1242,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -1821,8 +1820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip:
-  - {fileID: 0}
+  _audioClips: []
   playOnAwake: 1
   loop: 1
   spatialBlend: 0

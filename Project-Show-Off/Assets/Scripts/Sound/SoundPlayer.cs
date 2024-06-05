@@ -10,6 +10,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] [Range(0, 1)] float volume;
 
     private AudioSource _audioSource;
+    private int _currentClipIndex;
 
     private void Awake()
     {
@@ -22,22 +23,30 @@ public class SoundPlayer : MonoBehaviour
             _audioSource.loop = loop;
             _audioSource.spatialBlend = spatialBlend;
 
-            if (ClipCount() > 0) { _audioSource.clip = _audioClips[0]; }
+            if (ClipCount() > 0) { SetClip(0); }
             else { Debug.LogError("SoundPlayer: No audioClips attached to the script."); }
         }
     }
 
     private void Start()
     {
-        if (!_audioSource.playOnAwake && playOnAwake)
-        {
-            PlayRandom();
-        }
+        if (playOnAwake) { PlayRandom(); }
     }
 
     public void Play()
     {
+        // Get the first audioClip of the array, if none is selected...
+        if (_audioSource.clip == null && ClipCount() > 0) { SetClip(0); }
+        PlaySound();
+    }
 
+    public void PlayNext()
+    {
+        // Get next sound in the array...
+        int nextIndex = _currentClipIndex++;
+        if (nextIndex >= ClipCount()) { nextIndex = 0; }
+
+        SetClip(nextIndex);
     }
 
     public void PlayRandom()
@@ -50,7 +59,7 @@ public class SoundPlayer : MonoBehaviour
     {
         if (pSoundIndex > 0 && pSoundIndex < _audioClips.Length)
         {
-            _audioSource.clip = _audioClips[pSoundIndex];
+            SetClip(pSoundIndex);
         }
 
         PlaySound();
@@ -61,7 +70,7 @@ public class SoundPlayer : MonoBehaviour
         if (_audioSource.clip != null) _audioSource.PlayDelayed(0);
         else
         {
-            Debug.LogError("AudioPlayer: No audioClip attached to either script or existing audioSource.");
+            Debug.LogError("AudioPlayer: Not able to play sound. No audioClip attached to either script or existing audioSource.");
         }
     }
 
@@ -70,12 +79,18 @@ public class SoundPlayer : MonoBehaviour
         if (ClipCount() > 0)
         {
             int soundIndex = Random.Range(0, _audioClips.Length);
-            _audioSource.clip = _audioClips[soundIndex];
+            SetClip(soundIndex);
         }
         else
         {
             Debug.LogError("AudioPlayer: No audioClip attached to the script.");
         }
+    }
+
+    private void SetClip(int pClipIndex)
+    {
+        _currentClipIndex = pClipIndex;
+        _audioSource.clip = _audioClips[pClipIndex];
     }
 
     // For state checking...
