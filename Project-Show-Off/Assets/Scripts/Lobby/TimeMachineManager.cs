@@ -18,7 +18,6 @@ public class TimeMachineManager : MonoBehaviour
 
     [SerializeField]
     List<Level> levels = new List<Level>();
-    // Start is called before the first frame update
     void Start()
     {
         if (levels.Count > 0)

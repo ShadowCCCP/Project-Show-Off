@@ -25,6 +25,8 @@ public class WeldingManager : MonoBehaviour
 
     List<WeldableCube> doneCubes = new List<WeldableCube>();
 
+
+
     void Awake()
     {
         EventBus<WeldCubeEvent>.OnEvent += weldCube;
@@ -39,10 +41,8 @@ public class WeldingManager : MonoBehaviour
         amountOfCubes = 0;
         spawnWeldables();
         EventBus<SetUpWeldableSettingsEvent>.Publish(new SetUpWeldableSettingsEvent(weldTime));
-    }
-    void Update()
-    {
 
+        
     }
 
     void spawnWeldables()
@@ -55,8 +55,6 @@ public class WeldingManager : MonoBehaviour
                 {
                     Vector3 currentPos = points[i].position;
                     Vector3 direction = points[i + 1].position - points[i].position;
-                    Debug.DrawLine(currentPos, direction);
-                    Debug.Log(direction);
                     direction = direction.normalized;
 
                     currentPos += direction / dividerDistance;
@@ -65,9 +63,9 @@ public class WeldingManager : MonoBehaviour
                     {
                         if (checkMaxWeldables(direction, currentPos, points[i + 1].position))
                         {
-                            WeldableCube a =  Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
-                            
-                            a.transform.LookAt(points[i + 1].position);
+                            WeldableCube obj =  Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
+
+                            obj.transform.LookAt(points[i + 1].position);
                             amountOfCubes++;
                             currentPos += direction / dividerDistance;
                         }
@@ -129,4 +127,6 @@ public class WeldingManager : MonoBehaviour
 
         }
     }
+
+
 }

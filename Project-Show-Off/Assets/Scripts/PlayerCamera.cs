@@ -38,5 +38,6 @@ public class PlayerCamera : MonoBehaviour
         }
         
         transform.rotation = VRCamera.transform.rotation; 
+        //player.position = new Vector3(transform.position.x , player.position.y, player.position.z);
     }
 }
