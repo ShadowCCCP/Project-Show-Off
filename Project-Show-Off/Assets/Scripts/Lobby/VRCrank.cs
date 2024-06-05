@@ -34,7 +34,7 @@ public class VRCrank : MonoBehaviour
     }
     void Start()
     {
-        knobRend.material.color = Color.red;
+       // knobRend.material.color = Color.red;
         timeMachineManager.LoadLevelOnTimeMachine(0);
 
     }
@@ -55,7 +55,7 @@ public class VRCrank : MonoBehaviour
                 Debug.Log(i + "selected");
                 levelSelected = true;
                 timeMachineManager.LoadLevelOnTimeMachine(i + 1);
-                knobRend.material.color = Color.green;
+              //  knobRend.material.color = Color.green;
 
                 moveUp = false;
                 moveDown = false;
@@ -82,7 +82,7 @@ public class VRCrank : MonoBehaviour
         {
             levelSelected = false;
             timeMachineManager.LoadLevelOnTimeMachine(0); 
-            knobRend.material.color = Color.red;
+          //  knobRend.material.color = Color.red;
         }
     }
 
