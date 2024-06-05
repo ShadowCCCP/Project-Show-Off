@@ -6,7 +6,7 @@ public abstract class VRAbstractButton : MonoBehaviour
     [SerializeField] float buttonPressDuration = 0.5f;
     [SerializeField] float buttonResetDuration = 0.3f;
 
-    [SerializeField] GameObject glass;
+    [SerializeField] Animator glass;
 
     private int _currentTweenId = -1;
     private Vector3 _buttonStartPos;
@@ -19,7 +19,7 @@ public abstract class VRAbstractButton : MonoBehaviour
     {
         // Set the buttonStartPos to transform.position, as it's attached to the button...
         _buttonStartPos = transform.position;
-        _buttonEndPos = _buttonStartPos - (transform.forward * buttonPressDepth);
+        _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
 
         // Get the distance in order to lerp the tween duration properly...
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
@@ -37,9 +37,9 @@ public abstract class VRAbstractButton : MonoBehaviour
     private void AnimateButton()
     {
         // Open glass...
-        if (!_glassOpen)
+        if (!_glassOpen && glass)
         {
-            TweenGlass();
+            AnimateGlass();
             _glassOpen = true;
         }
         // Press button default..
@@ -87,9 +87,9 @@ public abstract class VRAbstractButton : MonoBehaviour
         return 1.0f - normalizedValue;
     }
 
-    private void TweenGlass()
+    private void AnimateGlass()
     {
-        LeanTween.rotateX(glass, -90.0f, buttonPressDuration);
+        glass.SetTrigger("Break");
     }
 
     public abstract void OnButtonPress();

@@ -50,8 +50,15 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
     {
-        
-        EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        if (SceneManager.GetActiveScene().buildIndex == 0) 
+        {
+            Debug.Log("woo fancy anim portal");
+            EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        }
+        else
+        {
+            EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        }
         yield return new WaitForSeconds(0.5f);
 
         // Check if scene to load is in bounds and then load it...
@@ -64,7 +71,15 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneNextRoutine()
     {
-        EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        if (SceneManager.GetActiveScene().buildIndex == 0) 
+        {
+            Debug.Log("woo fancy anim portal");
+            EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        }
+        else
+        {
+            EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
+        }
         yield return new WaitForSeconds(0.5f);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
