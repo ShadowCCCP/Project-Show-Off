@@ -4047,6 +4047,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1464030337198972765, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1149
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464030337198972765, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9598
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464030337198972765, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2380049729166692729, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4102,9 +4117,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time machine
       objectReference: {fileID: 0}
+    - target: {fileID: 3379369100163808229, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: buttonPressDepth
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4190918840938718562, guid: 7625570f22e79504e8e4488df641f2d4, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8990204948473459713, guid: 7625570f22e79504e8e4488df641f2d4,

@@ -92,6 +92,7 @@ public abstract class VRAbstractButton : MonoBehaviour
         glass.SetTrigger("Break");
     }
 
+
     public abstract void OnButtonPress();
 
 }
