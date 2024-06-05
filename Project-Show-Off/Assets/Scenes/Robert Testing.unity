@@ -423,6 +423,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f621044c2170a498ce74c75fff87cf, type: 3}
+--- !u!1001 &391243207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8187698853717288009, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_Name
+      value: SwordSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.298
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9854169
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.17015795
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -19.594
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711005863802753513, guid: 9f5a98ebeb622814a8d730407128645d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f5a98ebeb622814a8d730407128645d, type: 3}
 --- !u!1001 &408141552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2976,7 +3044,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1e-44, z: 1.2586e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0.33333334, y: 2.2333333, z: -0.07459237, w: 0.03469575}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3492,3 +3560,4 @@ SceneRoots:
   - {fileID: 743177813}
   - {fileID: 712894704}
   - {fileID: 603991343}
+  - {fileID: 391243207}
