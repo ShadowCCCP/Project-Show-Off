@@ -66,4 +66,18 @@ public class DarkenScreenEvent : Event
     }
 }
 
+// Fencing events...
+public class SwordGrabbed : Event
+{
+    public SwordGrabbed()
+    {
 
+    }
+}
+public class SpawnPirate : Event
+{
+    public SpawnPirate()
+    {
+
+    }
+}

@@ -14,13 +14,12 @@ public class PlayerCamera : MonoBehaviour
     bool falling;
 
     float startY;
-    // Start is called before the first frame update
+
     void Start()
     {
         startY = player.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(player.transform.position.y < startY)
