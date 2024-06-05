@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    [SerializeField] AudioClip[] _audioClip;
+    [SerializeField] AudioClip[] _audioClips;
 
     [SerializeField] bool playOnAwake;
     [SerializeField] bool loop;
@@ -21,7 +21,9 @@ public class SoundPlayer : MonoBehaviour
 
             _audioSource.loop = loop;
             _audioSource.spatialBlend = spatialBlend;
-            GetRandomClip();
+
+            if (ClipCount() > 0) { _audioSource.clip = _audioClips[0]; }
+            else { Debug.LogError("SoundPlayer: No audioClips attached to the script."); }
         }
     }
 
@@ -29,11 +31,16 @@ public class SoundPlayer : MonoBehaviour
     {
         if (!_audioSource.playOnAwake && playOnAwake)
         {
-            Play();
+            PlayRandom();
         }
     }
 
     public void Play()
+    {
+
+    }
+
+    public void PlayRandom()
     {
         GetRandomClip();
         PlaySound();
@@ -41,9 +48,9 @@ public class SoundPlayer : MonoBehaviour
 
     public void PlaySpecific(int pSoundIndex)
     {
-        if (pSoundIndex > 0 && pSoundIndex < _audioClip.Length)
+        if (pSoundIndex > 0 && pSoundIndex < _audioClips.Length)
         {
-            _audioSource.clip = _audioClip[pSoundIndex];
+            _audioSource.clip = _audioClips[pSoundIndex];
         }
 
         PlaySound();
@@ -60,7 +67,25 @@ public class SoundPlayer : MonoBehaviour
 
     private void GetRandomClip()
     {
-        int soundIndex = Random.Range(0, _audioClip.Length);
-        _audioSource.clip = _audioClip[soundIndex];
+        if (ClipCount() > 0)
+        {
+            int soundIndex = Random.Range(0, _audioClips.Length);
+            _audioSource.clip = _audioClips[soundIndex];
+        }
+        else
+        {
+            Debug.LogError("AudioPlayer: No audioClip attached to the script.");
+        }
+    }
+
+    // For state checking...
+    public bool IsPlaying()
+    {
+        return _audioSource.isPlaying;
+    }
+
+    public int ClipCount()
+    {
+        return _audioClips.Length;
     }
 }
