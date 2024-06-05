@@ -20,7 +20,6 @@ public class LobbyButton : VRAbstractButton
 
     public override void OnButtonPress()
     {
-        Debug.Log("da");
         StartCoroutine(TransitionToScene());
     }
 }
