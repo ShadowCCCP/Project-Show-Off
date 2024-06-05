@@ -51,6 +51,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private Animator _anim;
 
+    // This is to fix any unwanted movement which makes the pirate look like he's floating outside the plank...
+    private float _initialX;
+
     // This is to check if either the player or the pirate has reached the end of the plank...
     private int _currentFightStage;
 
@@ -58,12 +61,14 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private int _blockCount;
 
     private bool _gotHit;
+    private bool _gotBlocked;
 
     private bool _gameCompleted;
 
     private void Start()
     {
         _anim = GetComponent<Animator>();
+        _initialX = transform.position.x;
 
         PlayerSword.onSwordHit += GotBlocked;
     }
@@ -76,6 +81,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private void Update()
     {
         if (_debugMode) { EasierTesting(); }
+        FixPosition();
     }
 
     private void EasierTesting()
@@ -87,6 +93,15 @@ public class ImprovedFencingEnemy : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.H))
         {
             SideGotHit(SideHit.Left);
+        }
+    }
+
+    private void FixPosition()
+    {
+        // Fixes unwanted movement originating from the animations...
+        if (transform.position.x != _initialX)
+        {
+            transform.position = new Vector3(_initialX, transform.position.y, transform.position.z);
         }
     }
 
@@ -121,17 +136,20 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public void Attack()
     {
-        // Activate sword collider...
-        TriggerColEvent(false);
-
         // Reset the animation speed for the attack...
         _anim.SetFloat("AttackSpeed", 1);
 
         int randomAttack = UnityEngine.Random.Range(0, _maxAttackQueueCount);
 
-        // If max amount of attacks isn't reached...
-        if (_attacksDone.Count < _currentAttackCount)
+        // If max amount of attacks isn't reached and attack got blocked...
+        if (_attacksDone.Count < _currentAttackCount && (_gotBlocked || _attacksDone.Count == 0))
         {
+            // Reset block value to see if this attack got blocked...
+            _gotBlocked = false;
+
+            // Activate sword collider only at the very first attack...
+            if (_attacksDone.Count == 0) { TriggerColEvent(false); }
+
             // Get a random, but valid number and trigger animation...
             while (_attacksDone.Contains(randomAttack))
             {
@@ -142,6 +160,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
+            // Deactivate sword collider...
+            TriggerColEvent(false);
+
             CheckAttackOutcome();
 
             // Increase the amount of attacks done, if max not reached yet...
@@ -158,9 +179,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void CheckAttackOutcome()
     {
-        // Deactivate sword collider...
-        TriggerColEvent(false);
-
         if (_blockCount >= _currentAttackCount)
         {
             CurrentState = FencingState.Stunned;
@@ -241,6 +259,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         _anim.SetBool("GotBlocked", false);
         _blockCount = 0;
         _gotHit = false;
+        _gotBlocked = false;
     }
 
     private void TriggerColEvent(bool pBody = true)
@@ -287,9 +306,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
     // Methods triggered outside this class...
     public void GotBlocked()
     {
-        if (CurrentState == FencingState.Attack) 
+        if (CurrentState == FencingState.Attack && !_gotBlocked) 
         { 
             _blockCount++;
+            _gotBlocked = true;
 
             // Reverse the attack animation...
             _anim.SetFloat("AttackSpeed", -counteredSpeedMultiplier);
