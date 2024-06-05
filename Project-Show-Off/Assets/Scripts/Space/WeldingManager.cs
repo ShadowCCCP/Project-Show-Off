@@ -63,7 +63,7 @@ public class WeldingManager : MonoBehaviour
                     {
                         if (checkMaxWeldables(direction, currentPos, points[i + 1].position))
                         {
-                            Instantiate(weldableCubePrefab, currentPos, Quaternion.identity, this.transform).GetComponent<WeldableCube>();
+                            Instantiate(weldableCubePrefab, currentPos, Quaternion.Euler(direction), this.transform).GetComponent<WeldableCube>();
                             amountOfCubes++;
                             currentPos += direction / dividerDistance;
                         }

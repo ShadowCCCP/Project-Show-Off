@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -13,16 +14,15 @@ public class VRCrank : MonoBehaviour
     TimeMachineManager timeMachineManager;
 
     [SerializeField]
-    Transform minPos;
-
-    [SerializeField]
     Renderer knobRend;
 
-    Vector3 stratPos;
 
     bool levelSelected;
     bool moveUp;
     bool moveDown;
+
+    bool minPosReached;
+    bool maxPosReached;
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;
@@ -34,40 +34,13 @@ public class VRCrank : MonoBehaviour
     }
     void Start()
     {
-        stratPos = transform.position;
         knobRend.material.color = Color.red;
+        timeMachineManager.LoadLevelOnTimeMachine(0);
 
     }
 
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.J))
-        {
-            moveUp = true;
-        }
-        if (Input.GetKey(KeyCode.N))
-        {
-            moveDown = true;
-        }
-
-        
-        if (transform.position.z > stratPos.z)
-        {
-            Debug.Log(transform.position.z + " " + stratPos.z   );
-            Debug.Log("start pos over");
-            transform.position = stratPos;
-            moveUp = false;
-            moveDown = false;
-        } 
-        else if (transform.position.z <  minPos.position.z)
-        {
-            Debug.Log("min pos over");
-            transform.position = new Vector3(stratPos.z, stratPos.y, minPos.position.z);
-            moveUp = false;
-            moveDown = false;
-        }
-
         updateMovementUp();
         updateMovementDown();
     }
@@ -86,6 +59,17 @@ public class VRCrank : MonoBehaviour
 
                 moveUp = false;
                 moveDown = false;
+
+                if(i == collidersLevels.Count - 1)
+                {
+                    Debug.Log("min pos over");
+                    minPosReached = true;
+                }
+                else if(i==0)
+                {
+                    Debug.Log("start pos over");
+                    maxPosReached = true;
+                }
             }
         }
 
@@ -106,28 +90,33 @@ public class VRCrank : MonoBehaviour
     {
         if (moveCrankEvent.up )
         {
-            moveUp = true;
-            moveDown = false;
+            if (!maxPosReached)
+            {
+                moveUp = true;
+                moveDown = false;
+                minPosReached = false;
+            }
         }
-        else
+        else if (!minPosReached)
         {
             moveDown = true;
             moveUp = false;
+            maxPosReached = false;
         }
     }
 
     void updateMovementDown()
     {
-        if((!levelSelected || transform.position.z >= minPos.position.z) && moveUp)
+        if(moveUp)
         {
-            transform.Translate(0.01f, 0, 0 * Time.deltaTime);
+            transform.Translate(0.001f, 0, 0 * Time.deltaTime);
         }
     }
     void updateMovementUp()
     {
-        if ((!levelSelected || transform.position.z <= stratPos.z )&& moveDown)
+        if (moveDown)
         {
-            transform.Translate(-0.01f, 0,0  * Time.deltaTime);
+            transform.Translate(-0.001f, 0,0  * Time.deltaTime);
         }
     }
 }
