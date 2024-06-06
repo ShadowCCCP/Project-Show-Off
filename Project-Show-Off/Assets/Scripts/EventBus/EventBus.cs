@@ -81,3 +81,11 @@ public class SpawnPirate : Event
 
     }
 }
+
+public class StopPlayerMovementEvent : Event
+{
+    public StopPlayerMovementEvent()
+    {
+
+    }
+}

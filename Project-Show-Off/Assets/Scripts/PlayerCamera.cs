@@ -13,7 +13,19 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     bool falling;
 
+    bool playerPhysics;
+
     float startY;
+
+    void Awake()
+    {
+        EventBus<StopPlayerMovementEvent>.OnEvent += AllowPlayerPhysics;
+    }
+
+    void OnDestroy()
+    {
+        EventBus<StopPlayerMovementEvent>.OnEvent -= AllowPlayerPhysics;
+    }
 
     void Start()
     {
@@ -26,6 +38,10 @@ public class PlayerCamera : MonoBehaviour
         {
             falling = true;
         }
+        else
+        {
+            falling = false;
+        }
 
         if (!falling)
         {
@@ -37,7 +53,33 @@ public class PlayerCamera : MonoBehaviour
             
         }
         
-        transform.rotation = VRCamera.transform.rotation; 
-        //player.position = new Vector3(transform.position.x , player.position.y, player.position.z);
+        transform.rotation = VRCamera.transform.rotation;
+
+        if (!playerPhysics)
+        {
+
+            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+        }
+        else
+        {
+            Debug.Log("ja");
+            falling = true;
+        }
+
+    }
+
+    void AllowPlayerPhysics(StopPlayerMovementEvent stopPlayerMovementEvent)
+    {
+        playerPhysics = true;
+        StartCoroutine(returnVrCameraControl());
+    }
+
+    IEnumerator returnVrCameraControl()
+    {
+        yield return new WaitForSeconds(1);
+        playerPhysics = false;
+
+
+
     }
 }

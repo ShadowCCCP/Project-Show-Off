@@ -44,4 +44,12 @@ public class PressurePoint : MonoBehaviour
         LeanTween.move(gameObject, endPos, 1);
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            EventBus<StopPlayerMovementEvent>.Publish(new StopPlayerMovementEvent());
+        }
+    }
 }
