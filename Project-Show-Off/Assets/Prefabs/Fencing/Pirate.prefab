@@ -1037,6 +1037,7 @@ GameObject:
   - component: {fileID: 555337663057609331}
   - component: {fileID: 7245435010776076206}
   - component: {fileID: 4381194522846662276}
+  - component: {fileID: 2968789941347894560}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Untagged
@@ -1095,12 +1096,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3edfed6805ee9043becc79786f6777c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkDistance: 0.1
+  walkDistance: 0.6
   walkTime: 1.5
   stageMaxCount: 3
   idleTime: 3
   stunTime: 5
   counteredSpeedMultiplier: 1.4
+--- !u!114 &2968789941347894560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838526925376120721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 0}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 0
+  volume: 0
 --- !u!1 &4849772985133668715
 GameObject:
   m_ObjectHideFlags: 0

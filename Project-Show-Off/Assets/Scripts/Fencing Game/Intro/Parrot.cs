@@ -6,6 +6,10 @@ public class Parrot : MonoBehaviour
     private SoundPlayer _soundPlayer;
 
     [SerializeField] float timeBeforeWarning;
+    [SerializeField] float pirateSpawnTimeAfterGrab;
+
+    [SerializeField] Vector3 pirateSpawnPos;
+
     private bool _pirateWarningPlayed;
 
     private void Start()
@@ -14,11 +18,30 @@ public class Parrot : MonoBehaviour
 
         // Play intro sound...
 
+
+        PlayerSword.onSwordGrabbed += QueueInPirateSpawn;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerSword.onSwordGrabbed -= QueueInPirateSpawn;
     }
 
     private void Update()
     {
-        CheckForPirates();
+        //CheckForPirates();
+    }
+
+    private void QueueInPirateSpawn()
+    {
+        StartCoroutine(InstantiatePirate());
+    }
+
+    private IEnumerator InstantiatePirate()
+    {
+        yield return new WaitForSeconds(pirateSpawnTimeAfterGrab);
+
+
     }
 
     private void CheckForPirates()

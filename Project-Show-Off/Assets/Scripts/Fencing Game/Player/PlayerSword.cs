@@ -1,20 +1,36 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerSword : MonoBehaviour
 {
     public static event Action onSwordHit;
+    public static event Action onSwordGrabbed;
 
     private Rigidbody _rb;
+    private XRGrabInteractable _gInteractable;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _gInteractable = GetComponent<XRGrabInteractable>();
+
+        _gInteractable.selectEntered.AddListener(SwordGrabbed);
+    }
+
+    private void OnDestroy()
+    {
+        _gInteractable.selectEntered.RemoveListener(SwordGrabbed);
     }
 
     public void Update()
     {
         ResetVelocity();
+    }
+
+    private void SwordGrabbed(SelectEnterEventArgs args)
+    {
+        if (onSwordGrabbed != null) { onSwordGrabbed(); }
     }
 
     private void ResetVelocity()
