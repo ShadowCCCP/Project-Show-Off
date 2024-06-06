@@ -53,6 +53,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     // This is to fix any unwanted movement which makes the pirate look like he's floating outside the plank...
     private float _initialX;
+    private float _initialZ;
 
     // This is to check if either the player or the pirate has reached the end of the plank...
     private int _currentFightStage;
@@ -69,6 +70,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _initialX = transform.position.x;
+        _initialZ = transform.position.z;
 
         PlayerSword.onSwordHit += GotBlocked;
     }
@@ -98,11 +100,23 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void FixPosition()
     {
-        // Fixes unwanted movement originating from the animations...
-        if (transform.position.x != _initialX)
+        // This is definetely not the best fix, but it does the job for now...
+        float rotationY = transform.rotation.y;
+        if (rotationY % 90 == 0)
         {
-            transform.position = new Vector3(_initialX, transform.position.y, transform.position.z);
+            if (transform.position.x != _initialX)
+            {
+                transform.position = new Vector3(_initialX, transform.position.y, transform.position.z);
+            }
         }
+        else
+        {
+            if (transform.position.z != _initialZ)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, _initialZ);
+            }
+        }
+
     }
 
     public void Move(bool pForward = true)
