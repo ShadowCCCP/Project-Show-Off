@@ -955,7 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClips: []
+  _audioClips:
+  - {fileID: 8300000, guid: 1584aaf24c11f4342a802ecf7581bbc8, type: 3}
   playOnAwake: 1
   loop: 1
   spatialBlend: 0
@@ -1999,7 +2000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClips: []
+  _audioClips:
+  - {fileID: 8300000, guid: d709916ec7133424480592bba6cbeae9, type: 3}
   playOnAwake: 1
   loop: 1
   spatialBlend: 0
