@@ -7,7 +7,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] bool playOnAwake;
     [SerializeField] bool loop;
     [SerializeField] [Range(0, 1)] float spatialBlend;
-    [SerializeField] [Range(0, 1)] float volume;
+    [SerializeField] [Range(0, 1)] float volume = 1;
 
     private AudioSource _audioSource;
     private int _currentClipIndex;
@@ -70,7 +70,7 @@ public class SoundPlayer : MonoBehaviour
         if (_audioSource.clip != null) _audioSource.PlayDelayed(0);
         else
         {
-            Debug.LogError("AudioPlayer: Not able to play sound. No audioClip attached to either script or existing audioSource.");
+            Debug.LogError("SoundPlayer: Not able to play sound. No audioClip attached to either script or existing audioSource.");
         }
     }
 
@@ -83,7 +83,7 @@ public class SoundPlayer : MonoBehaviour
         }
         else
         {
-            Debug.LogError("AudioPlayer: No audioClip attached to the script.");
+            Debug.LogError("SoundPlayer: No audioClip attached to the script.");
         }
     }
 

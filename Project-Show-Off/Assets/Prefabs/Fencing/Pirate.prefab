@@ -1115,11 +1115,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 0}
-  playOnAwake: 0
+  - {fileID: 8300000, guid: f7f13ea53e3df7b45bd694d745aeccd5, type: 3}
+  playOnAwake: 1
   loop: 0
   spatialBlend: 0
-  volume: 0
+  volume: 1
 --- !u!1 &4849772985133668715
 GameObject:
   m_ObjectHideFlags: 0

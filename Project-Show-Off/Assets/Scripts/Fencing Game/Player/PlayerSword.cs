@@ -30,6 +30,7 @@ public class PlayerSword : MonoBehaviour
 
     private void SwordGrabbed(SelectEnterEventArgs args)
     {
+        Debug.Log("SwordGrabbed");
         if (onSwordGrabbed != null) { onSwordGrabbed(); }
 
         // Reset rigidbody constraints to make sword moveable...

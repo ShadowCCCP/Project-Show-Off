@@ -8,7 +8,9 @@ public class Parrot : MonoBehaviour
     [SerializeField] float timeBeforeWarning;
     [SerializeField] float pirateSpawnTimeAfterGrab;
 
+    [SerializeField] GameObject piratePrefab;
     [SerializeField] Vector3 pirateSpawnPos;
+    [SerializeField] Quaternion pirateRotation;
 
     private bool _pirateWarningPlayed;
 
@@ -34,14 +36,17 @@ public class Parrot : MonoBehaviour
 
     private void QueueInPirateSpawn()
     {
+        Debug.Log("Start Queue...");
         StartCoroutine(InstantiatePirate());
     }
 
     private IEnumerator InstantiatePirate()
     {
+        Debug.Log("Wait");
         yield return new WaitForSeconds(pirateSpawnTimeAfterGrab);
 
-
+        Debug.Log("Instantiate");
+        Instantiate(piratePrefab, pirateSpawnPos, pirateRotation, transform.parent);
     }
 
     private void CheckForPirates()
