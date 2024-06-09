@@ -33,8 +33,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
     [SerializeField] float walkDistance = 2.0f;
     [Tooltip("Decides how long it takes for the pirate to cover the walking distance.")]
     [SerializeField] float walkTime = 2.0f;
-    [Tooltip("Decided how many times the player/pirate needs to move in order to win.")]
+    [Tooltip("Decides how many times the player/pirate needs to move in order to win.")]
     [SerializeField] int stageMaxCount = 3;
+    [Tooltip("Decides how many times the player can win or lose before the decisive round")]
+    [SerializeField] int decisiveTurn = 6;
 
     [Space]
 
@@ -45,6 +47,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     [Tooltip("Speed multiplier for the backward attack animation, when player blocks his attack.")] 
     [SerializeField] float counteredSpeedMultiplier = 1.2f;
+
+    private int _decisiveCount;
 
     private const int _maxAttackQueueCount = 3;
     private int _currentAttackCount = 1;
@@ -63,6 +67,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private bool _gotHit;
     private bool _gotBlocked;
+
+    // Hit animation cooldown...
+    private float _hitWaitTime = 1500;
+    private float _hitCurrentTime;
 
     private bool _gameCompleted;
 
@@ -84,6 +92,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         if (_debugMode) { EasierTesting(); }
         FixPosition();
+        UpdateTimer();
     }
 
     private void EasierTesting()
@@ -116,7 +125,11 @@ public class ImprovedFencingEnemy : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, _initialZ);
             }
         }
+    }
 
+    private void UpdateTimer()
+    {
+        _hitCurrentTime += Time.deltaTime;
     }
 
     public void Move(bool pForward = true)
@@ -174,6 +187,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
+            // Increase total count of rounds done...
+            _decisiveCount++;
+
             // Deactivate sword collider...
             TriggerColEvent(false);
 
@@ -208,18 +224,18 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void ProcessCurrentStage()
     {
-        if (_currentFightStage >= stageMaxCount || _currentFightStage <= -stageMaxCount)
+        if (_currentFightStage >= stageMaxCount || _currentFightStage <= -stageMaxCount || _decisiveCount >= decisiveTurn)
         {
             Debug.Log("Game completed");
 
             // Kick the player off the plank...
-            if (_currentFightStage >= stageMaxCount)
+            if (_currentFightStage >= stageMaxCount || (_decisiveCount >= decisiveTurn && !_gotHit))
             {
                 // Invoke defeat player event...
                 if (onPlayerDefeated != null) { onPlayerDefeated(); }
             }
             // Pirate falls into water...
-            else if (_currentFightStage <= -stageMaxCount)
+            else if (_currentFightStage <= -stageMaxCount || (_decisiveCount >= decisiveTurn && _gotHit))
             {
                 // Make pirate fall off the plank and destroy gameObject after some time...
                 _anim.SetBool("WaterFall", true);
@@ -332,21 +348,28 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public void SideGotHit(SideHit pSide)
     {
-        switch (pSide)
+        // If hit animation timer is up...
+        if (_hitCurrentTime >= _hitWaitTime)
         {
-            case SideHit.Left:
-                _anim.SetFloat("Hits", 0);
-                break;
+            switch (pSide)
+            {
+                case SideHit.Left:
+                    _anim.SetFloat("Hits", 0);
+                    break;
 
-            case SideHit.Right:
-                _anim.SetFloat("Hits", 1);
-                break;
+                case SideHit.Right:
+                    _anim.SetFloat("Hits", 1);
+                    break;
 
-            case SideHit.Front:
-                _anim.SetFloat("Hits", 2);
-                break;
+                case SideHit.Front:
+                    _anim.SetFloat("Hits", 2);
+                    break;
+            }
+
+            if (!_gotHit) { _gotHit = true; }
+
+            // Reset timer...
+            _hitCurrentTime = 0;
         }
-
-        if (!_gotHit) _gotHit = true;
     }
 }
