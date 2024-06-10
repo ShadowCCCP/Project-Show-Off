@@ -11,7 +11,7 @@ public class JSON_Text : MonoBehaviour
     [Serializable]
     public class Dialogue
     {
-        public string[] LandLubber, Left, Right, Attack;
+        public string[] Suspicious, Warning, Beaten;
     }
 
     string CMGato = @"
@@ -34,17 +34,28 @@ public class JSON_Text : MonoBehaviour
     }";
 
     string CMPapagayo = @"{
-        'LandLubber' : [
-            'Kraaa, watch out landlubber!'
+        'Suspicious' : [
+            'What\'s your sword doing at the end of the plank, captain?' 
         ],
-        'Left' : [
-            'Watch your left!'
+        'Warning' : [
+            
+            'Watch out, it\'s a mutiny!'
         ],
-        'Right' : [
-            'To your right!'
+        'Beaten' : [ 
+            'Good job! He stood no chance against your swordmanship!'
+        ]
+    }";
+
+    string CMRato = @"{
+        'Sick' : [
+            'Michelangelo called in sick, he asked you to colour the painting.',
+            'You only have one day though, make the best out of it!'
         ],
-        'Attack' : [
-            'His guard is down. Attack!'
+        'List' : [
+            'The client made a list of things NOT to include, take a look.' 
+        ],
+        'Evening' : [
+            'You don\'t have much time left, put on the finishing touches.'
         ]
     }";
 

@@ -89,3 +89,24 @@ public class StopPlayerMovementEvent : Event
 
     }
 }
+
+
+public class OnPlayerDeathEvent : Event
+{
+    public OnPlayerDeathEvent(Vector3 pPosDeath)
+    {
+        Debug.Log("event reched");
+        posDeath = pPosDeath;
+    }
+
+    public Vector3 posDeath;
+}
+
+public class SetPositionOffsetEvent : Event
+{
+    public SetPositionOffsetEvent(Vector3 posOffset)
+    {
+        this.posOffset = posOffset;
+    }
+    public Vector3 posOffset;
+}
