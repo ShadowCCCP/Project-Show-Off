@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -10,12 +11,24 @@ public class PlayerSword : MonoBehaviour
     private Rigidbody _rb;
     private XRGrabInteractable _gInteractable;
 
+    // To capture the swords velocity...
+    private Vector3 _lastPosition;
+    private bool _swingSoundInvalid;
+
+    // To instantiate sword spark...
+    List<ContactPoint> contactPoints = new List<ContactPoint>();
+
+    private SoundPlayer _soundPlayer;
+
     private void Start()
     {
+        _soundPlayer = GetComponent<SoundPlayer>();
+
         _rb = GetComponent<Rigidbody>();
         _gInteractable = GetComponent<XRGrabInteractable>();
 
         _gInteractable.selectEntered.AddListener(SwordGrabbed);
+        _lastPosition = transform.position;
     }
 
     private void OnDestroy()
@@ -28,9 +41,32 @@ public class PlayerSword : MonoBehaviour
         ResetVelocity();
     }
 
+    private void FixedUpdate()
+    {
+        CheckSwing();
+    }
+
+    private void CheckSwing()
+    {
+        float distanceMoved = (transform.position - _lastPosition).magnitude * 100;
+
+        if (distanceMoved >= 5 && !_swingSoundInvalid)
+        {
+            // Play sound once if the crossed distance reaches threshhold...
+            _soundPlayer.PlayRandom();
+            _swingSoundInvalid = true;
+        }
+        else if (_swingSoundInvalid && distanceMoved < 0.7f)
+        {
+            // Reset bool to activate playing sound again, when lower threshhold is reached...
+            _swingSoundInvalid = false;
+        }
+
+        _lastPosition = transform.position;
+    }
+
     private void SwordGrabbed(SelectEnterEventArgs args)
     {
-        Debug.Log("SwordGrabbed");
         if (onSwordGrabbed != null) { onSwordGrabbed(); }
 
         // Reset rigidbody constraints to make sword moveable...
@@ -52,7 +88,6 @@ public class PlayerSword : MonoBehaviour
         {
             if (onSwordHit != null) { onSwordHit(); }
         }
-
         // REMOVE LATER:
         else if (collision.collider.CompareTag("Pirate"))
         {
@@ -61,6 +96,12 @@ public class PlayerSword : MonoBehaviour
             {
                 body.SideHit();
             }
+        }
+
+        collision.GetContacts(contactPoints);
+        if (contactPoints.Count > 0)
+        {
+            Debug.Log(contactPoints[0].point);
         }
     }
 

@@ -110,8 +110,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private void FixPosition()
     {
         // This is definetely not the best fix, but it does the job for now...
-        float rotationY = transform.rotation.y;
-        if (rotationY % 90 == 0)
+        float rotationY = transform.rotation.eulerAngles.y;
+        if (rotationY % 180 == 0)
         {
             if (transform.position.x != _initialX)
             {
