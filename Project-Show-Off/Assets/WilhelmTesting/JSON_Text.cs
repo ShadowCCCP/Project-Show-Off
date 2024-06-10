@@ -17,10 +17,7 @@ public class JSON_Text : MonoBehaviour
     string CMGato = @"
     {
         'Intro' : [
-            'Mmmh? If you need any help, pet me',
-            'Put the lever in one of the timeslots ..>',
-            'and  press the button on the bottom to start',
-            'Pull the lever on the top right to your preffered hand'
+            'Quick, put your preferred hand in identifier on your right!'
         ],
         'Terms' : [
             'I assume you read the term of conditions? ..>',
