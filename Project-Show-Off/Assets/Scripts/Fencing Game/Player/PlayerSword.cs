@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerSword : MonoBehaviour
 {
+    [SerializeField] GameObject hitSparks;
+
     public static event Action onSwordHit;
     public static event Action onSwordGrabbed;
 
@@ -99,9 +101,10 @@ public class PlayerSword : MonoBehaviour
         }
 
         collision.GetContacts(contactPoints);
-        if (contactPoints.Count > 0)
+        if (contactPoints.Count > 0 && contactPoints[0].otherCollider.CompareTag("Sword"))
         {
-            Debug.Log(contactPoints[0].point);
+            GameObject gawk = Instantiate(hitSparks, contactPoints[0].point, Quaternion.identity);
+            gawk.transform.parent = null;
         }
     }
 
