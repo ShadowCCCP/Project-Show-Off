@@ -49,6 +49,7 @@ public class PressurePoint : MonoBehaviour
     {
         if(collision.transform.tag == "Player")
         {
+            //allow player to use physics and be pushed around
             EventBus<StopPlayerMovementEvent>.Publish(new StopPlayerMovementEvent());
         }
     }
