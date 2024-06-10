@@ -28,14 +28,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        EventBus<OnPlayerDeathEvent>.OnEvent += SaveOldPosAndDeath;
-        EventBus<SetPositionOffsetEvent>.OnEvent += SetOffsetPod;
-    }
+        DontDestroyOnLoad(this.gameObject);
 
+        EventBus<OnPlayerDeathEvent>.OnEvent += SaveOldPosAndDeath;
+    }
+    
     void OnDestroy()
     {
+        Debug.Log("gamemanger destroyed");
         EventBus<OnPlayerDeathEvent>.OnEvent -= SaveOldPosAndDeath;
-        EventBus<SetPositionOffsetEvent>.OnEvent -= SetOffsetPod;
     }
 
     // Preferred hand methods...
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
     {
+        PositionBeforeReset = new Vector3(0, 0, 0);
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
             Debug.Log("woo fancy anim portal");
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneNextRoutine()
     {
+        PositionBeforeReset = new Vector3 (0, 0, 0);
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
             Debug.Log("woo fancy anim portal");
@@ -109,21 +112,13 @@ public class GameManager : MonoBehaviour
         PositionBeforeReset = onPlayerDeathEvent.posDeath;
 
         LoadSceneSpecific(deathRoomIndex);
-
-        onDeathRoom();
+        setOffsetPod(onPlayerDeathEvent.posDeath);
     }
 
-    private void onDeathRoom()
-    {
-        Debug.Log("death room");
-        //set old pos
-        EventBus<SetPositionOffsetEvent>.Publish(new SetPositionOffsetEvent(transform.position));
-    }
-
-    void SetOffsetPod(SetPositionOffsetEvent setPositionOffsetEvent)
+    void setOffsetPod(Vector3 deathPos)
     {
         
-        PositionBeforeReset = new Vector3( setPositionOffsetEvent.posOffset.x, 0 , setPositionOffsetEvent.posOffset.z) ;
+        PositionBeforeReset = new Vector3(deathPos.x, 0 , deathPos.z) ;
         Debug.Log(PositionBeforeReset);
         //controllers
     }

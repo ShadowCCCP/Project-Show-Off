@@ -35,6 +35,7 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         offset = GameManager.Instance.PositionBeforeReset; 
+        //player.position = offset;
         startY = player.position.y;
     }
 
@@ -82,7 +83,7 @@ public class PlayerCamera : MonoBehaviour
         if (!playerPhysics)
         {
 
-            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) + offset;
+            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) ;
         }
         else
         {
