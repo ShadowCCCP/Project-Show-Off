@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class OuterBrush : MonoBehaviour
 {
-    // 
+    [SerializeField] 
 
     void Start()
     {
