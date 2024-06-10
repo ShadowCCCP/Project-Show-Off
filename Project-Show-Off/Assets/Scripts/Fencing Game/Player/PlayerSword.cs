@@ -7,6 +7,17 @@ public class PlayerSword : MonoBehaviour
 {
     [SerializeField] GameObject hitSparks;
 
+    // To save start position...
+    private Vector3 _startPos;
+    private Quaternion _startRot;
+
+    // Reset timer for sword...
+    [Tooltip("Time that has to pass without the player holding it, before it resets.")]
+    [SerializeField] float timeUntilReset = 2.5f;
+    private float _resetTimePassed;
+    private bool _resetTimerActive;
+    
+
     public static event Action onSwordHit;
     public static event Action onSwordGrabbed;
 
@@ -24,28 +35,61 @@ public class PlayerSword : MonoBehaviour
 
     private void Start()
     {
+        _startPos = transform.position;
+        _startRot = transform.rotation;
+
         _soundPlayer = GetComponent<SoundPlayer>();
 
         _rb = GetComponent<Rigidbody>();
         _gInteractable = GetComponent<XRGrabInteractable>();
 
         _gInteractable.selectEntered.AddListener(SwordGrabbed);
+        _gInteractable.selectExited.AddListener(SwordLost);
         _lastPosition = transform.position;
     }
 
     private void OnDestroy()
     {
         _gInteractable.selectEntered.RemoveListener(SwordGrabbed);
+        _gInteractable.selectExited.RemoveListener(SwordLost);
     }
 
     public void Update()
     {
         ResetVelocity();
+        UpdateResetTimer();
     }
 
     private void FixedUpdate()
     {
         CheckSwing();
+    }
+
+    private void UpdateResetTimer()
+    {
+        if (_resetTimerActive)
+        {
+            _resetTimePassed += Time.deltaTime;
+
+            Debug.Log("Passed: " + _resetTimePassed + "\nTill: " + timeUntilReset);
+
+            if (_resetTimePassed >= timeUntilReset)
+            {
+                Debug.Log("Jahooo");
+                ResetPosition();
+                _resetTimerActive = false;
+            }
+        }
+    }
+
+    private void ResetPosition()
+    {
+        Debug.Log("Reset");
+        transform.position = _startPos;
+        transform.rotation = _startRot;
+
+        _rb.constraints = RigidbodyConstraints.FreezeAll;
+        _rb.useGravity = false;
     }
 
     private void CheckSwing()
@@ -71,8 +115,20 @@ public class PlayerSword : MonoBehaviour
     {
         if (onSwordGrabbed != null) { onSwordGrabbed(); }
 
+        // Reset timer...
+        _resetTimerActive = false;
+        _resetTimePassed = 0;
+
         // Reset rigidbody constraints to make sword moveable...
         _rb.constraints = RigidbodyConstraints.None;
+        _rb.useGravity = false;
+    }
+
+    private void SwordLost(SelectExitEventArgs args)
+    {
+        Debug.Log("Lost");
+        _resetTimerActive = true;
+        _rb.useGravity = true;
     }
 
     private void ResetVelocity()
