@@ -1750,7 +1750,17 @@ PrefabInstance:
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
       propertyPath: NoiseModule.enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
+        type: 3}
+      propertyPath: NoiseModule.octaves
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
+        type: 3}
+      propertyPath: NoiseModule.quality
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
@@ -1761,6 +1771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: LightsModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
+        type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
@@ -1840,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
       propertyPath: NoiseModule.strength.scalar
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
@@ -1876,6 +1891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: LightsModule.rangeCurve.scalar
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
+        type: 3}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
@@ -3044,7 +3064,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0.33333334, y: 2.2333333, z: -0.07459237, w: 0.03469575}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.7e-44, z: 1.5337e-41, w: 3.587e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3200,7 +3220,7 @@ Transform:
   m_GameObject: {fileID: 999272008}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07148136, y: -0.6786565, z: 0.0666433, w: 0.72792476}
-  m_LocalPosition: {x: 5.21, y: 2.28, z: -0.24}
+  m_LocalPosition: {x: 5.35, y: 2.54, z: 2.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
