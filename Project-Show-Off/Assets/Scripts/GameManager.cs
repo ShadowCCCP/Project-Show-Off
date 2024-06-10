@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     [Tooltip("0 s left, 1 is right")]
     int dominantHand = 0;
 
+    public Vector3 PositionBeforeReset = new Vector3();
+
+    [SerializeField]
+    private int deathRoomIndex = 5;
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,8 +27,16 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        EventBus<OnPlayerDeathEvent>.OnEvent += SaveOldPosAndDeath;
+        EventBus<SetPositionOffsetEvent>.OnEvent += SetOffsetPod;
     }
 
+    void OnDestroy()
+    {
+        EventBus<OnPlayerDeathEvent>.OnEvent -= SaveOldPosAndDeath;
+        EventBus<SetPositionOffsetEvent>.OnEvent -= SetOffsetPod;
+    }
 
     // Preferred hand methods...
     public int GetDominantHand()
@@ -62,7 +75,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Check if scene to load is in bounds and then load it...
-        if (pSceneIndex <= SceneManager.sceneCount && pSceneIndex >= 0)
+        if (pSceneIndex <= SceneManager.sceneCountInBuildSettings && pSceneIndex >= 0)
         {
             SceneManager.LoadScene(pSceneIndex);
         }
@@ -88,6 +101,31 @@ public class GameManager : MonoBehaviour
         if (nextSceneIndex >= SceneManager.sceneCount) { nextSceneIndex = 0; }
         SceneManager.LoadScene(nextSceneIndex);
 
+    }
+
+    public void SaveOldPosAndDeath(OnPlayerDeathEvent onPlayerDeathEvent)
+    {
+        Debug.Log("Player death");
+        PositionBeforeReset = onPlayerDeathEvent.posDeath;
+
+        LoadSceneSpecific(deathRoomIndex);
+
+        onDeathRoom();
+    }
+
+    private void onDeathRoom()
+    {
+        Debug.Log("death room");
+        //set old pos
+        EventBus<SetPositionOffsetEvent>.Publish(new SetPositionOffsetEvent(transform.position));
+    }
+
+    void SetOffsetPod(SetPositionOffsetEvent setPositionOffsetEvent)
+    {
+        
+        PositionBeforeReset = new Vector3( setPositionOffsetEvent.posOffset.x, 0 , setPositionOffsetEvent.posOffset.z) ;
+        Debug.Log(PositionBeforeReset);
+        //controllers
     }
 
 }

@@ -17,6 +17,11 @@ public class PlayerCamera : MonoBehaviour
 
     float startY;
 
+    [SerializeField]
+    float fallingTime = 1;
+
+    Vector3 offset = new Vector3 (0, 0, 0);
+
     void Awake()
     {
         EventBus<StopPlayerMovementEvent>.OnEvent += AllowPlayerPhysics;
@@ -29,14 +34,33 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+        offset = GameManager.Instance.PositionBeforeReset; 
         startY = player.position.y;
     }
 
     void Update()
     {
-        if(player.transform.position.y < startY)
+
+        //check for falling
+        playerFallingCheck();
+
+        //keep the correct rotation
+        transform.rotation = VRCamera.transform.rotation;
+
+        //allow or disallow player physics for space game 
+        playerPhysicsCheck();
+
+    }
+
+    void playerFallingCheck()
+    {
+        if (player.transform.position.y < startY)
         {
-            falling = true;
+            if (falling == false)
+            {
+                falling = true;
+                doFallingBeforeDeath();
+            }
         }
         else
         {
@@ -45,27 +69,25 @@ public class PlayerCamera : MonoBehaviour
 
         if (!falling)
         {
-            transform.position = VRCamera.transform.position;
+            transform.position = VRCamera.transform.position + offset;
         }
         else
         {
-            transform.position = player.transform.position;
-            
-        }
-        
-        transform.rotation = VRCamera.transform.rotation;
+            transform.position = player.transform.position + offset;
 
+        }
+    }
+    void playerPhysicsCheck()
+    {
         if (!playerPhysics)
         {
 
-            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) + offset;
         }
         else
         {
-            Debug.Log("ja");
             falling = true;
         }
-
     }
 
     void AllowPlayerPhysics(StopPlayerMovementEvent stopPlayerMovementEvent)
@@ -78,8 +100,12 @@ public class PlayerCamera : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         playerPhysics = false;
-
-
-
     }
+
+    void doFallingBeforeDeath()
+    {
+        Debug.Log("You have fallen");
+        EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
+    }
+
 }
