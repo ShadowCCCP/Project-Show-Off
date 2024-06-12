@@ -52,7 +52,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.733
+    m_Value: 0.226
   scatter:
     m_OverrideState: 1
     m_Value: 0.806
@@ -120,13 +120,13 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 0.04827326
+    m_Value: 0.048027683
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.33266938, z: 0.37497035}
+    m_Value: {x: 0.5, y: 0.33532456, z: 0.37373573}
   desiredLuxValue:
     m_OverrideState: 1
-    m_Value: 0.08
+    m_Value: 1.4
   updateMode:
     m_OverrideState: 0
     m_Value: 0
