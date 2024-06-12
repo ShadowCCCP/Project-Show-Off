@@ -43,10 +43,12 @@ public class SoundPlayer : MonoBehaviour
     public void PlayNext()
     {
         // Get next sound in the array...
-        int nextIndex = _currentClipIndex++;
+        int nextIndex = _currentClipIndex + 1;
+        Debug.Log(nextIndex);
         if (nextIndex >= ClipCount()) { nextIndex = 0; }
 
         SetClip(nextIndex);
+        PlaySound();
     }
 
     public void PlayRandom()

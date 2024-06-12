@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        EventBus<OnPlayerDeathEvent>.OnEvent += SaveOldPosAndDeath;
-        EventBus<SetPositionOffsetEvent>.OnEvent += SetOffsetPod;
-    }
+        DontDestroyOnLoad(this.gameObject);
 
+        EventBus<OnPlayerDeathEvent>.OnEvent += SaveOldPosAndDeath;
+    }
+    
     void OnDestroy()
     {
         EventBus<OnPlayerDeathEvent>.OnEvent -= SaveOldPosAndDeath;
-        EventBus<SetPositionOffsetEvent>.OnEvent -= SetOffsetPod;
     }
 
     // Preferred hand methods...
@@ -63,6 +63,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
     {
+        //reset saved position
+        PositionBeforeReset = new Vector3(0, 0, 0);
+
+        //do the transition animation
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
             Debug.Log("woo fancy anim portal");
@@ -72,7 +76,7 @@ public class GameManager : MonoBehaviour
         {
             EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2);
 
         // Check if scene to load is in bounds and then load it...
         if (pSceneIndex <= SceneManager.sceneCountInBuildSettings && pSceneIndex >= 0)
@@ -84,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneNextRoutine()
     {
+        PositionBeforeReset = new Vector3 (0, 0, 0);
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
             Debug.Log("woo fancy anim portal");
@@ -109,21 +114,13 @@ public class GameManager : MonoBehaviour
         PositionBeforeReset = onPlayerDeathEvent.posDeath;
 
         LoadSceneSpecific(deathRoomIndex);
-
-        onDeathRoom();
+        setOffsetPos(onPlayerDeathEvent.posDeath);
     }
 
-    private void onDeathRoom()
-    {
-        Debug.Log("death room");
-        //set old pos
-        EventBus<SetPositionOffsetEvent>.Publish(new SetPositionOffsetEvent(transform.position));
-    }
-
-    void SetOffsetPod(SetPositionOffsetEvent setPositionOffsetEvent)
+    void setOffsetPos(Vector3 deathPos)
     {
         
-        PositionBeforeReset = new Vector3( setPositionOffsetEvent.posOffset.x, 0 , setPositionOffsetEvent.posOffset.z) ;
+        PositionBeforeReset = new Vector3(deathPos.x, 0 , deathPos.z) ;
         Debug.Log(PositionBeforeReset);
         //controllers
     }

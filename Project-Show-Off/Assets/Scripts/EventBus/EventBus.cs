@@ -95,7 +95,6 @@ public class OnPlayerDeathEvent : Event
 {
     public OnPlayerDeathEvent(Vector3 pPosDeath)
     {
-        Debug.Log("event reched");
         posDeath = pPosDeath;
     }
 

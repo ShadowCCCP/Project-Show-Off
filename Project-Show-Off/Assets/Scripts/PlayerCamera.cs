@@ -35,6 +35,7 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         offset = GameManager.Instance.PositionBeforeReset; 
+        //player.position = offset;
         startY = player.position.y;
     }
 
@@ -43,6 +44,7 @@ public class PlayerCamera : MonoBehaviour
 
         //check for falling
         playerFallingCheck();
+
 
         //keep the correct rotation
         transform.rotation = VRCamera.transform.rotation;
@@ -59,7 +61,8 @@ public class PlayerCamera : MonoBehaviour
             if (falling == false)
             {
                 falling = true;
-                doFallingBeforeDeath();
+
+                StartCoroutine( beforeDeathTimer());
             }
         }
         else
@@ -77,12 +80,13 @@ public class PlayerCamera : MonoBehaviour
 
         }
     }
+
     void playerPhysicsCheck()
     {
         if (!playerPhysics)
         {
 
-            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) + offset;
+            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) ;
         }
         else
         {
@@ -102,9 +106,11 @@ public class PlayerCamera : MonoBehaviour
         playerPhysics = false;
     }
 
-    void doFallingBeforeDeath()
+    IEnumerator beforeDeathTimer()
     {
         Debug.Log("You have fallen");
+        yield return new WaitForSeconds(1);
+
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
     }
 
