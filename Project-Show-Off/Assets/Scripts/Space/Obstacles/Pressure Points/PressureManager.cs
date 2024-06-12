@@ -11,11 +11,6 @@ public class PressureManager : MonoBehaviour
         StartCoroutine(pressureRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     IEnumerator pressureRoutine()
     {
         int r = Random.Range(0, pressurePoints.Count);
