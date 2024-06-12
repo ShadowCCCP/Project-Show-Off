@@ -23,4 +23,12 @@ public class Meteorite : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            //allow player to use physics and be pushed around
+            EventBus<StopPlayerMovementEvent>.Publish(new StopPlayerMovementEvent());
+        }
+    }
 }

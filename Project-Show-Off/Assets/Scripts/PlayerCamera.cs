@@ -18,7 +18,7 @@ public class PlayerCamera : MonoBehaviour
     float startY;
 
     [SerializeField]
-    float fallingTime = 1;
+    float fallingTime = 2;
 
     Vector3 offset = new Vector3 (0, 0, 0);
 
@@ -73,10 +73,7 @@ public class PlayerCamera : MonoBehaviour
                 StartCoroutine( beforeDeathTimer());
             }
         }
-        else
-        {
-            falling = false;
-        }
+
 
         if (!falling)
         {
@@ -98,26 +95,31 @@ public class PlayerCamera : MonoBehaviour
         }
         else
         {
+            
             falling = true;
         }
     }
 
     void AllowPlayerPhysics(StopPlayerMovementEvent stopPlayerMovementEvent)
     {
-        playerPhysics = true;
-        StartCoroutine(returnVrCameraControl());
+        Debug.Log("Player physiscs activated");
+        playerPhysics = true; 
+        StartCoroutine(beforeDeathTimer());
+        //StartCoroutine(returnVrCameraControl());
     }
 
     IEnumerator returnVrCameraControl()
     {
+       
         yield return new WaitForSeconds(1);
-        playerPhysics = false;
+        playerPhysics = false; 
+        Debug.Log("No player physiscs activated");
     }
 
     IEnumerator beforeDeathTimer()
     {
         Debug.Log("You have fallen");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(fallingTime);
 
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
     }
