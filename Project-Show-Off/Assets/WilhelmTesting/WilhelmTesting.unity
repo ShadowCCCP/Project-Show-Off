@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 157207114}
   - component: {fileID: 157207113}
   - component: {fileID: 157207115}
+  - component: {fileID: 157207116}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -418,6 +419,18 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!114 &157207116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157207112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa1a552e9b20454eb00c16f877d5fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &186864486
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClip: []
+  _audioClips: []
   playOnAwake: 0
   loop: 0
   spatialBlend: 0
