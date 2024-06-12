@@ -10,5 +10,6 @@ public class Level : ScriptableObject
     public Sprite Icon;
     public string Year;
     public string Danger;
+    public string Hand;
     public string BigText;
 }

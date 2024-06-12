@@ -36,10 +36,10 @@ public class JSON_Text : MonoBehaviour
     {
         'Intro' : [
             'Quick, put your preferred hand in the identifier on your right!',
-            'Much better... wait, don\'t you know how dangerous this machine is?'
         ],
         'Unstable' : [
-            'It\'s really unstable, but it seems you are addicted to the thrill',
+            'Much better... wait, don\'t you know how dangerous this machine is?',
+            'It\'s really unstable, but it seems you are up for a thrill',
             'You can press the little buttons or pull the lever to choose a time'
         ],
         'Ready' : [
