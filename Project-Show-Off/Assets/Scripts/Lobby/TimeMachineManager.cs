@@ -20,11 +20,24 @@ public class TimeMachineManager : MonoBehaviour
 
     [SerializeField]
     List<Level> levels = new List<Level>();
+
+    [SerializeField]
+    bool On = false;
+
+    void Awake()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent += TurnOnTimeMachine;
+    }
+
+    void OnDestroy()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent -= TurnOnTimeMachine;
+    }
     void Start()
     {
         if (levels.Count > 0)
         {
-            LoadLevelOnTimeMachine(0);
+            LoadLevelOnTimeMachine(4);
         }
         else
         {
@@ -84,5 +97,16 @@ public class TimeMachineManager : MonoBehaviour
         }
     }
 
+    void TurnOnTimeMachine(GlassBrokenEvent glassBrokenEvent)
+    {
+        On = true;
+        LoadLevelOnTimeMachine(0);
+    }
+
+    public bool GetTimeMachineState()
+    {
+        return On;
+        
+    }
     
 }

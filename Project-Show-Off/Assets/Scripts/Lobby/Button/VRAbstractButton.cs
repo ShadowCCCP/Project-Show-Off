@@ -40,7 +40,8 @@ public abstract class VRAbstractButton : MonoBehaviour
         if(other.tag == "Hammer")
         {
             AnimateGlass();
-            _glassOpen = true;
+            _glassOpen = true; 
+            EventBus<GlassBrokenEvent>.Publish(new GlassBrokenEvent());
         }
     }
 
