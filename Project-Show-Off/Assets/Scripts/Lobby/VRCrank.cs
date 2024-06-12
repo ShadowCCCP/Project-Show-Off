@@ -41,6 +41,7 @@ public class VRCrank : MonoBehaviour
 
     void Update()
     {
+        preventLeverBreaking();
         updateMovementUp();
         updateMovementDown();
     }
@@ -117,6 +118,18 @@ public class VRCrank : MonoBehaviour
         if (moveDown)
         {
             transform.Translate(-0.001f, 0,0  * Time.deltaTime);
+        }
+    }
+
+    void preventLeverBreaking()
+    {
+        if (transform.position.z > collidersLevels[0].transform.position.z)
+        {
+            transform.position = collidersLevels[0].transform.position;
+        }
+        else if (transform.position.z < collidersLevels[collidersLevels.Count-1].transform.position.z)
+        {
+            transform.position = collidersLevels[collidersLevels.Count-1].transform.position;
         }
     }
 }

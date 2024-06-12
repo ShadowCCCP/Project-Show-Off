@@ -9,7 +9,25 @@ using UnityEngine.UI;
 public class JSON_Text : MonoBehaviour
 {    
     [Serializable]
-    public class Dialogue
+    public class Cat
+    {
+        public string[] Suspicious, Warning, Beaten;
+    }
+
+    [Serializable]
+    public class Parrot
+    {
+        public string[] Suspicious, Warning, Beaten;
+    }
+    
+    [Serializable]
+    public class Rat
+    {
+        public string[] Sick, Time, List, Evening, Beautiful;
+    }
+
+    [Serializable]
+    public class Alien
     {
         public string[] Suspicious, Warning, Beaten;
     }
@@ -17,20 +35,21 @@ public class JSON_Text : MonoBehaviour
     string CMGato = @"
     {
         'Intro' : [
-            'Quick, put your preferred hand in identifier on your right!',
-            'Much better... wait, weren't you banned from using the timemachine?'
+            'Quick, put your preferred hand in the identifier on your right!',
+            'Much better... wait, don\'t you know how dangerous this machine is?'
         ],
         'Unstable' : [
-            'It is really unstable, but it seems you are addicted to the thrill',
-            'You can press the buttons or pull the lever to choose a time, as you know'
+            'It\'s really unstable, but it seems you are addicted to the thrill',
+            'You can press the little buttons or pull the lever to choose a time'
         ],
         'Ready' : [
             'Saxion is not responsible if anything happens to you',
-            'So press the big red button on your own risk'
+            'So press the big red button on your own volition'
         ] 
     }";
 
-    string CMPapagayo = @"{
+    string CMPapagayo = @"
+    {
         'Suspicious' : [
             'What\'s your sword doing at the end of the plank, captain?' 
         ],
@@ -43,9 +62,12 @@ public class JSON_Text : MonoBehaviour
         ]
     }";
 
-    string CMRato = @"{
+    string CMRato = @"
+    {
         'Sick' : [
             'Michelangelo called in sick, he asked you to colour the painting',
+        ],
+        'Time' : [
             'You only have one day though, make the best out of it!'
         ],
         'List' : [
@@ -53,14 +75,33 @@ public class JSON_Text : MonoBehaviour
         ],
         'Evening' : [
             'You don\'t have much time left, put on the finishing touches'
+        ],
+        'Beautiful' : 
+        [
+            'Wow, truly remarkable.'
         ]
     }";
 
-    public Dialogue dialogue; 
+    string CMAlien = @"
+    {
+        'Broken' : [
+            'The ship\'s hull has taken some damage from the meteorite rain',
+            'You are equipped with magnetic boots, so that you won't fly off',
+            'But watch out for incoming meteorites!'
+        ]
+    }";
+
+    public Cat cat;
+    public Parrot parrot;
+    public Rat rat;
+    public Alien alien; 
 
     void Awake()
     {
-        dialogue = JsonConvert.DeserializeObject<Dialogue>(CMPapagayo);
+        cat = JsonConvert.DeserializeObject<Cat>(CMGato);
+        parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
+        rat = JsonConvert.DeserializeObject<Rat>(CMRato);
+        alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
         /*
             Example how to write it down
             myTextElement.text = dialogue.LandLubber[0];

@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     
     void OnDestroy()
     {
-        Debug.Log("gamemanger destroyed");
         EventBus<OnPlayerDeathEvent>.OnEvent -= SaveOldPosAndDeath;
     }
 
@@ -64,7 +63,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
     {
+        //reset saved position
         PositionBeforeReset = new Vector3(0, 0, 0);
+
+        //do the transition animation
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
             Debug.Log("woo fancy anim portal");
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
         {
             EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2);
 
         // Check if scene to load is in bounds and then load it...
         if (pSceneIndex <= SceneManager.sceneCountInBuildSettings && pSceneIndex >= 0)
@@ -112,10 +114,10 @@ public class GameManager : MonoBehaviour
         PositionBeforeReset = onPlayerDeathEvent.posDeath;
 
         LoadSceneSpecific(deathRoomIndex);
-        setOffsetPod(onPlayerDeathEvent.posDeath);
+        setOffsetPos(onPlayerDeathEvent.posDeath);
     }
 
-    void setOffsetPod(Vector3 deathPos)
+    void setOffsetPos(Vector3 deathPos)
     {
         
         PositionBeforeReset = new Vector3(deathPos.x, 0 , deathPos.z) ;

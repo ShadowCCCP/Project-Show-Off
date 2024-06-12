@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     void SetScreenDark(DarkenScreenEvent weldCubeEvent)
     {
+        Debug.Log("trogg anim");
         blackImg.SetTrigger("DarkenScreen");
     }
 }
