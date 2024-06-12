@@ -14,8 +14,8 @@ namespace TsukimiNeko.AnimatableVolumeComponent
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void InitializeMap()
         {
-
             Map[typeof(UnityEngine.Rendering.HighDefinition.LensDistortion)] = typeof(TsukimiNeko.AnimatableVolumeComponent.AnimatableLensDistortion);
+            Map[typeof(UnityEngine.Rendering.HighDefinition.Vignette)] = typeof(TsukimiNeko.AnimatableVolumeComponent.AnimatableVignette);
 
         }
     }
