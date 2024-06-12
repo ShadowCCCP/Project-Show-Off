@@ -1,41 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHitBox : MonoBehaviour
 {
-    [SerializeField] FencingEnemy fencingEnemy;
-    private bool _inZone;
+    [SerializeField] Transform transitionUI;
 
-    [SerializeField] float zoneTimeNeeded = 2.5f;
-    private float _timeSpentInZone = 0.0f;
+    [Tooltip("This will only be triggered if the player enters a trigger collider with the 'EnterArea' tag.")]
+    [SerializeField] Vector3 teleportTo = Vector3.zero;
 
-    private bool _initialized;
+    private bool _enteredArea;
 
-    private void Update()
+    private Animator _anim;
+
+    private void Start()
     {
-        if (_inZone) _timeSpentInZone += Time.deltaTime;
+        _anim = transitionUI.GetComponent<Animator>();
 
-        if (!_initialized && _timeSpentInZone >= zoneTimeNeeded)
-        {
-            fencingEnemy.StartIntro();
-            _initialized = true; 
-        }
+        TransitionManager.onDarkenFinished += TransportPlayer;
+    }
+
+    private void OnDestroy()
+    {
+        TransitionManager.onDarkenFinished -= TransportPlayer;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnterArea"))
+        if (!_enteredArea && other.CompareTag("EnterArea"))
         {
-            _inZone = true;
+            _enteredArea = true;
+            _anim.SetTrigger("DarkenScreen");
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void TransportPlayer()
     {
-        if (other.CompareTag("EnterArea"))
-        {
-            _inZone = false;
-        }
+        transform.parent.position = teleportTo;
+        _anim.SetTrigger("LightenScreen");
     }
 }
