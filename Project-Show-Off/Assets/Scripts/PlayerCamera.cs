@@ -34,7 +34,15 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
-        offset = GameManager.Instance.PositionBeforeReset; 
+        if (GameManager.Instance != null)
+        {
+            offset = GameManager.Instance.PositionBeforeReset;
+        }
+        else
+        {
+            Debug.Log("There is no game manager");
+        }
+ 
         //player.position = offset;
         startY = player.position.y;
     }

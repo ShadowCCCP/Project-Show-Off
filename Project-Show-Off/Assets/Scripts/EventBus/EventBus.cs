@@ -95,3 +95,12 @@ public class SetPositionOffsetEvent : Event
     public Vector3 posOffset;
 }
 
+public class SpawnWeldablesEvent : Event
+{
+    public SpawnWeldablesEvent(MetalPlaceHolder metalPlaceHolder)
+    {
+        this.metalPlaceHolder = metalPlaceHolder;
+    }
+    public MetalPlaceHolder metalPlaceHolder;
+}
+
