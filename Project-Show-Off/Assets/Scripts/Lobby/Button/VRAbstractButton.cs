@@ -23,14 +23,25 @@ public abstract class VRAbstractButton : MonoBehaviour
 
         // Get the distance in order to lerp the tween duration properly...
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
+
+        if (glass==null)
+        {
+            _glassOpen = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "RightController" || other.tag == "LeftController")
+        if ((other.tag == "RightController" || other.tag == "LeftController")&& _glassOpen )
         {
             // Move the button back...
-            AnimateButton();
+            TweenButton();
+        }
+        if(other.tag == "Hammer")
+        {
+            AnimateGlass();
+            _glassOpen = true; 
+            EventBus<GlassBrokenEvent>.Publish(new GlassBrokenEvent());
         }
     }
 

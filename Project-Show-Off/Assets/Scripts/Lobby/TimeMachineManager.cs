@@ -20,11 +20,24 @@ public class TimeMachineManager : MonoBehaviour
 
     [SerializeField]
     List<Level> levels = new List<Level>();
+
+    [SerializeField]
+    bool On = false;
+
+    void Awake()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent += TurnOnTimeMachine;
+    }
+
+    void OnDestroy()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent -= TurnOnTimeMachine;
+    }
     void Start()
     {
         if (levels.Count > 0)
         {
-            LoadLevelOnTimeMachine(0);
+            LoadLevelOnTimeMachine(4);
         }
         else
         {
@@ -52,11 +65,11 @@ public class TimeMachineManager : MonoBehaviour
     public void LoadLevelOnTimeMachine(int i)
     {
         //year and danger
-        emptytextCheck(levels[i].Year, "Year: ");
-        emptytextCheck(levels[i].Danger, "Danger: ");
+        emptytextCheck(levels[i].Year, "Year: ", yearText);
+        emptytextCheck(levels[i].Danger, "Danger: ", dangerText);
 
         //icon
-        if (levels[i].Icon.texture != null)
+        if (levels[i].Icon != null)
         {
             gameIcon.gameObject.SetActive(true);
             gameIcon.material.mainTexture = levels[i].Icon.texture;
@@ -69,20 +82,31 @@ public class TimeMachineManager : MonoBehaviour
         //button
         button.SetToGoScene(levels[i].LevelIndex);
         //
-        bigText.SetText(levels[i].BigText);
+        emptytextCheck(levels[i].BigText, "", bigText);
     }
 
-    void emptytextCheck(string text, string textYearOrDanger)
+    void emptytextCheck(string textToWrite, string textYearOrDanger, TextMeshPro textMesh)
     {
-        if (text != "")
+        if (textToWrite != "")
         {
-            yearText.text = textYearOrDanger + text;
+            textMesh.text = textYearOrDanger + textToWrite;
         }
         else
         {
-            yearText.text = " ";
+            textMesh.text = " ";
         }
     }
 
+    void TurnOnTimeMachine(GlassBrokenEvent glassBrokenEvent)
+    {
+        On = true;
+        LoadLevelOnTimeMachine(0);
+    }
+
+    public bool GetTimeMachineState()
+    {
+        return On;
+        
+    }
     
 }

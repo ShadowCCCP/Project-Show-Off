@@ -66,21 +66,6 @@ public class DarkenScreenEvent : Event
     }
 }
 
-// Fencing events...
-public class SwordGrabbed : Event
-{
-    public SwordGrabbed()
-    {
-
-    }
-}
-public class SpawnPirate : Event
-{
-    public SpawnPirate()
-    {
-
-    }
-}
 
 public class StopPlayerMovementEvent : Event
 {
@@ -109,3 +94,4 @@ public class SetPositionOffsetEvent : Event
     }
     public Vector3 posOffset;
 }
+

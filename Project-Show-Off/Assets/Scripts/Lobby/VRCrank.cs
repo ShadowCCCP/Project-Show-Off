@@ -23,19 +23,29 @@ public class VRCrank : MonoBehaviour
 
     bool minPosReached;
     bool maxPosReached;
+
+    bool timeMachineOn;
+
+    Collider leverCollider;
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;
+        EventBus<GlassBrokenEvent>.OnEvent += TimeMachineOn;
     }
 
     void OnDestroy()
     {
         EventBus<MoveCrankEvent>.OnEvent -= moveCrank;
+        EventBus<GlassBrokenEvent>.OnEvent -= TimeMachineOn;
     }
+
     void Start()
     {
        // knobRend.material.color = Color.red;
         timeMachineManager.LoadLevelOnTimeMachine(0);
+
+        leverCollider = GetComponent<Collider>();
+        leverCollider.enabled = false;
 
     }
 
@@ -89,20 +99,23 @@ public class VRCrank : MonoBehaviour
 
     void moveCrank(MoveCrankEvent moveCrankEvent)
     {
-        if (moveCrankEvent.up )
+        if (timeMachineOn)
         {
-            if (!maxPosReached)
+            if (moveCrankEvent.up)
             {
-                moveUp = true;
-                moveDown = false;
-                minPosReached = false;
+                if (!maxPosReached)
+                {
+                    moveUp = true;
+                    moveDown = false;
+                    minPosReached = false;
+                }
             }
-        }
-        else if (!minPosReached)
-        {
-            moveDown = true;
-            moveUp = false;
-            maxPosReached = false;
+            else if (!minPosReached)
+            {
+                moveDown = true;
+                moveUp = false;
+                maxPosReached = false;
+            }
         }
     }
 
@@ -129,7 +142,13 @@ public class VRCrank : MonoBehaviour
         }
         else if (transform.position.z < collidersLevels[collidersLevels.Count-1].transform.position.z)
         {
-            transform.position = collidersLevels[collidersLevels.Count-1].transform.position;
+            transform.position = new Vector3( collidersLevels[collidersLevels.Count-1].transform.position.x , transform.position.y, collidersLevels[collidersLevels.Count - 1].transform.position.z);
         }
+    }
+
+    void TimeMachineOn(GlassBrokenEvent glassBrokenEvent) 
+    {
+        timeMachineOn = true;
+        leverCollider.enabled = true;
     }
 }

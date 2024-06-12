@@ -15,18 +15,24 @@ public class HandSelection : MonoBehaviour
     [SerializeField]
     Material materialOff;
 
+    [SerializeField]
+    TimeMachineManager timeMachineManager;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "RightController"))
-        {
-            GameManager.Instance.SetDominantHand(1);
-            updateLight(1);
-        }
-        if (other.tag == "LeftController")
-        {
-            GameManager.Instance.SetDominantHand(0);
-            updateLight(0);
+        if (timeMachineManager.GetTimeMachineState())
+        {   
+            if ((other.tag == "RightController"))
+            {
+                GameManager.Instance.SetDominantHand(1);
+                updateLight(1);
+            }
+            if (other.tag == "LeftController")
+            {
+                GameManager.Instance.SetDominantHand(0);
+                updateLight(0);
+            }
         }
     }
 
