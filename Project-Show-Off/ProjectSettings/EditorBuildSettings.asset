@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Daria Scene or Looby.unity
+    path: Assets/Scenes/Looby Scene.unity
     guid: 08c782dd4866d784f9dbd5daa9ebdce2
   - enabled: 1
     path: Assets/Scenes/Playtest Scenes/FencingPlaytest.unity
