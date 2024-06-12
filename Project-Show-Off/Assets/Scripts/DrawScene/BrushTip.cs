@@ -8,10 +8,12 @@ public class BrushTip : MonoBehaviour
     private MarkerTexture _markerScript;
     private Collider _lastHit;
     private ColorPad _colorPad;
+    private Vector3 _startPosition;
 
     private void Start()
     {
         _markerScript = GetComponentInParent<MarkerTexture>();
+        _startPosition = transform.localPosition;
     }
 
     private void Update()
@@ -19,6 +21,11 @@ public class BrushTip : MonoBehaviour
         if (transform.rotation != Quaternion.identity)
         {
             transform.localRotation = Quaternion.identity;
+        }
+
+        if (transform.localPosition != _startPosition)
+        {
+            transform.localPosition = _startPosition;
         }
     }
 

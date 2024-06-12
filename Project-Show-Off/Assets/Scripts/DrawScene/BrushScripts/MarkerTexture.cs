@@ -138,9 +138,4 @@ public class MarkerTexture : MonoBehaviour
             _colors = Enumerable.Repeat(color, penSize * penSize).ToArray();
         }
     }
-
-    public bool IsPainting()
-    {
-        return _touchedLastFrame;
-    }
 }
