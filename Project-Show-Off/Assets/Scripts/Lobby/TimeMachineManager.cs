@@ -10,6 +10,8 @@ public class TimeMachineManager : MonoBehaviour
     [SerializeField]
     TextMeshPro dangerText;
     [SerializeField]
+    TextMeshPro handText;
+    [SerializeField]
     Renderer gameIcon;
     [SerializeField]
     LobbyButton button;
@@ -64,9 +66,10 @@ public class TimeMachineManager : MonoBehaviour
 
     public void LoadLevelOnTimeMachine(int i)
     {
-        //year and danger
+        //year, danger and hand
         emptytextCheck(levels[i].Year, "Year: ", yearText);
         emptytextCheck(levels[i].Danger, "Danger: ", dangerText);
+        emptytextCheck(levels[i].Hand, "Dominant hand: ", handText);
 
         //icon
         if (levels[i].Icon != null)

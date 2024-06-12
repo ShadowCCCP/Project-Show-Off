@@ -16,4 +16,6 @@ MonoBehaviour:
   LevelIndex: 3
   Icon: {fileID: 21300000, guid: 7e0f37ac34c1c2f45a8005879cff4288, type: 3}
   Year: 2456
-  Danger: Intermediate
+  Danger: Medium
+  Hand: 
+  BigText: 
