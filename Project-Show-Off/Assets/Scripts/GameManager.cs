@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(pSceneIndex);
         }
-        else { Debug.LogError("GameManager: Scene index " + pSceneIndex + " is invalid"); }
+        else { Debug.Log("GameManager: Scene index " + pSceneIndex + " is invalid"); }
     }
 
     IEnumerator LoadSceneNextRoutine()
