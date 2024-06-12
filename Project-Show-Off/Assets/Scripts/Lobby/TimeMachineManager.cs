@@ -13,6 +13,8 @@ public class TimeMachineManager : MonoBehaviour
     Renderer gameIcon;
     [SerializeField]
     LobbyButton button;
+    [SerializeField]
+    TextMeshPro bigText;
 
     int currentLevelIndex = 0;
 
@@ -49,10 +51,37 @@ public class TimeMachineManager : MonoBehaviour
 
     public void LoadLevelOnTimeMachine(int i)
     {
-        yearText.text = "Year: " + levels[i].Year;
-        dangerText.text = "Danger: "  +levels[i].Danger; 
-        gameIcon.material.mainTexture = levels[i].Icon.texture;
+        //year and danger
+        emptytextCheck(levels[i].Year, "Year: ");
+        emptytextCheck(levels[i].Danger, "Danger: ");
+
+        //icon
+        if (levels[i].Icon.texture != null)
+        {
+            gameIcon.gameObject.SetActive(true);
+            gameIcon.material.mainTexture = levels[i].Icon.texture;
+        }
+        else
+        {
+            gameIcon.gameObject.SetActive(false);
+        }
+
+        //button
         button.SetToGoScene(levels[i].LevelIndex);
+        //
+        bigText.SetText(levels[i].BigText);
+    }
+
+    void emptytextCheck(string text, string textYearOrDanger)
+    {
+        if (text != "")
+        {
+            yearText.text = textYearOrDanger + text;
+        }
+        else
+        {
+            yearText.text = " ";
+        }
     }
 
     
