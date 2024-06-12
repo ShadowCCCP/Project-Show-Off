@@ -17,17 +17,17 @@ public class JSON_Text : MonoBehaviour
     string CMGato = @"
     {
         'Intro' : [
-            'Quick, put your preferred hand in identifier on your right!'
+            'Quick, put your preferred hand in identifier on your right!',
+            'Much better... wait, weren't you banned from using the timemachine?'
         ],
-        'Terms' : [
-            'I assume you read the term of conditions? ..>',
-            'tldr: Saxion is not responsible'
+        'Unstable' : [
+            'It is really unstable, but it seems you are addicted to the thrill',
+            'You can press the buttons or pull the lever to choose a time, as you know'
         ],
-        'Painting' : [
-            'If you want your painting there ..>',
-            'Go to the year 1300!'
-        ]
-        
+        'Ready' : [
+            'Saxion is not responsible if anything happens to you',
+            'So press the big red button on your own risk'
+        ] 
     }";
 
     string CMPapagayo = @"{
@@ -45,14 +45,14 @@ public class JSON_Text : MonoBehaviour
 
     string CMRato = @"{
         'Sick' : [
-            'Michelangelo called in sick, he asked you to colour the painting.',
+            'Michelangelo called in sick, he asked you to colour the painting',
             'You only have one day though, make the best out of it!'
         ],
         'List' : [
-            'The client made a list of things NOT to include, take a look.' 
+            'The client made a list of things NOT to include, take a look' 
         ],
         'Evening' : [
-            'You don\'t have much time left, put on the finishing touches.'
+            'You don\'t have much time left, put on the finishing touches'
         ]
     }";
 
