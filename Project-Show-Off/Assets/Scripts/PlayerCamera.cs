@@ -45,6 +45,7 @@ public class PlayerCamera : MonoBehaviour
         //check for falling
         playerFallingCheck();
 
+
         //keep the correct rotation
         transform.rotation = VRCamera.transform.rotation;
 
@@ -60,7 +61,8 @@ public class PlayerCamera : MonoBehaviour
             if (falling == false)
             {
                 falling = true;
-                doFallingBeforeDeath();
+
+                StartCoroutine( beforeDeathTimer());
             }
         }
         else
@@ -78,6 +80,7 @@ public class PlayerCamera : MonoBehaviour
 
         }
     }
+
     void playerPhysicsCheck()
     {
         if (!playerPhysics)
@@ -103,9 +106,11 @@ public class PlayerCamera : MonoBehaviour
         playerPhysics = false;
     }
 
-    void doFallingBeforeDeath()
+    IEnumerator beforeDeathTimer()
     {
         Debug.Log("You have fallen");
+        yield return new WaitForSeconds(1);
+
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
     }
 
