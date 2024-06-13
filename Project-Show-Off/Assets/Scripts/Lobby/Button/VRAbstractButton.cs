@@ -50,8 +50,8 @@ public abstract class VRAbstractButton : MonoBehaviour
         // Open glass...
         if (!_glassOpen && glass)
         {
-            AnimateGlass();
-            _glassOpen = true;
+           // AnimateGlass();
+           // _glassOpen = true;
         }
         // Press button default..
         else { TweenButton(); }

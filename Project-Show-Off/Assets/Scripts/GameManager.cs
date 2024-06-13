@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void SetDominantHand(int pDominatHand)
     {
         Debug.Log("Changed hand");
+        EventBus<ChangeHandEvent>.Publish(new ChangeHandEvent());
         dominantHand = pDominatHand;
     }
 
@@ -122,7 +123,6 @@ public class GameManager : MonoBehaviour
         
         PositionBeforeReset = new Vector3(deathPos.x, 0 , deathPos.z) ;
         Debug.Log(PositionBeforeReset);
-        //controllers
     }
 
 }

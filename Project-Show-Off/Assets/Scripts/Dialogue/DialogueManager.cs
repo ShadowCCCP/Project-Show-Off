@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using static DialogueManager;
-//using static JSON_Text;
 
 public partial class DialogueManager : MonoBehaviour
 {
@@ -14,12 +13,14 @@ public partial class DialogueManager : MonoBehaviour
 
     [Tooltip("If true touching the animal no longer works")]
     [SerializeField]
-    bool isTimed;
+    bool isTimed; 
+    //onevents only
 
     [SerializeField]
     float timeBetweenText;
 
     enum CompanionCMGT { CMGato, CMPapagayo, CMRato, CMAlien }
+
 
     [SerializeField]
     CompanionCMGT companion;
@@ -33,15 +34,8 @@ public partial class DialogueManager : MonoBehaviour
         parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
         rat = JsonConvert.DeserializeObject<Rat>(CMRato);
         alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
-        
-        EventBus<LeverActivatedEvent>.OnEvent += triggerLeverDialogue;
-        EventBus<GlassBrokenEvent>.OnEvent += triggerBrokenGlassDialogue;
-    }
 
-    void OnDestroy()
-    {
-        EventBus<LeverActivatedEvent>.OnEvent -= triggerLeverDialogue;
-        EventBus<GlassBrokenEvent>.OnEvent -= triggerBrokenGlassDialogue;
+       // cat.Beaten[0]
     }
 
     // Start is called before the first frame update
@@ -51,11 +45,13 @@ public partial class DialogueManager : MonoBehaviour
         {
             StartCoroutine(timedDialogue());
         }
+        StartCoroutine(goThroughQueue());
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.V))
         {
             startMainDialogue(dialogueProgress);
@@ -84,14 +80,7 @@ public partial class DialogueManager : MonoBehaviour
        // }
     }
 
-    void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
-    {
-       // textBubble.text = dialogue.BrokenGlass[0];
-    }
-    void triggerLeverDialogue(LeverActivatedEvent leverActivatedEvent)
-    {
-        //textBubble.text = dialogue.Lever[0];
-    }
+
 
     
     IEnumerator timedDialogue()
@@ -103,6 +92,47 @@ public partial class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenText);
             StartCoroutine(timedDialogue());
        // }
+    }
+
+    public IEnumerator doDelayedDialogue(float time, string text)
+    {
+        yield return new WaitForSeconds(time);
+
+        textBubble.text = text;
+    }
+
+
+    public void Speak(float time ,string text)
+    {
+        Debug.Log("speak: " + text);
+        StartCoroutine(doDelayedDialogue(time, text));
+    }
+
+    List<string> queue = new List<string>();
+
+    public void queueUpDialogue(string text)
+    {
+        queue.Add(text);
+    }
+
+    IEnumerator goThroughQueue()
+    {
+        if(queue.Count > 0)
+        {
+            yield return new WaitForSeconds(timeBetweenText);
+            Speak(0,queue[0]);
+            queue.RemoveAt(0);
+        }
+
+        yield return null;
+        
+
+        StartCoroutine(goThroughQueue());
+    }
+
+    public void ClearQueue()
+    {
+        queue.Clear();
     }
 }
 

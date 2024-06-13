@@ -8,22 +8,27 @@ using UnityEngine.UI;
 
 public partial class DialogueManager : MonoBehaviour
 {    
-    public class Cat
+    public abstract class CARP
     {
-        public string[] Suspicious, Warning, Beaten;
+
+    }
+    public class Cat : CARP
+    {
+        public string[] Intro, Unstable, Ready;
+
     }
 
-    public class Parrot
+    public class Parrot : CARP
     {
         public string[] Suspicious, Warning, Beaten;
     }
     
-    public class Rat
+    public class Rat : CARP
     {
         public string[] Sick, Time, List, Evening, Beautiful;
     }
 
-    public class Alien
+    public class Alien : CARP
     {
         public string[] Suspicious, Warning, Beaten;
     }

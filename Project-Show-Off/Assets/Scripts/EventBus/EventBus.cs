@@ -15,14 +15,6 @@ public class EventBus<T> where T : Event
     }
 }
 
-public class LeverActivatedEvent : Event  
-{
-    public LeverActivatedEvent()
-    {
-
-    }
-}
-
 public class GlassBrokenEvent : Event
 {
     public GlassBrokenEvent()
@@ -104,3 +96,18 @@ public class SpawnWeldablesEvent : Event
     public MetalPlaceHolder metalPlaceHolder;
 }
 
+public class ChangeHandEvent : Event
+{
+    public ChangeHandEvent()
+    {
+
+    }
+}
+
+public class OnLevelSelectedOnTMEvent : Event
+{
+    public OnLevelSelectedOnTMEvent()
+    {
+
+    }
+}
