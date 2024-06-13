@@ -1675,12 +1675,12 @@ PrefabInstance:
     - target: {fileID: 1455975508945054600, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.316
+      value: -1.111
       objectReference: {fileID: 0}
     - target: {fileID: 1455975508945054600, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.057
+      value: 5.798
       objectReference: {fileID: 0}
     - target: {fileID: 1455975508945054600, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
         type: 3}
@@ -1727,6 +1727,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlternativeBrush
       objectReference: {fileID: 0}
+    - target: {fileID: 6553459638706154915, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      propertyPath: paintSplashVFX
+      value: 
+      objectReference: {fileID: 7873719125646550967, guid: e4bc490a861e207409b29e4335c4d1d4,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

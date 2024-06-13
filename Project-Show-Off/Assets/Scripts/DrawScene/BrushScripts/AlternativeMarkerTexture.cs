@@ -145,8 +145,13 @@ public class MarkerTextureAlternative : MonoBehaviour
 
     public void InstantiateSplash(Vector3 pPos, ColorMatcher.Colors pColor)
     {
-        GameObject colorSplashObj = Instantiate(paintSplashVFX, pPos, Quaternion.identity, null);
-        ParticleSystem cSplash = colorSplashObj.GetComponent<ParticleSystem>();
-        cSplash.startColor = GetColorOfTexture(colorMatcher.GetDrawMaterial(pColor)); 
+        Color color = GetColorOfTexture(colorMatcher.GetDrawMaterial(pColor));
+
+        if (color != _colors[0])
+        {
+            GameObject colorSplashObj = Instantiate(paintSplashVFX, pPos, Quaternion.identity, null);
+            ParticleSystem cSplash = colorSplashObj.GetComponent<ParticleSystem>();
+            cSplash.startColor = color;
+        }
     }
 }

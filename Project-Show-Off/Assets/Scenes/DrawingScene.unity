@@ -1814,14 +1814,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Whiteboard
       objectReference: {fileID: 0}
+    - target: {fileID: 8028751892915658343, guid: d133dc67ecb3ab3488d68b003abaf43a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5297217955415695622, guid: d133dc67ecb3ab3488d68b003abaf43a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d133dc67ecb3ab3488d68b003abaf43a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
