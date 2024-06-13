@@ -103,7 +103,7 @@ public partial class DialogueManager : MonoBehaviour
     {
         'Broken' : [
             'The ship\'s hull has taken some damage from the meteorite rain',
-            'You are equipped with magnetic boots, so that you won't fly off',
+            'You are equipped with magnetic boots, so that you won\'t fly off',
             'But watch out for incoming meteorites!'
         ]
     }";
