@@ -76,6 +76,11 @@ public class TimeMachineManager : MonoBehaviour
         {
             gameIcon.gameObject.SetActive(true);
             gameIcon.material.mainTexture = levels[i].Icon.texture;
+
+
+            //on level selecet to updated dialogue 
+            // only if an icon is present the level is an actual level
+            EventBus<OnLevelSelectedOnTMEvent>.Publish(new OnLevelSelectedOnTMEvent());
         }
         else
         {

@@ -21,7 +21,7 @@ public class VRLever : MonoBehaviour
         if((transform.rotation.eulerAngles.x > minActiveLever && transform.rotation.eulerAngles.x < maxActiveLever) || (transform.rotation.eulerAngles.x < 360-minActiveLever && transform.rotation.eulerAngles.x > 360-maxActiveLever) )
         {
             Debug.Log("dp left hand or right hand");
-            EventBus<LeverActivatedEvent>.Publish(new LeverActivatedEvent());
+            //EventBus<LeverActivatedEvent>.Publish(new LeverActivatedEvent());
         }
     }
 }

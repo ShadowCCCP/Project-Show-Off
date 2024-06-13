@@ -807,6 +807,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -91.003, y: -90.00101, z: -89.99899}
+--- !u!114 &530471853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 599906019357943094, guid: 7625570f22e79504e8e4488df641f2d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5301710834627314038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16fcded8a2d9e442adbaefdefd81c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &600844051
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &702214323
 Transform:
   m_ObjectHideFlags: 0
@@ -3358,6 +3370,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 223041257172157439, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.086
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349899382903263384, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251675989200157622, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: timeMachineManager
+      value: 
+      objectReference: {fileID: 530471853}
     - target: {fileID: 2380049729166692729, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3582,6 +3609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7163555417908173351}
   - component: {fileID: 7503523775586861214}
+  - component: {fileID: 7503523775586861215}
   m_Layer: 0
   m_Name: Parrot
   m_TagString: Untagged
@@ -3603,8 +3631,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1968792108}
   isTimed: 1
-  timeBetweenText: 1
+  timeBetweenText: 5
   companion: 0
+--- !u!114 &7503523775586861215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503523775586861213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fef6a426bdeaf54b830e794f039bf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alarm: {fileID: 702214322}
 --- !u!1 &7615186386525006765
 GameObject:
   m_ObjectHideFlags: 0

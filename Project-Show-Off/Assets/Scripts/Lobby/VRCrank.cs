@@ -138,7 +138,7 @@ public class VRCrank : MonoBehaviour
     {
         if (transform.position.z > collidersLevels[0].transform.position.z)
         {
-            transform.position = collidersLevels[0].transform.position;
+            transform.position = new Vector3(collidersLevels[0].transform.position.x, transform.position.y, collidersLevels[0].transform.position.z) ;
         }
         else if (transform.position.z < collidersLevels[collidersLevels.Count-1].transform.position.z)
         {
