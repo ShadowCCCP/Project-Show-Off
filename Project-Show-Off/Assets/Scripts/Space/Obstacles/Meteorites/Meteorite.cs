@@ -20,7 +20,7 @@ public class Meteorite : MonoBehaviour
 
     IEnumerator lifeTime()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
     private void OnCollisionEnter(Collision collision)

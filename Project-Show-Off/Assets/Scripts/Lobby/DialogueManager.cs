@@ -11,29 +11,21 @@ public partial class DialogueManager : MonoBehaviour
     //text dsspapera
     [SerializeField]
     TextMeshPro textBubble;
-    public class Dialogue
-    {
-        public string[] MainDialogue, BrokenGlass, Lever, Attack;
-    }
 
-    Dialogue dialogue;
+    [Tooltip("If true touching the animal no longer works")]
+    [SerializeField]
+    bool isTimed;
+
+    [SerializeField]
+    float timeBetweenText;
+
+    enum CompanionCMGT { CMGato, CMPapagayo, CMRato, CMAlien }
+
+    [SerializeField]
+    CompanionCMGT companion;
 
     int dialogueProgress = 0;
 
-    /*string CMPapagayo = @"{
-        'MainDialogue' : [
-            'hello!', 'i m saying this', 'wee woo wwee woo'
-        ],
-        'BrokenGlass' : [
-            'Watch your left!'
-        ],
-        'Lever' : [
-            'Right handed jonguh', 'Left handed jonguh'
-        ],
-        'Attack' : [
-            'His guard is down. Attack!'
-        ]
-    }";*/
 
     void Awake()
     {   
@@ -55,7 +47,10 @@ public partial class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogue = JsonConvert.DeserializeObject<Dialogue>(CMPapagayo);
+        if (isTimed)
+        {
+            StartCoroutine(timedDialogue());
+        }
     }
 
     // Update is called once per frame
@@ -70,29 +65,44 @@ public partial class DialogueManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Controller")
+        if (!isTimed)
         {
-            startMainDialogue(dialogueProgress);
-            dialogueProgress++;
+            if (other.tag == "RightController" || other.tag == "LeftController")
+            {
+                startMainDialogue(dialogueProgress);
+                dialogueProgress++;
+            }
         }
     }
 
     void startMainDialogue(int i)
     {
 
-        if (dialogue.MainDialogue.Length > i)
-        {
-            textBubble.text = dialogue.MainDialogue[i];
-        }
+       //// if (dialogue.MainDialogue.Length > i)
+       // {
+            //textBubble.text = dialogue.MainDialogue[i];
+       // }
     }
 
-    public void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
+    void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
     {
-        textBubble.text = dialogue.BrokenGlass[0];
+       // textBubble.text = dialogue.BrokenGlass[0];
     }
-    public void triggerLeverDialogue(LeverActivatedEvent leverActivatedEvent)
+    void triggerLeverDialogue(LeverActivatedEvent leverActivatedEvent)
     {
-        textBubble.text = dialogue.Lever[0];
+        //textBubble.text = dialogue.Lever[0];
+    }
+
+    
+    IEnumerator timedDialogue()
+    {
+       // if (dialogue.MainDialogue.Length > dialogueProgress)
+       // {
+            startMainDialogue(dialogueProgress);
+            dialogueProgress++;
+            yield return new WaitForSeconds(timeBetweenText);
+            StartCoroutine(timedDialogue());
+       // }
     }
 }
 

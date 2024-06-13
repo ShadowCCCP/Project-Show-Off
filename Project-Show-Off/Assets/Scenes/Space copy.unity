@@ -3066,7 +3066,7 @@ MonoBehaviour:
   - {fileID: 338843061}
   - {fileID: 1482855447}
   - {fileID: 1543333473}
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 3
   direction: {x: 1, y: -0.25, z: 0}
   speed: 10
 --- !u!198 &1568372251 stripped

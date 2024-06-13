@@ -8,25 +8,21 @@ using UnityEngine.UI;
 
 public partial class DialogueManager : MonoBehaviour
 {    
-    [Serializable]
     public class Cat
     {
         public string[] Suspicious, Warning, Beaten;
     }
 
-    [Serializable]
     public class Parrot
     {
         public string[] Suspicious, Warning, Beaten;
     }
     
-    [Serializable]
     public class Rat
     {
         public string[] Sick, Time, List, Evening, Beautiful;
     }
 
-    [Serializable]
     public class Alien
     {
         public string[] Suspicious, Warning, Beaten;
@@ -53,6 +49,14 @@ public partial class DialogueManager : MonoBehaviour
       If the lever is moved to a level CMgaTo will say 'Ready'. 
     */ 
 
+    /*
+     * on glass break -> alarm 
+     * cmgato after alarm = intro (1 sec delay)
+     * on first hand swtch -> alarm off and gat Unstable
+     * on level switch _> ready
+     * 
+     */
+
     string CMPapagayo = @"
     {
         'Suspicious' : [
@@ -73,6 +77,11 @@ public partial class DialogueManager : MonoBehaviour
         will stay on screen like 6(?) seconds.
         After the pirate has been beaten CMPapagayo will say 'Beaten'
     */
+
+    /* on scene start (1 sec delay) - Suspicous 
+     * on sword picup - Warning (6 sec on screem) - Warning
+     * on pirate defeat  - Beaten
+     */
 
     string CMRato = @"
     {
@@ -99,14 +108,27 @@ public partial class DialogueManager : MonoBehaviour
         After the player picks up the pencil CMRato will say 'Time'
     */
 
+     /* on scene start - Sick
+     *  on pencil picup - Time
+     *  on time almost out - Evening
+     *  on paint done - Beautiful
+     *  
+     *  list?
+     */
+
     string CMAlien = @"
     {
         'Broken' : [
             'The ship\'s hull has taken some damage from the meteorite rain',
-            'You are equipped with magnetic boots, so that you won't fly off',
+            'You are equipped with magnetic boots, so that you won\'t fly off',
             'But watch out for incoming meteorites!'
         ]
     }";
+
+    /*
+     * 
+     * 
+     */
 
     public Cat cat;
     public Parrot parrot;
