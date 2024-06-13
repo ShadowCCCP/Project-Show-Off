@@ -71,11 +71,8 @@ public class PlayerSword : MonoBehaviour
         {
             _resetTimePassed += Time.deltaTime;
 
-            Debug.Log("Passed: " + _resetTimePassed + "\nTill: " + timeUntilReset);
-
             if (_resetTimePassed >= timeUntilReset)
             {
-                Debug.Log("Jahooo");
                 ResetPosition();
                 _resetTimerActive = false;
             }
@@ -126,7 +123,6 @@ public class PlayerSword : MonoBehaviour
 
     private void SwordLost(SelectExitEventArgs args)
     {
-        Debug.Log("Lost");
         _resetTimerActive = true;
         _rb.useGravity = true;
     }

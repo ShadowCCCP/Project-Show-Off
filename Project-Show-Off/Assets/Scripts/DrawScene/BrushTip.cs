@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class BrushTip : MonoBehaviour
 {
-    private MarkerTexture _markerScript;
+    private MarkerTextureAlternative _markerScript;
     private Collider _lastHit;
     private ColorPad _colorPad;
     private Vector3 _startPosition;
 
     private void Start()
     {
-        _markerScript = GetComponentInParent<MarkerTexture>();
+        _markerScript = GetComponentInParent<MarkerTextureAlternative>();
         _startPosition = transform.localPosition;
     }
 
@@ -40,6 +37,7 @@ public class BrushTip : MonoBehaviour
             }
 
             _markerScript.ChangeColor(_colorPad.GetColor());
+            _markerScript.InstantiateSplash(transform.position, _colorPad.GetColor());
         }
     }
 }
