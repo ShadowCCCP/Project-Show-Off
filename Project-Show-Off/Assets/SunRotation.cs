@@ -15,7 +15,7 @@ public class SunRotation : MonoBehaviour
         gameObject.transform.Rotate(0, rotation, 0);
         totalRotation += rotation;
 
-        if(totalRotation >= 180)
+        if(totalRotation >= targetRotation)
         {
             this.enabled = false;
         }       
