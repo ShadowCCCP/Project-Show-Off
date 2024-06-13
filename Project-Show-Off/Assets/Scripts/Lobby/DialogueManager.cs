@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using static DialogueManager;
-using static JSON_Text;
+//using static JSON_Text;
 
-public class DialogueManager : MonoBehaviour
+public partial class DialogueManager : MonoBehaviour
 {
     //text dsspapera
     [SerializeField]
@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     int dialogueProgress = 0;
 
-    string CMPapagayo = @"{
+    /*string CMPapagayo = @"{
         'MainDialogue' : [
             'hello!', 'i m saying this', 'wee woo wwee woo'
         ],
@@ -33,10 +33,15 @@ public class DialogueManager : MonoBehaviour
         'Attack' : [
             'His guard is down. Attack!'
         ]
-    }";
+    }";*/
 
     void Awake()
     {   
+        cat = JsonConvert.DeserializeObject<Cat>(CMGato);
+        parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
+        rat = JsonConvert.DeserializeObject<Rat>(CMRato);
+        alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
+        
         EventBus<LeverActivatedEvent>.OnEvent += triggerLeverDialogue;
         EventBus<GlassBrokenEvent>.OnEvent += triggerBrokenGlassDialogue;
     }

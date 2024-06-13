@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.UI;
 
-public class JSON_Text : MonoBehaviour
+public partial class DialogueManager : MonoBehaviour
 {    
     [Serializable]
     public class Cat
@@ -47,6 +47,11 @@ public class JSON_Text : MonoBehaviour
             'So press the big red button on your own volition'
         ] 
     }";
+    /*The player picks up the hammer and when he smashes the glass the alarm goes off
+      First the alarm goes off (enable alarm lights gameobject) and after like 1 sec CMGaTo will say 'Intro'.
+      After player put their hand in the hole disable the alarm gameobject and CMGaTo starts 'Unstable'
+      If the lever is moved to a level CMgaTo will say 'Ready'. 
+    */ 
 
     string CMPapagayo = @"
     {
@@ -61,6 +66,13 @@ public class JSON_Text : MonoBehaviour
             'Good job! He stood no chance against your swordmanship!'
         ]
     }";
+
+    /*
+        After like 1 sec when the scene starts CMPapagayo will say 'Suspicious' which will stay
+        on screen untill the player picks up the sword, then CMPapagayo will say 'Warning' which 
+        will stay on screen like 6(?) seconds.
+        After the pirate has been beaten CMPapagayo will say 'Beaten'
+    */
 
     string CMRato = @"
     {
@@ -82,6 +94,11 @@ public class JSON_Text : MonoBehaviour
         ]
     }";
 
+    /*
+        1 sec after the scene starts CMRato will say 'Sick'
+        After the player picks up the pencil CMRato will say 'Time'
+    */
+
     string CMAlien = @"
     {
         'Broken' : [
@@ -96,7 +113,7 @@ public class JSON_Text : MonoBehaviour
     public Rat rat;
     public Alien alien; 
 
-    void Awake()
+    /*void Awake()
     {
         cat = JsonConvert.DeserializeObject<Cat>(CMGato);
         parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
@@ -108,6 +125,6 @@ public class JSON_Text : MonoBehaviour
             
             or if you use my function
             ProgressText(dialogue.Landlubber (stringarray), TMP_text element (optional), line Number (optional))
-        */
-    }    
+        
+    }   */ 
 }
