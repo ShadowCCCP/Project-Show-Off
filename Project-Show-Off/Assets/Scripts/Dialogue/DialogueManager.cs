@@ -25,7 +25,6 @@ public partial class DialogueManager : MonoBehaviour
     [SerializeField]
     CompanionCMGT companion;
 
-    int dialogueProgress = 0;
 
 
     void Awake()
@@ -34,29 +33,17 @@ public partial class DialogueManager : MonoBehaviour
         parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
         rat = JsonConvert.DeserializeObject<Rat>(CMRato);
         alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
-
-       // cat.Beaten[0]
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (isTimed)
-        {
-            StartCoroutine(timedDialogue());
-        }
         StartCoroutine(goThroughQueue());
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            startMainDialogue(dialogueProgress);
-            dialogueProgress++;
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,34 +52,15 @@ public partial class DialogueManager : MonoBehaviour
         {
             if (other.tag == "RightController" || other.tag == "LeftController")
             {
-                startMainDialogue(dialogueProgress);
-                dialogueProgress++;
+                //startMainDialogue(dialogueProgress);
+                //dialogueProgress++;
             }
         }
-    }
-
-    void startMainDialogue(int i)
-    {
-
-       //// if (dialogue.MainDialogue.Length > i)
-       // {
-            //textBubble.text = dialogue.MainDialogue[i];
-       // }
     }
 
 
 
     
-    IEnumerator timedDialogue()
-    {
-       // if (dialogue.MainDialogue.Length > dialogueProgress)
-       // {
-            startMainDialogue(dialogueProgress);
-            dialogueProgress++;
-            yield return new WaitForSeconds(timeBetweenText);
-            StartCoroutine(timedDialogue());
-       // }
-    }
 
     public IEnumerator doDelayedDialogue(float time, string text)
     {

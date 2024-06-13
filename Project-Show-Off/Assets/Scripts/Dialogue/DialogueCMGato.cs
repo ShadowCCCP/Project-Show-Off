@@ -47,12 +47,6 @@ public class DialogueCMGato : MonoBehaviour
         levelSwitch = dialogueManager.cat.Ready;
 
     }
-
-
-    void Update()
-    {
-        
-    }
    
     void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
     {
