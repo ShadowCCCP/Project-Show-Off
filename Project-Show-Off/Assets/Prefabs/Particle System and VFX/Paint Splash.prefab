@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}
       propertyPath: stopAction
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5605111772336186366, guid: 1e84b64627dae564aac3f19186e8f326,
         type: 3}

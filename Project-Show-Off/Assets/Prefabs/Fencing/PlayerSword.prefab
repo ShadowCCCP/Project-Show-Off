@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSparks: {fileID: 1628377026703658363, guid: 12b4d6113d53b204aaea40a86ea14899,
     type: 3}
+  timeUntilReset: 2.5
 --- !u!114 &6766309813229711537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 3
 --- !u!114 &7289447556381039723
 MonoBehaviour:

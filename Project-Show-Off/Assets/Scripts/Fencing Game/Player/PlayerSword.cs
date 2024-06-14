@@ -81,7 +81,6 @@ public class PlayerSword : MonoBehaviour
 
     private void ResetPosition()
     {
-        Debug.Log("Reset");
         transform.position = _startPos;
         transform.rotation = _startRot;
 
