@@ -787,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0bcece33e02fe4191751e8e6d73896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yRotation: 1
+  yRotationspeed: 1
 --- !u!1 &791861423
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,6 +3974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'XR Origin (VR) '
       objectReference: {fileID: 0}
+    - target: {fileID: 8733436670027641867, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4555,7 +4560,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1157118555686244805, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1343649862721623020, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6691193433786294122, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -4724,6 +4737,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1968792108}
+  isTimed: 0
+  timeBetweenText: 0
+  companion: 0
 --- !u!1 &7615186386525006765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,6 +4797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBubble: {fileID: 1968792108}
+  isTimed: 0
+  timeBetweenText: 0
+  companion: 0
 --- !u!54 &7796320893152671057
 Rigidbody:
   m_ObjectHideFlags: 0
