@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelName: Paint
   LevelIndex: 2
-  Icon: {fileID: 21300000, guid: fdfd2287574402b4aae077858c961262, type: 3}
+  Icon: {fileID: 21300000, guid: 15b84078c59a8e646813f46479b9a95a, type: 3}
   Year: 1238
   Danger: Low
+  Hand: 
   BigText: 

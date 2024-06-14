@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelName: Space
   LevelIndex: 3
-  Icon: {fileID: 21300000, guid: 7e0f37ac34c1c2f45a8005879cff4288, type: 3}
+  Icon: {fileID: 21300000, guid: f68992f97ca68324eb30c0aebb43d1e3, type: 3}
   Year: 2456
   Danger: Medium
   Hand: 
