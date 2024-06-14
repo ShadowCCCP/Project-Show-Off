@@ -22,12 +22,13 @@ public class SoundPlayer : MonoBehaviour
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
 
-            _audioSource.loop = loop;
-            _audioSource.spatialBlend = spatialBlend;
-
             if (ClipCount() > 0) { SetClip(0); }
             else { Debug.LogError(GetHierarchy() + "\nSoundPlayer: No audioClips attached to the script."); }
         }
+
+        _audioSource.loop = loop;
+        _audioSource.spatialBlend = spatialBlend;
+        _audioSource.volume = volume;
     }
 
     private void Start()
