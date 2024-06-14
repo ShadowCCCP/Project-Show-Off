@@ -315,9 +315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63131bd52110840459df8a22ea812953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBubble: {fileID: 0}
-  isTimed: 0
-  timeBetweenText: 0
+  textBubble: {fileID: 1968792108}
+  isTimed: 1
+  timeBetweenText: 5
   companion: 0
 --- !u!114 &127208142
 MonoBehaviour:
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fef6a426bdeaf54b830e794f039bf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarm: {fileID: 0}
+  alarm: {fileID: 702214322}
 --- !u!1 &148298885
 GameObject:
   m_ObjectHideFlags: 0

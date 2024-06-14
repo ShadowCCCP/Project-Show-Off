@@ -7,9 +7,6 @@ public class DialogueCMPapaGayo : MonoBehaviour
 {
     DialogueManager dialogueManager;
 
-    [SerializeField]
-    GameObject alarm;
-
     string[] sceneStart;
     string[] swordPickup;
     string[] pirateDefeat;

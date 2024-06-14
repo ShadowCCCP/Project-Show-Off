@@ -237,6 +237,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Pirate falls into water...
             else if (_currentFightStage <= -stageMaxCount || (_decisiveCount >= decisiveTurn && _gotHit))
             {
+                EventBus<OnPirateDefeatedEvent>.Publish(new OnPirateDefeatedEvent());
+
                 // Make pirate fall off the plank and destroy gameObject after some time...
                 _anim.SetBool("WaterFall", true);
                 StartCoroutine(DestroyAfterDelay());

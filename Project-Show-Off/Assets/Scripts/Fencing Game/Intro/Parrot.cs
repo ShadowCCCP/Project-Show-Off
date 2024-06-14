@@ -38,12 +38,12 @@ public class Parrot : MonoBehaviour
         // Play intro sound...
         StartCoroutine(PlayIntro());
 
-        PlayerSword.onSwordGrabbed += QueueInPirateSpawn;
+        EventBus<OnSwordPickupEvent>.OnEvent += QueueInPirateSpawn;
     }
 
     private void OnDestroy()
     {
-        PlayerSword.onSwordGrabbed -= QueueInPirateSpawn;
+        EventBus<OnSwordPickupEvent>.OnEvent -= QueueInPirateSpawn;
     }
 
     private void Update()
@@ -81,7 +81,7 @@ public class Parrot : MonoBehaviour
         }
     }
 
-    private void QueueInPirateSpawn()
+    private void QueueInPirateSpawn(OnSwordPickupEvent onSwordPickupEvent)
     {
         if (!_pirateSpawned)
         {

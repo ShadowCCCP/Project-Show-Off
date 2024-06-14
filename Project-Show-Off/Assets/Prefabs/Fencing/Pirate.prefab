@@ -1099,7 +1099,8 @@ MonoBehaviour:
   walkDistance: 0.6
   walkTime: 1.5
   stageMaxCount: 3
-  idleTime: 3
+  decisiveTurn: 6
+  idleTime: 2.5
   stunTime: 5
   counteredSpeedMultiplier: 1.4
 --- !u!114 &2968789941347894560

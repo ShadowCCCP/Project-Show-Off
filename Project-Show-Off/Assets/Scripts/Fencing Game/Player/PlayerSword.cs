@@ -19,7 +19,6 @@ public class PlayerSword : MonoBehaviour
     
 
     public static event Action onSwordHit;
-    public static event Action onSwordGrabbed;
 
     private Rigidbody _rb;
     private XRGrabInteractable _gInteractable;
@@ -109,7 +108,7 @@ public class PlayerSword : MonoBehaviour
 
     private void SwordGrabbed(SelectEnterEventArgs args)
     {
-        if (onSwordGrabbed != null) { onSwordGrabbed(); }
+        EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
 
         // Reset timer...
         _resetTimerActive = false;

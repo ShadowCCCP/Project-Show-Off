@@ -68,13 +68,9 @@ public class GameManager : MonoBehaviour
         PositionBeforeReset = new Vector3(0, 0, 0);
 
         //do the transition animation
-        if (SceneManager.GetActiveScene().buildIndex == 0) 
+        if (pSceneIndex >= 0) 
         {
             Debug.Log("woo fancy anim portal");
-            EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
-        }
-        else
-        {
             EventBus<DarkenScreenEvent>.Publish(new DarkenScreenEvent());
         }
         yield return new WaitForSeconds(2);
