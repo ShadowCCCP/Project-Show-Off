@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 767013997817655635}
   - component: {fileID: 7919384770509810046}
   - component: {fileID: 6354844346276652543}
-  m_Layer: 0
+  - component: {fileID: 1983805990393332107}
+  m_Layer: 6
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,6 +156,28 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 3
+--- !u!64 &1983805990393332107
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415394080796679995}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4805439358302070298, guid: 7e9ebfa37747e0a4185ff42f137ca8e8, type: 3}
 --- !u!1 &3526825857623394308
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +244,8 @@ MonoBehaviour:
     - {fileID: 2800000, guid: f49b188431af4a548b51a8113d519cc4, type: 3}
   tip: {fileID: 4701549876988091641}
   penSize: 40
+  paintSplashVFX: {fileID: 7873719125646550967, guid: e4bc490a861e207409b29e4335c4d1d4,
+    type: 3}
 --- !u!54 &7432463055788606530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -482,7 +507,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b14d4c81056a8643a02e9ef80787b2a, type: 2}
+  - {fileID: 2100000, guid: 585533da24e68f94fabf2e9f7d2f6d3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

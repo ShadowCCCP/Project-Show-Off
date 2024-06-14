@@ -36,8 +36,8 @@ public class BrushTip : MonoBehaviour
                 _colorPad = other.GetComponent<ColorPad>();
             }
 
-            _markerScript.ChangeColor(_colorPad.GetColor());
             _markerScript.InstantiateSplash(transform.position, _colorPad.GetColor());
+            _markerScript.ChangeColor(_colorPad.GetColor());
         }
     }
 }

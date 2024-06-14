@@ -69,7 +69,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private bool _gotBlocked;
 
     // Hit animation cooldown...
-    private float _hitWaitTime = 1500;
+    private float _hitWaitTime = 1.5f;
     private float _hitCurrentTime;
 
     private bool _gameCompleted;
@@ -348,6 +348,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public void SideGotHit(SideHit pSide)
     {
+        Debug.Log(_hitCurrentTime);
         // If hit animation timer is up...
         if (_hitCurrentTime >= _hitWaitTime)
         {

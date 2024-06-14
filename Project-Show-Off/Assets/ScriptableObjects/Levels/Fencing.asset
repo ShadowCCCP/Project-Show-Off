@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelName: Fencing
   LevelIndex: 1
-  Icon: {fileID: 21300000, guid: 1ccf4d42e8684f047bdb430815224b74, type: 3}
+  Icon: {fileID: 21300000, guid: 04f9dcbfdb561ba4797ea803f17c89ac, type: 3}
   Year: 1782
   Danger: High
+  Hand: 
+  BigText: 
