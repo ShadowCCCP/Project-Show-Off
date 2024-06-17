@@ -37,7 +37,7 @@ public abstract class VRAbstractButton : MonoBehaviour
             // Move the button back...
             TweenButton();
         }
-        if(other.tag == "Hammer")
+        if(other.tag == "Hammer" && !_glassOpen)
         {
             AnimateGlass();
             _glassOpen = true; 

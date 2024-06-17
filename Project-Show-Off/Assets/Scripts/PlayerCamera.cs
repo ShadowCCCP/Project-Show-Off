@@ -20,6 +20,11 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     float fallingTime = 2;
 
+    [SerializeField]
+    GameObject rightController;
+    [SerializeField]
+    GameObject leftController;
+
     Vector3 offset = new Vector3 (0, 0, 0);
 
     void Awake()
@@ -105,15 +110,6 @@ public class PlayerCamera : MonoBehaviour
         Debug.Log("Player physiscs activated");
         playerPhysics = true; 
         StartCoroutine(beforeDeathTimer());
-        //StartCoroutine(returnVrCameraControl());
-    }
-
-    IEnumerator returnVrCameraControl()
-    {
-       
-        yield return new WaitForSeconds(1);
-        playerPhysics = false; 
-        Debug.Log("No player physiscs activated");
     }
 
     IEnumerator beforeDeathTimer()
@@ -122,6 +118,9 @@ public class PlayerCamera : MonoBehaviour
         yield return new WaitForSeconds(fallingTime);
 
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
+
+        rightController.SetActive(false);
+        leftController.SetActive(false);
     }
 
 }

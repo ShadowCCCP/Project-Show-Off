@@ -1678,6 +1678,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1814052156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &562336891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2099251030051804175, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072134731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &632214265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3305,11 +3317,21 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1416829415593356551, guid: 94492d5415e19634a947a74030254fd2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2834339449043629390, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: flame
       value: 
       objectReference: {fileID: 1568372251}
+    - target: {fileID: 2834339449043629390, guid: 94492d5415e19634a947a74030254fd2,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 562336891}
     - target: {fileID: 3142185217099868296, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3433,17 +3455,17 @@ PrefabInstance:
     - target: {fileID: 8808667042388136106, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.133
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 8808667042388136106, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.445
+      value: 0.575
       objectReference: {fileID: 0}
     - target: {fileID: 8808667042388136106, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.522
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 9126536184416778681, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
@@ -3683,6 +3705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
