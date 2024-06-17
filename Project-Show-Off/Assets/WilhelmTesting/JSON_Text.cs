@@ -48,11 +48,50 @@ public partial class DialogueManager : MonoBehaviour
             'So press the big red button if you are ready for an adventure'
         ] 
     }";
+
+    //PC says: BROKEN TIMELINES DETECTED
+    //CMGaTo and Hammer comes spinning down
+    //CMGaTo says after animation: Grab the hammer with the controller button at your middle finger and break the glass!
+    
+    //When player picks up hammer
+    //PC says: SMASH GLASS TO OVERRIDE
+    
+    //When glass has been broken
+    //Alarm goes off
+    //PC says: IDENTIFY YOURSELF
+    //Blue material lights up
+    //Glad they finally sent someone, can you fully put your arm and the hammer in the blue gap?
+    
+    
+    //PC says: SELECT BROKEN TIMELINE
+    //Alarm stops
+    //CMGato says: Use the lever or press the buttons to select a timeline to fix
+    //The lever and buttons light up
+    
+    //When a timeline has been chosen
+    //CMGato says: I'll help you where I can, take care timeline repair person.  
+    //Red button lights up
+
+    //Timeline Repair Simulator 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*The player picks up the hammer and when he smashes the glass the alarm goes off
       First the alarm goes off (enable alarm lights gameobject) and after like 1 sec CMGaTo will say 'Intro'.
       After player put their hand in the hole disable the alarm gameobject and CMGaTo starts 'Unstable'
       If the lever is moved to a level CMgaTo will say 'Ready'. 
     */ 
+
+    //
 
     /*
      * on glass break -> alarm 
@@ -68,7 +107,6 @@ public partial class DialogueManager : MonoBehaviour
             'What\'s your sword doing at the end of the plank, captain?' 
         ],
         'Warning' : [
-            
             'Watch out, it\'s a mutiny!'
         ],
         'Beaten' : [ 

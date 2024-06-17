@@ -16,7 +16,7 @@ public class SunRotation : MonoBehaviour
 
     void Update()
     {
-        var rotation = targetRotation/secondsToPaint * Time.deltaTime;
+        var rotation = (float)targetRotation/(float)secondsToPaint * Time.deltaTime;
         gameObject.transform.Rotate(0, rotation, 0);
         totalRotation += rotation;
 
