@@ -43,7 +43,7 @@ public class DialogueCMGato : MonoBehaviour
 
 
         brokenGlass = dialogueManager.cat.Intro;
-        handSelect = dialogueManager.cat.Unstable;
+        //handSelect = dialogueManager.cat.Unstable;
         levelSwitch = dialogueManager.cat.Ready;
 
     }

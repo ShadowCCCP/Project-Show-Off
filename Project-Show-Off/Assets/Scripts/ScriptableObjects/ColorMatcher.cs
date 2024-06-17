@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct ColorMatcher
 {
-    public enum Colors { Red, Green, Yellow, Blue, Purple }
+    public enum Colors { Red, Green, Yellow, Blue, Purple, Black, White, Pink, Brown, Orange }
 
     [SerializeField] List<Colors> colors;
     [SerializeField] List<Material> brushTipMaterials;

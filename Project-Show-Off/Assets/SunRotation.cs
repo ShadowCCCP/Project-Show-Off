@@ -8,12 +8,6 @@ public class SunRotation : MonoBehaviour
     [SerializeField] int secondsToPaint = 30;
     float totalRotation;
 
-    private void Start()
-    {
-        
-    }
-
-
     void Update()
     {
         var rotation = (float)targetRotation/(float)secondsToPaint * Time.deltaTime;

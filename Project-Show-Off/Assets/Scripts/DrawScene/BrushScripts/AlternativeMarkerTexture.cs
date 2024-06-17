@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MarkerTextureAlternative : MonoBehaviour
 {
+    [SerializeField] bool slimPaintForm;
+
     [SerializeField] ColorMatcher colorMatcher;
 
     [SerializeField] Transform tip;
@@ -50,8 +52,8 @@ public class MarkerTextureAlternative : MonoBehaviour
                 _touchPos = new Vector2(_touch[0].textureCoord.x, _touch[0].textureCoord.y);
 
                 // Calculate the touch position, based on the whiteboard's resolution...
-                int x = (int)(_touchPos.x * _whiteboard.textureSize.x - (penSize / 2));
-                int y = (int)(_touchPos.y * _whiteboard.textureSize.y - (penSize / 2));
+                int x = (int)(_touchPos.x * _whiteboard.textureSize.x);
+                int y = (int)(_touchPos.y * _whiteboard.textureSize.y);
 
                 // Check if the pen is out of bounds...
                 if (x < 0 || x > _whiteboard.textureSize.x ||
@@ -62,14 +64,17 @@ public class MarkerTextureAlternative : MonoBehaviour
 
                 if (_touchedLastFrame)
                 {
-                    _whiteboard.texture.SetPixels(x, y, penSize, penSize, _colors);
+                    if (!slimPaintForm) { SetPixelsInCircle(_whiteboard.texture, x, y, penSize, _colors); }
+                    else { SetPixelsInEllipse(_whiteboard.texture, x, y, penSize, 0.5f, _colors); }
 
                     // Interpolate the positions touched, to create a line following your pen's movement...
                     for (float f = 0.01f; f < 1.00f; f += 0.03f)
                     {
                         int lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
                         int lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, f);
-                        _whiteboard.texture.SetPixels(lerpX, lerpY, penSize, penSize, _colors);
+
+                        if (!slimPaintForm) { SetPixelsInCircle(_whiteboard.texture, lerpX, lerpY, penSize, _colors); }
+                        else { SetPixelsInEllipse(_whiteboard.texture, lerpX, lerpY, penSize, 0.5f, _colors); }
                     }
 
                     _whiteboard.texture.Apply();
@@ -91,6 +96,56 @@ public class MarkerTextureAlternative : MonoBehaviour
         
     }
 
+    void SetPixelsInCircle(Texture2D pTexture, int pX, int pY, int pRadius, Color[] pColors)
+    {
+        int rSquared = pRadius * pRadius;
+        int colorIndex = 0;
+
+        for (int u = -pRadius; u <= pRadius; u++)
+        {
+            for (int v = -pRadius; v <= pRadius; v++)
+            {
+                if (u * u + v * v <= rSquared)
+                {
+                    int xPos = pX + u;
+                    int yPos = pY + v;
+
+                    if (xPos >= 0 && xPos < pTexture.width && yPos >= 0 && yPos < pTexture.height)
+                    {
+                        pTexture.SetPixel(xPos, yPos, pColors[colorIndex % pColors.Length]);
+                    }
+                    colorIndex++;
+                }
+            }
+        }
+    }
+
+    void SetPixelsInEllipse(Texture2D pTexture, int pX, int pY, int pRadius, float squashFactor, Color[] pColors)
+    {
+        int xRadius = (int)(pRadius * squashFactor);
+        int yRadius = pRadius;
+        int colorIndex = 0;
+
+        for (int u = -xRadius; u <= xRadius; u++)
+        {
+            for (int v = -yRadius; v <= yRadius; v++)
+            {
+                // Check if the point is inside the ellipse
+                if ((u * u) / (float)(xRadius * xRadius) + (v * v) / (float)(yRadius * yRadius) <= 1.0f)
+                {
+                    int xPos = pX + u;
+                    int yPos = pY + v;
+
+                    if (xPos >= 0 && xPos < pTexture.width && yPos >= 0 && yPos < pTexture.height)
+                    {
+                        pTexture.SetPixel(xPos, yPos, pColors[colorIndex % pColors.Length]);
+                    }
+                    colorIndex++;
+                }
+            }
+        }
+    }
+
     private bool CheckRaycast()
     {
         RaycastHit hit;
@@ -99,7 +154,7 @@ public class MarkerTextureAlternative : MonoBehaviour
 
         // Check straight...
         Debug.DrawRay(tip.position, transform.forward, Color.red);
-        if (Physics.Raycast(tip.position, transform.forward, out hit, 0.04f))
+        if (Physics.Raycast(tip.position, transform.forward, out hit, 0.06f))
         {
             _touch.Add(hit);
         }
@@ -109,14 +164,14 @@ public class MarkerTextureAlternative : MonoBehaviour
         {
             Vector3 angledDirection = transform.rotation * Quaternion.AngleAxis(i, Vector3.forward) * (Vector3.right + Vector3.forward);
             Debug.DrawRay(tip.position, angledDirection);
-            if (Physics.Raycast(tip.position, angledDirection, out hit, 0.04f))
+            if (Physics.Raycast(tip.position, angledDirection, out hit, 0.06f))
             {
                 _touch.Add(hit);
             }
 
             Vector3 sideDirection = transform.rotation * Quaternion.AngleAxis(i, Vector3.forward) * Vector3.right;
             Debug.DrawRay(tip.position, sideDirection, Color.blue);
-            if (Physics.Raycast(tip.position, transform.forward, out hit, 0.04f))
+            if (Physics.Raycast(tip.position, transform.forward, out hit, 0.06f))
             {
                 _touch.Add(hit);
             }
@@ -151,7 +206,9 @@ public class MarkerTextureAlternative : MonoBehaviour
         {
             GameObject colorSplashObj = Instantiate(paintSplashVFX, pPos, Quaternion.identity, null);
             ParticleSystem cSplash = colorSplashObj.GetComponent<ParticleSystem>();
-            cSplash.startColor = color;
+
+            ParticleSystem.MainModule psmain = cSplash.main;
+            psmain.startColor = gameObject.GetComponent<SpriteRenderer>().color;
         }
     }
 }
