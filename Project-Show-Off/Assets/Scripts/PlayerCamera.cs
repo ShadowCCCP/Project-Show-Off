@@ -114,13 +114,14 @@ public class PlayerCamera : MonoBehaviour
 
     IEnumerator beforeDeathTimer()
     {
-        Debug.Log("You have fallen");
+        Debug.Log("You have fallen"); 
+        rightController.SetActive(false);
+        leftController.SetActive(false);
         yield return new WaitForSeconds(fallingTime);
 
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
 
-        rightController.SetActive(false);
-        leftController.SetActive(false);
+        
     }
 
 }
