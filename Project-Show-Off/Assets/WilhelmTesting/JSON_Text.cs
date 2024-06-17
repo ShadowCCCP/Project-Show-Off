@@ -14,7 +14,7 @@ public partial class DialogueManager : MonoBehaviour
     }
     public class Cat : CARP
     {
-        public string[] Intro, Unstable, Ready;
+        public string[] Intro, Gap, Select, Ready;
 
     }
 
@@ -36,16 +36,16 @@ public partial class DialogueManager : MonoBehaviour
     string CMGato = @"
     {
         'Intro' : [
-            'Quick, put your preferred hand in the identifier on your right!',
+            'Grab the hammer with the controller button at your middle finger and break the glass to start',
         ],
-        'Unstable' : [
-            'Much better... wait, don\'t you know how dangerous this machine is?',
-            'It\'s really unstable, you could end up anywhere!',
-            'But if you insist, you can press the little buttons or pull the lever to choose a time'
+        'Gap' : [
+            'Glad they finally sent someone, can you fully put your arm and the hammer in the blue gap'
+        ],
+        'Select' : [
+            'Use the lever or press the buttons to select a timeline to fix'
         ],
         'Ready' : [
-            'I\'ll keep an eye out for you where possible',
-            'So press the big red button if you are ready for an adventure'
+            'I'll help you where I can, take care timeline repair person.'
         ] 
     }";
 
