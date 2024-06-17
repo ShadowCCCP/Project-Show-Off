@@ -40,12 +40,12 @@ public partial class DialogueManager : MonoBehaviour
         ],
         'Unstable' : [
             'Much better... wait, don\'t you know how dangerous this machine is?',
-            'It\'s really unstable, but it seems you are up for a thrill',
-            'You can press the little buttons or pull the lever to choose a time'
+            'It\'s really unstable, you could end up anywhere!',
+            'But if you insist, you can press the little buttons or pull the lever to choose a time'
         ],
         'Ready' : [
-            'Saxion is not responsible if anything happens to you',
-            'So press the big red button on your own volition'
+            'I\'ll keep an eye out for you where possible',
+            'So press the big red button if you are ready for an adventure'
         ] 
     }";
     /*The player picks up the hammer and when he smashes the glass the alarm goes off

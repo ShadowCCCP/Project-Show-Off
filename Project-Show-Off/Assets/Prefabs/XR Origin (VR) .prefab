@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 879182273332403205}
   m_Layer: 0
   m_Name: right_quest2_mesh
-  m_TagString: Controller
+  m_TagString: RightController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,13 +527,14 @@ GameObject:
   - component: {fileID: 3361318971807899074}
   - component: {fileID: 2667369667346463617}
   - component: {fileID: 188365607342486041}
+  - component: {fileID: 2327351997815612863}
   m_Layer: 0
   m_Name: Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4642035460910327001
 Transform:
   m_ObjectHideFlags: 0
@@ -620,6 +621,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2327351997815612863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225168578749821388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6772e191deda3488d7c6cb0d30bb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1636817214526234257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1511,7 @@ GameObject:
   - component: {fileID: 4383792716392313581}
   m_Layer: 0
   m_Name: left_quest2_mesh
-  m_TagString: Controller
+  m_TagString: LeftController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1935,8 +1948,8 @@ MonoBehaviour:
   m_Camera: {fileID: 2083393655315106127}
   m_OriginBaseGameObject: {fileID: 8733436670027641867}
   m_CameraFloorOffsetObject: {fileID: 8461047367442479062}
-  m_RequestedTrackingOriginMode: 2
-  m_CameraYOffset: 1.1176
+  m_RequestedTrackingOriginMode: 1
+  m_CameraYOffset: 1.5
 --- !u!114 &345630594229695591
 MonoBehaviour:
   m_ObjectHideFlags: 0

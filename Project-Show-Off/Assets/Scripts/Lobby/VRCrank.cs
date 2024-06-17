@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -11,10 +12,10 @@ public class VRCrank : MonoBehaviour
     List<Collider> collidersLevels = new List<Collider>();
 
     [SerializeField]
-    TimeMachineManager timeMachineManager;
+    float leverSpeed = 2;
 
     [SerializeField]
-    Renderer knobRend;
+    TimeMachineManager timeMachineManager;
 
 
     bool levelSelected;
@@ -41,7 +42,6 @@ public class VRCrank : MonoBehaviour
 
     void Start()
     {
-       // knobRend.material.color = Color.red;
         timeMachineManager.LoadLevelOnTimeMachine(0);
 
         leverCollider = GetComponent<Collider>();
@@ -65,8 +65,8 @@ public class VRCrank : MonoBehaviour
             {
                 Debug.Log(i + "selected");
                 levelSelected = true;
-                timeMachineManager.LoadLevelOnTimeMachine(i + 1);
-              //  knobRend.material.color = Color.green;
+                StartCoroutine(slowLevelLoad(i + 1));
+
 
                 moveUp = false;
                 moveDown = false;
@@ -75,11 +75,13 @@ public class VRCrank : MonoBehaviour
                 {
                     Debug.Log("min pos over");
                     minPosReached = true;
+                    maxPosReached = false;
                 }
                 else if(i==0)
                 {
                     Debug.Log("start pos over");
                     maxPosReached = true;
+                    minPosReached = false;
                 }
             }
         }
@@ -92,8 +94,7 @@ public class VRCrank : MonoBehaviour
         if (collidersLevels.Contains(other))
         {
             levelSelected = false;
-            timeMachineManager.LoadLevelOnTimeMachine(0); 
-          //  knobRend.material.color = Color.red;
+            StartCoroutine(slowLevelLoad(0));
         }
     }
 
@@ -123,14 +124,14 @@ public class VRCrank : MonoBehaviour
     {
         if(moveUp)
         {
-            transform.Translate(0.001f, 0, 0 * Time.deltaTime);
+            transform.Translate(0.001f, 0, 0 * Time.deltaTime * leverSpeed);
         }
     }
     void updateMovementUp()
     {
         if (moveDown)
         {
-            transform.Translate(-0.001f, 0,0  * Time.deltaTime);
+            transform.Translate(-0.001f, 0,0  * Time.deltaTime * leverSpeed);
         }
     }
 
@@ -139,10 +140,14 @@ public class VRCrank : MonoBehaviour
         if (transform.position.z > collidersLevels[0].transform.position.z)
         {
             transform.position = new Vector3(collidersLevels[0].transform.position.x, transform.position.y, collidersLevels[0].transform.position.z) ;
+            maxPosReached = true;
+            minPosReached=false;
         }
-        else if (transform.position.z < collidersLevels[collidersLevels.Count-1].transform.position.z)
+        else if (transform.position.z < collidersLevels[collidersLevels.Count-1].transform.position.z )
         {
             transform.position = new Vector3( collidersLevels[collidersLevels.Count-1].transform.position.x , transform.position.y, collidersLevels[collidersLevels.Count - 1].transform.position.z);
+            minPosReached = true;
+            maxPosReached=false;
         }
     }
 
@@ -150,5 +155,18 @@ public class VRCrank : MonoBehaviour
     {
         timeMachineOn = true;
         leverCollider.enabled = true;
+    }
+
+    IEnumerator slowLevelLoad(int levelIndex)
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (levelSelected)
+        {
+            timeMachineManager.LoadLevelOnTimeMachine(levelIndex);
+        }
+        else
+        {
+            timeMachineManager.LoadLevelOnTimeMachine(0);
+        }
     }
 }

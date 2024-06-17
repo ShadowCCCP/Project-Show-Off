@@ -14,16 +14,9 @@ public partial class DialogueManager : MonoBehaviour
     [Tooltip("If true touching the animal no longer works")]
     [SerializeField]
     bool isTimed; 
-    //onevents only
 
     [SerializeField]
     float timeBetweenText;
-
-    enum CompanionCMGT { CMGato, CMPapagayo, CMRato, CMAlien }
-
-
-    [SerializeField]
-    CompanionCMGT companion;
 
 
 

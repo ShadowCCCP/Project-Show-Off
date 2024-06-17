@@ -111,3 +111,44 @@ public class OnLevelSelectedOnTMEvent : Event
 
     }
 }
+
+public class OnSwordPickupEvent : Event
+{
+    public OnSwordPickupEvent()
+    {
+
+    }
+}
+public class OnPirateDefeatedEvent : Event
+{
+    public OnPirateDefeatedEvent()
+    {
+
+    }
+}
+
+public class OnPencilPickupEvent : Event
+{
+    public OnPencilPickupEvent()
+    {
+
+    }
+}
+
+public class PaintTimeRunningOutEvent : Event
+{
+    public PaintTimeRunningOutEvent()
+    {
+
+    }
+}
+
+
+public class PaintDoneEvent : Event
+{
+    public PaintDoneEvent()
+    {
+
+    }
+}
+
