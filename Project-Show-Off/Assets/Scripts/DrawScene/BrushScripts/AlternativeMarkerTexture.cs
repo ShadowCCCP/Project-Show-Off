@@ -206,9 +206,11 @@ public class MarkerTextureAlternative : MonoBehaviour
         {
             GameObject colorSplashObj = Instantiate(paintSplashVFX, pPos, Quaternion.identity, null);
             ParticleSystem cSplash = colorSplashObj.GetComponent<ParticleSystem>();
-
+            /*
             ParticleSystem.MainModule psmain = cSplash.main;
             psmain.startColor = gameObject.GetComponent<SpriteRenderer>().color;
+            */
+            cSplash.startColor = color;
         }
     }
 }

@@ -1933,31 +1933,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlternativeBrush
       objectReference: {fileID: 0}
-    - target: {fileID: 3526825857623394308, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354844346276652543, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354844346276652543, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6553459638706154915, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
-        type: 3}
-      propertyPath: paintSplashVFX
-      value: 
-      objectReference: {fileID: 7873719125646550967, guid: e4bc490a861e207409b29e4335c4d1d4,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4199618329271883402, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970009417}
+    - targetCorrespondingSourceObject: {fileID: 4199618329271883402, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1970009418}
   m_SourcePrefab: {fileID: 100100000, guid: c4e3fcdf7eac0874b8101a154ee1a85f, type: 3}
 --- !u!1 &1647599093
 GameObject:
@@ -2802,6 +2789,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1970009412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4199618329271883402, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1638381604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1970009417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970009412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4ca77562f913f4180f074293e44ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1970009418
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970009412}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2089512564
 GameObject:
   m_ObjectHideFlags: 0
