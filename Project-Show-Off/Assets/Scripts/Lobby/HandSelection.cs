@@ -17,12 +17,25 @@ public class HandSelection : MonoBehaviour
 
     [SerializeField]
     TimeMachineManager timeMachineManager;
+    [SerializeField]
+    GameObject spotlight;
 
+    bool brokenGlass;
+
+    private void Awake()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent += BreakGlass;
+    }
+
+    void OnDestroy()
+    {
+        EventBus<GlassBrokenEvent>.OnEvent -= BreakGlass;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (timeMachineManager.GetTimeMachineState())
-        {   
+        if (brokenGlass)
+        {
             if ((other.tag == "RightController"))
             {
                 GameManager.Instance.SetDominantHand(1);
@@ -34,6 +47,7 @@ public class HandSelection : MonoBehaviour
                 updateLight(0);
             }
         }
+        
     }
 
     void updateLight(int hand)
@@ -48,5 +62,12 @@ public class HandSelection : MonoBehaviour
             leftLightRend.material = materialOff;
             rightLightRend.material = materialOn;
         }
+        spotlight.SetActive(false);
+    }
+
+    void BreakGlass(GlassBrokenEvent glassBrokenEvent)
+    {
+        brokenGlass=true;
+        spotlight.SetActive(true);
     }
 }

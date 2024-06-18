@@ -5,6 +5,17 @@ public class LobbyButton : VRAbstractButton
 {
     [SerializeField] int loadScene = 0;
     [SerializeField] float sceneTransitionTime = 3.0f;
+    [SerializeField] Material litUpMaterial;
+    Material normaMat;
+
+    Renderer ren;
+
+    private void Start()
+    {
+        
+        ren = GetComponent<Renderer>();
+        normaMat = ren.material;
+    }
 
     private IEnumerator TransitionToScene()
     {
@@ -21,5 +32,17 @@ public class LobbyButton : VRAbstractButton
     public override void OnButtonPress()
     {
         StartCoroutine(TransitionToScene());
+    }
+
+    public void SetMaterialLit()
+    {
+        ren.material = litUpMaterial;
+        Debug.Log("lit");
+    }
+
+    public void SetMaterialUnLit()
+    {
+        ren.material = normaMat;
+        Debug.Log("unlit");
     }
 }

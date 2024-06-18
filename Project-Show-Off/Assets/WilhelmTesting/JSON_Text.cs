@@ -8,29 +8,30 @@ using UnityEngine.UI;
 
 public partial class DialogueManager : MonoBehaviour
 {    
-    public abstract class CARP
-    {
-
-    }
-    public class Cat : CARP
+    public class Cat
     {
         public string[] Intro, Gap, Select, Ready;
 
     }
 
-    public class Parrot : CARP
+    public class Parrot 
     {
         public string[] Suspicious, Warning, Beaten;
     }
     
-    public class Rat : CARP
+    public class Rat 
     {
         public string[] Sick, Time, List, Evening, Beautiful;
     }
 
-    public class Alien : CARP
+    public class Alien 
     {
         public string[] Suspicious, Warning, Beaten;
+    }
+
+    public class TimeMachine 
+    {
+        public string[] Broken, Smash, Identify, Select;
     }
 
     string CMGato = @"
@@ -76,7 +77,7 @@ public partial class DialogueManager : MonoBehaviour
     //When glass has been broken
     //Alarm goes off
     //PC says: IDENTIFY YOURSELF
-    //Blue material lights up
+    //Blue material lights up and disable (hand spotlight)
     //Glad they finally sent someone, can you fully put your arm and the hammer in the blue gap?
     
     
@@ -86,7 +87,7 @@ public partial class DialogueManager : MonoBehaviour
     //The lever and buttons light up
     
     //When a timeline has been chosen
-    //CMGato says: I'll help you where I can, take care timeline repair person.  
+    //CMGato says ready: I'll help you where I can, take care timeline repair person.  
     //Red button lights up
 
     //Timeline Repair Simulator 
@@ -194,6 +195,7 @@ public partial class DialogueManager : MonoBehaviour
     public Parrot parrot;
     public Rat rat;
     public Alien alien; 
+    public TimeMachine timeMachine;
 
     /*void Awake()
     {
