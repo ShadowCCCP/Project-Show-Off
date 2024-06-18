@@ -20,7 +20,7 @@ public class Floaty : MonoBehaviour
         _gInteractable = GetComponent<XRGrabInteractable>();
         if (_gInteractable != null )
         {
-            _gInteractable.selectEntered.AddListener(PauseTween);
+            _gInteractable.selectEntered.AddListener(CancelTween);
         }
     }
 
@@ -28,7 +28,7 @@ public class Floaty : MonoBehaviour
     {
         if (_gInteractable != null)
         {
-            _gInteractable.selectEntered.RemoveListener(PauseTween);
+            _gInteractable.selectEntered.RemoveListener(CancelTween);
         }
     }
 
@@ -37,15 +37,16 @@ public class Floaty : MonoBehaviour
         _tweenId = LeanTween.moveY(gameObject, _initialPosition.y + floatDistance, timePerFloat).setEaseInOutSine().setLoopPingPong().id;
     }
 
-    private void PauseTween(SelectEnterEventArgs args)
+    public void CancelTween(SelectEnterEventArgs args)
     {
-        LeanTween.pause(_tweenId);
+        LeanTween.cancel(_tweenId);
     }
 
-    private void ResumeTween()
+    public void StartTween()
     {
         if (_gInteractable == null) return;
 
-        LeanTween.resume(_tweenId);
+        _initialPosition = transform.position;
+        StartFloating();
     }
 }
