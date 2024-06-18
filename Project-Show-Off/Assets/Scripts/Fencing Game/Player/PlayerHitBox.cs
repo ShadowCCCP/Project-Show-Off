@@ -23,15 +23,6 @@ public class PlayerHitBox : MonoBehaviour
         TransitionManager.onDarkenFinished -= TransportPlayer;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!_enteredArea && other.CompareTag("EnterArea"))
-        {
-            _enteredArea = true;
-            _anim.SetTrigger("DarkenScreen");
-        }
-    }
-
     private void TransportPlayer()
     {
         transform.parent.position = teleportTo;
