@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RobertsPCSaver : MonoBehaviour
@@ -8,8 +6,8 @@ public class RobertsPCSaver : MonoBehaviour
 
     void Awake()
     {
-#if UNITY_EDITOR
-        Debug.Log(Useful.GetHierarchy(transform) + "\nRobertsPCSaver script is active. Keep ur PC cool ;))");
+        #if UNITY_EDITOR
+        Debug.Log(Useful.GetHierarchy(transform) + "\nRobertsPCSaver script is active. Keep ur PC nice & cool ;)");
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = maxFramerate;
         #endif
