@@ -26,6 +26,7 @@ public partial class DialogueManager : MonoBehaviour
         parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
         rat = JsonConvert.DeserializeObject<Rat>(CMRato);
         alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
+        timeMachine = JsonConvert.DeserializeObject<TimeMachine>(TimeScreen);
     }
 
     void Start()
@@ -33,11 +34,7 @@ public partial class DialogueManager : MonoBehaviour
         StartCoroutine(goThroughQueue());
     }
 
-    void Update()
-    {
 
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {

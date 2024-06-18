@@ -8,13 +8,23 @@ public class DialogueCMGato : MonoBehaviour
     DialogueManager dialogueManager;
 
     [SerializeField]
+    TimeMachineManager timeMachineManager;
+
+    [SerializeField]
     GameObject alarm;
 
-    string[] brokenGlass;
-    string[] handSelect;
-    string[] levelSwitch;
+    [SerializeField]
+    GameObject handSpotlight;
 
 
+    string[] intro;
+    string[] gap;
+    string[] selectCat;
+    string[] ready;
+
+    string[] smash;
+    string[] identify;
+    string[] selectTM;
     /*
     * on glass break -> alarm 
     * cmgato after alarm = intro (1 sec delay)
@@ -42,9 +52,14 @@ public class DialogueCMGato : MonoBehaviour
         dialogueManager = GetComponent<DialogueManager>();
 
 
-        brokenGlass = dialogueManager.cat.Intro;
-        //handSelect = dialogueManager.cat.Unstable;
-        levelSwitch = dialogueManager.cat.Ready;
+        intro = dialogueManager.cat.Intro;
+        gap = dialogueManager.cat.Gap;
+        selectCat = dialogueManager.cat.Select;
+        ready = dialogueManager.cat.Ready;
+
+        smash = dialogueManager.timeMachine.Smash;
+        identify = dialogueManager.timeMachine.Identify;
+        selectTM = dialogueManager.timeMachine.Select;
 
     }
    
@@ -53,7 +68,9 @@ public class DialogueCMGato : MonoBehaviour
         //start alarm
         alarm.SetActive(true);
 
-        speak(brokenGlass,1);
+        speak(gap, 0);
+        speakOnScreen(identify[0]);
+        //hand spotlight TO DO
     }
 
     void triggerChangedHandDialogue(ChangeHandEvent changeHandEvent)
@@ -61,11 +78,23 @@ public class DialogueCMGato : MonoBehaviour
         //alarm off
         alarm.SetActive(false);
 
-        speak(handSelect,0);
+        speakOnScreen(selectTM[0]);
+        speak(selectCat, 0);
+
+        //lever and buttons lih tup
+
     }
     void triggerChangedLevelDialogue(OnLevelSelectedOnTMEvent onLevelSelectedOnTMEvent)
     {
-        speak(levelSwitch,0);
+        speak(ready,0);
+
+        //red button
+    }
+
+    public void OnAnimationEnd()
+    {
+        speak(intro, 0);
+        speakOnScreen(smash[0]);
     }
 
     void speak(string[] text , float time)
@@ -82,5 +111,12 @@ public class DialogueCMGato : MonoBehaviour
             }
         }
     }
+
+    void speakOnScreen(string text)
+    {
+        timeMachineManager.LoadTextOnTimeMachine(text);
+    }
+
+
 
 }

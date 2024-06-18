@@ -44,6 +44,18 @@ public class GameManager : MonoBehaviour
         return dominantHand;
     }
 
+    public string GetDominantHandString()
+    {
+        if(dominantHand == 0)
+        {
+            return "Left";
+        }
+        else
+        {
+            return "Right";
+        }
+    }
+
     public void SetDominantHand(int pDominatHand)
     {
         Debug.Log("Changed hand");

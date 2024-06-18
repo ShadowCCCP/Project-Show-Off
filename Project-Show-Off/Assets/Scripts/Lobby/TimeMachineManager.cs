@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
@@ -26,14 +27,20 @@ public class TimeMachineManager : MonoBehaviour
     [SerializeField]
     bool On = false;
 
+    [SerializeField]
+    Renderer wires;
+
+    [SerializeField]
+    Material litWireMat;
+
     void Awake()
     {
-        EventBus<GlassBrokenEvent>.OnEvent += TurnOnTimeMachine;
+        EventBus<ChangeHandEvent>.OnEvent += OnHandChange;
     }
 
     void OnDestroy()
     {
-        EventBus<GlassBrokenEvent>.OnEvent -= TurnOnTimeMachine;
+        EventBus<ChangeHandEvent>.OnEvent -= OnHandChange;
     }
     void Start()
     {
@@ -69,7 +76,8 @@ public class TimeMachineManager : MonoBehaviour
         //year, danger and hand
         emptytextCheck(levels[i].Year, "Year: ", yearText);
         emptytextCheck(levels[i].Danger, "Danger: ", dangerText);
-        emptytextCheck(levels[i].Hand, "Dominant hand: ", handText);
+        if (levels[i].Year != "") { emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText); }
+        else { handText.text = ""; }
 
         //icon
         if (levels[i].Icon != null)
@@ -91,6 +99,15 @@ public class TimeMachineManager : MonoBehaviour
         button.SetToGoScene(levels[i].LevelIndex);
         //
         emptytextCheck(levels[i].BigText, "", bigText);
+
+        if (levels[i].LevelIndex >= 0)
+        {
+            button.SetMaterialLit();
+        }
+        else
+        {
+            button.SetMaterialUnLit();
+        }
     }
 
     void emptytextCheck(string textToWrite, string textYearOrDanger, TextMeshPro textMesh)
@@ -105,16 +122,37 @@ public class TimeMachineManager : MonoBehaviour
         }
     }
 
-    void TurnOnTimeMachine(GlassBrokenEvent glassBrokenEvent)
+    public void LoadTextOnTimeMachine(string text)
     {
-        On = true;
-        LoadLevelOnTimeMachine(0);
+        yearText.text = "";
+        dangerText.text = "";
+        handText.text = "";
+        gameIcon.gameObject.SetActive(false);
+        button.SetToGoScene(-1);
+
+        emptytextCheck(text, "", bigText);
+
     }
 
     public bool GetTimeMachineState()
     {
         return On;
         
+    }
+
+    void OnHandChange(ChangeHandEvent changeHandEvent)
+    {
+        if (handText.text != "")
+        {
+          //  emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText);
+        }
+
+        if (!On)
+        {
+            On = true;
+            LoadLevelOnTimeMachine(0);
+            wires.material = litWireMat;
+        }
     }
     
 }
