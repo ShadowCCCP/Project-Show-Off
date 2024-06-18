@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PaintingIntroManager : MonoBehaviour
+public class DrawSequenceManager : MonoBehaviour
 {
     public static event Action onBrushPickedUp;
     public static event Action onPalletePickedUp;
@@ -29,18 +29,17 @@ public class PaintingIntroManager : MonoBehaviour
     {
         if (!sentTransitionSignal && brushGrabbedOnce && palleteGrabbedOnce)
         {
-
             sentTransitionSignal = true;
         }
     }
 
     private void BrushGrabbed()
     {
-        brushGrabbedOnce = true;
+        if (!brushGrabbedOnce) { brushGrabbedOnce = true; }
     }
 
     private void PalleteGrabbed()
     {
-        palleteGrabbedOnce = true;
+        if (!palleteGrabbedOnce) { palleteGrabbedOnce = true; }
     }
 }

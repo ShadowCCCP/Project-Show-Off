@@ -11,7 +11,11 @@ GameObject:
   - component: {fileID: 6785147711164650602}
   - component: {fileID: 2659078371591055141}
   - component: {fileID: 6583742987990945048}
-  m_Layer: 0
+  - component: {fileID: 2543034759325584409}
+  - component: {fileID: 2870702097628929599}
+  - component: {fileID: 25392827304620194}
+  - component: {fileID: 3743652042855288402}
+  m_Layer: 6
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +87,89 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2543034759325584409
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254705817831199626}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 463173470385849657, guid: 0f2b7da57fa1e26409a16814ef7874a6, type: 3}
+--- !u!54 &2870702097628929599
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254705817831199626}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!64 &25392827304620194
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254705817831199626}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 463173470385849657, guid: 0f2b7da57fa1e26409a16814ef7874a6, type: 3}
+--- !u!114 &3743652042855288402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254705817831199626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4ca77562f913f4180f074293e44ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1788851183950379100
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +297,8 @@ GameObject:
   - component: {fileID: 566254699708859169}
   - component: {fileID: 4490859957050603368}
   - component: {fileID: 462260816290979812}
+  - component: {fileID: 5090923365582660311}
+  - component: {fileID: 5252627213306562321}
   m_Layer: 0
   m_Name: AlternativeBrush2
   m_TagString: Untagged
@@ -476,3 +565,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.825117, y: 2.7553802, z: 20.692163}
   m_Center: {x: 0.00000009313226, y: -0.00000009313226, z: -0.28923526}
+--- !u!114 &5090923365582660311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452929117885047823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9bfd88bf3a21841879db950975e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatDistance: 0.1
+  timePerFloat: 2
+--- !u!114 &5252627213306562321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452929117885047823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b92a49771d69e4f8aec65c4b15affe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  respawnPosition: {x: -2.202, y: 0.948, z: 0.679}
+  respawnTime: 3
