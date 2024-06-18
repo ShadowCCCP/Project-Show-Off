@@ -230,6 +230,8 @@ MonoBehaviour:
   player: {fileID: 8491946327096827577}
   falling: 0
   fallingTime: 1
+  rightController: {fileID: 0}
+  leftController: {fileID: 0}
 --- !u!1 &64545743130306848
 GameObject:
   m_ObjectHideFlags: 0

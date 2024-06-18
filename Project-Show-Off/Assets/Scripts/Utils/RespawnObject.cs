@@ -3,6 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class RespawnObject : MonoBehaviour
 {
+    [Tooltip("Press G to simulate picking object up, press H to let go of it.")]
     [SerializeField] bool debugMode;
 
     [SerializeField] Vector3 respawnPosition;
@@ -42,11 +43,13 @@ public class RespawnObject : MonoBehaviour
         }
 
         _gInteractable.selectEntered.AddListener(Activate);
+        _gInteractable.selectExited.AddListener(Deactivate);
     }
 
     private void OnDestroy()
     {
-        _gInteractable.selectExited.AddListener(Deactivate);
+        _gInteractable.selectEntered.RemoveListener(Activate);
+        _gInteractable.selectExited.RemoveListener(Deactivate);
     }
 
     private void Update()

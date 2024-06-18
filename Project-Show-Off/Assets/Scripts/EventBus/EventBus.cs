@@ -152,3 +152,12 @@ public class PaintDoneEvent : Event
     }
 }
 
+
+public class LevelFinishedEvent : Event
+{
+    public LevelFinishedEvent()
+    {
+
+    }
+}
+

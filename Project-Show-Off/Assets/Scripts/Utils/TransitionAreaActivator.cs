@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class TeleportPlayer : MonoBehaviour
+public class TransitionAreaActivator : MonoBehaviour
 {
-    [SerializeField] Vector3 moveTo;
     [SerializeField] GameObject transitionArea;
     [SerializeField] XRGrabInteractable[] grabToTrigger;
 
-    private List<IXRSelectInteractable> interactedWith;
+    private List<IXRSelectInteractable> interactedWith = new List<IXRSelectInteractable>();
 
     private void Start()
     {
@@ -20,7 +19,7 @@ public class TeleportPlayer : MonoBehaviour
                 transitionArea.SetActive(false);
             }
         }
-        else { Debug.LogError(Useful.GetHierarchy(transform) + "\nTeleportPlayer: No transitionArea attached to the script.");}
+        else { Debug.LogError(Useful.GetHierarchy(transform) + "\nTransitionAreaActivator: No transitionArea attached to the script.");}
 
         // Listen to every XRGrabInteractable...
         for (int i = 0; i < grabToTrigger.Length; i++)

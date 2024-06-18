@@ -592,5 +592,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
-  respawnPosition: {x: -2.202, y: 0.948, z: 0.679}
+  respawnPosition: {x: 0.281, y: 6.046, z: -4.205}
   respawnTime: 3
