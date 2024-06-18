@@ -49,6 +49,23 @@ public partial class DialogueManager : MonoBehaviour
         ] 
     }";
 
+    string TimeScreen = @"{
+        'Broken' : [
+            'Broken timelines detected'
+        ],
+        'Smash' : [
+            'Smash glass to override'
+        ],
+        Identify : [
+            'Identify yourself'
+        ],
+        'Select' : [
+            'Select broken timeline'
+        ]
+
+    }";
+
+
     //PC says: BROKEN TIMELINES DETECTED
     //CMGaTo and Hammer comes spinning down
     //CMGaTo says after animation: Grab the hammer with the controller button at your middle finger and break the glass!
