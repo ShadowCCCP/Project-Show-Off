@@ -6,41 +6,46 @@ public class Floaty : MonoBehaviour
     [SerializeField] float floatDistance = 0.2f;
     [SerializeField] float timePerFloat = 2.0f;
 
-    private int tweenId;
-    private Vector3 initialPosition;
+    private int _tweenId;
+    private Vector3 _initialPosition;
 
-    private XRGrabInteractable gInteractable;
+    private XRGrabInteractable _gInteractable;
 
     private void Start()
     {
-        initialPosition = transform.position;
+        _initialPosition = transform.position;
         StartFloating();
 
         // In order to be able to deactivate floating when the object is interacted with (grabbed)...
-        gInteractable = GetComponent<XRGrabInteractable>();
-        if (gInteractable != null )
+        _gInteractable = GetComponent<XRGrabInteractable>();
+        if (_gInteractable != null )
         {
-            gInteractable.selectEntered.AddListener(PauseTween);
+            _gInteractable.selectEntered.AddListener(PauseTween);
         }
     }
 
     private void OnDestroy()
     {
-        gInteractable.selectEntered.RemoveListener(PauseTween);
+        if (_gInteractable != null)
+        {
+            _gInteractable.selectEntered.RemoveListener(PauseTween);
+        }
     }
 
     private void StartFloating()
     {
-        tweenId = LeanTween.moveY(gameObject, initialPosition.y + floatDistance, timePerFloat).setEaseInOutSine().setLoopPingPong().id;
+        _tweenId = LeanTween.moveY(gameObject, _initialPosition.y + floatDistance, timePerFloat).setEaseInOutSine().setLoopPingPong().id;
     }
 
     private void PauseTween(SelectEnterEventArgs args)
     {
-        LeanTween.pause(tweenId);
+        LeanTween.pause(_tweenId);
     }
 
     private void ResumeTween()
     {
-        LeanTween.resume(tweenId);
+        if (_gInteractable == null) return;
+
+        LeanTween.resume(_tweenId);
     }
 }

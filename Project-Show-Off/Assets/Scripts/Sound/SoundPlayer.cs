@@ -23,7 +23,7 @@ public class SoundPlayer : MonoBehaviour
             _audioSource = gameObject.AddComponent<AudioSource>();
 
             if (ClipCount() > 0) { SetClip(0); }
-            else { Debug.LogError(GetHierarchy() + "\nSoundPlayer: No audioClips attached to the script."); }
+            else { Debug.LogError(Useful.GetHierarchy(transform) + "\nSoundPlayer: No audioClips attached to the script."); }
         }
 
         _audioSource.loop = loop;
@@ -74,7 +74,7 @@ public class SoundPlayer : MonoBehaviour
         if (_audioSource.clip != null) _audioSource.PlayDelayed(0);
         else
         {
-            Debug.LogError(GetHierarchy() + "\nSoundPlayer: Not able to play sound. No audioClip attached to either script or existing audioSource.");
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nSoundPlayer: Not able to play sound. No audioClip attached to either script or existing audioSource.");
         }
     }
 
@@ -87,7 +87,7 @@ public class SoundPlayer : MonoBehaviour
         }
         else
         {
-            Debug.LogError(GetHierarchy() + "\nSoundPlayer: No audioClip attached to the script.");
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nSoundPlayer: No audioClip attached to the script.");
         }
     }
 
@@ -95,31 +95,6 @@ public class SoundPlayer : MonoBehaviour
     {
         _currentClipIndex = pClipIndex;
         _audioSource.clip = _audioClips[pClipIndex];
-    }
-
-    private string GetHierarchy()
-    {
-        Transform currentObject = transform;
-        string hierarchy = "";
-        List<string> names = new List<string>();
-
-        // Iterate through each parent until none are left and add them to the list...
-        while (currentObject.parent != null)
-        {
-            currentObject = currentObject.parent;
-            names.Add(currentObject.name);
-        }
-
-        // Add all collected names into the string...
-        for (int i = names.Count - 1; i >= 0; i--)
-        {
-            hierarchy += names[i] + " > ";
-        }
-
-        // And put the name that the sound script is attached to at the end...
-        hierarchy += transform.name;
-
-        return hierarchy;
     }
 
     // For state checking...
