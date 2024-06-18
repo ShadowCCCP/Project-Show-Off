@@ -7,9 +7,6 @@ public class DialogueCMAlien : MonoBehaviour
 {
     DialogueManager dialogueManager;
 
-    [SerializeField]
-    GameObject alarm;
-
     string[] sceneStart;
     string[] pencilPickup;
     string[] timeRunningOut;
