@@ -7,9 +7,6 @@ public class DialogueCMRato : MonoBehaviour
 {
     DialogueManager dialogueManager;
 
-    [SerializeField]
-    GameObject alarm;
-
     string[] sceneStart;
     string[] pencilPickup;
     string[] timeRunningOut;
