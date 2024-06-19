@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DialogueCMAlien : MonoBehaviour
 {
+    [SerializeField]
+    GameObject mainCamera;
     DialogueManager dialogueManager;
 
     string[] sceneStart;

@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerCamera : MonoBehaviour
 {
     [SerializeField]
-    Transform VRCamera;
+    Camera VRCamera;
+
+    Camera playerCam;
+
     [SerializeField]
     Transform player;
 
@@ -25,7 +29,18 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     GameObject leftController;
 
+    [SerializeField]
+    Transform transition;
+
+    [SerializeField]
+    Transform camOffset;
+
+    [SerializeField]
+    Transform origin;
+
     Vector3 offset = new Vector3 (0, 0, 0);
+
+    bool playerCamActive = false;
 
     void Awake()
     {
@@ -39,6 +54,9 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+        playerCam = GetComponent<Camera>();
+        playerCam.enabled = false;
+        transition.SetParent(VRCamera.transform);
         if (GameManager.Instance != null)
         {
             offset = GameManager.Instance.PositionBeforeReset;
@@ -47,8 +65,9 @@ public class PlayerCamera : MonoBehaviour
         {
             Debug.Log("There is no game manager");
         }
+
+        camOffset.position += offset;
  
-        //player.position = offset;
         startY = player.position.y;
     }
 
@@ -65,6 +84,8 @@ public class PlayerCamera : MonoBehaviour
         //allow or disallow player physics for space game 
         playerPhysicsCheck();
 
+
+        //if offeset playercaemra
     }
 
     void playerFallingCheck()
@@ -80,14 +101,29 @@ public class PlayerCamera : MonoBehaviour
         }
 
 
-        if (!falling)
+        if (!falling )
         {
-            transform.position = VRCamera.transform.position + offset;
+            if (playerCamActive)
+            {
+                playerCam.enabled = false;
+                VRCamera.enabled = true;
+                transition.SetParent(VRCamera.transform);
+                playerCamActive = false;
+            }
+            //do vr camera
+            // transform.position = VRCamera.transform.position + offset;
         }
         else
         {
+            if (!playerCamActive)
+            {
+                playerCam.enabled = true;
+                VRCamera.enabled = false;
+                transition.SetParent(this.transform);
+                playerCamActive = true;
+            }
             transform.position = player.transform.position + offset;
-
+           
         }
     }
 
@@ -96,7 +132,7 @@ public class PlayerCamera : MonoBehaviour
         if (!playerPhysics)
         {
 
-            player.position = new Vector3(transform.position.x, player.position.y, transform.position.z) ;
+            player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z) ;
         }
         else
         {
@@ -118,8 +154,7 @@ public class PlayerCamera : MonoBehaviour
         rightController.SetActive(false);
         leftController.SetActive(false);
         yield return new WaitForSeconds(fallingTime);
-
-        EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position));
+        EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position - origin.position));
 
         
     }
