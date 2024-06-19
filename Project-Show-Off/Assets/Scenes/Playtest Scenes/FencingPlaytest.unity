@@ -172,6 +172,79 @@ MonoBehaviour:
   loop: 0
   spatialBlend: 1
   volume: 0
+--- !u!1001 &92826943
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.2142706
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5492516
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.5838037
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_Name
+      value: pirate_with_the_sword (1)@Threatening
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8a1c83b3c3825e44999d3dd3b082c27e, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0348d3d3f1762614a92eb773c4fe2d99, type: 3}
 --- !u!1 &118862710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,3 +2501,4 @@ SceneRoots:
   - {fileID: 948868334}
   - {fileID: 1958828058}
   - {fileID: 800656840}
+  - {fileID: 92826943}

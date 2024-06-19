@@ -26,7 +26,7 @@ public partial class DialogueManager : MonoBehaviour
 
     public class Alien 
     {
-        public string[] Suspicious, Warning, Beaten;
+        public string[] Destroyed, Meteor, Trigger;
     }
 
     public class TimeMachine 
@@ -65,6 +65,8 @@ public partial class DialogueManager : MonoBehaviour
         ]
 
     }";
+
+    //string CMInbetween = @
 
 
     //PC says: BROKEN TIMELINES DETECTED
@@ -179,10 +181,14 @@ public partial class DialogueManager : MonoBehaviour
 
     string CMAlien = @"
     {
-        'Broken' : [
-            'The ship\'s hull has taken some damage from the meteorite rain',
-            'You are equipped with magnetic boots, so that you won\'t fly off',
-            'But watch out for incoming meteorites!'
+        'Destroyed' : [
+            'A meteor has hit our ship! can you get the loose plates and reweld the broken parts?'
+        ], 
+        'Meteor' : [
+            'Watch out for meteors!' 
+        ],
+        'Trigger' : [
+            'Use the trigger at your index finger to activate the blowtorch'
         ]
     }";
 
