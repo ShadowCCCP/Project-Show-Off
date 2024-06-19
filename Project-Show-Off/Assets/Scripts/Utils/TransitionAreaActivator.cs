@@ -8,7 +8,7 @@ public class TransitionAreaActivator : MonoBehaviour
     [SerializeField] GameObject transitionArea;
 
     [Tooltip("Amount of time before the area actually appears.")]
-    [SerializeField] float bufferTime;
+    [SerializeField] float bufferTime = 5;
 
     [SerializeField] XRGrabInteractable[] grabToTrigger;
 

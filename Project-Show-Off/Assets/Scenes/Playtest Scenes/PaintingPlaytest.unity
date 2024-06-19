@@ -823,7 +823,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 1
       addedObject: {fileID: 1789482633}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3672548509089925874, guid: dd0f4178d2bfeca4fb1be78d8f996794,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 714719089}
   m_SourcePrefab: {fileID: 100100000, guid: dd0f4178d2bfeca4fb1be78d8f996794, type: 3}
 --- !u!4 &153743825 stripped
 Transform:
@@ -2290,6 +2294,33 @@ AudioReverbFilter:
   m_LFReference: 250
   m_ReflectionsDelay: 0
   m_ReverbPreset: 1
+--- !u!1 &714719085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3672548509089925874, guid: dd0f4178d2bfeca4fb1be78d8f996794,
+    type: 3}
+  m_PrefabInstance: {fileID: 153743824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &714719089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714719085}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15.000006, y: 0.83177716, z: 23.008936}
+  m_Center: {x: 0, y: -1.0278668, z: 0}
 --- !u!1 &761812305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,7 +3022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionArea: {fileID: 1649764114}
-  bufferTime: 0
+  bufferTime: 5
   grabToTrigger:
   - {fileID: 1330407589}
   - {fileID: 844901115}
@@ -3613,7 +3644,7 @@ PrefabInstance:
     - target: {fileID: 7783063920804142103, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.634
+      value: 1.602
       objectReference: {fileID: 0}
     - target: {fileID: 7783063920804142103, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
