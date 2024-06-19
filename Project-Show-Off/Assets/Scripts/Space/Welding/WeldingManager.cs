@@ -87,6 +87,8 @@ public class WeldingManager : MonoBehaviour
         }
     }
 
+    bool onePlatePlaced = false;
+
     void FindThePointsForPlate(SpawnWeldablesEvent spawnWeldablesEvent)
     {
         foreach (PointHolder pointHolder in pointHolders)
@@ -95,6 +97,12 @@ public class WeldingManager : MonoBehaviour
             {
                 SpawnPerPlate(pointHolder);
             }
+        }
+
+        if (!onePlatePlaced)
+        {
+            EventBus<OnPlatePlacedSpaceEvent>.Publish(new OnPlatePlacedSpaceEvent());
+            onePlatePlaced =true;
         }
     }
 

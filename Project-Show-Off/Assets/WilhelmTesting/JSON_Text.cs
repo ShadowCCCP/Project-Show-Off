@@ -185,13 +185,15 @@ public partial class DialogueManager : MonoBehaviour
      *  on time almost out - Evening
      *  on paint done - Beautiful
      *  
-     *  list?
+     *  list? - andreas did it
      */
+
+    //pic random beautiful
 
     string CMAlien = @"
     {
         'Destroyed' : [
-            'A meteor has hit our ship! can you get the loose plates and reweld the broken parts?'
+            'A meteor has hit our ship! Can you get the loose plates and reweld the broken parts?'
         ], 
         'Meteor' : [
             'Watch out for meteors!' 
@@ -200,6 +202,12 @@ public partial class DialogueManager : MonoBehaviour
             'Use the trigger at your index finger to activate the blowtorch'
         ]
     }";
+
+     /*
+     *  dark room + cmet with u + cmet : destroyed
+     * 
+     * presss button -> door opens -> meteor fles by cmet : meteor -> plates snapped => cmet: trigger 
+     */
 
     string CMTimegod = @"
     {
@@ -218,7 +226,7 @@ public partial class DialogueManager : MonoBehaviour
     }";
 
 
-    /*
+    /* 
      * 
      * 
      */
@@ -230,18 +238,4 @@ public partial class DialogueManager : MonoBehaviour
     public TimeMachine timeMachine;
     public TimeGod timegod;
 
-    /*void Awake()
-    {
-        cat = JsonConvert.DeserializeObject<Cat>(CMGato);
-        parrot = JsonConvert.DeserializeObject<Parrot>(CMPapagayo);
-        rat = JsonConvert.DeserializeObject<Rat>(CMRato);
-        alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
-        /*
-            Example how to write it down
-            myTextElement.text = dialogue.LandLubber[0];
-            
-            or if you use my function
-            ProgressText(dialogue.Landlubber (stringarray), TMP_text element (optional), line Number (optional))
-        
-    }   */ 
 }

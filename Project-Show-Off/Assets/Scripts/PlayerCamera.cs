@@ -9,6 +9,8 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     Camera VRCamera;
 
+    Transform mainCamPos;
+
     Camera playerCam;
 
     [SerializeField]
@@ -42,6 +44,8 @@ public class PlayerCamera : MonoBehaviour
 
     bool playerCamActive = false;
 
+    bool checkFallActive = true;
+
     void Awake()
     {
         EventBus<StopPlayerMovementEvent>.OnEvent += AllowPlayerPhysics;
@@ -57,6 +61,7 @@ public class PlayerCamera : MonoBehaviour
         playerCam = GetComponent<Camera>();
         playerCam.enabled = false;
         transition.SetParent(VRCamera.transform);
+
         if (GameManager.Instance != null)
         {
             offset = GameManager.Instance.PositionBeforeReset;
@@ -90,7 +95,7 @@ public class PlayerCamera : MonoBehaviour
 
     void playerFallingCheck()
     {
-        if (player.transform.position.y < startY)
+        if (player.transform.position.y < startY && checkFallActive)
         {
             if (falling == false)
             {
@@ -118,7 +123,7 @@ public class PlayerCamera : MonoBehaviour
             if (!playerCamActive)
             {
                 playerCam.enabled = true;
-                VRCamera.enabled = false;
+                //VRCamera.enabled = false;
                 transition.SetParent(this.transform);
                 playerCamActive = true;
             }
@@ -143,9 +148,12 @@ public class PlayerCamera : MonoBehaviour
 
     void AllowPlayerPhysics(StopPlayerMovementEvent stopPlayerMovementEvent)
     {
-        Debug.Log("Player physiscs activated");
-        playerPhysics = true; 
-        StartCoroutine(beforeDeathTimer());
+        if (checkFallActive)
+        {
+            Debug.Log("Player physiscs activated");
+            playerPhysics = true;
+            StartCoroutine(beforeDeathTimer());
+        }
     }
 
     IEnumerator beforeDeathTimer()
@@ -157,6 +165,11 @@ public class PlayerCamera : MonoBehaviour
         EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position - origin.position));
 
         
+    }
+
+    public void ActivateCheckFall(bool pCheckFallActive)
+    {
+        checkFallActive = pCheckFallActive;
     }
 
 }

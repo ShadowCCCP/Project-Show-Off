@@ -23,6 +23,10 @@ public class SpacePhysics : MonoBehaviour
         if(other.tag == "Player")
         {
             EventBus<StopPlayerMovementEvent>.Publish(new StopPlayerMovementEvent());
+            
+
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            rb.AddForce(player.transform.forward * 0.1f);
         }   
      }
 }
