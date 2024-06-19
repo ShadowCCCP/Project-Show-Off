@@ -371,6 +371,8 @@ GameObject:
   - component: {fileID: 3002041194343583532}
   - component: {fileID: 810702090426755250}
   - component: {fileID: 7233390066236953471}
+  - component: {fileID: 5757734065160444700}
+  - component: {fileID: 3634853870692204081}
   m_Layer: 0
   m_Name: ColorPalleteTwo
   m_TagString: Untagged
@@ -649,6 +651,35 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &5757734065160444700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623311322522494275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9bfd88bf3a21841879db950975e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatDistance: 0.08
+  timePerFloat: 1.5
+--- !u!114 &3634853870692204081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623311322522494275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b92a49771d69e4f8aec65c4b15affe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  respawnPosition: {x: -1.2889, y: 6.1752, z: -3.8483}
+  respawnTime: 3
 --- !u!1 &6135937989703279838
 GameObject:
   m_ObjectHideFlags: 0
