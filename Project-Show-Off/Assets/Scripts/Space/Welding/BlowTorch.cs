@@ -53,7 +53,6 @@ public class BlowTorch : MonoBehaviour
 
     private void Update()
     {
-
         if (currentController.activateAction.action.ReadValue<float>() > 0.5f)
         {
             activateFire();
