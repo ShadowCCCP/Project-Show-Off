@@ -33,10 +33,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Final Attack
+      name: Standing Melee Run Jump Attack
       takeName: mixamo.com
-      internalID: -203655887218126122
-      firstFrame: 0
+      internalID: -1543155505044341331
+      firstFrame: 23
       lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
@@ -46,7 +46,7 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
