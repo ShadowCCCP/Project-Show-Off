@@ -119,6 +119,7 @@ public class OnSwordPickupEvent : Event
 
     }
 }
+
 public class OnPirateDefeatedEvent : Event
 {
     public OnPirateDefeatedEvent()
@@ -130,6 +131,14 @@ public class OnPirateDefeatedEvent : Event
 public class OnPencilPickupEvent : Event
 {
     public OnPencilPickupEvent()
+    {
+
+    }
+}
+
+public class PaintTellAboutList : Event
+{
+    public PaintTellAboutList()
     {
 
     }
@@ -160,4 +169,3 @@ public class LevelFinishedEvent : Event
 
     }
 }
-

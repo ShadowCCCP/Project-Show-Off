@@ -17,6 +17,11 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void Start()
     {
+        Initialize();
+    }
+
+    protected virtual void Initialize()
+    {
         // Set the buttonStartPos to transform.position, as it's attached to the button...
         _buttonStartPos = transform.position;
         _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
@@ -24,7 +29,7 @@ public abstract class VRAbstractButton : MonoBehaviour
         // Get the distance in order to lerp the tween duration properly...
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;
 
-        if (glass==null)
+        if (glass == null)
         {
             _glassOpen = true;
         }
@@ -32,6 +37,7 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(glass);
         if ((other.tag == "RightController" || other.tag == "LeftController")&& _glassOpen )
         {
             // Move the button back...

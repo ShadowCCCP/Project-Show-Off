@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
         // This should set the XROrigin object to the desired position...
         transform.parent.position = teleportTo;
         _anim.SetTrigger("LightenScreen");
+        TriggerDialogueEvents();
     }
 
     private void FinishLevel(LevelFinishedEvent pLevelFinishEvent)
@@ -51,6 +52,13 @@ public class PlayerManager : MonoBehaviour
         TransitionManager.onDarkenFinished += BackToLobby;
 
         _anim.SetTrigger("DarkenScreen");
+    }
+
+    private void TriggerDialogueEvents()
+    {
+        // This will trigger all dialogue events...
+        // Won't be a problem as the scene itself only listens to the important ones...
+        EventBus<PaintTellAboutList>.Publish(new PaintTellAboutList());
     }
 
     private void BackToLobby()

@@ -9,6 +9,7 @@ public class DialogueCMRato : MonoBehaviour
 
     string[] sceneStart;
     string[] pencilPickup;
+    string[] listInfo;
     string[] timeRunningOut;
     string[] paintDone;
 
@@ -22,6 +23,7 @@ public class DialogueCMRato : MonoBehaviour
     private void Awake()
     {
         EventBus<OnPencilPickupEvent>.OnEvent += triggerPencilDialogue;
+        EventBus<PaintTellAboutList>.OnEvent += triggerListDialogue;
         EventBus<PaintTimeRunningOutEvent>.OnEvent += triggerTimeRunningOutDialogue;
         EventBus<PaintDoneEvent>.OnEvent += triggerpaintDoneDialogue;
     }
@@ -29,6 +31,7 @@ public class DialogueCMRato : MonoBehaviour
     void OnDestroy()
     {
         EventBus<OnPencilPickupEvent>.OnEvent -= triggerPencilDialogue;
+        EventBus<PaintTellAboutList>.OnEvent -= triggerListDialogue;
         EventBus<PaintTimeRunningOutEvent>.OnEvent -= triggerTimeRunningOutDialogue;
         EventBus<PaintDoneEvent>.OnEvent -= triggerpaintDoneDialogue;
     }
@@ -41,6 +44,7 @@ public class DialogueCMRato : MonoBehaviour
 
         sceneStart = dialogueManager.rat.Sick;
         pencilPickup = dialogueManager.rat.Time;
+        listInfo = dialogueManager.rat.List;
         timeRunningOut = dialogueManager.rat.Evening;
         paintDone = dialogueManager.rat.Beautiful;
 
@@ -51,6 +55,11 @@ public class DialogueCMRato : MonoBehaviour
     void triggerPencilDialogue(OnPencilPickupEvent onPencil)
     {
         speak(pencilPickup, 0);
+    }
+
+    void triggerListDialogue(PaintTellAboutList paintTellAboutList)
+    {
+        speak(listInfo, 0);
     }
 
     void triggerTimeRunningOutDialogue(PaintTimeRunningOutEvent paintTimeRunningOutEvent)

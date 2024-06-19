@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -5,6 +6,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class TransitionAreaActivator : MonoBehaviour
 {
     [SerializeField] GameObject transitionArea;
+
+    [Tooltip("Amount of time before the area actually appears.")]
+    [SerializeField] float bufferTime;
+
     [SerializeField] XRGrabInteractable[] grabToTrigger;
 
     private List<IXRSelectInteractable> interactedWith = new List<IXRSelectInteractable>();
@@ -47,8 +52,21 @@ public class TransitionAreaActivator : MonoBehaviour
             // If all interactables were grabbed, activate transition zone...
             if (interactedWith.Count == grabToTrigger.Length)
             {
-                transitionArea.SetActive(true);
+                TriggerDialogueEvents();
+                StartCoroutine(SpawnTransitionArea());
             }
         }
+    }
+
+    private void TriggerDialogueEvents()
+    {
+        EventBus<OnPencilPickupEvent>.Publish(new OnPencilPickupEvent());
+    }
+
+    private IEnumerator SpawnTransitionArea()
+    {
+        yield return new WaitForSeconds(bufferTime);
+
+        transitionArea.SetActive(true);
     }
 }

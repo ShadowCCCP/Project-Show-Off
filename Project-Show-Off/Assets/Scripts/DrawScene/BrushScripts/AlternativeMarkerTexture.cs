@@ -24,33 +24,18 @@ public class MarkerTextureAlternative : MonoBehaviour
     private Vector2 _lastTouchPos;
     private bool _touchedLastFrame;
 
-    private XRGrabInteractable _gInteractable;
-    private static bool _anyBrushPicked;
-
     void Start()
     {
         colorMatcher.Initialize();
         _renderer = tip.GetComponent<Renderer>();
-        _gInteractable = GetComponent<XRGrabInteractable>();
 
         // Create an array of pixels with the same color the pen uses...
         _colors = Enumerable.Repeat(_renderer.material.color, penSize * penSize).ToArray();
-
-        _gInteractable.selectEntered.AddListener(InvokePickupEvent);
     }
 
     void Update()
     {
         Draw();
-    }
-
-    private void InvokePickupEvent(SelectEnterEventArgs args)
-    {
-        if (!_anyBrushPicked)
-        {
-            EventBus<OnPencilPickupEvent>.Publish(new OnPencilPickupEvent());
-            _anyBrushPicked = true;
-        }
     }
 
     private void Draw()
