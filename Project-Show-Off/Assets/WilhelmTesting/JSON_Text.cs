@@ -34,6 +34,11 @@ public partial class DialogueManager : MonoBehaviour
         public string[] Broken, Smash, Identify, Select;
     }
 
+    public class TimeGod
+    {
+        public string[] Anomaly, Succeeded, Failed;
+    }
+
     string CMGato = @"
     {
         'Intro' : [
@@ -162,7 +167,11 @@ public partial class DialogueManager : MonoBehaviour
         ],
         'Beautiful' : 
         [
-            'Wow, truly remarkable.'
+            'Wow, truly remarkable.',
+            'Is it like... modern art I guess?',
+            'You truly put your personal touch to it',
+            'Do you think what you drew was appropiate?',
+            'I\'ve never seen something so beautiful'
         ]
     }";
 
@@ -192,6 +201,23 @@ public partial class DialogueManager : MonoBehaviour
         ]
     }";
 
+    string CMTimegod = @"
+    {
+        'Anomaly' : [
+            'A temporal anomaly appeared, but not to worry, I spawned this portal to bring you back'
+        ],
+
+        'Succeeded' : [
+            'You did great back there, you truly excel as a timeline repair person'
+        ],
+
+        'Failed' : [
+            'Don\'t worry, I can give you another chance timeline repair person'
+        ]
+    
+    }";
+
+
     /*
      * 
      * 
@@ -202,6 +228,7 @@ public partial class DialogueManager : MonoBehaviour
     public Rat rat;
     public Alien alien; 
     public TimeMachine timeMachine;
+    public TimeGod timegod;
 
     /*void Awake()
     {
