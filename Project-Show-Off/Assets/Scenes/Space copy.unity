@@ -675,7 +675,7 @@ PrefabInstance:
     - target: {fileID: 638573772035101970, guid: 1be9fbf79f5004b43901516e28ed291d,
         type: 3}
       propertyPath: fallingTime
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 638573772035101970, guid: 1be9fbf79f5004b43901516e28ed291d,
         type: 3}
@@ -2731,6 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 812817861}
+  glideSpeedOnFall: 0.1
   ignoreCollisionWithPlayer:
   - {fileID: 540278214}
 --- !u!65 &1103706310

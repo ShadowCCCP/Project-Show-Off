@@ -30,11 +30,15 @@ public class BlowTorch : MonoBehaviour
     GameObject blowtorch;
 
 
+    SoundPlayer flameLoop;
+
+
     ActionBasedController currentController;
 
 
     private void Start()
     {
+        flameLoop = GetComponent<SoundPlayer>();
         coll = GetComponent<Collider>();
         coll.enabled = false;
         sparks.Stop();
@@ -52,8 +56,8 @@ public class BlowTorch : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (currentController.activateAction.action.ReadValue<float>() > 0.5f)
+    {   
+        if (currentController.activateAction.action.ReadValue<float>() > 0.5f )
         {
             activateFire();
         }
@@ -83,14 +87,24 @@ public class BlowTorch : MonoBehaviour
 
     void activateFire()
     {
-        coll.enabled = true;
-        flame.Play();
+        if (coll.enabled == false)
+        {
+            coll.enabled = true;
+            flame.Play();
+
+            flameLoop.Play();
+        }
     }
 
     void deactivateFire()
     {
-        coll.enabled = false;
-        flame.Stop();
+        if (coll.enabled == true)
+        {
+            coll.enabled = false;
+            flame.Stop();
+
+            flameLoop.Stop();
+        }
     }
 
     private void setHand(int hand)

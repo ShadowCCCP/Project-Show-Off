@@ -9,8 +9,6 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     Camera VRCamera;
 
-    Transform mainCamPos;
-
     Camera playerCam;
 
     [SerializeField]
@@ -40,6 +38,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     Transform origin;
 
+
     Vector3 offset = new Vector3 (0, 0, 0);
 
     bool playerCamActive = false;
@@ -60,7 +59,7 @@ public class PlayerCamera : MonoBehaviour
     {
         playerCam = GetComponent<Camera>();
         playerCam.enabled = false;
-        transition.SetParent(VRCamera.transform);
+        //transition.SetParent(VRCamera.transform);
 
         if (GameManager.Instance != null)
         {
@@ -112,7 +111,7 @@ public class PlayerCamera : MonoBehaviour
             {
                 playerCam.enabled = false;
                 VRCamera.enabled = true;
-                transition.SetParent(VRCamera.transform);
+                //transition.SetParent(VRCamera.transform);
                 playerCamActive = false;
             }
             //do vr camera
@@ -123,8 +122,8 @@ public class PlayerCamera : MonoBehaviour
             if (!playerCamActive)
             {
                 playerCam.enabled = true;
-                //VRCamera.enabled = false;
-                transition.SetParent(this.transform);
+
+                //transition.SetParent(this.transform);
                 playerCamActive = true;
             }
             transform.position = player.transform.position + offset;

@@ -146,6 +146,4 @@ public class WeldingManager : MonoBehaviour
     }
 
 
-    ///new check if done
-
 }

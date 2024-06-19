@@ -43,6 +43,11 @@ public class SoundPlayer : MonoBehaviour
         PlaySound();
     }
 
+    public void Stop()
+    {
+        _audioSource.Stop();
+    }
+
     public void PlayNext()
     {
         // Get next sound in the array...

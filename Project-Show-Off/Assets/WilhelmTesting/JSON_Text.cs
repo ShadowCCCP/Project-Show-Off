@@ -227,7 +227,8 @@ public partial class DialogueManager : MonoBehaviour
 
 
     /* 
-     * 
+     * anomaly always start 5 sec
+     * then based on game
      * 
      */
 

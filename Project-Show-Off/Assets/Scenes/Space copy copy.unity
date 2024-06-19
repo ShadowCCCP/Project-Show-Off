@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.91670156, g: 0.54226214, b: 0.5992661, a: 1}
+  m_IndirectSpecularColor: {r: 0.922124, g: 0.5513702, b: 0.6052337, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2473,6 +2473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 812817861}
+  glideSpeedOnFall: 0.1
   ignoreCollisionWithPlayer:
   - {fileID: 540278214}
   - {fileID: 1910849199}
@@ -4612,7 +4613,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1529201195}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4595742699512903667, guid: 94492d5415e19634a947a74030254fd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1592871940}
   m_SourcePrefab: {fileID: 100100000, guid: 94492d5415e19634a947a74030254fd2, type: 3}
 --- !u!4 &1592871938 stripped
 Transform:
@@ -4626,6 +4631,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1592871937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592871940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389910833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 1584aaf24c11f4342a802ecf7581bbc8, type: 3}
+  playOnAwake: 0
+  loop: 1
+  spatialBlend: 0
+  volume: 1
 --- !u!1 &1615759654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,6 +4918,56 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.9457035, y: -7.365788, z: -21.265842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1750134191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750134193}
+  - component: {fileID: 1750134192}
+  m_Layer: 0
+  m_Name: Space Ambiance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1750134192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750134191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: d709916ec7133424480592bba6cbeae9, type: 3}
+  playOnAwake: 1
+  loop: 1
+  spatialBlend: 0
+  volume: 1
+--- !u!4 &1750134193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750134191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.64832586, y: -2.6771557, z: -2.2279544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6422,3 +6495,4 @@ SceneRoots:
   - {fileID: 1114615954}
   - {fileID: 943951413}
   - {fileID: 1726709147}
+  - {fileID: 1750134193}

@@ -8,6 +8,9 @@ public class SpacePhysics : MonoBehaviour
     Collider player;
 
     [SerializeField]
+    float glideSpeedOnFall = 0.1f;
+
+    [SerializeField]
     Collider[] ignoreCollisionWithPlayer;
 
     void Start()
@@ -26,7 +29,7 @@ public class SpacePhysics : MonoBehaviour
             
 
             Rigidbody rb = player.GetComponent<Rigidbody>();
-            rb.AddForce(player.transform.forward * 0.1f);
+            rb.AddForce(player.transform.forward * glideSpeedOnFall);
         }   
      }
 }
