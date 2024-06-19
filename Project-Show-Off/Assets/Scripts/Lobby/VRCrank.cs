@@ -28,6 +28,12 @@ public class VRCrank : MonoBehaviour
     bool timeMachineOn;
 
     Collider leverCollider;
+
+    [SerializeField]
+    SoundPlayer soundPlayer;
+    [SerializeField]
+    SoundPlayer soundPlayerLooped;
+    Vector3 oldPos;
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;
@@ -45,7 +51,10 @@ public class VRCrank : MonoBehaviour
         timeMachineManager.LoadLevelOnTimeMachine(0);
 
         leverCollider = GetComponent<Collider>();
+
         leverCollider.enabled = false;
+
+        oldPos = transform.position;
 
     }
 
@@ -54,6 +63,7 @@ public class VRCrank : MonoBehaviour
         preventLeverBreaking();
         updateMovementUp();
         updateMovementDown();
+        soundsForLever();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -168,5 +178,32 @@ public class VRCrank : MonoBehaviour
         {
             timeMachineManager.LoadLevelOnTimeMachine(0);
         }
+    }
+
+
+
+    bool moving;
+
+    void soundsForLever()
+    {
+        if(transform.position != oldPos)
+        {
+            if (!moving)
+            {
+                soundPlayer.PlaySpecific(0);
+                moving = true; 
+                soundPlayerLooped.Play();
+            }
+        }
+        else if (moving)
+        {
+            soundPlayerLooped.Stop();
+            soundPlayer.PlaySpecific(1);
+            moving = false;
+        }
+
+
+
+        oldPos = transform.position;
     }
 }

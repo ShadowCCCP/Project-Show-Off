@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     Animator blackImg;
+
+    SoundPlayer soundPlayer;
     void Awake()
     {
         EventBus<DarkenScreenEvent>.OnEvent += SetScreenDark;
@@ -17,6 +19,12 @@ public class UIManager : MonoBehaviour
         EventBus<DarkenScreenEvent>.OnEvent -= SetScreenDark;
     }
 
+    private void Start()
+    {
+        soundPlayer = GetComponent<SoundPlayer>();
+
+        if (soundPlayer) soundPlayer.PlaySpecific(0);
+    }
     void Update()
     {
         /*
@@ -32,5 +40,6 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("trogg anim");
         blackImg.SetTrigger("DarkenScreen");
+        if (soundPlayer) soundPlayer.PlaySpecific(1);
     }
 }
