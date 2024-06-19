@@ -127,6 +127,8 @@ GameObject:
   - component: {fileID: 7432463055788606530}
   - component: {fileID: 8666313559523379546}
   - component: {fileID: 5418358360910006022}
+  - component: {fileID: 8513727444407668995}
+  - component: {fileID: 3135066274806218812}
   m_Layer: 0
   m_Name: AlternativeBrush
   m_TagString: Untagged
@@ -190,7 +192,7 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 27731c4c16c813f478d26a6be592db7e, type: 3}
     - {fileID: 2800000, guid: ff5b7e19e36e24543a6d22fed89ebabc, type: 3}
   tip: {fileID: 1770676831206469707}
-  penSize: 40
+  penSize: 15
   paintSplashVFX: {fileID: 7873719125646550967, guid: e4bc490a861e207409b29e4335c4d1d4,
     type: 3}
 --- !u!54 &7432463055788606530
@@ -393,6 +395,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.825117, y: 2.7553802, z: 20.692163}
   m_Center: {x: 0.00000009313226, y: -0.00000009313226, z: -0.28923526}
+--- !u!114 &8513727444407668995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526825857623394308}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9bfd88bf3a21841879db950975e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatDistance: 0.08
+  timePerFloat: 1.5
+--- !u!114 &3135066274806218812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526825857623394308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b92a49771d69e4f8aec65c4b15affe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  respawnPosition: {x: -0.969, y: 5.486, z: -4.283}
+  respawnTime: 3
 --- !u!1 &4199618329271883402
 GameObject:
   m_ObjectHideFlags: 0
