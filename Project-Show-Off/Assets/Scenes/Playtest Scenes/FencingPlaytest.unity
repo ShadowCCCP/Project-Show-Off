@@ -180,6 +180,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9180965610003230526, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6faf29bb10a161e4a95898904fd6584b, type: 2}
     - target: {fileID: -8679921383154817045, guid: 0348d3d3f1762614a92eb773c4fe2d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,16 +235,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3265409583160816899, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 557917f2f9a444646ac90529f06b68a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 0348d3d3f1762614a92eb773c4fe2d99,
         type: 3}
       propertyPath: m_Name
       value: pirate_with_the_sword (1)@Threatening
       objectReference: {fileID: 0}
+    - target: {fileID: 5490204451530188016, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: acda9dd71966ac749bd73b365a4d596a, type: 2}
     - target: {fileID: 5866666021909216657, guid: 0348d3d3f1762614a92eb773c4fe2d99,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8a1c83b3c3825e44999d3dd3b082c27e, type: 2}
+    - target: {fileID: 8164078558771037576, guid: 0348d3d3f1762614a92eb773c4fe2d99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
