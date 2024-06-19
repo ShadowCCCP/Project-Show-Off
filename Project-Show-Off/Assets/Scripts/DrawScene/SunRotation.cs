@@ -14,10 +14,22 @@ public class SunRotation : MonoBehaviour
     private float _totalRotation;
     private bool _warned;
 
+    private bool _rotate;
+
+    private void Start()
+    {
+        EventBus<PaintTellAboutList>.OnEvent += ActivateRotateScript;
+    }
+
+    private void OnDestroy()
+    {
+        EventBus<PaintTellAboutList>.OnEvent -= ActivateRotateScript;
+    }
+
     void Update()
     {
         CheckWarning();
-        Rotate();
+        if (_rotate) { Rotate(); }
     }
 
     private void Rotate()
@@ -58,5 +70,10 @@ public class SunRotation : MonoBehaviour
             EventBus<PaintTimeRunningOutEvent>.Publish(new PaintTimeRunningOutEvent());
             _warned = true;
         }
+    }
+
+    private void ActivateRotateScript(PaintTellAboutList paintTellAboutList)
+    {
+        _rotate = true;
     }
 }
