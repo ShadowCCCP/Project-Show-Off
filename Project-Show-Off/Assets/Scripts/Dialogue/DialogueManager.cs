@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static DialogueManager;
@@ -10,10 +11,6 @@ public partial class DialogueManager : MonoBehaviour
     //text dsspapera
     [SerializeField]
     TextMeshPro textBubble;
-
-    [Tooltip("If true touching the animal no longer works")]
-    [SerializeField]
-    bool isTimed; 
 
     [SerializeField]
     float timeBetweenText;
@@ -33,25 +30,7 @@ public partial class DialogueManager : MonoBehaviour
     {
         StartCoroutine(goThroughQueue());
     }
-
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!isTimed)
-        {
-            if (other.tag == "RightController" || other.tag == "LeftController")
-            {
-                //startMainDialogue(dialogueProgress);
-                //dialogueProgress++;
-            }
-        }
-    }
-
-
-
     
-
     public IEnumerator doDelayedDialogue(float time, string text)
     {
         yield return new WaitForSeconds(time);
@@ -91,6 +70,13 @@ public partial class DialogueManager : MonoBehaviour
     public void ClearQueue()
     {
         queue.Clear();
+    }
+
+    public void SpeakRandom(float time, string[] textArrray)
+    {
+        string text = textArrray[Random.Range(0, textArrray.Count())];
+        Debug.Log("speak: " + text);
+        StartCoroutine(doDelayedDialogue(time, text));
     }
 }
 

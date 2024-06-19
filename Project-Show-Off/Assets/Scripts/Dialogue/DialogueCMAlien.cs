@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueCMAlien : MonoBehaviour
 {
@@ -9,30 +10,28 @@ public class DialogueCMAlien : MonoBehaviour
     GameObject mainCamera;
     DialogueManager dialogueManager;
 
-    string[] sceneStart;
-    string[] pencilPickup;
-    string[] timeRunningOut;
-    string[] paintDone;
+    string[] destroyed;
+    string[] meteor;
+    string[] trigger;
 
-    /* on scene start - Sick
-  *  on pencil picup - Time
-  *  on time almost out - Evening
-  *  on paint done - Beautiful
-  *  
-  *  list?
-  */
+    [SerializeField]
+    float timeForMeteor = 4;
+
+    /*
+    *  dark room + cmet with u + cmet : destroyed
+    * 
+    * presss button -> door opens -> meteor fles by cmet : meteor -> plates snapped => cmet: trigger 
+    */
     private void Awake()
     {
-        EventBus<OnPencilPickupEvent>.OnEvent += triggerPencilDialogue;
-        EventBus<PaintTimeRunningOutEvent>.OnEvent += triggerTimeRunningOutDialogue;
-        EventBus<PaintDoneEvent>.OnEvent += triggerpaintDoneDialogue;
+        EventBus<OnDoorOpenSpaceEvent>.OnEvent += triggerDoorOpenDialogue;
+        EventBus<OnPlatePlacedSpaceEvent>.OnEvent += triggerPlateDialogue;
     }
 
     void OnDestroy()
     {
-        EventBus<OnPencilPickupEvent>.OnEvent -= triggerPencilDialogue;
-        EventBus<PaintTimeRunningOutEvent>.OnEvent -= triggerTimeRunningOutDialogue;
-        EventBus<PaintDoneEvent>.OnEvent -= triggerpaintDoneDialogue;
+        EventBus<OnDoorOpenSpaceEvent>.OnEvent -= triggerDoorOpenDialogue;
+        EventBus<OnPlatePlacedSpaceEvent>.OnEvent -= triggerPlateDialogue;
     }
 
 
@@ -41,27 +40,31 @@ public class DialogueCMAlien : MonoBehaviour
         dialogueManager = GetComponent<DialogueManager>();
 
 
-        sceneStart = dialogueManager.rat.Sick;
-        pencilPickup = dialogueManager.rat.Time;
-        timeRunningOut = dialogueManager.rat.Evening;
-        paintDone = dialogueManager.rat.Beautiful;
+        destroyed = dialogueManager.alien.Destroyed;
+        meteor = dialogueManager.alien.Meteor;
+        trigger = dialogueManager.alien.Trigger;
 
-        speak(sceneStart, 0);
-
+        speak(destroyed, 1);
+        
     }
 
-    void triggerPencilDialogue(OnPencilPickupEvent onPencil)
+    private void Update()
     {
-        speak(pencilPickup, 0);
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
+        }
+    }
+    void triggerDoorOpenDialogue(OnDoorOpenSpaceEvent onDoorOpenSpaceEvent)
+    {
+        speak(meteor, 0);
+
+        StartCoroutine(gobackToOriginDelayed());
     }
 
-    void triggerTimeRunningOutDialogue(PaintTimeRunningOutEvent paintTimeRunningOutEvent)
+    void triggerPlateDialogue(OnPlatePlacedSpaceEvent onPlatePlacedSpaceEvent)
     {
-        speak(timeRunningOut, 0);
-    }
-    void triggerpaintDoneDialogue(PaintDoneEvent paintDoneEvent)
-    {
-        speak(paintDone, 0);
+        speak(trigger, 0);
     }
 
     void speak(string[] text, float time)
@@ -77,5 +80,11 @@ public class DialogueCMAlien : MonoBehaviour
                 dialogueManager.queueUpDialogue(text[i]);
             }
         }
+    }
+
+    IEnumerator gobackToOriginDelayed()
+    {
+        yield return new WaitForSeconds(timeForMeteor);
+        EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
     }
 }
