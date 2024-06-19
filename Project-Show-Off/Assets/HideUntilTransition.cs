@@ -35,6 +35,7 @@ public class HideUntilTransition : MonoBehaviour
 
     private IEnumerator DelayedStart()
     {
+        // This fixes the issue of deactivated things not getting to do their Start() setup...
         yield return new WaitForSeconds(0.1f);
         HideChildren();
     }

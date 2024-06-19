@@ -350,7 +350,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public void SideGotHit(SideHit pSide)
     {
-        Debug.Log(_hitCurrentTime);
         // If hit animation timer is up...
         if (_hitCurrentTime >= _hitWaitTime)
         {

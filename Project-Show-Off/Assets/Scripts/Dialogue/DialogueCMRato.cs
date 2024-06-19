@@ -68,7 +68,7 @@ public class DialogueCMRato : MonoBehaviour
     }
     void triggerpaintDoneDialogue(PaintDoneEvent paintDoneEvent)
     {
-        speak(paintDone, 0);
+        dialogueManager.SpeakRandom(0, paintDone);
     }
 
     void speak(string[] text, float time)

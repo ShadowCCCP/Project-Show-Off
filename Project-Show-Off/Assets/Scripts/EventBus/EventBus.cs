@@ -169,3 +169,27 @@ public class LevelFinishedEvent : Event
 
     }
 }
+
+public class OnDoorOpenSpaceEvent : Event
+{
+    public OnDoorOpenSpaceEvent()
+    {
+
+    }
+}
+
+public class OnPlatePlacedSpaceEvent : Event
+{
+    public OnPlatePlacedSpaceEvent()
+    {
+
+    }
+}
+
+public class GoBackToStartPosEvent : Event
+{
+    public GoBackToStartPosEvent()
+    {
+
+    }
+}
