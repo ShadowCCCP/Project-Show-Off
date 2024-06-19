@@ -9,6 +9,8 @@ public class SunRotation : MonoBehaviour
 
     [SerializeField] float warnAtSeconds = 60;
 
+    [SerializeField] float timeBeforeLevelFinish = 5;
+
     private float _totalRotation;
     private bool _warned;
 
@@ -20,15 +22,24 @@ public class SunRotation : MonoBehaviour
 
     private void Rotate()
     {
-        float rotation = targetRotation / secondsToPaint * Time.deltaTime;
-        gameObject.transform.Rotate(0, rotation, 0);
-        _totalRotation += rotation;
-
-        if (_totalRotation >= targetRotation)
+        if (_totalRotation < targetRotation)
         {
-            EventBus<PaintDoneEvent>.Publish(new PaintDoneEvent());
-            enabled = false;
+            float rotation = targetRotation / secondsToPaint * Time.deltaTime;
+            gameObject.transform.Rotate(0, rotation, 0);
+            _totalRotation += rotation;
+
+            if (_totalRotation >= targetRotation)
+            {
+                EventBus<PaintDoneEvent>.Publish(new PaintDoneEvent());
+                StartCoroutine(FinishLevel());
+            }
         }
+    }
+
+    private IEnumerator FinishLevel()
+    {
+        yield return new WaitForSeconds(timeBeforeLevelFinish);
+        EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent());
     }
 
     private float RemainingTime()
