@@ -24,6 +24,7 @@ public partial class DialogueManager : MonoBehaviour
         rat = JsonConvert.DeserializeObject<Rat>(CMRato);
         alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
         timeMachine = JsonConvert.DeserializeObject<TimeMachine>(TimeScreen);
+        timegod = JsonConvert.DeserializeObject<TimeGod>(CMTimegod);
     }
 
     void Start()
@@ -77,6 +78,11 @@ public partial class DialogueManager : MonoBehaviour
         string text = textArrray[Random.Range(0, textArrray.Count())];
         Debug.Log("speak: " + text);
         StartCoroutine(doDelayedDialogue(time, text));
+    }
+
+    public float GetTimeBetween()
+    {
+        return timeBetweenText;
     }
 }
 

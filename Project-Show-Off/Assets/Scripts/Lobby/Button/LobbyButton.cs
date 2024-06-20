@@ -23,7 +23,7 @@ public class LobbyButton : VRAbstractButton
     {
         // Load scene after a short pause for transitions to happen...
         yield return new WaitForSeconds(sceneTransitionTime);
-        GameManager.Instance.LoadSceneSpecific(loadScene);
+        GameManager.Instance.LoadSceneSpecific(loadScene, false);
     }    
 
     public void SetToGoScene(int pIndex)

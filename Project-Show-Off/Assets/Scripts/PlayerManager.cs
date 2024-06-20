@@ -63,6 +63,6 @@ public class PlayerManager : MonoBehaviour
 
     private void BackToLobby()
     {
-        GameManager.Instance.LoadSceneSpecific(4);
+        GameManager.Instance.LoadSceneSpecific(5, false);
     }
 }
