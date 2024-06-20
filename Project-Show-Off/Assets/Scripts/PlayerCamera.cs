@@ -30,9 +30,6 @@ public class PlayerCamera : MonoBehaviour
     GameObject leftController;
 
     [SerializeField]
-    Transform transition;
-
-    [SerializeField]
     Transform camOffset;
 
     [SerializeField]

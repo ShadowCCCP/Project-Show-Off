@@ -45,6 +45,6 @@ public class DrawTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(sceneSwitchTransitionTime);
 
-        if (!deactivateSceneSwtich) { GameManager.Instance.LoadSceneNext(); }
+        if (!deactivateSceneSwtich) { GameManager.Instance.LoadSceneSpecific(5, true); }
     }
 }

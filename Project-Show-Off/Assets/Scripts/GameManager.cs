@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int deathRoomIndex = 5;
 
+    public bool wonState { private set; get; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -64,18 +66,20 @@ public class GameManager : MonoBehaviour
     }
 
     // Changing scenes method...
-    public void LoadSceneSpecific(int pSceneIndex)
+    public void LoadSceneSpecific(int pSceneIndex, bool pWonState)
     {
-        StartCoroutine(LoadSceneSpecificRoutine(pSceneIndex));
+        StartCoroutine(LoadSceneSpecificRoutine(pSceneIndex, pWonState));
     }
 
-    public void LoadSceneNext()
+    public void LoadSceneNext(bool pWonState)
     {
-        StartCoroutine(LoadSceneNextRoutine() );
+        StartCoroutine(LoadSceneNextRoutine(pWonState) );
     }
 
-    IEnumerator LoadSceneSpecificRoutine(int pSceneIndex)
+    IEnumerator LoadSceneSpecificRoutine(int pSceneIndex,bool pWonState)
     {
+        wonState = pWonState;
+
         //reset saved position
         PositionBeforeReset = new Vector3(0, 0, 0);
 
@@ -95,8 +99,9 @@ public class GameManager : MonoBehaviour
         else { Debug.Log("GameManager: Scene index " + pSceneIndex + " is invalid"); }
     }
 
-    IEnumerator LoadSceneNextRoutine()
+    IEnumerator LoadSceneNextRoutine(bool pWonState)
     {
+        wonState = pWonState;
         PositionBeforeReset = new Vector3 (0, 0, 0);
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player death");
         PositionBeforeReset = onPlayerDeathEvent.posDeath;
 
-        LoadSceneSpecific(deathRoomIndex);
+        LoadSceneSpecific(deathRoomIndex, false);
         setOffsetPos(onPlayerDeathEvent.posDeath);
     }
 
