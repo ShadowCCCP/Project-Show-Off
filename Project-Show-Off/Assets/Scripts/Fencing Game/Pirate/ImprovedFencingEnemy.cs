@@ -166,7 +166,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // Reset the animation speed for the attack...
         _anim.SetFloat("AttackSpeed", 1);
 
-        int randomAttack = UnityEngine.Random.Range(0, _maxAttackQueueCount);
+        int randomAttack = UnityEngine.Random.Range(0, 3);
 
         // If max amount of attacks isn't reached and attack got blocked...
         if (_attacksDone.Count < _currentAttackCount && (_gotBlocked || _attacksDone.Count == 0))
@@ -177,13 +177,30 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Activate sword collider only at the very first attack...
             if (_attacksDone.Count == 0) { TriggerColEvent(false); }
 
-            // Get a random, but valid number and trigger animation...
-            while (_attacksDone.Contains(randomAttack))
+            // Check if this might be the pirates final attack...
+            if (_decisiveCount >= decisiveTurn - 1 || _currentFightStage >= stageMaxCount)
             {
-                randomAttack = UnityEngine.Random.Range(0, _maxAttackQueueCount);
+                // Make the random attack not so random...
+                randomAttack = 3;
+
+                // And add more into the list to only attack once...
+                while (_attacksDone.Count < _currentAttackCount)
+                {
+                    int filler = UnityEngine.Random.Range(0, 2);
+                    _attacksDone.Add(filler);
+                }
             }
-            _attacksDone.Add(randomAttack);
-            _anim.SetFloat("Attacks", randomAttack);
+            else
+            {
+                // Get a random, but valid number and trigger animation...
+                while (_attacksDone.Contains(randomAttack))
+                {
+                    randomAttack = UnityEngine.Random.Range(0, 3);
+                }
+                _attacksDone.Add(randomAttack);
+            }
+
+            _anim.SetInteger("Attacks", randomAttack);
         }
         else
         {
@@ -219,7 +236,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Activate body trigger colliders...
             TriggerColEvent();
         }
-        else { CurrentState = FencingState.Taunt; }
+        else 
+        {
+            int randomTaunt = UnityEngine.Random.Range(0, 3);
+            _anim.SetInteger("Taunts", randomTaunt);
+
+            CurrentState = FencingState.Taunt; 
+        }
     }
 
     private void ProcessCurrentStage()
@@ -290,8 +313,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void ResetValues()
     {
-        _anim.SetFloat("Attacks", -1);
-        _anim.SetFloat("Hits", -1);
+        _anim.SetInteger("Attacks", -1);
+        _anim.SetInteger("Hits", -1);
+        _anim.SetInteger("Taunts", -1);
         _anim.SetBool("GotBlocked", false);
         _blockCount = 0;
         _gotHit = false;
@@ -325,6 +349,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
         if (CurrentState == FencingState.Intro || CurrentState == FencingState.Taunt)
         {
+            Debug.Log("Walk forward");
             _anim.SetTrigger("WalkForward");
             CurrentState = FencingState.Walk;
             Move();
@@ -339,7 +364,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else if (CurrentState == FencingState.Stunned)
         {
-            _anim.SetFloat("Hits", 3);
+            _anim.SetInteger("Hits", 3);
         }
     }
 
@@ -364,15 +389,15 @@ public class ImprovedFencingEnemy : MonoBehaviour
             switch (pSide)
             {
                 case SideHit.Left:
-                    _anim.SetFloat("Hits", 0);
+                    _anim.SetInteger("Hits", 0);
                     break;
 
                 case SideHit.Right:
-                    _anim.SetFloat("Hits", 1);
+                    _anim.SetInteger("Hits", 1);
                     break;
 
                 case SideHit.Front:
-                    _anim.SetFloat("Hits", 2);
+                    _anim.SetInteger("Hits", 2);
                     break;
             }
 

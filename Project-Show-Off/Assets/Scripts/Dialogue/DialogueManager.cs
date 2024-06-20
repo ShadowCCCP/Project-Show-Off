@@ -43,7 +43,7 @@ public partial class DialogueManager : MonoBehaviour
 
     public void Speak(float time ,string text)
     {
-        soundPlayer.Play();
+        if (soundPlayer != null) soundPlayer.Play();
         Debug.Log("speak: " + text);
         StartCoroutine(doDelayedDialogue(time, text));
     }
