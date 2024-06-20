@@ -15,9 +15,12 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private bool _glassOpen;
 
+    SoundPlayer _soundPlayer;
+
     private void Start()
     {
         Initialize();
+        _soundPlayer = GetComponent<SoundPlayer>();
     }
 
     protected virtual void Initialize()
@@ -37,8 +40,8 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(glass);
-        if ((other.tag == "RightController" || other.tag == "LeftController")&& _glassOpen )
+        //Debug.Log(_glassOpen);   
+        if ((other.tag == "RightController" || other.tag == "LeftController")&& _glassOpen)
         {
             // Move the button back...
             TweenButton();
@@ -65,6 +68,8 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void TweenButton()
     {
+        _soundPlayer.Play();
+        Debug.Log("button tween");
         if (_currentTweenId == -1)
         {
             // Move the button back according to buttonPressDepth...

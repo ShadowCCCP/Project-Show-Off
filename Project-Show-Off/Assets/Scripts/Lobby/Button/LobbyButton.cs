@@ -10,11 +10,10 @@ public class LobbyButton : VRAbstractButton
 
     Renderer ren;
 
-    SoundPlayer soundPlayer;
-
-    private void Start()
+    protected override void Initialize()
     {
-        soundPlayer = GetComponent<SoundPlayer>();   
+        base.Initialize();
+
         ren = GetComponent<Renderer>();
         normaMat = ren.material;
     }
@@ -33,7 +32,6 @@ public class LobbyButton : VRAbstractButton
 
     public override void OnButtonPress()
     {
-        soundPlayer.Play();
         StartCoroutine(TransitionToScene());
     }
 

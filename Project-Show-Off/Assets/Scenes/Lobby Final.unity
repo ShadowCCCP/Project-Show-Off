@@ -2012,6 +2012,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time machine
       objectReference: {fileID: 0}
+    - target: {fileID: 3595286855156961579, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: buttonPressDepth
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491873385456303653, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: buttonPressDepth
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2134,6 +2144,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907151504363042173, guid: 1be9fbf79f5004b43901516e28ed291d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.0651572
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907151504363042173, guid: 1be9fbf79f5004b43901516e28ed291d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.381
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
