@@ -9,7 +9,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     public enum SideHit { Left, Right, Front }
 
-    private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned }
+    private enum FencingState { Intro, Idle, Walk, Taunt, Attack, Stunned, Dazed, UnhitDazed }
     private FencingState _lastState;
     private FencingState _currentState;
     private FencingState CurrentState
@@ -274,12 +274,16 @@ public class ImprovedFencingEnemy : MonoBehaviour
             ProcessCurrentStage();
 
             // Move backwards if game not finished...
-            if (!_gameCompleted) { Move(false); }
+            if (!_gameCompleted) 
+            {
+                CurrentState = FencingState.Dazed;
+                _anim.SetTrigger("WalkBackward");
+            }
         }
         else
         {
+            CurrentState = FencingState.UnhitDazed;
             _anim.SetTrigger("StunNotDamaged");
-            StartCoroutine(InitiateAttack());
         }
     }
 
@@ -325,9 +329,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
             CurrentState = FencingState.Walk;
             Move();
         }
-        else if (CurrentState == FencingState.Walk)
+        else if (CurrentState == FencingState.Walk || CurrentState == FencingState.UnhitDazed)
         {
             StartCoroutine(InitiateAttack());
+        }
+        else if (CurrentState == FencingState.Dazed)
+        {
+            Move(false);
         }
         else if (CurrentState == FencingState.Stunned)
         {
