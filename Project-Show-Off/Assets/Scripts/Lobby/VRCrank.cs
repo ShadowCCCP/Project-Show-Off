@@ -55,7 +55,7 @@ public class VRCrank : MonoBehaviour
         leverCollider.enabled = false;
 
         oldPos = transform.position;
-
+        StartCoroutine(soundsForLever());
     }
 
     void Update()
@@ -184,7 +184,7 @@ public class VRCrank : MonoBehaviour
 
     bool moving;
 
-    void soundsForLever()
+    IEnumerator soundsForLever()
     {
         if(transform.position != oldPos)
         {
@@ -203,7 +203,9 @@ public class VRCrank : MonoBehaviour
         }
 
 
-
         oldPos = transform.position;
+
+        yield return new WaitForSeconds(0.15f);
+        StartCoroutine(soundsForLever());
     }
 }
