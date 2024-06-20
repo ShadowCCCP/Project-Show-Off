@@ -24,6 +24,8 @@ public class HandSelection : MonoBehaviour
     SoundPlayer soundPlayer;
 
     [SerializeField]
+    GameObject alarm;
+
     SoundPlayer alarmSound;
 
     private void Awake()
@@ -38,6 +40,7 @@ public class HandSelection : MonoBehaviour
     private void Start()
     {
         soundPlayer = GetComponent<SoundPlayer>();
+        alarmSound = alarm.GetComponent<SoundPlayer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,6 +75,7 @@ public class HandSelection : MonoBehaviour
             rightLightRend.material = materialOn;
         }
         spotlight.SetActive(false);
+        alarm.SetActive(false);
         alarmSound.Stop();
     }
 
@@ -80,6 +84,7 @@ public class HandSelection : MonoBehaviour
         brokenGlass=true;
         spotlight.SetActive(true);
         soundPlayer.Play();
+        alarm.SetActive(true);
         alarmSound.Play();
     }
 }

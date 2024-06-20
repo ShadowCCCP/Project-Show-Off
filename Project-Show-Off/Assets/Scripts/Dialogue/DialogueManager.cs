@@ -15,7 +15,7 @@ public partial class DialogueManager : MonoBehaviour
     [SerializeField]
     float timeBetweenText;
 
-
+    SoundPlayer soundPlayer;
 
     void Awake()
     {   
@@ -29,6 +29,7 @@ public partial class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        soundPlayer = GetComponent<SoundPlayer>();
         StartCoroutine(goThroughQueue());
     }
     
@@ -42,6 +43,7 @@ public partial class DialogueManager : MonoBehaviour
 
     public void Speak(float time ,string text)
     {
+        soundPlayer.Play();
         Debug.Log("speak: " + text);
         StartCoroutine(doDelayedDialogue(time, text));
     }

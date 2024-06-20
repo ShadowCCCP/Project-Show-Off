@@ -11,9 +11,6 @@ public class DialogueCMGato : MonoBehaviour
     TimeMachineManager timeMachineManager;
 
     [SerializeField]
-    GameObject alarm;
-
-    [SerializeField]
     GameObject handSpotlight;
 
 
@@ -65,9 +62,6 @@ public class DialogueCMGato : MonoBehaviour
    
     void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
     {
-        //start alarm
-        alarm.SetActive(true);
-
         speak(gap, 0);
         speakOnScreen(identify[0]);
         //hand spotlight TO DO
@@ -75,8 +69,6 @@ public class DialogueCMGato : MonoBehaviour
 
     void triggerChangedHandDialogue(ChangeHandEvent changeHandEvent)
     {
-        //alarm off
-        alarm.SetActive(false);
 
         speakOnScreen(selectTM[0]);
         speak(selectCat, 0);

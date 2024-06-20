@@ -747,7 +747,7 @@ MonoBehaviour:
   materialOff: {fileID: 2100000, guid: 0170cc4d302228741a551159cafba78d, type: 2}
   timeMachineManager: {fileID: 599906019357943094}
   spotlight: {fileID: 6886769615147224291}
-  alarmSound: {fileID: 4288033031256195738}
+  alarm: {fileID: 8754252744346866016}
 --- !u!54 &7497363265253090426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3133,7 +3133,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44e163ca8ce03624b86dc1c9dfb62cd8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6678660444474887469}
+      addedObject: {fileID: 2070368992953862029}
   m_SourcePrefab: {fileID: 100100000, guid: 44e163ca8ce03624b86dc1c9dfb62cd8, type: 3}
 --- !u!4 &1464030337198972765 stripped
 Transform:
@@ -3214,7 +3214,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 246.92097, y: 365.9925, z: 267.37524}
   m_Center: {x: 9.905487, y: 182.99678, z: 7.5248494}
---- !u!114 &6678660444474887469
+--- !u!114 &2070368992953862029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3227,11 +3227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 4b8a37cde570571459504fc72d4c7682, type: 3}
+  - {fileID: 8300000, guid: a0bba4df66288b048876ee987a4e9239, type: 3}
   playOnAwake: 0
   loop: 0
-  spatialBlend: 1
-  volume: 0
+  spatialBlend: 0
+  volume: 1
 --- !u!1001 &3283184168022476189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4231,7 +4231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 317227786322a154d94b9061fb76d94e, type: 3}
+  - {fileID: 8300000, guid: 5c88c0b8eb202e0409cec29589392f7f, type: 3}
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
