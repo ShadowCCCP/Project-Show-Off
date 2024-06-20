@@ -15,6 +15,9 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private bool _glassOpen;
 
+    [SerializeField]
+    Vector3 direction;
+
     private void Start()
     {
         Initialize();
@@ -22,9 +25,10 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     protected virtual void Initialize()
     {
+        if (direction == Vector3.zero) direction = transform.up;
         // Set the buttonStartPos to transform.position, as it's attached to the button...
         _buttonStartPos = transform.position;
-        _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
+        _buttonEndPos = _buttonStartPos - (direction * buttonPressDepth);
 
         // Get the distance in order to lerp the tween duration properly...
         _tweenMaxDistance = (_buttonEndPos - _buttonStartPos).magnitude;

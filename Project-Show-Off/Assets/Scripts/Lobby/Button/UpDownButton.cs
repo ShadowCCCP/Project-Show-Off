@@ -6,8 +6,16 @@ public class UpDownButton : VRAbstractButton
 {
     [SerializeField]
     bool upButton = false;
+
+    SoundPlayer soundPlayer;
+
+    private void Start()
+    {
+        soundPlayer = GetComponent<SoundPlayer>();
+    }
     public override void OnButtonPress()
     {
+        soundPlayer.Play();
         if (upButton)
         {
             EventBus<MoveCrankEvent>.Publish(new MoveCrankEvent(true));
