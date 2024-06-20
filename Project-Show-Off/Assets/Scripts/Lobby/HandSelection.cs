@@ -22,6 +22,11 @@ public class HandSelection : MonoBehaviour
 
     bool brokenGlass;
 
+    SoundPlayer soundPlayer;
+
+    [SerializeField]
+    SoundPlayer alarmSound;
+
     private void Awake()
     {
         EventBus<GlassBrokenEvent>.OnEvent += BreakGlass;
@@ -30,6 +35,11 @@ public class HandSelection : MonoBehaviour
     void OnDestroy()
     {
         EventBus<GlassBrokenEvent>.OnEvent -= BreakGlass;
+    }
+
+    private void Start()
+    {
+        soundPlayer = GetComponent<SoundPlayer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,11 +73,15 @@ public class HandSelection : MonoBehaviour
             rightLightRend.material = materialOn;
         }
         spotlight.SetActive(false);
+        alarmSound.Stop();
     }
 
     void BreakGlass(GlassBrokenEvent glassBrokenEvent)
     {
         brokenGlass=true;
         spotlight.SetActive(true);
+        soundPlayer.Play();
+        alarmSound.Play();
     }
+
 }
