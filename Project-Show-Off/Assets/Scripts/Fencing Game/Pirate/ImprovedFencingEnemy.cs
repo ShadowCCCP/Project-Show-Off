@@ -90,6 +90,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(CurrentState);
         if (_debugMode) { EasierTesting(); }
         FixPosition();
         UpdateTimer();
@@ -171,7 +172,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // If max amount of attacks isn't reached and attack got blocked...
         if (_attacksDone.Count < _currentAttackCount && (_gotBlocked || _attacksDone.Count == 0))
         {
-            Debug.Log("Blub.");
             // Reset block value to see if this attack got blocked...
             _gotBlocked = false;
 
@@ -276,7 +276,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator InitiateAttack()
     {
-        Debug.Log("Initiate.");
         // Idle before attack...
         ResetValues();
         CurrentState = FencingState.Idle;
@@ -290,6 +289,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator EvaluateStagger()
     {
+        // Do the dazed things in here instead of in transition()
+        // Remove the event triggers from the animator bruh
+        // Remove UnhitDazed, cause the specifics don't matter anymore
+
         yield return new WaitForSeconds(stunTime);
 
         // Deactivate body trigger colliders...
@@ -349,6 +352,12 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         // Don't transition to anything if game is complete...
         if (_gameCompleted) { return; }
+
+        // To transition back to normal...
+        if (CurrentState == FencingState.UnhitDazed || CurrentState == FencingState.Dazed)
+        {
+            _anim.SetTrigger("FinishDaze");
+        }
 
         if (CurrentState == FencingState.Intro || CurrentState == FencingState.Taunt)
         {
