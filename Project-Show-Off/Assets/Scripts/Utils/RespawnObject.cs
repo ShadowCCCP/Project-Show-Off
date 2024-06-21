@@ -105,7 +105,11 @@ public class RespawnObject : MonoBehaviour
         transform.rotation = _startRotation;
 
         // Use local space based on attached parent...
-        if (useLocalSpace && parent != null) { transform.position = parent.position + respawnPosition; }
+        if (useLocalSpace && parent != null) 
+        {
+            transform.SetParent(parent);
+            transform.localPosition = respawnPosition; 
+        }
         else { transform.position = respawnPosition; }
         _respawned = true;
 
