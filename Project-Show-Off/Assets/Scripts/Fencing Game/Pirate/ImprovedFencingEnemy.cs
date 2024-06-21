@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ImprovedFencingEnemy : MonoBehaviour
 {
-    private bool _debugMode = false;
+    private bool _debugMode = true;
 
     public enum SideHit { Left, Right, Front }
 
@@ -171,6 +171,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // If max amount of attacks isn't reached and attack got blocked...
         if (_attacksDone.Count < _currentAttackCount && (_gotBlocked || _attacksDone.Count == 0))
         {
+            Debug.Log("Blub.");
             // Reset block value to see if this attack got blocked...
             _gotBlocked = false;
 
@@ -204,6 +205,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
+            Debug.Log("gawk");
             // Increase total count of rounds done...
             _decisiveCount++;
 
@@ -274,6 +276,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator InitiateAttack()
     {
+        Debug.Log("Initiate.");
         // Idle before attack...
         ResetValues();
         CurrentState = FencingState.Idle;
@@ -349,9 +352,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
         if (CurrentState == FencingState.Intro || CurrentState == FencingState.Taunt)
         {
-            Debug.Log("Walk forward");
-            _anim.SetTrigger("WalkForward");
-            CurrentState = FencingState.Walk;
             Move();
         }
         else if (CurrentState == FencingState.Walk || CurrentState == FencingState.UnhitDazed)
@@ -361,6 +361,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
         else if (CurrentState == FencingState.Dazed)
         {
             Move(false);
+            _anim.SetTrigger("FinishDaze");
         }
         else if (CurrentState == FencingState.Stunned)
         {
@@ -405,6 +406,22 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
             // Reset timer...
             _hitCurrentTime = 0;
+        }
+    }
+
+    // When the enemy gets blocked, ensure it transitions further...
+    public void CheckSwordSetBack()
+    {
+        // Only invoke Attack() if the attack got blocked...
+        if (_gotBlocked) 
+        {
+            // Weird bug fix...
+            bool preventFiller = false;
+            if (_attacksDone.Count == 0) { preventFiller = true; } 
+
+            Attack();
+
+            if (preventFiller) { _attacksDone.Clear(); }
         }
     }
 }

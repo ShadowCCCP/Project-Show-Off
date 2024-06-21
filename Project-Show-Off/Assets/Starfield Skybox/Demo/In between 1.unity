@@ -1004,6 +1004,10 @@ MonoBehaviour:
   player: {fileID: 449267140}
   falling: 0
   fallingTime: 1
+  rightController: {fileID: 0}
+  leftController: {fileID: 0}
+  camOffset: {fileID: 0}
+  origin: {fileID: 0}
 --- !u!114 &737512510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,7 +1219,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 65878e39db5c14942bc1400441b66bbf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.61
+      value: -0.41340002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65878e39db5c14942bc1400441b66bbf,
         type: 3}
@@ -1342,7 +1346,7 @@ Transform:
   m_GameObject: {fileID: 1413849954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.044, y: 0.1534, z: 0.576}
+  m_LocalPosition: {x: -0.044, y: 0.35, z: 0.576}
   m_LocalScale: {x: 0.24, y: 0.1, z: 2.78}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1529,7 +1533,7 @@ Transform:
   m_GameObject: {fileID: 1784446595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.19659999, z: 0}
   m_LocalScale: {x: 1.7035484, y: 1, z: 1.4462152}
   m_ConstrainProportionsScale: 0
   m_Children: []
