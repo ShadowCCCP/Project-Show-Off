@@ -90,6 +90,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(CurrentState);
         if (_debugMode) { EasierTesting(); }
         FixPosition();
         UpdateTimer();
@@ -276,7 +277,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator InitiateAttack()
     {
-        Debug.Log("Initiate.");
         // Idle before attack...
         ResetValues();
         CurrentState = FencingState.Idle;
@@ -349,6 +349,12 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         // Don't transition to anything if game is complete...
         if (_gameCompleted) { return; }
+
+        // To transition back to normal...
+        if (CurrentState == FencingState.UnhitDazed || CurrentState == FencingState.Dazed)
+        {
+            _anim.SetTrigger("FinishDaze");
+        }
 
         if (CurrentState == FencingState.Intro || CurrentState == FencingState.Taunt)
         {
