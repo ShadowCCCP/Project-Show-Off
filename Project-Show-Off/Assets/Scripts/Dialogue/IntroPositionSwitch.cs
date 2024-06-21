@@ -13,9 +13,14 @@ public class IntroPositionSwitch : MonoBehaviour
     Transform origin;
 
     [SerializeField]
+    GameObject player;
+
+    [SerializeField]
     bool startInNewPlace = true;
 
     PlayerCamera playerCamera;
+
+    Vector3 startPos;
 
     private void Awake()
     {
@@ -28,11 +33,12 @@ public class IntroPositionSwitch : MonoBehaviour
     }
     void Start()
     {
+        startPos = transform.position;
         playerCamera = GetComponent<PlayerCamera>();
         if (startInNewPlace)
         {
             playerCamera.ActivateCheckFall(false);
-            cameraOffset.position += placeToGo.position- origin.position;
+            cameraOffset.position = placeToGo.position;
         }
 
     }
@@ -40,6 +46,9 @@ public class IntroPositionSwitch : MonoBehaviour
     void goBackToOriginalPlace(GoBackToStartPosEvent goBack)
     {
         playerCamera.ActivateCheckFall(true);
-        cameraOffset.position -= placeToGo.position + origin.position;
+        cameraOffset.position = startPos ;
+
+        //player.transform.position = startPos ;
+       // player.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

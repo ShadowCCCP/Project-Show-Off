@@ -42,6 +42,7 @@ public class PlayerCamera : MonoBehaviour
 
     bool checkFallActive = true;
 
+    bool canMoveRigidBody = false;
     void Awake()
     {
         EventBus<StopPlayerMovementEvent>.OnEvent += AllowPlayerPhysics;
@@ -57,6 +58,15 @@ public class PlayerCamera : MonoBehaviour
         playerCam = GetComponent<Camera>();
         playerCam.enabled = false;
         //transition.SetParent(VRCamera.transform);
+
+        if (GetComponent<IntroPositionSwitch>())
+        {
+            canMoveRigidBody = false;
+        }
+        else
+        {
+            canMoveRigidBody = true;
+        }
 
         if (GameManager.Instance != null)
         {
@@ -132,8 +142,11 @@ public class PlayerCamera : MonoBehaviour
     {
         if (!playerPhysics)
         {
-
-            player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z) ;
+            if (canMoveRigidBody)
+            {
+                player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);
+                Debug.Log("a");
+            }
         }
         else
         {
@@ -166,6 +179,8 @@ public class PlayerCamera : MonoBehaviour
     public void ActivateCheckFall(bool pCheckFallActive)
     {
         checkFallActive = pCheckFallActive;
+
+        canMoveRigidBody = pCheckFallActive;
     }
 
 }

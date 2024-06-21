@@ -13,7 +13,7 @@ public class TimeMachineManager : MonoBehaviour
     [SerializeField]
     TextMeshPro handText;
     [SerializeField]
-    Renderer gameIcon;
+    SpriteRenderer gameIcon;
     [SerializeField]
     LobbyButton button;
     [SerializeField]
@@ -83,7 +83,8 @@ public class TimeMachineManager : MonoBehaviour
         if (levels[i].Icon != null)
         {
             gameIcon.gameObject.SetActive(true);
-            gameIcon.material.mainTexture = levels[i].Icon.texture;
+           // gameIcon.material.mainTexture = levels[i].Icon.texture;
+            gameIcon.sprite = levels[i].Icon;
 
 
             //on level selecet to updated dialogue 
