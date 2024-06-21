@@ -2022,6 +2022,26 @@ PrefabInstance:
       propertyPath: buttonPressDepth
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 5218847577446380802, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218847577446380802, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 134217730
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218847577446380802, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886769615147224291, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8491873385456303653, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
       propertyPath: buttonPressDepth
