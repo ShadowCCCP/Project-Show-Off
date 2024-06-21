@@ -9,6 +9,8 @@ public class IntroPositionSwitch : MonoBehaviour
 
     [SerializeField]
     Transform cameraOffset;
+    [SerializeField]
+    Transform origin;
 
     [SerializeField]
     bool startInNewPlace = true;
@@ -30,7 +32,7 @@ public class IntroPositionSwitch : MonoBehaviour
         if (startInNewPlace)
         {
             playerCamera.ActivateCheckFall(false);
-            cameraOffset.position += placeToGo.position;
+            cameraOffset.position += placeToGo.position- origin.position;
         }
 
     }
@@ -38,6 +40,6 @@ public class IntroPositionSwitch : MonoBehaviour
     void goBackToOriginalPlace(GoBackToStartPosEvent goBack)
     {
         playerCamera.ActivateCheckFall(true);
-        cameraOffset.position -= placeToGo.position;
+        cameraOffset.position -= placeToGo.position + origin.position;
     }
 }
