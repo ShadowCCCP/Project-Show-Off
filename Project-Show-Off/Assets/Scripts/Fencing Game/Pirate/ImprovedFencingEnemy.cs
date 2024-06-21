@@ -172,7 +172,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         // If max amount of attacks isn't reached and attack got blocked...
         if (_attacksDone.Count < _currentAttackCount && (_gotBlocked || _attacksDone.Count == 0))
         {
-            Debug.Log("Blub.");
             // Reset block value to see if this attack got blocked...
             _gotBlocked = false;
 
@@ -290,6 +289,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator EvaluateStagger()
     {
+        // Do the dazed things in here instead of in transition()
+        // Remove the event triggers from the animator bruh
+        // Remove UnhitDazed, cause the specifics don't matter anymore
+
         yield return new WaitForSeconds(stunTime);
 
         // Deactivate body trigger colliders...
