@@ -6,6 +6,12 @@ public class RespawnObject : MonoBehaviour
     [Tooltip("Press G to simulate picking object up, press H to let go of it.")]
     [SerializeField] bool debugMode;
 
+    [Space]
+
+    [SerializeField] bool useLocalSpace;
+    [Tooltip("Will use world space instead if left empty.")]
+    [SerializeField] Transform parent;
+
     [SerializeField] Vector3 respawnPosition;
     [SerializeField] float respawnTime = 3.0f;
 
@@ -97,7 +103,14 @@ public class RespawnObject : MonoBehaviour
     {
         // Reset rotation and set back to the respawn position...
         transform.rotation = _startRotation;
-        transform.position = respawnPosition;
+
+        // Use local space based on attached parent...
+        if (useLocalSpace && parent != null) 
+        {
+            transform.SetParent(parent);
+            transform.localPosition = respawnPosition; 
+        }
+        else { transform.position = respawnPosition; }
         _respawned = true;
 
         // Reset rigidbody values, if object has one...
