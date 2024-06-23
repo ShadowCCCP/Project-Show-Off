@@ -14,6 +14,8 @@ public class MarkerTextureAlternative : MonoBehaviour
 
     [SerializeField] GameObject paintSplashVFX;
 
+    private SoundPlayer _soundPlayer;
+
     private Renderer _renderer;
     private Color[] _colors;
 
@@ -28,6 +30,12 @@ public class MarkerTextureAlternative : MonoBehaviour
     {
         colorMatcher.Initialize();
         _renderer = tip.GetComponent<Renderer>();
+
+        _soundPlayer = GetComponent<SoundPlayer>();
+        if (_soundPlayer == null)
+        {
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nMarkerTextureAlternative: No soundPlayer script attached to the gameObject.");
+        }
 
         // Create an array of pixels with the same color the pen uses...
         _colors = Enumerable.Repeat(_renderer.material.color, penSize * penSize).ToArray();
@@ -47,6 +55,7 @@ public class MarkerTextureAlternative : MonoBehaviour
                 if (_whiteboard == null)
                 {
                     _whiteboard = _touch[0].transform.GetComponent<Whiteboard>();
+                    if (_soundPlayer != null && _soundPlayer.ClipCount() > 0) { _soundPlayer.PlaySpecific(0); }
                 }
 
                 // We only want to draw on the very first hit raycast, in order to save performance...
@@ -205,6 +214,7 @@ public class MarkerTextureAlternative : MonoBehaviour
 
         if (color != _colors[0])
         {
+            if (_soundPlayer != null && _soundPlayer.ClipCount() > 0) { _soundPlayer.PlaySpecific(0); }
             GameObject colorSplashObj = Instantiate(paintSplashVFX, pPos, Quaternion.identity, null);
             ParticleSystem cSplash = colorSplashObj.GetComponent<ParticleSystem>();
 

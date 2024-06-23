@@ -124,6 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1455975508945054600}
   - component: {fileID: 6553459638706154915}
+  - component: {fileID: 5769234995553517621}
   - component: {fileID: 7432463055788606530}
   - component: {fileID: 8666313559523379546}
   - component: {fileID: 5418358360910006022}
@@ -146,7 +147,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.384, y: 1.055, z: -0.063}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7795997364532900353}
@@ -195,6 +196,24 @@ MonoBehaviour:
   penSize: 15
   paintSplashVFX: {fileID: 7873719125646550967, guid: e4bc490a861e207409b29e4335c4d1d4,
     type: 3}
+--- !u!114 &5769234995553517621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526825857623394308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 81241b02f96ecaf45a99fa48d76715db, type: 3}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 1
+  volume: 1
 --- !u!54 &7432463055788606530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -402,7 +421,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3526825857623394308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a9bfd88bf3a21841879db950975e9c5, type: 3}
   m_Name: 
@@ -422,7 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
-  respawnPosition: {x: -0.969, y: 5.486, z: -4.283}
+  useLocalSpace: 1
+  parent: {fileID: 0}
+  respawnPosition: {x: 0.25, y: 0, z: 0}
   respawnTime: 3
 --- !u!1 &4199618329271883402
 GameObject:

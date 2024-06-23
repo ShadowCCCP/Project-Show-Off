@@ -145,7 +145,6 @@ public class PlayerCamera : MonoBehaviour
             if (canMoveRigidBody)
             {
                 player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);
-                Debug.Log("a");
             }
         }
         else

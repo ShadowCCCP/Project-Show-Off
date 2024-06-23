@@ -5,6 +5,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerSword : MonoBehaviour
 {
+    /// <summary>
+    /// Indexes of all the sounds to be played:
+    /// [ 0 - 1  ]  |   Swoosh (Sword swing)
+    /// [ 2 - 8  ]  |   Sword clash
+    /// </summary>
+
     [SerializeField] GameObject hitSparks;
 
     public static event Action onSwordHit;
@@ -54,7 +60,7 @@ public class PlayerSword : MonoBehaviour
         if (distanceMoved >= 5 && !_swingSoundInvalid)
         {
             // Play sound once if the crossed distance reaches threshhold...
-            _soundPlayer.PlayRandom();
+            _soundPlayer.PlayRandom(0, 1);
             _swingSoundInvalid = true;
         }
         else if (_swingSoundInvalid && distanceMoved < 0.7f)
@@ -85,8 +91,8 @@ public class PlayerSword : MonoBehaviour
         if (collision.collider.CompareTag("Sword"))
         {
             if (onSwordHit != null) { onSwordHit(); }
+            _soundPlayer.PlayRandom(2, 8);
         }
-        // REMOVE LATER:
         else if (collision.collider.CompareTag("Pirate"))
         {
             PirateBodyHitbox body = collision.collider.GetComponent<PirateBodyHitbox>();
@@ -101,18 +107,6 @@ public class PlayerSword : MonoBehaviour
         {
             GameObject gawk = Instantiate(hitSparks, contactPoints[0].point, Quaternion.identity);
             gawk.transform.parent = null;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Pirate"))
-        {
-            PirateBodyHitbox body = other.GetComponent<PirateBodyHitbox>();
-            if (body != null) 
-            {
-                body.SideHit();
-            }
         }
     }
 }

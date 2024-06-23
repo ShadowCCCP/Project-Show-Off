@@ -50,6 +50,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private int _decisiveCount;
 
+    private bool _specialAttack;
+
     private const int _maxAttackQueueCount = 3;
     private int _currentAttackCount = 1;
 
@@ -90,8 +92,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(CurrentState);
         if (_debugMode) { EasierTesting(); }
+
         FixPosition();
         UpdateTimer();
     }
@@ -151,8 +153,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
-            _anim.SetTrigger("WalkBackward");
             // Move pirate backward...
+            // No need to trigger the animation value for this, as it's only after the daze...
             LeanTween.move(gameObject, transform.position - (transform.forward * walkDistance), walkTime).setOnComplete(() =>
             {
                 _currentFightStage--;
@@ -181,6 +183,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
             // Check if this might be the pirates final attack...
             if (_decisiveCount >= decisiveTurn - 1 || _currentFightStage >= stageMaxCount)
             {
+                _specialAttack = true;
+
                 // Make the random attack not so random...
                 randomAttack = 3;
 
@@ -205,7 +209,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("gawk");
             // Increase total count of rounds done...
             _decisiveCount++;
 
@@ -228,8 +231,10 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void CheckAttackOutcome()
     {
-        if (_blockCount >= _currentAttackCount)
+        if (_blockCount >= _currentAttackCount || _specialAttack)
         {
+            if (_specialAttack) { _specialAttack = false; }
+
             CurrentState = FencingState.Stunned;
             _anim.SetBool("GotBlocked", true);
 
@@ -289,10 +294,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator EvaluateStagger()
     {
-        // Do the dazed things in here instead of in transition()
-        // Remove the event triggers from the animator bruh
-        // Remove UnhitDazed, cause the specifics don't matter anymore
-
         yield return new WaitForSeconds(stunTime);
 
         // Deactivate body trigger colliders...
@@ -343,7 +344,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(8);
         Destroy(gameObject);
     }
 
@@ -370,12 +371,43 @@ public class ImprovedFencingEnemy : MonoBehaviour
         else if (CurrentState == FencingState.Dazed)
         {
             Move(false);
-            _anim.SetTrigger("FinishDaze");
         }
         else if (CurrentState == FencingState.Stunned)
         {
             _anim.SetInteger("Hits", 3);
         }
+    }
+
+    // When the enemy gets blocked, ensure it transitions further...
+    public void CheckSwordSetBack()
+    {
+        // Only invoke Attack() if the attack got blocked...
+        if (_gotBlocked)
+        {
+            // Weird bug fix...
+            bool preventFiller = false;
+            if (_attacksDone.Count == 0) { preventFiller = true; }
+
+            Attack();
+
+            if (preventFiller) { _attacksDone.Clear(); }
+        }
+    }
+
+    // The following methods are used to make the falling animation look appropriate...
+    public void RotatePirate()
+    {
+        // Make him rotate either right or left randomly...
+        int randomDir = UnityEngine.Random.Range(0, 2);
+        if (randomDir == 0) { randomDir = 90; }
+        else { randomDir = -90; }
+
+        LeanTween.rotateY(gameObject, transform.eulerAngles.y + randomDir, 2.0f);
+    }
+
+    public void MoveForward()
+    {
+        LeanTween.move(gameObject, transform.position + (transform.forward * 5.5f) + (-transform.up * 5.5f), 2.0f);
     }
 
     // Methods triggered outside this class...
@@ -415,22 +447,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
             // Reset timer...
             _hitCurrentTime = 0;
-        }
-    }
-
-    // When the enemy gets blocked, ensure it transitions further...
-    public void CheckSwordSetBack()
-    {
-        // Only invoke Attack() if the attack got blocked...
-        if (_gotBlocked) 
-        {
-            // Weird bug fix...
-            bool preventFiller = false;
-            if (_attacksDone.Count == 0) { preventFiller = true; } 
-
-            Attack();
-
-            if (preventFiller) { _attacksDone.Clear(); }
         }
     }
 }

@@ -64,6 +64,12 @@ public class SoundPlayer : MonoBehaviour
         PlaySound();
     }
 
+    public void PlayRandom(int pIndexFrom, int pIndexTo)
+    {
+        GetRandomClip(pIndexFrom, pIndexTo);
+        PlaySound();
+    }
+
     public void PlaySpecific(int pSoundIndex)
     {
         if (pSoundIndex > 0 && pSoundIndex < _audioClips.Length)
@@ -88,6 +94,27 @@ public class SoundPlayer : MonoBehaviour
         if (ClipCount() > 0)
         {
             int soundIndex = UnityEngine.Random.Range(0, _audioClips.Length);
+            SetClip(soundIndex);
+        }
+        else
+        {
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nSoundPlayer: No audioClip attached to the script.");
+        }
+    }
+
+    private void GetRandomClip(int pIndexFrom, int pIndexTo)
+    {
+        // Check for out of bounds errors...
+        if (pIndexFrom > _audioClips.Length || pIndexFrom < 0 ||
+            pIndexTo > _audioClips.Length || pIndexTo < 0 || pIndexTo < pIndexFrom)
+        {
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nSoundPlayer: GetRandomClip() got indexes out of bounds.");
+            return;
+        }
+
+        if (ClipCount() > 0)
+        {
+            int soundIndex = UnityEngine.Random.Range(pIndexFrom, pIndexTo);
             SetClip(soundIndex);
         }
         else

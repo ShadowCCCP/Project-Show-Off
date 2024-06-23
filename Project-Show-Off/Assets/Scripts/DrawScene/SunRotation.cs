@@ -11,6 +11,13 @@ public class SunRotation : MonoBehaviour
 
     [SerializeField] float timeBeforeLevelFinish = 5;
 
+    private SoundPlayer _soundPlayer;
+
+    private bool _firstBellRang;
+    private float _firstBellTime;
+    private bool _secondBellRang;
+    private float _secondBellTime;
+
     private float _totalRotation;
     private bool _warned;
 
@@ -18,6 +25,14 @@ public class SunRotation : MonoBehaviour
 
     private void Start()
     {
+        _soundPlayer = GetComponent<SoundPlayer>();
+        if (_soundPlayer == null)
+        {
+            Debug.LogError(Useful.GetHierarchy(transform) + "\nSunRotation: No soundPlayer script attached to the gameObject.");
+        }
+
+        GetBellTimings();
+
         EventBus<PaintTellAboutList>.OnEvent += ActivateRotateScript;
     }
 
@@ -28,7 +43,7 @@ public class SunRotation : MonoBehaviour
 
     void Update()
     {
-        CheckWarning();
+        CheckWarnings();
         if (_rotate) { Rotate(); }
     }
 
@@ -44,6 +59,9 @@ public class SunRotation : MonoBehaviour
             {
                 EventBus<PaintDoneEvent>.Publish(new PaintDoneEvent());
                 StartCoroutine(FinishLevel());
+
+                // Play final bell sound...
+                PlayBellSound(2);
             }
         }
     }
@@ -63,13 +81,35 @@ public class SunRotation : MonoBehaviour
         return remainingTime;
     }
 
-    private void CheckWarning()
+    private void GetBellTimings()
     {
+        _firstBellTime = secondsToPaint / 3 * 2;
+        _secondBellTime = secondsToPaint / 3;
+    }
+
+    private void CheckWarnings()
+    {
+        // Check the warning time...
         if (RemainingTime() <= warnAtSeconds && !_warned)
         {
             EventBus<PaintTimeRunningOutEvent>.Publish(new PaintTimeRunningOutEvent());
             _warned = true;
         }
+
+        // Check the bell rings...
+        if (RemainingTime() <= _firstBellTime && !_firstBellRang)
+        {
+            PlayBellSound(0);
+        }
+        else if (RemainingTime() <= _secondBellTime && !_secondBellRang)
+        {
+            PlayBellSound(1);
+        }
+    }
+
+    private void PlayBellSound(int pIndex)
+    {
+        _soundPlayer.PlaySpecific(pIndex);
     }
 
     private void ActivateRotateScript(PaintTellAboutList paintTellAboutList)
