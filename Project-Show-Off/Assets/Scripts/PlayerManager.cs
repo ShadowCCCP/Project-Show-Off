@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -7,12 +8,15 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("This will only be triggered if the player enters a trigger collider with the 'EnterArea' tag.")]
     [SerializeField] Vector3 teleportTo = Vector3.zero;
 
+    private SoundPlayer _soundPlayer;
+
     private bool _enteredArea;
 
     private Animator _anim;
 
     private void Start()
     {
+        _soundPlayer = GetComponent<SoundPlayer>();
         _anim = transitionUI.GetComponent<Animator>();
 
         TransitionManager.onDarkenFinished += TransportPlayer;
@@ -48,15 +52,37 @@ public class PlayerManager : MonoBehaviour
 
     private void FinishLevel(LevelFinishedEvent pLevelFinishEvent)
     {
-        TransitionManager.onDarkenFinished -= TransportPlayer;
-        TransitionManager.onDarkenFinished += BackToLobby;
+        if (_soundPlayer != null) { _soundPlayer.Play(); }
 
-        _anim.SetTrigger("DarkenScreen");
+        TransitionManager.onDarkenFinished -= TransportPlayer;
+
+        StartCoroutine(LoadLobby(pLevelFinishEvent.waitTime));
+    }
+
+    private IEnumerator LoadLobby(float pWaitTime)
+    {
+        if (pWaitTime > 0)
+        {
+            _anim.SetTrigger("DarkenScreen");
+        }
+
+        yield return new WaitForSeconds(pWaitTime);
+
+        if (pWaitTime == 0)
+        {
+            TransitionManager.onDarkenFinished += BackToLobby;
+
+            _anim.SetTrigger("DarkenScreen");
+        }
+        else
+        {
+            BackToLobby();
+        }
     }
 
     private void TriggerDialogueEvents()
     {
-        // This will trigger all dialogue events...
+        // This should trigger all dialogue events...
         // Won't be a problem as the scene itself only listens to the important ones...
         EventBus<PaintTellAboutList>.Publish(new PaintTellAboutList());
     }

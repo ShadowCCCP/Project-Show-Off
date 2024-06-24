@@ -25,7 +25,6 @@ public class ImprovedFencingEnemy : MonoBehaviour
         }
     }
 
-    public event Action onPlayerDefeated;
     public event Action onToggleBodyCols;
     public event Action onToggleSwordCol;
 
@@ -248,6 +247,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
             int randomTaunt = UnityEngine.Random.Range(0, 3);
             _anim.SetInteger("Taunts", randomTaunt);
 
+            EventBus<OnPlayerHitEvent>.Publish(new OnPlayerHitEvent());
+
             CurrentState = FencingState.Taunt; 
         }
     }
@@ -262,7 +263,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
             if (_currentFightStage >= stageMaxCount || (_decisiveCount >= decisiveTurn && !_gotHit))
             {
                 // Invoke defeat player event...
-                if (onPlayerDefeated != null) { onPlayerDefeated(); }
+                EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent(5));
             }
             // Pirate falls into water...
             else if (_currentFightStage <= -stageMaxCount || (_decisiveCount >= decisiveTurn && _gotHit))

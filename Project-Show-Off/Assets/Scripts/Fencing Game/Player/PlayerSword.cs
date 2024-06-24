@@ -27,6 +27,8 @@ public class PlayerSword : MonoBehaviour
 
     private SoundPlayer _soundPlayer;
 
+    private bool _swordGrabbedOnce;
+
     private void Start()
     {
         _soundPlayer = GetComponent<SoundPlayer>();
@@ -74,7 +76,11 @@ public class PlayerSword : MonoBehaviour
 
     private void SwordGrabbed(SelectEnterEventArgs args)
     {
-        EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
+        if (!_swordGrabbedOnce)
+        {
+            EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
+            _swordGrabbedOnce = true;
+        }
     }
 
     private void ResetVelocity()

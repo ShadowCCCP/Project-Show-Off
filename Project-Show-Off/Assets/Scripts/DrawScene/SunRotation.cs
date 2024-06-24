@@ -69,7 +69,7 @@ public class SunRotation : MonoBehaviour
     private IEnumerator FinishLevel()
     {
         yield return new WaitForSeconds(timeBeforeLevelFinish);
-        EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent());
+        EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent(0));
     }
 
     private float RemainingTime()

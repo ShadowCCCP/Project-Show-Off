@@ -120,6 +120,14 @@ public class OnSwordPickupEvent : Event
     }
 }
 
+public class OnPlayerHitEvent : Event
+{
+    public OnPlayerHitEvent()
+    {
+
+    }
+}
+
 public class OnPirateDefeatedEvent : Event
 {
     public OnPirateDefeatedEvent()
@@ -164,10 +172,11 @@ public class PaintDoneEvent : Event
 
 public class LevelFinishedEvent : Event
 {
-    public LevelFinishedEvent()
+    public LevelFinishedEvent(float pWaitTime)
     {
-
+        waitTime = pWaitTime;
     }
+    public float waitTime;
 }
 
 public class OnDoorOpenSpaceEvent : Event
