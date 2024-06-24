@@ -387,7 +387,13 @@ public class ImprovedFencingEnemy : MonoBehaviour
         {
             // Weird bug fix...
             bool preventFiller = false;
-            if (_attacksDone.Count == 0) { preventFiller = true; }
+            if (_attacksDone.Count == 0) 
+            {
+                // Fixes sword toggle...
+                _attacksDone.Add(1);
+
+                preventFiller = true; 
+            }
 
             Attack();
 

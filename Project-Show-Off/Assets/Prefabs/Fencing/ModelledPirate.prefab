@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6620823662502176079}
   m_Layer: 0
   m_Name: TorsoRightCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.11935924, y: 0.6890153, z: 0.13428248}
   m_Center: {x: 0.09404731, y: 0.10748968, z: 0.015878426}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3391457646955599160}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 1652058461615634099}
   m_Layer: 0
   m_Name: LowerArmLeftCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 6317219250869221589}
   m_Layer: 0
   m_Name: UpperLegRightCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 1952985554930522697}
   m_Layer: 0
   m_Name: LowerLegRightCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 1551375594759302718}
   m_Layer: 0
   m_Name: UpperLegLeftCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 4823421116841588711}
   m_Layer: 0
   m_Name: UpperArmLeftCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1567,7 +1567,7 @@ GameObject:
   - component: {fileID: 6748189339323105385}
   m_Layer: 0
   m_Name: TorsoLeftCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1604,7 +1604,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.11843284, y: 0.6890153, z: 0.13428248}
   m_Center: {x: -0.110661805, y: 0.10749341, z: 0.015878402}
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 2325225697475568702}
   m_Layer: 0
   m_Name: LowerLegLeftCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 725392319274705082}
   m_Layer: 0
   m_Name: LowerArmRightCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1897,7 +1897,7 @@ GameObject:
   - component: {fileID: 1917352264611733891}
   m_Layer: 0
   m_Name: TorsoFrontCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1934,7 +1934,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.1074827, y: 0.6890153, z: 0.18463331}
   m_Center: {x: -0.009413116, y: 0.10749365, z: 0.041053854}
@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 7092022679608058731}
   m_Layer: 0
   m_Name: UpperArmRightCol
-  m_TagString: Untagged
+  m_TagString: Pirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
