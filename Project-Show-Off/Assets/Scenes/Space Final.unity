@@ -1850,6 +1850,7 @@ MonoBehaviour:
   placeToGo: {fileID: 1988932701}
   cameraOffset: {fileID: 2080067766}
   origin: {fileID: 1977331973}
+  player: {fileID: 812817859}
   startInNewPlace: 1
 --- !u!4 &726763428 stripped
 Transform:
@@ -2243,7 +2244,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812817859}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2979,7 +2980,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.828
+      value: -0.723
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -2989,7 +2990,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.283
+      value: -3.441
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -3545,6 +3546,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5447036705194824928, guid: c7a1313dc95c3224ea071da8d03ff68e, type: 3}
+--- !u!114 &1256561612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256561605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: e0b61e26e6aaf6a47997e694d05e15e0, type: 3}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 0
+  volume: 1
 --- !u!1 &1266529997
 GameObject:
   m_ObjectHideFlags: 0
@@ -5405,7 +5424,7 @@ Transform:
   m_GameObject: {fileID: 1988932697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.758, y: -2.21, z: -6.391}
+  m_LocalPosition: {x: -0.758, y: -1.308, z: -6.461}
   m_LocalScale: {x: 0.57, y: 0.57, z: 0.57}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5580,6 +5599,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1256561610}
+    - targetCorrespondingSourceObject: {fileID: 6821887585681450876, guid: c7a1313dc95c3224ea071da8d03ff68e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1256561612}
   m_SourcePrefab: {fileID: 100100000, guid: c7a1313dc95c3224ea071da8d03ff68e, type: 3}
 --- !u!4 &2042569836 stripped
 Transform:
