@@ -9,9 +9,12 @@ public class MetalPlaceHolder : MonoBehaviour
 
     [SerializeField]
     Material materialWhenPlaced;
+
+    SoundPlayer soundPlayer;
     private void Start()
     {
         ren = GetComponent<Renderer>();
+        soundPlayer = GetComponent<SoundPlayer>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +24,9 @@ public class MetalPlaceHolder : MonoBehaviour
             EventBus<SpawnWeldablesEvent>.Publish(new SpawnWeldablesEvent(this));
 
             Destroy(other.gameObject);
+
+            if(soundPlayer)
+            soundPlayer.Play();
         }
     }
 
