@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: 24b9a8548e6fc244a85f4c58a854a2e2
   - enabled: 1
     path: Assets/Scenes/Lobby No Cat Scene.unity
-    guid: 7c16646e38cad7b479d4103d4e298b0e
+    guid: fd0835479781859498a21e3f5085a6c8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 088cf922af04be14dbe4751c6aa12e9e,
       type: 2}

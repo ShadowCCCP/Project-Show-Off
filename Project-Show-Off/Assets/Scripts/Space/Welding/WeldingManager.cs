@@ -82,7 +82,16 @@ public class WeldingManager : MonoBehaviour
         if (doneCubes.Count >= amountOfCubes && platesSpawned == pointHolders.Count)
         {
             Debug.Log("Game Finished, goig back to lobby");
-            GameManager.Instance.LoadSceneSpecific(5, true);
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.LoadSceneSpecific(5, true);
+            }
+            else
+            {
+                Debug.Log("Where game manager ? Eh?");
+            }
+
+            
 
         }
     }

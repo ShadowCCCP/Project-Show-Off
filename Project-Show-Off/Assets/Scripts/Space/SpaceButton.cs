@@ -8,11 +8,15 @@ public class SpaceButton : VRAbstractButton
     [SerializeField]
     Animator door;
 
+    [SerializeField]
+    SoundPlayer doorSound;
+
 
     public override void OnButtonPress()
     {
         //open door
         door.SetTrigger("OpenDoor");
+        doorSound.Play();
 
         EventBus<OnDoorOpenSpaceEvent>.Publish(new OnDoorOpenSpaceEvent());
     }
@@ -26,4 +30,5 @@ public class SpaceButton : VRAbstractButton
             EventBus<OnDoorOpenSpaceEvent>.Publish(new OnDoorOpenSpaceEvent());
         }
     }
+
 }

@@ -1353,7 +1353,7 @@ PrefabInstance:
     - target: {fileID: 7772342450403436386, guid: b256a99e2fce6764d913ade96e5c2b38,
         type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8375055570331158305, guid: b256a99e2fce6764d913ade96e5c2b38,
         type: 3}
@@ -3173,6 +3173,11 @@ PrefabInstance:
       propertyPath: textBubble
       value: 
       objectReference: {fileID: 3555699299711905090}
+    - target: {fileID: 796659911305269927, guid: 146fd00032919874d8fa07ff861e482c,
+        type: 3}
+      propertyPath: timeBetweenText
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4863052059651380437, guid: 146fd00032919874d8fa07ff861e482c,
         type: 3}
       propertyPath: alarm
