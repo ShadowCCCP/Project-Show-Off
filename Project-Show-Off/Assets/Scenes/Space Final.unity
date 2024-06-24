@@ -705,7 +705,7 @@ MonoBehaviour:
   bubleStartPos: {fileID: 280439222}
   timeForMeteor: 10
   meteorFall: {fileID: 1166296501}
-  meteoriteManager: {fileID: 0}
+  meteoriteManager: {fileID: 1552197067}
 --- !u!114 &166690209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,6 +1502,95 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348903562}
   m_Mesh: {fileID: 7349332074455647343, guid: be907e8603c3b0048933970d596addff, type: 3}
+--- !u!1001 &357075288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 812817864}
+    m_Modifications:
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.020064926
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1048148
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.050000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.509649
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395275505885696299, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_Name
+      value: EmergencyOutButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 49426b771af5e8f49930bf20b1693c18, type: 3}
+--- !u!4 &357075289 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 357075288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &366154911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2429,7 +2518,8 @@ Transform:
   m_LocalPosition: {x: -0.739, y: -2.71, z: -3.504}
   m_LocalScale: {x: 0.18, y: 0.49838218, z: 0.18102585}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 357075289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814238523
