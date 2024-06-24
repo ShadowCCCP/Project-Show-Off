@@ -45,12 +45,13 @@ public partial class DialogueManager : MonoBehaviour
             'Grab the hammer with the controller button at your middle finger and break the glass to start'
         ],
         'Gap' : [
-            'Glad they finally sent someone, can you fully put your arm and the hammer in the blue gap'
+            'Glad they finally sent someone, can you fully put your arm in the blue gap'
         ],
         'Select' : [
             'Use the lever or press the buttons to select a timeline to fix',
         ],
         'Ready' : [
+            'If you ever feel distressed, press the button at your feet!',
             'I\'ll help you where I can, take care timeline repair person.'
         ] 
     }";
@@ -197,6 +198,9 @@ public partial class DialogueManager : MonoBehaviour
         ], 
         'Meteor' : [
             'Watch out for meteors!' 
+        ],
+        'Shoes' : [
+            'Get the plates that got loose, they are still drifting around'
         ],
         'Trigger' : [
             'Use the trigger at your index finger to activate the blowtorch'
