@@ -52,15 +52,16 @@ public class PlayerManager : MonoBehaviour
 
     private void FinishLevel(LevelFinishedEvent pLevelFinishEvent)
     {
-        if (_soundPlayer != null) { _soundPlayer.Play(); }
-
         TransitionManager.onDarkenFinished -= TransportPlayer;
+        TransitionManager.onDarkenFinished += PlaySound;
 
         StartCoroutine(LoadLobby(pLevelFinishEvent.waitTime));
     }
 
     private IEnumerator LoadLobby(float pWaitTime)
     {
+        // If a the wait time is above 0 the screen will first darken and then play a sound if available...
+        // This is useful for the fencing minigame...
         if (pWaitTime > 0)
         {
             _anim.SetTrigger("DarkenScreen");
@@ -74,10 +75,16 @@ public class PlayerManager : MonoBehaviour
 
             _anim.SetTrigger("DarkenScreen");
         }
-        else
+        else 
         {
-            BackToLobby();
+            TransitionManager.onDarkenFinished -= PlaySound;
+            BackToLobby(); 
         }
+    }
+
+    private void PlaySound()
+    {
+        if (_soundPlayer != null) { _soundPlayer.Play(); }
     }
 
     private void TriggerDialogueEvents()

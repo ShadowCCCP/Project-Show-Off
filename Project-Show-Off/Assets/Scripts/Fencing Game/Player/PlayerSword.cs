@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -29,8 +30,11 @@ public class PlayerSword : MonoBehaviour
 
     private bool _swordGrabbedOnce;
 
-    private float sparksCooldown = 1.0f;
-    private float sparksCurrentTime;
+    private float _sparksCooldown = 1.0f;
+    private float _sparksCurrentTime;
+
+    private float _swingCooldown = 1.0f;
+    private float _swingCurrentTime;
 
     private void Start()
     {
@@ -61,11 +65,13 @@ public class PlayerSword : MonoBehaviour
 
     private void UpdateTimer()
     {
-        sparksCurrentTime += Time.deltaTime;
+        _sparksCurrentTime += Time.deltaTime;
+        _swingCurrentTime += Time.deltaTime;
     }
 
     private void CheckSwing()
     {
+        // Makes the numbers better to work with...
         float distanceMoved = (transform.position - _lastPosition).magnitude * 100;
 
         if (distanceMoved >= 5 && !_swingSoundInvalid)
@@ -73,8 +79,9 @@ public class PlayerSword : MonoBehaviour
             // Play sound once if the crossed distance reaches threshhold...
             _soundPlayer.PlayRandom(0, 1);
             _swingSoundInvalid = true;
+            _swingCurrentTime = 0;
         }
-        else if (_swingSoundInvalid && distanceMoved < 0.7f)
+        else if (_swingSoundInvalid && distanceMoved < 0.7f && _swingCurrentTime >= _swingCooldown)
         {
             // Reset bool to activate playing sound again, when lower threshhold is reached...
             _swingSoundInvalid = false;
@@ -87,9 +94,15 @@ public class PlayerSword : MonoBehaviour
     {
         if (!_swordGrabbedOnce)
         {
-            EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
+            StartCoroutine(TriggerGrabbedEvent());
             _swordGrabbedOnce = true;
         }
+    }
+
+    private IEnumerator TriggerGrabbedEvent()
+    {
+        yield return new WaitForSeconds(3);
+        EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
     }
 
     private void ResetVelocity()
@@ -118,7 +131,7 @@ public class PlayerSword : MonoBehaviour
         }
 
         collision.GetContacts(contactPoints);
-        if (sparksCurrentTime >= sparksCooldown &&
+        if (_sparksCurrentTime >= _sparksCooldown &&
             contactPoints.Count > 0 && contactPoints[0].otherCollider.CompareTag("Sword"))
         {
             // Instantiate sparks...
@@ -126,7 +139,7 @@ public class PlayerSword : MonoBehaviour
             gawk.transform.parent = null;
 
             // Reset timer...
-            sparksCurrentTime = 0;
+            _sparksCurrentTime = 0;
         }
     }
 }

@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3edfed6805ee9043becc79786f6777c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkDistance: 0.6
+  walkDistance: 0.3
   walkTime: 1.5
   stageMaxCount: 3
   decisiveTurn: 5

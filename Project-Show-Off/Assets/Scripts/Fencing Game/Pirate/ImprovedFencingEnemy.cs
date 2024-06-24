@@ -230,10 +230,8 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
     private void CheckAttackOutcome()
     {
-        if (_blockCount >= _currentAttackCount || _specialAttack)
+        if (_blockCount >= _currentAttackCount)
         {
-            if (_specialAttack) { _specialAttack = false; }
-
             CurrentState = FencingState.Stunned;
             _anim.SetBool("GotBlocked", true);
 
@@ -251,10 +249,14 @@ public class ImprovedFencingEnemy : MonoBehaviour
 
             CurrentState = FencingState.Taunt; 
         }
+
+        // Reset special attack...
+        if (_specialAttack) { _specialAttack = false; }
     }
 
     private void ProcessCurrentStage()
     {
+        // Check if game is completed...
         if (_currentFightStage >= stageMaxCount || _currentFightStage <= -stageMaxCount || _decisiveCount >= decisiveTurn)
         {
             Debug.Log("Game completed");
@@ -278,6 +280,11 @@ public class ImprovedFencingEnemy : MonoBehaviour
             ResetValues();
             _gameCompleted = true;
         }
+    }
+
+    private void TriggerGameFinish(float pDelay)
+    {
+        EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent(pDelay));
     }
 
     private IEnumerator InitiateAttack()
@@ -346,6 +353,7 @@ public class ImprovedFencingEnemy : MonoBehaviour
     private IEnumerator DestroyAfterDelay()
     {
         yield return new WaitForSeconds(8);
+        EventBus<LevelFinishedEvent>.Publish(new LevelFinishedEvent(0));
         Destroy(gameObject);
     }
 
@@ -422,7 +430,9 @@ public class ImprovedFencingEnemy : MonoBehaviour
     {
         if (CurrentState == FencingState.Attack && !_gotBlocked) 
         { 
-            _blockCount++;
+            // To account for the single special attack...
+            if (_specialAttack) { _blockCount = _currentAttackCount; }
+            else { _blockCount++; }
             _gotBlocked = true;
 
             // Reverse the attack animation...

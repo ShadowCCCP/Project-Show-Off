@@ -23,7 +23,7 @@ public class Useful : MonoBehaviour
             hierarchy += names[i] + " > ";
         }
 
-        // And put the name that the sound script is attached to at the end...
+        // And put the name that the script is attached to at the end...
         hierarchy += pTransform.name;
 
         return hierarchy;

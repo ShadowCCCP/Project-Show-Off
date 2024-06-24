@@ -38,6 +38,17 @@ public abstract class VRAbstractButton : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        UpdatePositions();
+    }
+
+    private void UpdatePositions()
+    {
+        _buttonStartPos = transform.position;
+        _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(_glassOpen);   

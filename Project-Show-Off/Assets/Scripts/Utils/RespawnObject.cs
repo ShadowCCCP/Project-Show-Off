@@ -29,8 +29,13 @@ public class RespawnObject : MonoBehaviour
     // Timer to check if to respawn...
     private float _currentTime;
 
+    // To not interfere with collisions during respawn...
+    private Collider[] _cols;
+
     private void Start()
     {
+        _cols = GetComponents<Collider>();
+
         _startRotation = transform.rotation;
 
         _gInteractable = GetComponent<XRGrabInteractable>();
@@ -74,6 +79,7 @@ public class RespawnObject : MonoBehaviour
         if (debugMode) { Testing(); }
 
         RotationFix();
+        PositionFix();
     }
 
     private void RotationFix()
@@ -83,6 +89,15 @@ public class RespawnObject : MonoBehaviour
         if (_respawned && transform.rotation != _startRotation)
         {
             transform.rotation = _startRotation;
+        }
+    }
+
+    private void PositionFix()
+    {
+        // The same fix as for the rotation, just for the position...
+        if (_respawned && transform.position != respawnPosition)
+        {
+            transform.position = respawnPosition;
         }
     }
 
@@ -124,6 +139,16 @@ public class RespawnObject : MonoBehaviour
 
         // Make object float again after respawn...
         if (_floaty != null) { _floaty.StartTween(); }
+    }
+
+    private void ToggleColliders()
+    {
+        // Toggle the colliders attached either on or off...
+        // Use this instead of the pos/rot fixes, if enough time...
+        for (int i = 0; i < _cols.Length; i++)
+        {
+            _cols[i].enabled = !_cols[i].enabled;
+        }
     }
 
     private void ToggleState()
