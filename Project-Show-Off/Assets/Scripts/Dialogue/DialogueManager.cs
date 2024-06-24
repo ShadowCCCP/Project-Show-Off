@@ -25,11 +25,13 @@ public partial class DialogueManager : MonoBehaviour
         alien = JsonConvert.DeserializeObject<Alien>(CMAlien);
         timeMachine = JsonConvert.DeserializeObject<TimeMachine>(TimeScreen);
         timegod = JsonConvert.DeserializeObject<TimeGod>(CMTimegod);
+
+
+        soundPlayer = GetComponent<SoundPlayer>();
     }
 
     void Start()
     {
-        soundPlayer = GetComponent<SoundPlayer>();
         StartCoroutine(goThroughQueue());
     }
     
@@ -43,7 +45,14 @@ public partial class DialogueManager : MonoBehaviour
 
     public void Speak(float time ,string text)
     {
-        if (soundPlayer != null) soundPlayer.Play();
+        if (soundPlayer != null)
+        {
+            soundPlayer.Play();
+        }
+        else
+        {
+            Debug.LogError("no sound player on animal");
+        }
         Debug.Log("speak: " + text);
         StartCoroutine(doDelayedDialogue(time, text));
     }
