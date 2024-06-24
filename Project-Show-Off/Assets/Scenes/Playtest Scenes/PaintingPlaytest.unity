@@ -5199,6 +5199,7 @@ GameObject:
   - component: {fileID: 7999921550932005433}
   - component: {fileID: 389515040699223705}
   - component: {fileID: 2860679977107070496}
+  - component: {fileID: 7999921550932005434}
   m_Layer: 0
   m_Name: CMRaTo_Rat
   m_TagString: Untagged
@@ -6319,6 +6320,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add86360c8fe4ec448cc6080784d8319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7999921550932005434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071123668636683054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 9fcc0a29151cfeb48ade8744a76adf95, type: 3}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 1
+  volume: 1
 --- !u!4 &8105973905895785023
 Transform:
   m_ObjectHideFlags: 0
