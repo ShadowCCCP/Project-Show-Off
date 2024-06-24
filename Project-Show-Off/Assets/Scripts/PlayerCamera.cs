@@ -46,6 +46,7 @@ public class PlayerCamera : MonoBehaviour
     void Awake()
     {
         EventBus<StopPlayerMovementEvent>.OnEvent += AllowPlayerPhysics;
+        startY = player.position.y;
     }
 
     void OnDestroy()
@@ -62,6 +63,7 @@ public class PlayerCamera : MonoBehaviour
         if (GetComponent<IntroPositionSwitch>())
         {
             canMoveRigidBody = false;
+            checkFallActive = false;
         }
         else
         {
@@ -79,7 +81,7 @@ public class PlayerCamera : MonoBehaviour
 
         camOffset.position += offset;
  
-        startY = player.position.y;
+        
     }
 
     void Update()
@@ -142,6 +144,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (!playerPhysics)
         {
+            //player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);
             if (canMoveRigidBody)
             {
                 player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);

@@ -45,10 +45,12 @@ public class IntroPositionSwitch : MonoBehaviour
 
     void goBackToOriginalPlace(GoBackToStartPosEvent goBack)
     {
-        playerCamera.ActivateCheckFall(true);
+       
         cameraOffset.position = startPos ;
 
         //player.transform.position = startPos ;
        // player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        playerCamera.ActivateCheckFall(true);
     }
 }

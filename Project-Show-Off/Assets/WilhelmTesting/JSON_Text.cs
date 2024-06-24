@@ -26,7 +26,7 @@ public partial class DialogueManager : MonoBehaviour
 
     public class Alien 
     {
-        public string[] Destroyed, Meteor, Trigger;
+        public string[] Destroyed, Meteor, Shoes, Trigger;
     }
 
     public class TimeMachine 

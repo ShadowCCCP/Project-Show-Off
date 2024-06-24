@@ -17,7 +17,7 @@ public class MeteoriteManager : MonoBehaviour
     int speed;
     void Start()
     {
-        StartSpawning();
+        //StartSpawning();
     }
     IEnumerator meteoriteRoutine()
     {
@@ -40,7 +40,7 @@ public class MeteoriteManager : MonoBehaviour
         meteor.GetComponent<Meteorite>().direction = direction;
     }
 
-    void StartSpawning()
+    public void StartSpawning()
     {
         StartCoroutine(meteoriteRoutine());
     }

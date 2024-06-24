@@ -19,19 +19,27 @@ public class DialogueCMAlien : MonoBehaviour
     [SerializeField]
     Transform bubleStartPos;
 
-    [SerializeField]
-    Animator meteorAnim;
+    Vector3 normalPos;
 
-    Transform normalPos;
+    Quaternion normalRot;
 
-    Transform bubleNormalPos;
+    Vector3 bubleNormalPos;
+
+    Quaternion bubleNormalRot;
 
     string[] destroyed;
     string[] meteor;
+    string[] shoes;
     string[] trigger;
 
     [SerializeField]
     float timeForMeteor = 4;
+
+    [SerializeField]
+    Animation meteorFall;
+
+    [SerializeField]
+    MeteoriteManager meteoriteManager;
 
     /*
     *  dark room + cmet with u + cmet : destroyed
@@ -42,6 +50,7 @@ public class DialogueCMAlien : MonoBehaviour
     {
         EventBus<OnDoorOpenSpaceEvent>.OnEvent += triggerDoorOpenDialogue;
         EventBus<OnPlatePlacedSpaceEvent>.OnEvent += triggerPlateDialogue;
+
     }
 
     void OnDestroy()
@@ -53,23 +62,25 @@ public class DialogueCMAlien : MonoBehaviour
 
     void Start()
     {
+      
         dialogueManager = GetComponent<DialogueManager>();
-
+        alienTeleportSetup();
 
         destroyed = dialogueManager.alien.Destroyed;
         meteor = dialogueManager.alien.Meteor;
+        shoes = dialogueManager.alien.Shoes;
         trigger = dialogueManager.alien.Trigger;
 
         speak(destroyed, 1);
 
-        alienTeleportSetup();
+        
 
     }
     void triggerDoorOpenDialogue(OnDoorOpenSpaceEvent onDoorOpenSpaceEvent)
     {
         speak(meteor, 2);
 
-        //do meteor animator meteorAnim.setTrigger("");
+        meteorFall.enabled=true;
 
         StartCoroutine(gobackToOriginDelayed());
     }
@@ -100,21 +111,31 @@ public class DialogueCMAlien : MonoBehaviour
         EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
 
         alienTeleport();
+        speak(shoes, 0);
+        meteoriteManager.StartSpawning();
     }
 
     void alienTeleport()
     {
-        transform.position = normalPos.position;
-        transform.rotation = normalPos.rotation;
 
-        buble.position = bubleNormalPos.position;
-        buble.rotation = bubleNormalPos.rotation;
+        Debug.Log("attempt");
+        transform.position = normalPos;
+        transform.rotation = normalRot;
+
+        buble.position = bubleNormalPos;
+        buble.rotation = bubleNormalRot;
+
+
+        //dialogue for outside
     }
 
     void alienTeleportSetup()
     {
-        normalPos = transform;
-        bubleNormalPos = buble.transform;
+        normalPos = transform.position;
+        normalRot = transform.rotation;
+
+        bubleNormalPos = buble.transform.position;
+        bubleNormalRot = buble.transform.rotation;
 
         //go to the start position
         transform.position = startPos.position;
@@ -122,5 +143,13 @@ public class DialogueCMAlien : MonoBehaviour
 
         buble.position = bubleStartPos.position;
         buble.rotation = bubleStartPos.rotation;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            alienTeleport();
+        }
     }
 }
