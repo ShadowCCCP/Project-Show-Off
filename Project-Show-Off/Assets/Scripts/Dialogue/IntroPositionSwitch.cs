@@ -21,6 +21,7 @@ public class IntroPositionSwitch : MonoBehaviour
     PlayerCamera playerCamera;
 
     Vector3 startPos;
+    SoundPlayer playerSound;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class IntroPositionSwitch : MonoBehaviour
     {
         startPos = transform.position;
         playerCamera = GetComponent<PlayerCamera>();
+        playerSound = GetComponent<SoundPlayer>();
         if (startInNewPlace)
         {
             playerCamera.ActivateCheckFall(false);
@@ -52,5 +54,8 @@ public class IntroPositionSwitch : MonoBehaviour
        // player.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         playerCamera.ActivateCheckFall(true);
+
+        if(playerSound)
+        playerSound.Play();
     }
 }

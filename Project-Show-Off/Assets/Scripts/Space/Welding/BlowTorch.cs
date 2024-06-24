@@ -35,6 +35,11 @@ public class BlowTorch : MonoBehaviour
 
     ActionBasedController currentController;
 
+    [SerializeField]
+    int a;
+
+    [SerializeField]
+    SoundPlayer weldingSound;
 
     private void Start()
     {
@@ -57,7 +62,7 @@ public class BlowTorch : MonoBehaviour
 
     private void Update()
     {   
-        if (currentController.activateAction.action.ReadValue<float>() > 0.5f )
+        if (currentController.activateAction.action.ReadValue<float>() > 0.5f ||a>1 )
         {
             activateFire();
         }
@@ -72,9 +77,18 @@ public class BlowTorch : MonoBehaviour
         {
             sparks.Play();
             smoke.Play();
+
+            if (!doWeldingSOunds)
+            {
+                doWeldingSOunds = true;
+                flameLoop.Stop();
+                weldingSound.Play();
+            }
         }
 
     }
+
+    bool doWeldingSOunds;
 
     private void OnTriggerExit(Collider other)
     {
@@ -82,6 +96,13 @@ public class BlowTorch : MonoBehaviour
         {
             sparks.Stop();
             smoke.Stop();
+
+            if (doWeldingSOunds)
+            {
+                weldingSound.Stop();
+                flameLoop.Play();
+                doWeldingSOunds = false;
+            }
         }
     }
 
@@ -92,7 +113,7 @@ public class BlowTorch : MonoBehaviour
             coll.enabled = true;
             flame.Play();
 
-            flameLoop.Play();
+            if(!doWeldingSOunds) flameLoop.Play();
         }
     }
 

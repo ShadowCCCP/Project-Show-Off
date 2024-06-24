@@ -13,6 +13,9 @@ public class SpacePhysics : MonoBehaviour
     [SerializeField]
     Collider[] ignoreCollisionWithPlayer;
 
+    [SerializeField]
+    GameObject emergencyButton;
+
     void Start()
     {
         foreach (Collider p in ignoreCollisionWithPlayer)
@@ -30,6 +33,8 @@ public class SpacePhysics : MonoBehaviour
 
             Rigidbody rb = player.GetComponent<Rigidbody>();
             rb.AddForce(player.transform.forward * glideSpeedOnFall);
+
+            emergencyButton.SetActive(false);
         }   
      }
 }
