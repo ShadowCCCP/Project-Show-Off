@@ -838,6 +838,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlternativeBrush
       objectReference: {fileID: 0}
+    - target: {fileID: 3526825857623394308, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2006,6 +2011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ColorPalleteTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623311322522494275, guid: 9dc61eaf2b2ce3e4baf2510aa0defbb1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
