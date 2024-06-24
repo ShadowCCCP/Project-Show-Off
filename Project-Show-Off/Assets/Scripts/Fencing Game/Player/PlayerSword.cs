@@ -29,6 +29,9 @@ public class PlayerSword : MonoBehaviour
 
     private bool _swordGrabbedOnce;
 
+    private float sparksCooldown = 1.0f;
+    private float sparksCurrentTime;
+
     private void Start()
     {
         _soundPlayer = GetComponent<SoundPlayer>();
@@ -48,11 +51,17 @@ public class PlayerSword : MonoBehaviour
     public void Update()
     {
         ResetVelocity();
+        UpdateTimer();
     }
 
     private void FixedUpdate()
     {
         CheckSwing();
+    }
+
+    private void UpdateTimer()
+    {
+        sparksCurrentTime += Time.deltaTime;
     }
 
     private void CheckSwing()
@@ -109,10 +118,15 @@ public class PlayerSword : MonoBehaviour
         }
 
         collision.GetContacts(contactPoints);
-        if (contactPoints.Count > 0 && contactPoints[0].otherCollider.CompareTag("Sword"))
+        if (sparksCurrentTime >= sparksCooldown &&
+            contactPoints.Count > 0 && contactPoints[0].otherCollider.CompareTag("Sword"))
         {
+            // Instantiate sparks...
             GameObject gawk = Instantiate(hitSparks, contactPoints[0].point, Quaternion.identity);
             gawk.transform.parent = null;
+
+            // Reset timer...
+            sparksCurrentTime = 0;
         }
     }
 }

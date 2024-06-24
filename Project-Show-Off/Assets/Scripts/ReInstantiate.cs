@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ReInstantiate : MonoBehaviour
 {
@@ -17,6 +18,39 @@ public class ReInstantiate : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instantiate(_instantiateObject, _startPosition, _startRotation);
+        if (SceneManager.GetActiveScene().isLoaded && _instantiateObject != null)
+        {
+            GameObject obj = Instantiate(_instantiateObject, _startPosition, _startRotation, null);
+            ActivateGameObject(obj);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void ActivateGameObject(GameObject pObj)
+    {
+        // Activate the GameObject itself
+        pObj.SetActive(true);
+
+        // Activate all components on this GameObject
+        foreach (var component in pObj.GetComponents<Component>())
+        {
+            if (component is Behaviour behaviour)
+            {
+                behaviour.enabled = true;
+            }
+        }
+
+        // Recursively activate all children
+        foreach (Transform child in pObj.transform)
+        {
+            ActivateGameObject(child.gameObject);
+        }
     }
 }

@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 73815123}
   - component: {fileID: 73815122}
   - component: {fileID: 73815121}
-  - component: {fileID: 73815120}
+  - component: {fileID: 73815126}
   m_Layer: 0
   m_Name: Galvanized Square Steel
   m_TagString: Metal
@@ -280,23 +280,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 884989799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &73815120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73815118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b92a49771d69e4f8aec65c4b15affe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugMode: 0
-  useLocalSpace: 0
-  parent: {fileID: 0}
-  respawnPosition: {x: -1.663, y: -2.364, z: 2.267}
-  respawnTime: 3
 --- !u!114 &73815121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +531,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73815118}
   m_Mesh: {fileID: 2225461533927571356, guid: be907e8603c3b0048933970d596addff, type: 3}
+--- !u!114 &73815126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73815118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04528b28595eca045a6ffa5b1e8d82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &166690204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -913,6 +908,7 @@ GameObject:
   - component: {fileID: 302597676}
   - component: {fileID: 302597675}
   - component: {fileID: 302597674}
+  - component: {fileID: 302597678}
   m_Layer: 0
   m_Name: Placeholder 1
   m_TagString: Untagged
@@ -1020,6 +1016,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302597672}
   m_Mesh: {fileID: 2225461533927571356, guid: be907e8603c3b0048933970d596addff, type: 3}
+--- !u!114 &302597678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302597672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 5a29f4d7b9287094495fc678e4dbe16d, type: 3}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 0
+  volume: 1
 --- !u!1001 &326957454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1154,7 +1168,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338843060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1211,7 +1225,7 @@ GameObject:
   - component: {fileID: 348903567}
   - component: {fileID: 348903566}
   - component: {fileID: 348903565}
-  - component: {fileID: 348903564}
+  - component: {fileID: 348903570}
   m_Layer: 0
   m_Name: Galvanized Square Steel 2
   m_TagString: Metal
@@ -1234,23 +1248,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 884989799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &348903564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348903562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b92a49771d69e4f8aec65c4b15affe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugMode: 0
-  useLocalSpace: 0
-  parent: {fileID: 0}
-  respawnPosition: {x: -0.946, y: -1.564, z: 3.0180001}
-  respawnTime: 3
 --- !u!114 &348903565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,6 +1499,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348903562}
   m_Mesh: {fileID: 7349332074455647343, guid: be907e8603c3b0048933970d596addff, type: 3}
+--- !u!114 &348903570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348903562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04528b28595eca045a6ffa5b1e8d82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &357075288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1510,6 +1519,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 812817864}
     m_Modifications:
+    - target: {fileID: 268822965944139901, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2591283478400292658, guid: 49426b771af5e8f49930bf20b1693c18,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1580,7 +1594,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EmergencyOutButton
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4528929621491814722, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691501322876741724, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6691501322876741724, guid: 49426b771af5e8f49930bf20b1693c18, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1702,6 +1727,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 658935926}
+    - targetCorrespondingSourceObject: {fileID: 2686297204118315348, guid: 1be9fbf79f5004b43901516e28ed291d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 658935931}
   m_SourcePrefab: {fileID: 100100000, guid: 1be9fbf79f5004b43901516e28ed291d, type: 3}
 --- !u!4 &376947158 stripped
 Transform:
@@ -2071,6 +2100,30 @@ MonoBehaviour:
   origin: {fileID: 1977331973}
   player: {fileID: 812817859}
   startInNewPlace: 1
+--- !u!114 &658935931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658935921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 5b9065b0bfb60cd498c573f7623dbe10, type: 3}
+  playOnAwake: 0
+  loop: 0
+  spatialBlend: 0
+  volume: 1
+--- !u!1 &695776759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4395275505885696299, guid: 49426b771af5e8f49930bf20b1693c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 357075288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &726763428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3111202031867724143, guid: 364f5e2066d755544a12a870017d1b51,
@@ -2533,7 +2586,7 @@ GameObject:
   - component: {fileID: 814238524}
   - component: {fileID: 814238525}
   m_Layer: 0
-  m_Name: Torching
+  m_Name: Welding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2567,8 +2620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 1584aaf24c11f4342a802ecf7581bbc8, type: 3}
-  playOnAwake: 1
+  - {fileID: 8300000, guid: f0702675af451a649983f18517df5bc9, type: 3}
+  playOnAwake: 0
   loop: 1
   spatialBlend: 0
   volume: 1
@@ -3127,6 +3180,7 @@ MonoBehaviour:
   ignoreCollisionWithPlayer:
   - {fileID: 348903567}
   - {fileID: 73815123}
+  emergencyButton: {fileID: 695776759}
 --- !u!65 &943951410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3460,6 +3514,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1114615954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123583256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 884062029571949947, guid: 94492d5415e19634a947a74030254fd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1592871937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1123583262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123583256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 1584aaf24c11f4342a802ecf7581bbc8, type: 3}
+  playOnAwake: 0
+  loop: 1
+  spatialBlend: 0
+  volume: 1
 --- !u!1001 &1151741630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3621,12 +3699,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 30
+      value: 74.32321
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 143.18785
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
@@ -4285,7 +4363,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482855446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4660,6 +4738,11 @@ PrefabInstance:
       propertyPath: rightMesh
       value: 
       objectReference: {fileID: 1633568751}
+    - target: {fileID: 2834339449043629390, guid: 94492d5415e19634a947a74030254fd2,
+        type: 3}
+      propertyPath: weldingSound
+      value: 
+      objectReference: {fileID: 814238525}
     - target: {fileID: 3142185217099868296, guid: 94492d5415e19634a947a74030254fd2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4846,7 +4929,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1529201195}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 884062029571949947, guid: 94492d5415e19634a947a74030254fd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1123583262}
   m_SourcePrefab: {fileID: 100100000, guid: 94492d5415e19634a947a74030254fd2, type: 3}
 --- !u!4 &1592871938 stripped
 Transform:
