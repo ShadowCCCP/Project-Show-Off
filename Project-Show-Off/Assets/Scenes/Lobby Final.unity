@@ -404,7 +404,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4bdd642aad159014692cfa56cf7cbaab, type: 3}
   playOnAwake: 0
   loop: 0
-  spatialBlend: 0
+  spatialBlend: 1
   volume: 1
 --- !u!1 &141485167
 GameObject:
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3200f65b1c11dd41bb8dff2460c384c, type: 3}
   playOnAwake: 0
   loop: 1
-  spatialBlend: 0
+  spatialBlend: 1
   volume: 1
 --- !u!1 &702214322 stripped
 GameObject:
@@ -2109,7 +2109,7 @@ MonoBehaviour:
   playOnAwake: 0
   loop: 0
   spatialBlend: 0
-  volume: 1
+  volume: 0.8
 --- !u!65 &1284347301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2479,7 +2479,7 @@ MonoBehaviour:
   playOnAwake: 1
   loop: 1
   spatialBlend: 0
-  volume: 0.441
+  volume: 0.25
 --- !u!65 &1593755324
 BoxCollider:
   m_ObjectHideFlags: 0
