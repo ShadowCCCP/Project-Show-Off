@@ -36,7 +36,7 @@ public class DialogueCMAlien : MonoBehaviour
     float timeForMeteor = 4;
 
     [SerializeField]
-    Animation meteorFall;
+    Animator meteorFall;
 
     [SerializeField]
     MeteoriteManager meteoriteManager;
@@ -80,7 +80,7 @@ public class DialogueCMAlien : MonoBehaviour
     {
         speak(meteor, 2);
 
-        meteorFall.enabled=true;
+        meteorFall.SetTrigger("MeteorFall");
 
         StartCoroutine(gobackToOriginDelayed());
     }
@@ -109,10 +109,11 @@ public class DialogueCMAlien : MonoBehaviour
     {
         yield return new WaitForSeconds(timeForMeteor);
         EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
-
+        EventBus<CloseSpaceDoorEvent>.Publish(new CloseSpaceDoorEvent());
         alienTeleport();
         speak(shoes, 0);
         meteoriteManager.StartSpawning();
+       
     }
 
     void alienTeleport()

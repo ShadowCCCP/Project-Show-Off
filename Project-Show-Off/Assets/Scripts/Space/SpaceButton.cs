@@ -11,24 +11,33 @@ public class SpaceButton : VRAbstractButton
     [SerializeField]
     SoundPlayer doorSound;
 
+    private void Awake()
+    {
+        EventBus<CloseSpaceDoorEvent>.OnEvent += CloseDoor;
+    }
 
+    void OnDestroy()
+    {
+        EventBus<CloseSpaceDoorEvent>.OnEvent -= CloseDoor;
+    }
     public override void OnButtonPress()
     {
-        //open door
+        openDoor();
+       
+    }
+
+    void openDoor()
+    {
         door.SetTrigger("OpenDoor");
         doorSound.Play();
 
         EventBus<OnDoorOpenSpaceEvent>.Publish(new OnDoorOpenSpaceEvent());
     }
 
-    private void Update()
+    public void CloseDoor(CloseSpaceDoorEvent closeSpaceDoor)
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            door.SetTrigger("OpenDoor");
-
-            EventBus<OnDoorOpenSpaceEvent>.Publish(new OnDoorOpenSpaceEvent());
-        }
+        door.SetTrigger("CloseDoor");
+        doorSound.Play();
     }
 
 }

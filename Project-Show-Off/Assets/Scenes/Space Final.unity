@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.91670156, g: 0.54226214, b: 0.5992661, a: 1}
+  m_IndirectSpecularColor: {r: 0.922124, g: 0.5513702, b: 0.6052337, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -718,7 +718,7 @@ MonoBehaviour:
   startPos: {fileID: 1165956856}
   bubleStartPos: {fileID: 280439222}
   timeForMeteor: 10
-  meteorFall: {fileID: 0}
+  meteorFall: {fileID: 333630069}
   meteoriteManager: {fileID: 1552197067}
 --- !u!114 &166690209
 MonoBehaviour:
@@ -1158,17 +1158,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4061608
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.406161
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.406161
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}
@@ -1219,6 +1219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 258eaf2b74c2c6c4ea0970eb4ffafb69,
         type: 3}

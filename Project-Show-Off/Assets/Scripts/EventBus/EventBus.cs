@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public abstract class Event { }
@@ -198,6 +199,14 @@ public class OnPlatePlacedSpaceEvent : Event
 public class GoBackToStartPosEvent : Event
 {
     public GoBackToStartPosEvent()
+    {
+
+    }
+}
+
+public class CloseSpaceDoorEvent : Event
+{
+    public CloseSpaceDoorEvent()
     {
 
     }
