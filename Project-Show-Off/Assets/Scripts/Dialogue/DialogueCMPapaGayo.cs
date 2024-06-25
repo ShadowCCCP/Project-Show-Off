@@ -11,6 +11,8 @@ public class DialogueCMPapaGayo : MonoBehaviour
     string[] swordPickup;
     string[] pirateDefeat;
 
+    Animator animator;
+
     /* on scene start (1 sec delay) - Suspicous 
      * on sword picup - Warning (6 sec on screem) - Warning
      * on pirate defeat  - Beaten
@@ -31,14 +33,14 @@ public class DialogueCMPapaGayo : MonoBehaviour
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
-
+        animator = GetComponent<Animator>();
 
         sceneStart = dialogueManager.parrot.Suspicious;
         swordPickup = dialogueManager.parrot.Warning;
         pirateDefeat = dialogueManager.parrot.Beaten;
 
         speak(sceneStart, 1);
-
+        animator.SetTrigger("StartAnim");
     }
 
     void triggerSwordDialogue(OnSwordPickupEvent onSwordPickupEvent)
