@@ -1022,9 +1022,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeToGo: {fileID: 685756920}
   cameraOffset: {fileID: 1274226399}
-  origin: {fileID: 0}
+  origin: {fileID: 564216611}
   player: {fileID: 368020829}
   startInNewPlace: 1
+  yOffset: -7.5
 --- !u!1 &445723898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1326,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 687b3f392289caa47883fb66e4eec504, type: 3}
+--- !u!114 &564216611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9159217776065644486, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1647969641}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &571634277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,6 +3296,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1130351133827791112, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1364813108109813004, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: m_Layer
@@ -3338,6 +3356,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4391773326333958243, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4757383314931984762, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: m_Layer
@@ -3391,12 +3414,12 @@ PrefabInstance:
     - target: {fileID: 7783063920804142103, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.832
+      value: 10.86
       objectReference: {fileID: 0}
     - target: {fileID: 7783063920804142103, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.168
+      value: -8.004
       objectReference: {fileID: 0}
     - target: {fileID: 7783063920804142103, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
