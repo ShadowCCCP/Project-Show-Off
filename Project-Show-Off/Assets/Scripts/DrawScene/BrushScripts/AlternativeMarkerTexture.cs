@@ -55,7 +55,11 @@ public class MarkerTextureAlternative : MonoBehaviour
                 if (_whiteboard == null)
                 {
                     _whiteboard = _touch[0].transform.GetComponent<Whiteboard>();
-                    if (_soundPlayer != null && _soundPlayer.ClipCount() > 0) { _soundPlayer.PlaySpecific(0); }
+                    if (_soundPlayer != null && _soundPlayer.ClipCount() > 2 && !_soundPlayer.IsPlaying()) 
+                    {
+                        _soundPlayer.Loop = true;
+                        _soundPlayer.PlaySpecific(1); 
+                    }
                 }
 
                 // We only want to draw on the very first hit raycast, in order to save performance...
@@ -97,11 +101,15 @@ public class MarkerTextureAlternative : MonoBehaviour
             }
         }
 
-        if (_touch.Count == 0 && (_whiteboard != null || _touchedLastFrame))
+        if (_touch.Count == 0 && (_whiteboard != null || _touchedLastFrame) || _soundPlayer.IsPlaying())
         {
             // If no board was hit, reset the whiteboard reference...
             _whiteboard = null;
             _touchedLastFrame = false;
+
+            // Reset the brush sound...
+            _soundPlayer.Loop = false;
+            _soundPlayer.Stop();
         }
         
     }

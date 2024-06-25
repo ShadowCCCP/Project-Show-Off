@@ -7,9 +7,39 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] AudioClip[] _audioClips;
 
     [SerializeField] bool playOnAwake;
+
     [SerializeField] bool loop;
+    public bool Loop
+    {
+        get { return loop; }
+        set
+        {
+            loop = value;
+            _audioSource.loop = value;
+        }
+    }
+
     [SerializeField] [Range(0, 1)] float spatialBlend;
+    public float SpatialBlend
+    {
+        get { return spatialBlend; }
+        set
+        {
+            spatialBlend = value;
+            _audioSource.spatialBlend = value;
+        }
+    }
+
     [SerializeField] [Range(0, 1)] float volume = 1;
+    public float Volume
+    {
+        get { return volume; }
+        set
+        {
+            volume = value;
+            _audioSource.volume = value;
+        }
+    }
 
     private AudioSource _audioSource;
     private int _currentClipIndex;

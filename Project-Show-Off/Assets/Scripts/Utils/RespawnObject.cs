@@ -15,6 +15,11 @@ public class RespawnObject : MonoBehaviour
     [SerializeField] Vector3 respawnPosition;
     [SerializeField] float respawnTime = 3.0f;
 
+    [Space]
+
+    [Tooltip("Will try to hold the position of the object respawning (Shouldn't be used in combination with Floaty)")]
+    [SerializeField] bool fixPosition;
+
     private XRGrabInteractable _gInteractable;
     private Rigidbody _rb;
     private Floaty _floaty;
@@ -95,7 +100,7 @@ public class RespawnObject : MonoBehaviour
     private void PositionFix()
     {
         // The same fix as for the rotation, just for the position...
-        if (_respawned && transform.position != respawnPosition)
+        if (fixPosition && _respawned && transform.position != respawnPosition)
         {
             transform.position = respawnPosition;
         }
@@ -122,7 +127,7 @@ public class RespawnObject : MonoBehaviour
         // Use local space based on attached parent...
         if (useLocalSpace && parent != null) 
         {
-            transform.SetParent(parent);
+            if (transform.parent != parent) { transform.SetParent(parent); }
             transform.localPosition = respawnPosition; 
         }
         else { transform.position = respawnPosition; }
