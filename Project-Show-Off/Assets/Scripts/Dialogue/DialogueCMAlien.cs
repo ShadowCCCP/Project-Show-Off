@@ -41,6 +41,8 @@ public class DialogueCMAlien : MonoBehaviour
     [SerializeField]
     MeteoriteManager meteoriteManager;
 
+    Animator animator;
+
     /*
     *  dark room + cmet with u + cmet : destroyed
     * 
@@ -62,7 +64,7 @@ public class DialogueCMAlien : MonoBehaviour
 
     void Start()
     {
-      
+        animator = GetComponent<Animator>();
         dialogueManager = GetComponent<DialogueManager>();
         alienTeleportSetup();
 
@@ -113,6 +115,8 @@ public class DialogueCMAlien : MonoBehaviour
         alienTeleport();
         speak(shoes, 0);
         meteoriteManager.StartSpawning();
+
+        animator.SetTrigger("StartAnim");
        
     }
 
