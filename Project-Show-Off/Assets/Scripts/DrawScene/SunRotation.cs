@@ -100,10 +100,12 @@ public class SunRotation : MonoBehaviour
         if (RemainingTime() <= _firstBellTime && !_firstBellRang)
         {
             PlayBellSound(0);
+            _firstBellRang = true;
         }
         else if (RemainingTime() <= _secondBellTime && !_secondBellRang)
         {
             PlayBellSound(1);
+            _secondBellRang = true;
         }
     }
 

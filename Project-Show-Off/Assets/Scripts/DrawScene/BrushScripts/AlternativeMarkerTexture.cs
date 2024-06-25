@@ -15,6 +15,7 @@ public class MarkerTextureAlternative : MonoBehaviour
     [SerializeField] GameObject paintSplashVFX;
 
     private SoundPlayer _soundPlayer;
+    private bool _playingBrushSound;
 
     private Renderer _renderer;
     private Color[] _colors;
@@ -55,8 +56,9 @@ public class MarkerTextureAlternative : MonoBehaviour
                 if (_whiteboard == null)
                 {
                     _whiteboard = _touch[0].transform.GetComponent<Whiteboard>();
-                    if (_soundPlayer != null && _soundPlayer.ClipCount() > 2 && !_soundPlayer.IsPlaying()) 
+                    if (_soundPlayer != null && _soundPlayer.ClipCount() > 2 && !_playingBrushSound) 
                     {
+                        _playingBrushSound = true;
                         _soundPlayer.Loop = true;
                         _soundPlayer.PlaySpecific(1); 
                     }
@@ -101,7 +103,7 @@ public class MarkerTextureAlternative : MonoBehaviour
             }
         }
 
-        if (_touch.Count == 0 && (_whiteboard != null || _touchedLastFrame) || _soundPlayer.IsPlaying())
+        if (_touch.Count == 0 && (_whiteboard != null || _touchedLastFrame) || _playingBrushSound)
         {
             // If no board was hit, reset the whiteboard reference...
             _whiteboard = null;

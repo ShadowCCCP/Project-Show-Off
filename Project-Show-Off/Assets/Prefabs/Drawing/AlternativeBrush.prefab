@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClips:
   - {fileID: 8300000, guid: 81241b02f96ecaf45a99fa48d76715db, type: 3}
+  - {fileID: 8300000, guid: 9aebc2f8edca2804ab440188248b2dd2, type: 3}
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -441,10 +442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
-  useLocalSpace: 1
+  useLocalSpace: 0
   parent: {fileID: 0}
-  respawnPosition: {x: 0.25, y: 0, z: 0}
+  respawnPosition: {x: -1.588, y: 10.385, z: -8.126}
   respawnTime: 3
+  fixPosition: 0
 --- !u!1 &4199618329271883402
 GameObject:
   m_ObjectHideFlags: 0

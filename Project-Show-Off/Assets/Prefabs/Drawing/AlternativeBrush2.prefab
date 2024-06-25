@@ -380,6 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClips:
   - {fileID: 8300000, guid: 81241b02f96ecaf45a99fa48d76715db, type: 3}
+  - {fileID: 8300000, guid: 9aebc2f8edca2804ab440188248b2dd2, type: 3}
   playOnAwake: 0
   loop: 0
   spatialBlend: 1
@@ -613,5 +614,6 @@ MonoBehaviour:
   debugMode: 0
   useLocalSpace: 0
   parent: {fileID: 0}
-  respawnPosition: {x: 0.4, y: 0, z: 0}
+  respawnPosition: {x: -1.423, y: 10.366, z: -8.3}
   respawnTime: 3
+  fixPosition: 0
