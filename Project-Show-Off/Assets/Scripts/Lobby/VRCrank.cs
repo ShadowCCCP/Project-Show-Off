@@ -30,6 +30,9 @@ public class VRCrank : MonoBehaviour
     [SerializeField]
     SoundPlayer soundPlayerLooped;
     Vector3 oldPos;
+
+[SerializeField]
+    bool onAtStart;
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;
@@ -47,8 +50,8 @@ public class VRCrank : MonoBehaviour
         timeMachineManager.LoadLevelOnTimeMachine(0);
 
         leverCollider = GetComponent<Collider>();
-
-        leverCollider.enabled = false;
+        if(!onAtStart){
+        leverCollider.enabled = false;}
 
         oldPos = transform.position;
         StartCoroutine(soundsForLever());

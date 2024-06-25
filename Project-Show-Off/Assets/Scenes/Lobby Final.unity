@@ -3208,6 +3208,11 @@ PrefabInstance:
       propertyPath: timeBetweenText
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3276113505281390400, guid: 146fd00032919874d8fa07ff861e482c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4863052059651380437, guid: 146fd00032919874d8fa07ff861e482c,
         type: 3}
       propertyPath: alarm
