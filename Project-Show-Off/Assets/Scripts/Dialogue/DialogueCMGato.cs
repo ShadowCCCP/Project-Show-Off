@@ -29,6 +29,8 @@ public class DialogueCMGato : MonoBehaviour
     * on level switch -> ready
     * 
     */
+
+    bool canDoIdentify = false; 
     private void Awake()
     {
         EventBus<GlassBrokenEvent>.OnEvent += triggerBrokenGlassDialogue;
@@ -62,9 +64,26 @@ public class DialogueCMGato : MonoBehaviour
    
     void triggerBrokenGlassDialogue(GlassBrokenEvent glassBrokenEvent)
     {
+        if (canDoIdentify)
+        {
+            identfy();
+        }
+        else
+        {
+            StartCoroutine(waitForIdentify());
+        }
+    }
+
+    IEnumerator waitForIdentify()
+    {
+        yield return new WaitForSeconds(2);
+        identfy();
+    }
+
+    void identfy()
+    {
         speak(gap, 0);
         speakOnScreen(identify[0]);
-        //hand spotlight TO DO
     }
 
     void triggerChangedHandDialogue(ChangeHandEvent changeHandEvent)
@@ -87,6 +106,7 @@ public class DialogueCMGato : MonoBehaviour
     {
         speak(intro, 0);
         speakOnScreen(smash[0]);
+        canDoIdentify = true;
     }
 
     void speak(string[] text , float time)
