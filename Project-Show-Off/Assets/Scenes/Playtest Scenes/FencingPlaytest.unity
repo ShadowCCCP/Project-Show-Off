@@ -1568,6 +1568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cmpapagayo
       objectReference: {fileID: 0}
+    - target: {fileID: 8731828884484670327, guid: 36c148692f36f334d99f47f6ddb94dfd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
