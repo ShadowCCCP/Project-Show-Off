@@ -2800,34 +2800,6 @@ Transform:
   - {fileID: 502426234}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1904815196 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3902434696109148433, guid: 7625570f22e79504e8e4488df641f2d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5301710834627314038}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1904815200
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904815196}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5758184135438507279, guid: 4bf3b053f8e80604899b41ef13d1bf6b, type: 3}
 --- !u!1 &2021994225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2550463727306718371, guid: 99d69952ac7c5a9409e9e27db4050a4a,
@@ -3015,6 +2987,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3c96da4148c54f04c8713202694e1e2b, type: 2}
+    - target: {fileID: 4642035460910327001, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642035460910327001, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642035460910327001, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642035460910327001, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.055
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642035460910327001, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6650573017018491863, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_TagString
@@ -3403,10 +3400,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3902434696109148433, guid: 7625570f22e79504e8e4488df641f2d4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1904815200}
   m_SourcePrefab: {fileID: 100100000, guid: 7625570f22e79504e8e4488df641f2d4, type: 3}
 --- !u!1001 &7658823874692921489
 PrefabInstance:

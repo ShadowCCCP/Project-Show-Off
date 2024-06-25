@@ -40,7 +40,7 @@ public class HandSelection : MonoBehaviour
     private void Start()
     {
         soundPlayer = GetComponent<SoundPlayer>();
-        alarmSound = alarm.GetComponent<SoundPlayer>();
+        if(alarm) alarmSound = alarm.GetComponent<SoundPlayer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,8 +75,12 @@ public class HandSelection : MonoBehaviour
             rightLightRend.material = materialOn;
         }
         spotlight.SetActive(false);
-        alarm.SetActive(false);
-        alarmSound.Stop();
+
+        if (alarm)
+        {
+            alarm.SetActive(false);
+            alarmSound.Stop();
+        }
     }
 
     void BreakGlass(GlassBrokenEvent glassBrokenEvent)
@@ -84,7 +88,10 @@ public class HandSelection : MonoBehaviour
         brokenGlass=true;
         spotlight.SetActive(true);
         soundPlayer.Play();
-        alarm.SetActive(true);
-        alarmSound.Play();
+        if (alarm)
+        {
+            alarm.SetActive(true);
+            alarmSound.Play();
+        }
     }
 }
