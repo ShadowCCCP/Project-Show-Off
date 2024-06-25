@@ -99,9 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'a lot of text to show that I truly know what the fuck Im doing
-
-'
+  m_text: Time and space are broken. This message is not supposed to show
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a1886defc4a5e943b965913c00b2ebc, type: 2}
   m_sharedMaterial: {fileID: 5564144333273630443, guid: 7a1886defc4a5e943b965913c00b2ebc,
