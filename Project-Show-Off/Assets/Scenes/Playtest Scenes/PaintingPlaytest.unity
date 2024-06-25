@@ -220,6 +220,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1837694661}
     m_Modifications:
+    - target: {fileID: 79134576740165435, guid: 4e122536beef6ad4a87b212125f0c257,
+        type: 3}
+      propertyPath: _audioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 79134576740165435, guid: 4e122536beef6ad4a87b212125f0c257,
+        type: 3}
+      propertyPath: _audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9aebc2f8edca2804ab440188248b2dd2, type: 3}
     - target: {fileID: 3936283034848136432, guid: 4e122536beef6ad4a87b212125f0c257,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,6 +853,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5769234995553517621, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      propertyPath: _audioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769234995553517621, guid: c4e3fcdf7eac0874b8101a154ee1a85f,
+        type: 3}
+      propertyPath: _audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9aebc2f8edca2804ab440188248b2dd2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
