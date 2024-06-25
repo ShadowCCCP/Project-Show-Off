@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     private void TransportPlayer()
     {
         // This should set the XROrigin object to the desired position...
-        transform.parent.position = teleportTo;
+        EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
         _anim.SetTrigger("LightenScreen");
         TriggerDialogueEvents();
     }
