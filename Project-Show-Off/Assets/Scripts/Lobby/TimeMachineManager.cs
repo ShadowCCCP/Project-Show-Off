@@ -52,6 +52,12 @@ public class TimeMachineManager : MonoBehaviour
         {
             Debug.Log("no levels assigned");
         }
+        if(On)
+        {
+             turnOn();
+             LoadLevelOnTimeMachine(0);
+        } 
+        
     }
 
     // Update is called once per frame
@@ -76,7 +82,7 @@ public class TimeMachineManager : MonoBehaviour
         //year, danger and hand
         emptytextCheck(levels[i].Year, "Year: ", yearText);
         emptytextCheck(levels[i].Danger, "Danger: ", dangerText);
-        if (levels[i].Year != "") { emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText); }
+        if (levels[i].Year != "" && GameManager.Instance) { emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText); }
         else { handText.text = ""; }
 
         //icon
@@ -147,13 +153,17 @@ public class TimeMachineManager : MonoBehaviour
         {
           //  emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText);
         }
-
         if (!On)
         {
-            On = true;
+          turnOn();
+        }
+
+    }
+
+    void turnOn(){
+           On = true;
             LoadLevelOnTimeMachine(0);
             wires.material = litWireMat;
-        }
     }
     
 }
