@@ -15,6 +15,9 @@ public class MeteoriteManager : MonoBehaviour
     Vector3 direction;
     [SerializeField]
     int speed;
+
+    [SerializeField]
+    float delayFirstSpawn;
     void Start()
     {
         //StartSpawning();
@@ -40,8 +43,20 @@ public class MeteoriteManager : MonoBehaviour
         meteor.GetComponent<Meteorite>().direction = direction;
     }
 
+    bool doItOnce;
+
     public void StartSpawning()
     {
+        if (!doItOnce)
+        {
+            StartCoroutine(spawningDelay());
+            doItOnce = true;
+        }
+    }
+
+    IEnumerator spawningDelay()
+    {
+        yield return new WaitForSeconds(delayFirstSpawn);
         StartCoroutine(meteoriteRoutine());
     }
 }

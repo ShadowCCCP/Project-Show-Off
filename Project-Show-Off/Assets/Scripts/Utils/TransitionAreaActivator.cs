@@ -68,5 +68,6 @@ public class TransitionAreaActivator : MonoBehaviour
         yield return new WaitForSeconds(bufferTime);
 
         transitionArea.SetActive(true);
+        EventBus<GoUpScaffolding>.Publish(new GoUpScaffolding());
     }
 }

@@ -10,7 +10,7 @@ public class BackToLobbyButton : VRAbstractButton
     {
         if (!_loadingLevel && GameManager.Instance != null)
         {
-            GameManager.Instance.LoadSceneSpecific(5, false);
+            GameManager.Instance.LoadSceneSpecific(4, false);
             _loadingLevel = true;
         }
     }

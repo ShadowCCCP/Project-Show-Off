@@ -21,25 +21,17 @@ public class PlayerManager : MonoBehaviour
 
         TransitionManager.onDarkenFinished += TransportPlayer;
         EventBus<LevelFinishedEvent>.OnEvent += FinishLevel;
+        EventBus<GoUpScaffolding>.OnEvent += TriggerTransition;
     }
 
     private void OnDestroy()
     {
         TransitionManager.onDarkenFinished -= TransportPlayer;
         EventBus<LevelFinishedEvent>.OnEvent -= FinishLevel;
+        EventBus<GoUpScaffolding>.OnEvent -= TriggerTransition;
 
         // In case it was subscribed as well...
         TransitionManager.onDarkenFinished -= BackToLobby;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // If the trigger collider is an enter area...
-        if (!_enteredArea && other.CompareTag("EnterArea"))
-        {
-            _enteredArea = true;
-            _anim.SetTrigger("DarkenScreen");
-        }
     }
 
     private void TransportPlayer()
@@ -96,6 +88,11 @@ public class PlayerManager : MonoBehaviour
 
     private void BackToLobby()
     {
-        GameManager.Instance.LoadSceneSpecific(5, false);
+        GameManager.Instance.LoadSceneSpecific(4, false);
+    }
+
+    private void TriggerTransition(GoUpScaffolding pGoUpScaffolding)
+    {
+        _anim.SetTrigger("DarkenScreen");
     }
 }

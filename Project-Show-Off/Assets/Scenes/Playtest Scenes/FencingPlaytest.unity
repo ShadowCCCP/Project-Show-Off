@@ -911,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 6249428569876786168, guid: d0e1dec271115134d812b9f680b75f90,
         type: 3}
       propertyPath: timeMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1105,6 +1105,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   respawnPosition: {x: -8.454, y: 4.78, z: 1.108}
   respawnTime: 3
+  fixPosition: 1
 --- !u!1001 &757829929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2397,6 +2398,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   respawnPosition: {x: -8.454, y: 4.78, z: 1.108}
   respawnTime: 3
+  fixPosition: 0
 --- !u!1 &1807425744
 GameObject:
   m_ObjectHideFlags: 0

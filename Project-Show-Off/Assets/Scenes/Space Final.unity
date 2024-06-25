@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 73815118}
   serializedVersion: 2
   m_LocalRotation: {x: -0.32361066, y: -0.51254994, z: -0.0052084774, w: 0.7953248}
-  m_LocalPosition: {x: -1.39, y: -2.67, z: -0.58}
+  m_LocalPosition: {x: -1.419, y: -2.167, z: -0.58}
   m_LocalScale: {x: 0.005, y: 0.003929962, z: 0.00015564205}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -721,7 +721,7 @@ MonoBehaviour:
   buble: {fileID: 498107982}
   startPos: {fileID: 1165956856}
   bubleStartPos: {fileID: 280439222}
-  timeForMeteor: 20
+  timeForMeteor: 10
   meteorFall: {fileID: 333630069}
   meteoriteManager: {fileID: 1552197067}
 --- !u!114 &166690209
@@ -1456,7 +1456,7 @@ Transform:
   m_GameObject: {fileID: 348903562}
   serializedVersion: 2
   m_LocalRotation: {x: -0.12918523, y: 0.92646104, z: 0.29675755, w: -0.19213551}
-  m_LocalPosition: {x: 0.0069999695, y: -2.71, z: -0.67899966}
+  m_LocalPosition: {x: 0.0069999695, y: -2.164, z: -0.67899966}
   m_LocalScale: {x: 0.005, y: 0.0039147283, z: 0.00015503875}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeToGo: {fileID: 1988932701}
   cameraOffset: {fileID: 2080067766}
-  origin: {fileID: 1977331973}
+  origin: {fileID: 1977331975}
   player: {fileID: 812817859}
   startInNewPlace: 1
   yOffset: 0
@@ -3619,7 +3619,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7393, y: -2.1934, z: -5.0624}
-  m_LocalScale: {x: 0.24523628, y: 1.5630218, z: 4.0369883}
+  m_LocalScale: {x: 0.53962564, y: 1.5630218, z: 4.0369883}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3664,6 +3664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449282327843639060, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+        type: 3}
+      propertyPath: m_CameraYOffset
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2751078145703523166, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -3713,7 +3718,7 @@ PrefabInstance:
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.555
+      value: -3.798
       objectReference: {fileID: 0}
     - target: {fileID: 7670161842687176480, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
         type: 3}
@@ -4945,7 +4950,7 @@ MonoBehaviour:
   - {fileID: 338843061}
   timeBetweenSpawns: 7
   direction: {x: 1, y: -0.15, z: 0}
-  speed: 6
+  speed: 3
 --- !u!198 &1568372251 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3158147067266910686, guid: 94492d5415e19634a947a74030254fd2,
@@ -5820,8 +5825,8 @@ Transform:
   m_GameObject: {fileID: 1847402278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.197, y: 0.393, z: 2.8965}
-  m_LocalScale: {x: 0.64746, y: 0.08267231, z: 0.5801296}
+  m_LocalPosition: {x: -0.197, y: 0.393, z: 2.847}
+  m_LocalScale: {x: 1.04, y: 0.08267231, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1413752202}
@@ -6148,6 +6153,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1072134731}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1977331975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2449282327843639060, guid: e4cd2cf48ed5bd1459dccd22c4e687cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072134731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1977823678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4084959904689015803, guid: 364f5e2066d755544a12a870017d1b51,

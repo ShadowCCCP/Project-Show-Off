@@ -170,6 +170,14 @@ public class PaintDoneEvent : Event
     }
 }
 
+public class GoUpScaffolding : Event
+{
+    public GoUpScaffolding()
+    {
+
+    }
+}
+
 
 public class LevelFinishedEvent : Event
 {
