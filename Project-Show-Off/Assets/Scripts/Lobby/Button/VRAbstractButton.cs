@@ -15,6 +15,8 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private bool _glassOpen;
 
+    private bool _tweening;
+
     SoundPlayer _soundPlayer;
 
     private void Start()
@@ -45,8 +47,11 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void UpdatePositions()
     {
-        _buttonStartPos = transform.position;
-        _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
+        if (!_tweening)
+        {
+            _buttonStartPos = transform.position;
+            _buttonEndPos = _buttonStartPos - (transform.up * buttonPressDepth);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -79,8 +84,8 @@ public abstract class VRAbstractButton : MonoBehaviour
 
     private void TweenButton()
     {
+        if (!_tweening) { _tweening = true; }
         _soundPlayer.Play();
-        Debug.Log("button tween");
         if (_currentTweenId == -1)
         {
             // Move the button back according to buttonPressDepth...
@@ -90,6 +95,7 @@ public abstract class VRAbstractButton : MonoBehaviour
                 // Move back to the original position
                 _currentTweenId = LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration).setOnComplete(() =>
                 {
+                    _tweening = false;
                     _currentTweenId = -1;
                 }).id;
             }).id;
@@ -105,6 +111,7 @@ public abstract class VRAbstractButton : MonoBehaviour
                 OnButtonPress();
                 _currentTweenId = LeanTween.move(gameObject, _buttonStartPos, buttonResetDuration).setOnComplete(() =>
                 {
+                    _tweening = false;
                     _currentTweenId = -1;
                 }).id;
             }).id;
