@@ -1500,6 +1500,88 @@ MonoBehaviour:
   respawnPosition: {x: 7.072, y: 0.8, z: -2.601}
   respawnTime: 3
   fixPosition: 0
+--- !u!1001 &891863752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 963731425558738200, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: handSpotlight
+      value: 
+      objectReference: {fileID: 723455564}
+    - target: {fileID: 963731425558738200, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: timeMachineManager
+      value: 
+      objectReference: {fileID: 530471853}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.2249509
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9743701
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873288843487887370, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541986129559427760, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      propertyPath: m_Name
+      value: CMGaTo_Animated
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7668829746171683794, guid: f33867cdd7aa1c14384e1064d229f639,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: f33867cdd7aa1c14384e1064d229f639, type: 3}
 --- !u!1 &944688810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2930997667997024698, guid: 1be9fbf79f5004b43901516e28ed291d,
@@ -3450,6 +3532,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CMGaTo_Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 9094802473876450416, guid: 146fd00032919874d8fa07ff861e482c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3458,10 +3545,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1075951206}
-    - targetCorrespondingSourceObject: {fileID: 6351514046697364811, guid: 146fd00032919874d8fa07ff861e482c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 146fd00032919874d8fa07ff861e482c, type: 3}
 --- !u!114 &3555699299711905090 stripped
 MonoBehaviour:
@@ -3493,6 +3576,11 @@ PrefabInstance:
       propertyPath: soundPlayerLooped
       value: 
       objectReference: {fileID: 632789394}
+    - target: {fileID: 1061058271588825756, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2070368992953862029, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
       propertyPath: spatialBlend
@@ -3552,6 +3640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Time machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886769615147224291, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9215132186346433242, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
@@ -3723,3 +3816,4 @@ SceneRoots:
   - {fileID: 1890078756}
   - {fileID: 1426988717}
   - {fileID: 1366456644}
+  - {fileID: 891863752}
