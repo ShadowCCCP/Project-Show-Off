@@ -12,6 +12,7 @@ public class DialogueCMRato : MonoBehaviour
     string[] listInfo;
     string[] timeRunningOut;
     string[] paintDone;
+    Animator animator;
 
     /* on scene start - Sick
   *  on pencil picup - Time
@@ -40,7 +41,7 @@ public class DialogueCMRato : MonoBehaviour
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
-
+        animator = GetComponent<Animator>();
 
         sceneStart = dialogueManager.rat.Sick;
         pencilPickup = dialogueManager.rat.Time;
@@ -73,6 +74,8 @@ public class DialogueCMRato : MonoBehaviour
 
     void speak(string[] text, float time)
     {
+        animator.SetTrigger("Jump");
+
         dialogueManager.ClearQueue();
 
         dialogueManager.Speak(time, text[0]);
