@@ -161,7 +161,7 @@ public partial class DialogueManager : MonoBehaviour
             'You only have one day though, make the best out of it!'
         ],
         'List' : [
-            'The client made a list of things NOT to include, take a look' 
+            'The client made a list of things NOT to include, take a look to the left' 
         ],
         'Evening' : [
             'You don\'t have much time left, put on the finishing touches'
@@ -220,11 +220,11 @@ public partial class DialogueManager : MonoBehaviour
         ],
 
         'Succeeded' : [
-            'You did great back there, you truly excel as a timeline repair person'
+            'You did great back there, grab the yellow light to return'
         ],
 
         'Failed' : [
-            'Don\'t worry, I can give you another chance timeline repair person'
+            'Don\'t worry, I can give you another chance, grab the yellow light'
         ]
     
     }";
