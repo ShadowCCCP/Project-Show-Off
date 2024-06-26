@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Playtest Scenes/PaintingPlaytest.unity
     guid: cd8bc115f05c3be4d90dd6524005b2be
   - enabled: 1
-    path: Assets/Scenes/Playtest Scenes/SpacePlaytest.unity
-    guid: 6af5bdd3134f2da469b67f162fa28cd1
+    path: Assets/Scenes/Space Final.unity
+    guid: bef4485d0f3eeac47ba99a97aa09157b
   - enabled: 1
     path: Assets/Scenes/Death Room.unity
     guid: 24b9a8548e6fc244a85f4c58a854a2e2
