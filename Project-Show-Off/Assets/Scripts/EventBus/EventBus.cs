@@ -196,12 +196,14 @@ public class StopPlayerMovementEvent : Event
 }
 public class OnPlayerDeathEvent : Event
 {
-    public OnPlayerDeathEvent(Vector3 pPosDeath)
+    public OnPlayerDeathEvent(Vector3 pPosDeath, float pDeathTimer)
     {
         posDeath = pPosDeath;
+        deathTimer = pDeathTimer;
     }
 
     public Vector3 posDeath;
+    public float deathTimer;
 }
 
 #endregion

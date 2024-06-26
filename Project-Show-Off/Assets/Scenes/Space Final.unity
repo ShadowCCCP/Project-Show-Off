@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9235345, g: 0.54387766, b: 0.6057425, a: 1}
+  m_IndirectSpecularColor: {r: 0.922124, g: 0.5513702, b: 0.6052337, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1369,7 +1369,7 @@ Transform:
   m_GameObject: {fileID: 338843060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.72, y: 0, z: -3.56}
+  m_LocalPosition: {x: -8.72, y: 2.81, z: -3.56}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4966,7 +4966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1482855447
 Transform:
   m_ObjectHideFlags: 0
@@ -4976,7 +4976,7 @@ Transform:
   m_GameObject: {fileID: 1482855446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.72, y: 0, z: -2.6200001}
+  m_LocalPosition: {x: -8.72, y: 0, z: 4.82}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4989,7 +4989,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482855446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5158,7 +5158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1543333473
 Transform:
   m_ObjectHideFlags: 0
@@ -5168,7 +5168,7 @@ Transform:
   m_GameObject: {fileID: 1543333472}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.72, y: 0, z: -1.6200001}
+  m_LocalPosition: {x: -5.3, y: 3.21, z: 8.04}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5181,7 +5181,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543333472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5300,8 +5300,10 @@ MonoBehaviour:
     type: 3}
   spawnPoints:
   - {fileID: 338843061}
+  - {fileID: 1482855447}
+  - {fileID: 1543333473}
   timeBetweenSpawns: 7
-  direction: {x: 1, y: -0.15, z: 0}
+  direction: {x: 1, y: -1.09, z: 0}
   speed: 3
   delayFirstSpawn: 2
 --- !u!198 &1568372251 stripped

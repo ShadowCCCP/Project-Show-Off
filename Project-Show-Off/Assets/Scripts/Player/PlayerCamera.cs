@@ -164,10 +164,10 @@ public class PlayerCamera : MonoBehaviour
         Debug.Log("You have fallen"); 
         rightController.SetActive(false);
         leftController.SetActive(false);
-        yield return new WaitForSeconds(fallingTime);
-        EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position - origin.position));
+       
+        EventBus<OnPlayerDeathEvent>.Publish(new OnPlayerDeathEvent(transform.position - origin.position, fallingTime));
 
-        
+        yield return new WaitForSeconds(1);
     }
 
     public void ActivateCheckFall(bool pCheckFallActive)

@@ -19,6 +19,11 @@ public class MeteoriteManager : MonoBehaviour
     [SerializeField]
     float delayFirstSpawn;
 
+
+    private void Start()
+    {
+        StartCoroutine(meteoriteRoutine());
+    }
     IEnumerator meteoriteRoutine()
     {
         int r = Random.Range(0, spawnPoints.Count);

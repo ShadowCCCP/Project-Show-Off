@@ -123,10 +123,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveOldPosAndDeath(OnPlayerDeathEvent onPlayerDeathEvent)
     {
-        PositionBeforeReset = onPlayerDeathEvent.posDeath;
+        StartCoroutine(savePosTimed( onPlayerDeathEvent.posDeath, onPlayerDeathEvent.deathTimer));
 
-        LoadSceneSpecific(deathRoomIndex, false);
-        setOffsetPos(onPlayerDeathEvent.posDeath);
+       
     }
 
     void setOffsetPos(Vector3 deathPos)
@@ -134,6 +133,16 @@ public class GameManager : MonoBehaviour
         
         PositionBeforeReset = new Vector3(deathPos.x, 0 , deathPos.z) ;
         Debug.Log(PositionBeforeReset);
+    }
+
+    IEnumerator savePosTimed(Vector3 posit, float time)
+    {
+        PositionBeforeReset = posit;
+
+        yield return new WaitForSeconds(time);
+
+        LoadSceneSpecific(deathRoomIndex, false);
+        setOffsetPos(posit);
     }
 
 }
