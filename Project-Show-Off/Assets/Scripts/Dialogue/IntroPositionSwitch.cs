@@ -57,9 +57,6 @@ public class IntroPositionSwitch : MonoBehaviour
             cameraOffset.position = startPos;
             origin.CameraYOffset -= yOffset;
 
-            //player.transform.position = startPos ;
-            // player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
             playerCamera.ActivateCheckFall(true);
 
             if (playerSound)
@@ -72,9 +69,6 @@ public class IntroPositionSwitch : MonoBehaviour
        
         cameraOffset.position = startPos; 
         origin.CameraYOffset -= yOffset;
-
-        //player.transform.position = startPos ;
-        // player.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         playerCamera.ActivateCheckFall(true);
 

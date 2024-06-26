@@ -82,13 +82,13 @@ public class VRCrank : MonoBehaviour
 
                 if(i == collidersLevels.Count - 1)
                 {
-                    Debug.Log("min pos over");
+                   // Debug.Log("min pos over");
                     minPosReached = true;
                     maxPosReached = false;
                 }
                 else if(i==0)
                 {
-                    Debug.Log("start pos over");
+                  //  Debug.Log("start pos over");
                     maxPosReached = true;
                     minPosReached = false;
                 }

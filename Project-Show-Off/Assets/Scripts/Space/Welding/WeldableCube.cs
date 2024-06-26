@@ -22,7 +22,6 @@ public class WeldableCube : MonoBehaviour
     }
     void Start()
     {
-      // weldShader = GetComponent<Shader>();
         ren = GetComponent<Renderer>();
     }
 

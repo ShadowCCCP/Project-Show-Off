@@ -8,7 +8,6 @@ using static DialogueManager;
 
 public partial class DialogueManager : MonoBehaviour
 {
-    //text dsspapera
     [SerializeField]
     TextMeshPro textBubble;
 
@@ -51,7 +50,7 @@ public partial class DialogueManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("no sound player on animal");
+            Debug.LogError("no sound player on animal?!");
         }
         Debug.Log("speak: " + text);
         StartCoroutine(doDelayedDialogue(time, text));

@@ -92,18 +92,12 @@ public class DialogueCMGato : MonoBehaviour
 
     void triggerChangedHandDialogue(ChangeHandEvent changeHandEvent)
     {
-
         speakOnScreen(selectTM[0]);
         speak(selectCat, 0);
-
-        //lever and buttons lih tup
-
     }
     void triggerChangedLevelDialogue(OnLevelSelectedOnTMEvent onLevelSelectedOnTMEvent)
     {
         speak(ready,0);
-
-        //red button
     }
 
     public void OnAnimationEnd()

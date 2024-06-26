@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //transitions here
     public static GameManager Instance { get; private set; }
 
     [SerializeField]
@@ -124,7 +123,6 @@ public class GameManager : MonoBehaviour
 
     public void SaveOldPosAndDeath(OnPlayerDeathEvent onPlayerDeathEvent)
     {
-        Debug.Log("Player death");
         PositionBeforeReset = onPlayerDeathEvent.posDeath;
 
         LoadSceneSpecific(deathRoomIndex, false);

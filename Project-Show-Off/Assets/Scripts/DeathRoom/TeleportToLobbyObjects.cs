@@ -8,7 +8,14 @@ public class TeleportToLobbyObjects : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-           GameManager.Instance.LoadSceneSpecific(5,false);
+            if (GameManager.Instance)
+            {
+                GameManager.Instance.LoadSceneSpecific(5, false);
+            }
+            else
+            {
+                Debug.LogError("No GameManager");
+            }
         }
     }
 }

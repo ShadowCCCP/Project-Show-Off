@@ -130,8 +130,6 @@ public class DialogueCMAlien : MonoBehaviour
         buble.position = bubleNormalPos;
         buble.rotation = bubleNormalRot;
 
-
-        //dialogue for outside
     }
 
     void alienTeleportSetup()
@@ -150,11 +148,4 @@ public class DialogueCMAlien : MonoBehaviour
         buble.rotation = bubleStartPos.rotation;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            alienTeleport();
-        }
-    }
 }

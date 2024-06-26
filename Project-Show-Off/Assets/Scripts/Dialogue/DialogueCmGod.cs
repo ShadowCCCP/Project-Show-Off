@@ -18,16 +18,6 @@ public class DialogueCmGod : MonoBehaviour
    * then based on game (succeeded / failed)
    * 
    */
-    private void Awake()
-    {
-        //EventBus<GlassBrokenEvent>.OnEvent += triggerBrokenGlassDialogue;
-    }
-
-    void OnDestroy()
-    {
-        //EventBus<GlassBrokenEvent>.OnEvent -= triggerBrokenGlassDialogue;
-    }
-
 
     void Start()
     {

@@ -25,20 +25,11 @@ public class UIManager : MonoBehaviour
 
         if (soundPlayer) soundPlayer.PlaySpecific(0);
     }
-    void Update()
-    {
-        /*
-        if (Input.GetKey(KeyCode.E))
-        {
-
-            blackImg.SetTrigger("DarkenScreen");
-        }*/
-    }
 
 
     void SetScreenDark(DarkenScreenEvent weldCubeEvent)
     {
-        Debug.Log("trogg anim");
+        Debug.Log("triggered anim transitions");
         blackImg.SetTrigger("DarkenScreen");
         if (soundPlayer) soundPlayer.PlaySpecific(1);
     }

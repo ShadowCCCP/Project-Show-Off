@@ -55,8 +55,7 @@ public abstract class VRAbstractButton : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log(_glassOpen);   
+    {  
         if ((other.tag == "RightController" || other.tag == "LeftController")&& _glassOpen)
         {
             // Move the button back...
