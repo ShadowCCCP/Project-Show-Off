@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.922124, g: 0.5513702, b: 0.6052337, a: 1}
+  m_IndirectSpecularColor: {r: 0.9235345, g: 0.54387766, b: 0.6057425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1807,6 +1807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EmergencyOutButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395275505885696299, guid: 49426b771af5e8f49930bf20b1693c18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4528929621491814722, guid: 49426b771af5e8f49930bf20b1693c18,
         type: 3}
@@ -4715,11 +4720,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1569833037081507359, guid: 1bbab30797213d14c9b9d848d5c222b3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbab30797213d14c9b9d848d5c222b3, type: 3}
 --- !u!1001 &1363369868
 PrefabInstance:

@@ -2084,6 +2084,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 5351240488942175199, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5542356482198157135, guid: 05d1dfabaeeb13b40978c4c5e9c6e6ff,
         type: 3}
       propertyPath: transitionUI
