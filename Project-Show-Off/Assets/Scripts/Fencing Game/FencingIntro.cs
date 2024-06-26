@@ -15,13 +15,15 @@ public class FencingIntro : MonoBehaviour
 
     private void QueuePirateSpawn(OnSwordPickupEvent pOnSwordPickupEvent)
     {
+        Debug.Log("Starting Coroutine");
         StartCoroutine(SpawnPirate());
+        Debug.Log("Done Starting");
     }
 
     private IEnumerator SpawnPirate()
     {
         yield return new WaitForSeconds(3);
-
+        Debug.Log("GawkToobb");
         Instantiate(piratePrefab, pirateSpawnPos, pirateRotation, null);
     }
 }
