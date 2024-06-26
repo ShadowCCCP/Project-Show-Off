@@ -1550,7 +1550,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 718188924b96c6345b1bc11380255a8e, type: 3}
   playOnAwake: 1
   loop: 1
-  spatialBlend: 0.484
+  spatialBlend: 0.5
   volume: 1
 --- !u!4 &610981689
 Transform:
@@ -1561,7 +1561,7 @@ Transform:
   m_GameObject: {fileID: 610981686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 3.14, z: 1.1}
+  m_LocalPosition: {x: 8.61, y: 10.23, z: -2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1854,6 +1854,56 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 828188540}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1013928350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013928352}
+  - component: {fileID: 1013928351}
+  m_Layer: 0
+  m_Name: Birds bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1013928351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013928350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6615ef919028e34408c794cac622838c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: ffe2fc2e0bb09f444b5dfe193abeef95, type: 3}
+  playOnAwake: 0
+  loop: 1
+  spatialBlend: 0
+  volume: 1
+--- !u!4 &1013928352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013928350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35743734, y: 12.131433, z: -3.8759432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014241023
@@ -7425,3 +7475,4 @@ SceneRoots:
   - {fileID: 685756920}
   - {fileID: 2129444706}
   - {fileID: 2349978}
+  - {fileID: 1013928352}
