@@ -44,6 +44,8 @@ public class WeldableCube : MonoBehaviour
             {
                 EventBus<WeldCubeEvent>.Publish(new WeldCubeEvent(this));
                 welded = true;
+                Collider collider = GetComponent<Collider>();
+                collider.enabled = false;
             }
         }
     }
