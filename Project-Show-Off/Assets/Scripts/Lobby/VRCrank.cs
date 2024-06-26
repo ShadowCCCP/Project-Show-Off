@@ -21,6 +21,7 @@ public class VRCrank : MonoBehaviour
     bool minPosReached;
     bool maxPosReached;
 
+    [SerializeField]
     bool timeMachineOn;
 
     Collider leverCollider;
@@ -31,8 +32,10 @@ public class VRCrank : MonoBehaviour
     SoundPlayer soundPlayerLooped;
     Vector3 oldPos;
 
-[SerializeField]
+    [SerializeField]
     bool onAtStart;
+
+
     void Awake()
     {
         EventBus<MoveCrankEvent>.OnEvent += moveCrank;

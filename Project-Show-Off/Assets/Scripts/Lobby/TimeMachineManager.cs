@@ -19,7 +19,6 @@ public class TimeMachineManager : MonoBehaviour
     [SerializeField]
     TextMeshPro bigText;
 
-    int currentLevelIndex = 0;
 
     [SerializeField]
     List<Level> levels = new List<Level>();

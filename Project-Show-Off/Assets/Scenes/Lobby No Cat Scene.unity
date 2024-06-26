@@ -3218,6 +3218,11 @@ PrefabInstance:
       objectReference: {fileID: 131172174}
     - target: {fileID: 570415218822461381, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
+      propertyPath: timeMachineOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 570415218822461381, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
       propertyPath: soundPlayerLooped
       value: 
       objectReference: {fileID: 632789394}
@@ -3280,6 +3285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033895518831370870, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0369
       objectReference: {fileID: 0}
     - target: {fileID: 3354457526277612844, guid: 7625570f22e79504e8e4488df641f2d4,
         type: 3}
