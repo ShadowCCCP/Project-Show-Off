@@ -13,6 +13,8 @@ public class DialogueCMGato : MonoBehaviour
     [SerializeField]
     GameObject handSpotlight;
 
+    Animator animator;
+
 
     string[] intro;
     string[] gap;
@@ -49,7 +51,7 @@ public class DialogueCMGato : MonoBehaviour
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
-
+        animator = GetComponent<Animator>();
 
         intro = dialogueManager.cat.Intro;
         gap = dialogueManager.cat.Gap;
@@ -59,6 +61,8 @@ public class DialogueCMGato : MonoBehaviour
         smash = dialogueManager.timeMachine.Smash;
         identify = dialogueManager.timeMachine.Identify;
         selectTM = dialogueManager.timeMachine.Select;
+
+        StartCoroutine(catAnimations());
 
     }
    
@@ -127,6 +131,18 @@ public class DialogueCMGato : MonoBehaviour
     void speakOnScreen(string text)
     {
         timeMachineManager.LoadTextOnTimeMachine(text);
+    }
+
+    IEnumerator catAnimations()
+    {
+        yield return new WaitForSeconds(7);
+
+
+        animator.SetInteger("randomAnim",Random.Range(0,2));
+        
+        yield return new WaitForSeconds(2);
+        animator.SetInteger("randomAnim", -1);
+        StartCoroutine(catAnimations());
     }
 
 
