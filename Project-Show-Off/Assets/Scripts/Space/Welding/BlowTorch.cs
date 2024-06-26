@@ -36,7 +36,7 @@ public class BlowTorch : MonoBehaviour
     ActionBasedController currentController;
 
     [SerializeField]
-    int a;
+    int torchPowerForTestingWithoutVR;
 
     [SerializeField]
     SoundPlayer weldingSound;
@@ -62,7 +62,7 @@ public class BlowTorch : MonoBehaviour
 
     private void Update()
     {   
-        if (currentController.activateAction.action.ReadValue<float>() > 0.5f ||a>1 )
+        if (currentController.activateAction.action.ReadValue<float>() > 0.5f ||torchPowerForTestingWithoutVR>1 )
         {
             activateFire();
         }

@@ -16,6 +16,9 @@ public class EventBus<T> where T : Event
     }
 }
 
+#region LOBBY
+
+//on lobby button glass break
 public class GlassBrokenEvent : Event
 {
     public GlassBrokenEvent()
@@ -33,70 +36,6 @@ public class MoveCrankEvent : Event
     public bool up;
 }
 
-public class SetUpWeldableSettingsEvent : Event
-{
-    public SetUpWeldableSettingsEvent(float pWeldTime)
-    {
-        weldTime = pWeldTime;
-    }
-    public float weldTime;
-}
-
-public class WeldCubeEvent : Event
-{
-    public WeldCubeEvent(WeldableCube pCube)
-    {
-        cube = pCube;
-    }
-    public WeldableCube cube;
-}
-
-public class DarkenScreenEvent : Event
-{
-    public DarkenScreenEvent()
-    {
-
-    }
-}
-
-
-public class StopPlayerMovementEvent : Event
-{
-    public StopPlayerMovementEvent()
-    {
-
-    }
-}
-
-
-public class OnPlayerDeathEvent : Event
-{
-    public OnPlayerDeathEvent(Vector3 pPosDeath)
-    {
-        posDeath = pPosDeath;
-    }
-
-    public Vector3 posDeath;
-}
-
-public class SetPositionOffsetEvent : Event
-{
-    public SetPositionOffsetEvent(Vector3 posOffset)
-    {
-        this.posOffset = posOffset;
-    }
-    public Vector3 posOffset;
-}
-
-public class SpawnWeldablesEvent : Event
-{
-    public SpawnWeldablesEvent(MetalPlaceHolder metalPlaceHolder)
-    {
-        this.metalPlaceHolder = metalPlaceHolder;
-    }
-    public MetalPlaceHolder metalPlaceHolder;
-}
-
 public class ChangeHandEvent : Event
 {
     public ChangeHandEvent()
@@ -112,6 +51,11 @@ public class OnLevelSelectedOnTMEvent : Event
 
     }
 }
+
+#endregion
+
+
+#region FENCING
 
 public class OnSwordPickupEvent : Event
 {
@@ -137,6 +81,10 @@ public class OnPirateDefeatedEvent : Event
     }
 }
 
+#endregion
+
+
+#region PAINTING
 public class OnPencilPickupEvent : Event
 {
     public OnPencilPickupEvent()
@@ -178,14 +126,37 @@ public class GoUpScaffolding : Event
     }
 }
 
+#endregion
 
-public class LevelFinishedEvent : Event
+
+#region SPACE
+
+public class SetUpWeldableSettingsEvent : Event
 {
-    public LevelFinishedEvent(float pWaitTime)
+    public SetUpWeldableSettingsEvent(float pWeldTime)
     {
-        waitTime = pWaitTime;
+        weldTime = pWeldTime;
     }
-    public float waitTime;
+    public float weldTime;
+}
+
+public class WeldCubeEvent : Event
+{
+    public WeldCubeEvent(WeldableCube pCube)
+    {
+        cube = pCube;
+    }
+    public WeldableCube cube;
+
+}
+
+public class SpawnWeldablesEvent : Event
+{
+    public SpawnWeldablesEvent(MetalPlaceHolder metalPlaceHolder)
+    {
+        this.metalPlaceHolder = metalPlaceHolder;
+    }
+    public MetalPlaceHolder metalPlaceHolder;
 }
 
 public class OnDoorOpenSpaceEvent : Event
@@ -204,6 +175,67 @@ public class OnPlatePlacedSpaceEvent : Event
     }
 }
 
+public class CloseSpaceDoorEvent : Event
+{
+    public CloseSpaceDoorEvent()
+    {
+
+    }
+}
+
+#endregion
+
+
+#region PLAYER
+public class StopPlayerMovementEvent : Event
+{
+    public StopPlayerMovementEvent()
+    {
+
+    }
+}
+public class OnPlayerDeathEvent : Event
+{
+    public OnPlayerDeathEvent(Vector3 pPosDeath)
+    {
+        posDeath = pPosDeath;
+    }
+
+    public Vector3 posDeath;
+}
+
+#endregion
+
+
+#region OTHER
+
+public class DarkenScreenEvent : Event
+{
+    public DarkenScreenEvent()
+    {
+
+    }
+}
+
+
+public class SetPositionOffsetEvent : Event
+{
+    public SetPositionOffsetEvent(Vector3 posOffset)
+    {
+        this.posOffset = posOffset;
+    }
+    public Vector3 posOffset;
+}
+
+public class LevelFinishedEvent : Event
+{
+    public LevelFinishedEvent(float pWaitTime)
+    {
+        waitTime = pWaitTime;
+    }
+    public float waitTime;
+}
+
 public class GoBackToStartPosEvent : Event
 {
     public GoBackToStartPosEvent()
@@ -212,10 +244,24 @@ public class GoBackToStartPosEvent : Event
     }
 }
 
-public class CloseSpaceDoorEvent : Event
-{
-    public CloseSpaceDoorEvent()
-    {
 
-    }
-}
+#endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

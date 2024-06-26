@@ -58,7 +58,6 @@ public class PlayerCamera : MonoBehaviour
     {
         playerCam = GetComponent<Camera>();
         playerCam.enabled = false;
-        //transition.SetParent(VRCamera.transform);
 
         if (GetComponent<IntroPositionSwitch>())
         {
@@ -98,7 +97,6 @@ public class PlayerCamera : MonoBehaviour
         playerPhysicsCheck();
 
 
-        //if offeset playercaemra
     }
 
     void playerFallingCheck()
@@ -120,19 +118,14 @@ public class PlayerCamera : MonoBehaviour
             {
                 playerCam.enabled = false;
                 VRCamera.enabled = true;
-                //transition.SetParent(VRCamera.transform);
                 playerCamActive = false;
             }
-            //do vr camera
-            // transform.position = VRCamera.transform.position + offset;
         }
         else
         {
             if (!playerCamActive)
             {
                 playerCam.enabled = true;
-
-                //transition.SetParent(this.transform);
                 playerCamActive = true;
             }
             transform.position = player.transform.position + offset;
@@ -144,7 +137,6 @@ public class PlayerCamera : MonoBehaviour
     {
         if (!playerPhysics)
         {
-            //player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);
             if (canMoveRigidBody)
             {
                 player.position = new Vector3(VRCamera.transform.position.x, player.position.y, VRCamera.transform.position.z);

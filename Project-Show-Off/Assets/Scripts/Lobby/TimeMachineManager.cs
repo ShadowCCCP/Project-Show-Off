@@ -60,9 +60,9 @@ public class TimeMachineManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (levels.Count > currentLevelIndex +1)
@@ -74,7 +74,7 @@ public class TimeMachineManager : MonoBehaviour
                 currentLevelIndex--;
             }
             LoadLevelOnTimeMachine(currentLevelIndex);
-        }
+        }*/
     }
 
     public void LoadLevelOnTimeMachine(int i)
@@ -89,7 +89,6 @@ public class TimeMachineManager : MonoBehaviour
         if (levels[i].Icon != null)
         {
             gameIcon.gameObject.SetActive(true);
-           // gameIcon.material.mainTexture = levels[i].Icon.texture;
             gameIcon.sprite = levels[i].Icon;
 
 
@@ -149,10 +148,6 @@ public class TimeMachineManager : MonoBehaviour
 
     void OnHandChange(ChangeHandEvent changeHandEvent)
     {
-        if (handText.text != "")
-        {
-          //  emptytextCheck(GameManager.Instance.GetDominantHandString(), "Dominant hand: ", handText);
-        }
         if (!On)
         {
           turnOn();
