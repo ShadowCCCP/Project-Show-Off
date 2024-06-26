@@ -8,22 +8,36 @@ public class FencingIntro : MonoBehaviour
     [SerializeField] Vector3 pirateSpawnPos;
     [SerializeField] Quaternion pirateRotation;
 
+    private bool _startTimer;
+    private float _timerCooldown = 3;
+    private float _currentTime;
+
     private void Start()
     {
         EventBus<OnSwordPickupEvent>.OnEvent += QueuePirateSpawn;
     }
 
-    private void QueuePirateSpawn(OnSwordPickupEvent pOnSwordPickupEvent)
+    private void Update()
     {
-        Debug.Log("Starting Coroutine");
-        StartCoroutine(SpawnPirate());
-        Debug.Log("Done Starting");
+        UpdateTimer();
     }
 
-    private IEnumerator SpawnPirate()
+    private void QueuePirateSpawn(OnSwordPickupEvent pOnSwordPickupEvent)
     {
-        yield return new WaitForSeconds(3);
-        Debug.Log("GawkToobb");
-        Instantiate(piratePrefab, pirateSpawnPos, pirateRotation, null);
+        _startTimer = true;
+    }
+
+    private void UpdateTimer()
+    {
+        if (_startTimer)
+        {
+            _currentTime += Time.deltaTime;
+
+            if (_currentTime >= _timerCooldown)
+            {
+                Instantiate(piratePrefab, pirateSpawnPos, pirateRotation, null);
+                _startTimer = false;
+            }
+        }
     }
 }

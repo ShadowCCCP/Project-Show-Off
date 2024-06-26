@@ -102,7 +102,6 @@ public class PlayerSword : MonoBehaviour
     private IEnumerator TriggerGrabbedEvent()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log("1");
         EventBus<OnSwordPickupEvent>.Publish(new OnSwordPickupEvent());
     }
 
