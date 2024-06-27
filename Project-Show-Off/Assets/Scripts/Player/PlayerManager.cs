@@ -5,12 +5,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Transform transitionUI;
 
-    [Tooltip("This will only be triggered if the player enters a trigger collider with the 'EnterArea' tag.")]
-    [SerializeField] Vector3 teleportTo = Vector3.zero;
-
     private SoundPlayer _soundPlayer;
-
-    private bool _enteredArea;
 
     private Animator _anim;
 
@@ -45,7 +40,13 @@ public class PlayerManager : MonoBehaviour
     private void FinishLevel(LevelFinishedEvent pLevelFinishEvent)
     {
         TransitionManager.onDarkenFinished -= TransportPlayer;
-        TransitionManager.onDarkenFinished += PlaySound;
+
+        // The only case we want to play a sound is when the player dies in the fencing minigame...
+        // This will do for now...
+        if (pLevelFinishEvent.waitTime > 0)
+        {
+            TransitionManager.onDarkenFinished += PlaySound;
+        }
 
         StartCoroutine(LoadLobby(pLevelFinishEvent.waitTime));
     }
@@ -64,7 +65,6 @@ public class PlayerManager : MonoBehaviour
         if (pWaitTime == 0)
         {
             TransitionManager.onDarkenFinished += BackToLobby;
-
             _anim.SetTrigger("DarkenScreen");
         }
         else 
