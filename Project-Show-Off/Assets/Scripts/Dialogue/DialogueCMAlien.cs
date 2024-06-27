@@ -10,23 +10,6 @@ public class DialogueCMAlien : MonoBehaviour
     GameObject mainCamera;
     DialogueManager dialogueManager;
 
-    [SerializeField]
-    Transform buble;
-
-    [SerializeField]
-    Transform startPos;
-
-    [SerializeField]
-    Transform bubleStartPos;
-
-    Vector3 normalPos;
-
-    Quaternion normalRot;
-
-    Vector3 bubleNormalPos;
-
-    Quaternion bubleNormalRot;
-
     string[] destroyed;
     string[] meteor;
     string[] shoes;
@@ -43,7 +26,7 @@ public class DialogueCMAlien : MonoBehaviour
 
     Animator animator;
 
-    /*
+    /*Alien 
     *  dark room + cmet with u + cmet : destroyed
     * 
     * presss button -> door opens -> meteor fles by cmet : meteor -> plates snapped => cmet: trigger 
@@ -64,9 +47,8 @@ public class DialogueCMAlien : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
         dialogueManager = GetComponent<DialogueManager>();
-        alienTeleportSetup();
+        animator = GetComponentInParent<Animator>();
 
         destroyed = dialogueManager.alien.Destroyed;
         meteor = dialogueManager.alien.Meteor;
@@ -112,40 +94,16 @@ public class DialogueCMAlien : MonoBehaviour
         yield return new WaitForSeconds(timeForMeteor);
         EventBus<GoBackToStartPosEvent>.Publish(new GoBackToStartPosEvent());
         EventBus<CloseSpaceDoorEvent>.Publish(new CloseSpaceDoorEvent());
-        alienTeleport();
+        animator.SetTrigger("StartAnim");
         speak(shoes, 0);
         meteoriteManager.StartSpawning();
 
-        animator.SetTrigger("StartAnim");
+        
        
     }
 
-    void alienTeleport()
-    {
 
-        Debug.Log("attempt");
-        transform.position = normalPos;
-        transform.rotation = normalRot;
 
-        buble.position = bubleNormalPos;
-        buble.rotation = bubleNormalRot;
 
-    }
-
-    void alienTeleportSetup()
-    {
-        normalPos = transform.position;
-        normalRot = transform.rotation;
-
-        bubleNormalPos = buble.transform.position;
-        bubleNormalRot = buble.transform.rotation;
-
-        //go to the start position
-        transform.position = startPos.position;
-        transform.rotation = startPos.rotation;
-
-        buble.position = bubleStartPos.position;
-        buble.rotation = bubleStartPos.rotation;
-    }
 
 }

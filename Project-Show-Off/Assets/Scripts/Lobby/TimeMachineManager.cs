@@ -59,23 +59,6 @@ public class TimeMachineManager : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        /*
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (levels.Count > currentLevelIndex +1)
-            {
-                currentLevelIndex++;
-            }
-            else
-            {
-                currentLevelIndex--;
-            }
-            LoadLevelOnTimeMachine(currentLevelIndex);
-        }*/
-    }
-
     public void LoadLevelOnTimeMachine(int i)
     {
         //year, danger and hand
@@ -100,10 +83,12 @@ public class TimeMachineManager : MonoBehaviour
             gameIcon.gameObject.SetActive(false);
         }
 
+        //big bacground text
+        emptytextCheck(levels[i].BigText, "", bigText);
+
+
         //button
         button.SetToGoScene(levels[i].LevelIndex);
-        //
-        emptytextCheck(levels[i].BigText, "", bigText);
 
         if (levels[i].LevelIndex >= 0)
         {
