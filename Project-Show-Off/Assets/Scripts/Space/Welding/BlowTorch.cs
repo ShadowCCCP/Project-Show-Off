@@ -85,6 +85,10 @@ public class BlowTorch : MonoBehaviour
                 weldingSound.Play();
             }
         }
+        else
+        {
+            sparks.Stop();
+        }
 
     }
 
