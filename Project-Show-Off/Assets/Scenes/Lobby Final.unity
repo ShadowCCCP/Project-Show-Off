@@ -3542,6 +3542,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time machine
       objectReference: {fileID: 0}
+    - target: {fileID: 6886769615147224291, guid: 7625570f22e79504e8e4488df641f2d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
