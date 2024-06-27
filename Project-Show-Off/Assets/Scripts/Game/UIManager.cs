@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the transitions
+/// </summary>
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField]

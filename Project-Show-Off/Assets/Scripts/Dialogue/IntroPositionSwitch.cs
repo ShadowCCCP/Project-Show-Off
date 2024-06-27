@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
+/// <summary>
+/// Alllows the player start in a different place without breaking the gameplay
+/// </summary>
+
 public class IntroPositionSwitch : MonoBehaviour
 {
     [SerializeField]
@@ -48,20 +52,6 @@ public class IntroPositionSwitch : MonoBehaviour
             origin.CameraYOffset += yOffset;
         }
 
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N)) 
-        {
-            cameraOffset.position = startPos;
-            origin.CameraYOffset -= yOffset;
-
-            playerCamera.ActivateCheckFall(true);
-
-            if (playerSound)
-                playerSound.Play();
-        }
     }
 
     void goBackToOriginalPlace(GoBackToStartPosEvent goBack)

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+/// <summary>
+/// It's a cube that can be welded.
+/// It's fully finished at 75%
+/// </summary>
+
 public class WeldableCube : MonoBehaviour
 {
     float weldTime =1; 

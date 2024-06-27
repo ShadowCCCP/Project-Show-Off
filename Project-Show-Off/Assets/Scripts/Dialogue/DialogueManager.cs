@@ -6,6 +6,11 @@ using TMPro;
 using UnityEngine;
 using static DialogueManager;
 
+/// <summary>
+/// Manages dialogue
+/// Is a partial script 
+/// </summary>
+
 public partial class DialogueManager : MonoBehaviour
 {
     [SerializeField]

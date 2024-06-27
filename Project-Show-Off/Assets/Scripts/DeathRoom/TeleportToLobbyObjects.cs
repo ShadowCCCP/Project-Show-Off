@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// used in the in between scene  
+/// </summary>
+
 public class TeleportToLobbyObjects : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)

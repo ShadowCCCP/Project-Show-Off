@@ -4,6 +4,12 @@ using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
+
+/// <summary>
+/// Handles the time machine screen and some other functionality
+/// Can load levels
+/// Can turn the machine on and off
+/// </summary>
 public class TimeMachineManager : MonoBehaviour
 {
     [SerializeField]

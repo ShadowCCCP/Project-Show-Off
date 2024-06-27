@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the lever on the time machine
+/// Can select levels
+/// </summary>
+
 public class VRCrank : MonoBehaviour
 {
     [SerializeField]

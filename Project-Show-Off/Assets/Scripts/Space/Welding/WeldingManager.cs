@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Handles finishing the space minigame
+/// Spawns the weldable cubes 
+/// </summary>
+
 public class WeldingManager : MonoBehaviour
 {
     [SerializeField]
     GameObject weldableCubePrefab;
-
-
-
 
     [SerializeField]
     float weldTime;

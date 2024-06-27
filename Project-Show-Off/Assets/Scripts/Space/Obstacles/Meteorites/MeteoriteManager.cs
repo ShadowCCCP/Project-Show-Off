@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Space meteorite manager 
+/// Can spawn meteorites
+/// </summary>
+
 public class MeteoriteManager : MonoBehaviour
 {
     [SerializeField]

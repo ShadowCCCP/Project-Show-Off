@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Allows metal plates to be placed 
+/// </summary>
 public class MetalPlaceHolder : MonoBehaviour
 {
     Renderer ren;

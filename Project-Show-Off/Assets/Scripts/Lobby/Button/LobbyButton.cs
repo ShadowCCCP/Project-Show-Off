@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// The lobby button
+/// </summary>
+
 public class LobbyButton : VRAbstractButton
 {
     [SerializeField] int loadScene = 0;

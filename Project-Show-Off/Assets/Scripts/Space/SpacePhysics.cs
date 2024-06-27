@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes the player be able to always float in space and not just sit in place when it falls off.
+/// Prevents the player from colliding with everything that has a collider.
+/// </summary>
+
 public class SpacePhysics : MonoBehaviour
 {
     [SerializeField]

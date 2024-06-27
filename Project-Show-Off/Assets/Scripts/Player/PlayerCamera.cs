@@ -4,6 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
+
+/// <summary>
+/// Handles player 
+/// Can select the correct camera. (The main camera when playing normally and the player camera when falling)
+/// Handles death
+/// </summary>
+
 public class PlayerCamera : MonoBehaviour
 {
     [SerializeField]

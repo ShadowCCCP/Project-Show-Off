@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Can be used to weld 
+/// </summary>
+
 public class BlowTorch : MonoBehaviour
 {
     [SerializeField]

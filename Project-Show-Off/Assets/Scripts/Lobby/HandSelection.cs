@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Handles selecting the player's dominant hand 
+/// </summary>
 public class HandSelection : MonoBehaviour
 {
 

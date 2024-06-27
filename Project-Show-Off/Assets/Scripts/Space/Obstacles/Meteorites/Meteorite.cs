@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Meteorite movement
+/// Allows meteorite to enable physcs for player.
+/// </summary>
 public class Meteorite : MonoBehaviour
 {
     public Vector3 direction { set; private get; }

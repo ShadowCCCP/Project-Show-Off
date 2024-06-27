@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Button in the space game
+/// Can open door
+/// </summary>
 public class SpaceButton : VRAbstractButton
 {
     [SerializeField]

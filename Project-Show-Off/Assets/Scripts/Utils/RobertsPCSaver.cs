@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// for weaker machines
+/// saves thef from overheat
+/// </summary>
+
 public class RobertsPCSaver : MonoBehaviour
 {
     [SerializeField] int maxFramerate = 60;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//pressure mechanic never used in the final product
 public class PressureManager : MonoBehaviour
 {
     [SerializeField]

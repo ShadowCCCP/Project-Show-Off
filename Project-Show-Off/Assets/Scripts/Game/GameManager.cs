@@ -2,6 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// Handles switching the levels.
+/// Is an instance.
+/// Can set a dominant hand.
+/// Handles making sure the player stays in the correct position in game and in reality if a real plank is used.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
