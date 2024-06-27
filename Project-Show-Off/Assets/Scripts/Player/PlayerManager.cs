@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Handles transitioning the UI for the player, loading the next scene after being done.
+/// This script is used in both the drawing and fencing minigame in order to finish the level.
+/// A different script is used to handle that in the space minigame, as well as all the other scenes.
+/// </summary>
+
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] Transform transitionUI;

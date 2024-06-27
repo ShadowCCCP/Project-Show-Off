@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles toggling the sword collider of the pirate.
+/// </summary>
+
 public class PirateSwordHitbox : MonoBehaviour
 {
     private CapsuleCollider _swordCol;

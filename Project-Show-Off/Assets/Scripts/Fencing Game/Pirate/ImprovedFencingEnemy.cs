@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the fight sequence of the pirate during the fencing minigame.
+/// It's heavily tied to the actual animator with its events and parameters.
+/// It will start executing on Start(), not waiting for any other queues.
+/// </summary>
+
 public class ImprovedFencingEnemy : MonoBehaviour
 {
     private bool _debugMode = true;

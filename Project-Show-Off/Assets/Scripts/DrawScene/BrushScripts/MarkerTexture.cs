@@ -1,10 +1,10 @@
 using System.Linq;
 using UnityEngine;
 
-// TODO
-// Only try to implement this if much time is left:
-// Change the script so that it gets the collision points and paints at those points of the texture instead...
-// (This has the advantage of me not manually having to straighten the rotation and fix the position)
+/// <summary>
+/// First iteration of the MarkerTexture script.
+/// AlternativeMarkerTexture is an improved version of this.
+/// </summary>
 
 public class MarkerTexture : MonoBehaviour
 {

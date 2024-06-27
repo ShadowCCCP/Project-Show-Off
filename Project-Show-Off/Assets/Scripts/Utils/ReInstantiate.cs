@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Recreates the same object at the same position as soon as it's destroyed.
+/// This is used to respawn the plates used in the space minigame.
+/// </summary>
+
 public class ReInstantiate : MonoBehaviour
 {
     GameObject _instantiateObject;

@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Respawns any gameObject to it's former position and rotation before being picked up as an XRGrabInteractable.
+/// Also takes into consideration if the object has rigidbody or the Floaty script attached as well.
+/// </summary>
+
 public class RespawnObject : MonoBehaviour
 {
     [Tooltip("Press G to simulate picking object up, press H to let go of it.")]

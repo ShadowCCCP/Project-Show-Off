@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class BloodyHandler : MonoBehaviour
 {
+    /// <summary>
+    /// Handles triggering the blood animation for the player UI.
+    /// </summary>
+
     Animator _anim;
 
     void Start()

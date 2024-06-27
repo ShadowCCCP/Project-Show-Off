@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles spawning the pirate, as soon as the sword is grabbed.
+/// Timer is manually done instead of using a coroutine, as it lead to unexplainable bugs. 
+/// </summary>
+
 public class FencingIntro : MonoBehaviour
 {
     [SerializeField] GameObject piratePrefab;

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// A try to increase perfomance while drawing.
+/// This turned out to be more perfomance heavy though, so it's deprecated as well and just kept here as memory.
+/// </summary>
+
 public class MarkerInstantiate : MonoBehaviour
 {
     // To keep track of all instantiated paint instances...

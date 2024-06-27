@@ -2,6 +2,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// First version of the timer used to end the level in the painting scene.
+/// SunRotation script takes care of that now, so it's not used anymore.
+/// </summary>
+
 public class DrawTimer : MonoBehaviour
 {
     [SerializeField] int timerInSeconds = 120;

@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Makes any gameObject float up and down, for as long as it's not being picked up.
+/// Used in the painting minigame.
+/// </summary>
+
 public class Floaty : MonoBehaviour
 {
     [SerializeField] float floatDistance = 0.2f;

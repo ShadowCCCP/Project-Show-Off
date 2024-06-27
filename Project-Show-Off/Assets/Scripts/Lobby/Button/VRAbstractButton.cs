@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// Base class for all the buttons.
+/// It handles all the button movement through tweens, activating OnButtonPress when pressed down completely.
+/// The glass component could have been moved outside, but no time left to properly improve it that way.
+/// </summary>
+
 public abstract class VRAbstractButton : MonoBehaviour
 {
     [SerializeField] float buttonPressDepth = 1.0f;

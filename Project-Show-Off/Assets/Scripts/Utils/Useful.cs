@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Place for useful methods for debugging.
+/// </summary>
+
 public class Useful : MonoBehaviour
 {
     public static string GetHierarchy(Transform pTransform)

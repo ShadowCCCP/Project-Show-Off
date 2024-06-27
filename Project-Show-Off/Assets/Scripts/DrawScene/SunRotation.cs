@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles rotating the sun (light) in the painting scene.
+/// It also serves as a timer, which decides how long the painting scene will be playable.
+/// </summary>
+
 public class SunRotation : MonoBehaviour
 {
     [SerializeField] float targetRotation = 180;

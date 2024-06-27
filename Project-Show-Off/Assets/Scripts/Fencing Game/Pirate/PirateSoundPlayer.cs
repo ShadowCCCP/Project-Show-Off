@@ -5,6 +5,9 @@ using UnityEngine;
 public class PirateSoundPlayer : MonoBehaviour
 {
     /// <summary>
+    /// Plays all the sounds relevant to the pirate.
+    /// All of them are triggered through the animator.
+    /// 
     /// Indexes of all the sounds to be played:
     /// [ 0 - 5  ]  |   WoodSteps
     /// [ 6 - 8  ]  |   Stabbing

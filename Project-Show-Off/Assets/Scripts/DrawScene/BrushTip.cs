@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles changing the color of the brush.
+/// Also makes sure to keep the rotation to identity, as it needs to have a moveable rigidbody to function properly.
+/// </summary>
+
 public class BrushTip : MonoBehaviour
 {
     private MarkerTextureAlternative _markerScript;

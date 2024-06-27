@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles toggling the body colliders of the pirate.
+/// The side parameter also provides information about which side was hit for the ImprovedFencingEnemy script.
+/// </summary>
+
 public class PirateBodyHitbox : MonoBehaviour
 {
     [SerializeField] ImprovedFencingEnemy.SideHit side;

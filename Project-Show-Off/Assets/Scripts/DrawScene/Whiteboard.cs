@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Creates the texture which will be painted on during the drawing minigame.
+/// The bigger the size, the more perfomance it will take to actually paint on it.
+/// </summary>
+
 public class Whiteboard : MonoBehaviour
 {
     [HideInInspector] public Texture2D texture;

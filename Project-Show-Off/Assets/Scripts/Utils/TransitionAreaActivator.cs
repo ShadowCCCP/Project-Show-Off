@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Serves as area, that triggers a transition when entered.
+/// This is used to transition up in the painting minigame.
+/// </summary>
+
 public class TransitionAreaActivator : MonoBehaviour
 {
     [SerializeField] GameObject transitionArea;

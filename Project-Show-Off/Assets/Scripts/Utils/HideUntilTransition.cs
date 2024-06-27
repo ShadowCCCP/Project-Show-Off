@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Any object that is child of the gameObject which holds this script, will be deactivated at the start.
+/// Only after the first player UI transition finishes, will they actually become visible again.
+/// This is used in the painting minigame.
+/// </summary>
+
 public class HideUntilTransition : MonoBehaviour
 {
     private void Start()

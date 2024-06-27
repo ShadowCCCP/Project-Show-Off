@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Randomizes the sprite attached to the image component for the painting minigame.
+/// Could also be used to randomize any other gameObject possessing an image component.
+/// </summary>
+
 public class ImageRandomizer : MonoBehaviour
 {
     [SerializeField] Sprite[] imageVariants;

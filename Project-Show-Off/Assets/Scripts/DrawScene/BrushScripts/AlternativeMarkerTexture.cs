@@ -3,6 +3,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Final version of the brush script.
+/// Handles drawing on the canvas texture by having multiple raycasts.
+/// Still very perfomance heavy if the canvas texture resolution or the brush size is too big.
+/// </summary>
+
 public class MarkerTextureAlternative : MonoBehaviour
 {
     [SerializeField] bool slimPaintForm;

@@ -7,6 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class PlayerSword : MonoBehaviour
 {
     /// <summary>
+    /// Handles collisions of the player sword, instantiating sparks and also playing swing sounds.
+    /// Also triggers an event when it's being picked up for the first time, helping to activate the intro for the pirate minigame.
+    /// 
     /// Indexes of all the sounds to be played:
     /// [ 0 - 1  ]  |   Swoosh (Sword swing)
     /// [ 2 - 8  ]  |   Sword clash
