@@ -92,6 +92,7 @@ public class BlowTorch : MonoBehaviour
         else
         {
             sparks.Stop();
+            weldingSound.Stop();
         }
 
     }
@@ -133,6 +134,9 @@ public class BlowTorch : MonoBehaviour
             flame.Stop();
 
             flameLoop.Stop();
+
+            sparks.Stop();
+            weldingSound.Stop();
         }
     }
 
